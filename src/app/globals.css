@@ -1,0 +1,238 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand Colors */
+  --primary: #2F5D8C;
+  --primary-dark: #22384E;
+  --secondary: #C47A3A;
+
+  /* Neutrals */
+  --white: #FFFFFF;
+  --light: #F7F8FA;
+  --border: #E5E7EB;
+
+  /* Text */
+  --heading: #123B67;   /* <-- change this */
+  --text: #667085;
+
+  --container: 1280px;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background: var(--white);
+  color: var(--text);
+  font-family: var(--font-inter);
+  overflow-x: hidden;
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-family:var(--font-manrope);
+  color:var(--heading);
+}
+
+img{
+  display:block;
+  max-width:100%;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+
+@keyframes floatSlow {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-18px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.float-slow {
+  animation: floatSlow 8s ease-in-out infinite;
+}
+
+.float-medium {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.float-fast {
+  animation: floatSlow 4s ease-in-out infinite;
+}
+
+
+/* ===== Services Swiper ===== */
+
+.servicesSwiper {
+  padding: 10px 5px 70px;
+}
+
+.servicesSwiper .swiper-slide {
+  height: auto;
+}
+
+.servicesSwiper .swiper-button-next,
+.servicesSwiper .swiper-button-prev {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #123b67;
+  color: white;
+  transition: .3s;
+}
+
+.servicesSwiper .swiper-button-next:hover,
+.servicesSwiper .swiper-button-prev:hover {
+  background: #c89b3c;
+}
+
+.servicesSwiper .swiper-button-next::after,
+.servicesSwiper .swiper-button-prev::after {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.servicesSwiper .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: #123b67;
+  opacity: .3;
+}
+
+.servicesSwiper .swiper-pagination-bullet-active {
+  width: 36px;
+  border-radius: 20px;
+  opacity: 1;
+  background: #c89b3c;
+}
+
+/* ===== Services Carousel ===== */
+
+.react-multiple-carousel__arrow {
+  background: #123B67 !important;
+  min-width: 48px;
+  min-height: 48px;
+}
+
+.react-multiple-carousel__arrow:hover {
+  background: #C89B3C !important;
+}
+
+.react-multiple-carousel__arrow::before {
+  font-size: 18px;
+}
+
+.react-multiple-carousel__arrow--left {
+  left: -10px;
+}
+
+.react-multiple-carousel__arrow--right {
+  right: -10px;
+}
+
+.react-multi-carousel-track {
+  padding: 20px 0 40px;
+}
+
+
+/* ===== Infinite Services Marquee ===== */
+
+.marquee-track {
+  will-change: transform;
+}
+
+.marquee-track:hover {
+  cursor: grab;
+}
+
+/* Hide scrollbar */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE & Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* globals.css */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar but allow scrolling */
+
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE & Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.swal2-container {
+  z-index: 999999 !important;
+}
+
+.swal2-popup {
+  z-index: 999999 !important;
+}
+
+.swiper,
+.swiper-wrapper,
+.swiper-slide {
+  background: transparent !important;
+}
+
+@keyframes silverGlaze {
+  0%, 15% {
+    transform: translateX(-250%) skewX(-20deg);
+  }
+
+  35% {
+    transform: translateX(450%) skewX(-20deg);
+  }
+
+  100% {
+    transform: translateX(450%) skewX(-20deg);
+  }
+}
+
+.silver-glaze::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 35%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.95),
+    transparent
+  );
+  transform: skewX(-20deg);
+  animation: silverGlaze 3.5s ease-in-out infinite;
+  pointer-events: none;
+}
