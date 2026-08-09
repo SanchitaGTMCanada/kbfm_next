@@ -5,20 +5,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
+import { HiArrowTopRightOnSquare } from "react-icons/hi2";
 
-import Container from "@/components/ui/Container/Container";
 import Button from "@/components/ui/Button/Button";
 import navigation from "@/data/navigation";
 import MobileMenu from "./MobileMenu";
-import CareerModal from "@/components/career/CareerModal";
-import { HiPhone, HiArrowTopRightOnSquare } from "react-icons/hi2";
-
-
 
 export default function Header() {
   const [sticky, setSticky] = useState(false);
   const [open, setOpen] = useState(false);
-  const [careerOpen, setCareerOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,256 +26,479 @@ export default function Header() {
   }, []);
 
   const handleNavigation = (e, href) => {
-    e.preventDefault();
+    if (!href) return;
 
-    const section = document.querySelector(href);
+    if (href.startsWith("#")) {
+      e.preventDefault();
 
-    if (section) {
-      section.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+      const section = document.querySelector(href);
+
+      if (section) {
+        section.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+
+      setOpen(false);
     }
-
-    setOpen(false);
   };
 
   return (
     <>
+      {/* =====================================================
+          HEADER
+      ===================================================== */}
+  <div className="w-[90%] mx-auto relative z-2000 h-full flex justify-center">
       <header
-        className={`fixed top-6 left-0 w-full z-50 flex justify-center transition-all duration-500 ${
-          sticky ? "py-3" : "py-5"
-        }`}
+        className={`
+          fixed
+          top-6
+          left-0
+          z-50
+          flex
+          w-full
+          justify-center
+          transition-all
+          duration-500
+
+          ${sticky ? "py-3" : "py-5"}
+        `}
       >
-        <Container>
-          <div
-            className={`
-              flex items-center justify-between
-             lg:grid lg:grid-cols-[165px_minmax(0,1fr)_330px]
-              min-h-[100px]
-              px-4 lg:px-8
-              rounded-2xl
-              transition-all
-              duration-500
-              ${
-                sticky
-                  ? "bg-white/95 backdrop-blur-xl shadow-[0_15px_45px_rgba(0,0,0,0.08)] border border-white/30"
-                  : "bg-white/10 backdrop-blur-xl border border-white/20"
-              }
-            `}
-            style={{ paddingLeft: "20px", paddingRight: "20px" }}
-          >
-            {/* Logo */}
-            <div
-              className="flex h-full items-center flex-shrink-0"
-              style={{
-                maxWidth: "160px",
-              }}
-            >
-              <Link
-                href="#home"
-                onClick={(e) => handleNavigation(e, "#home")}
-                className="flex h-full items-center justify-center"
-              >
-                <Image
-                  src="/assets/logos/logo.png"
-                  alt="AC Plumbing & Heating"
-                  width={500}
-                  height={200}
-                  priority
-                  className="
-                    h-[100px]
-                    lg:h-[110px]
-                    xl:h-[120px]
-                    w-auto
-                    object-contain
-                    transition-all
-                    duration-300
-                  "
-                />
-              </Link>
-            </div>
+         
 
-        {/* Navigation */}
-<nav className="hidden lg:flex items-center justify-center gap-8">
-  {navigation
-    .filter((item) => item.title !== "Home")
-    .map((item) => {
-      const navClass = `group relative text-[16px] font-medium transition-all duration-300 ${
-        sticky
-          ? "text-[#123B67] hover:text-[var(--primary)]"
-          : "!text-white hover:!text-[#F4C46A]"
-      }`;
+     <div
+          className={`
+            relative
 
-      if (item.title === "Careers") {
-        return (
-          <button
-            key={item.title}
-            type="button"
-            onClick={() => setCareerOpen(true)}
-            className={navClass}
-          >
-            {item.title === "Careers" ? "Join Us" : item.title}
+            flex
+            items-center
+            justify-between
 
-            <span
-              className="
-                absolute
-                left-0
-                -bottom-2
-                h-[2px]
-                w-0
-                bg-[var(--primary)]
-                transition-all
-                duration-300
-                group-hover:w-full
-              "
-            />
-          </button>
-        );
-      }
+            lg:grid
+            lg:grid-cols-[165px_minmax(0,1fr)_230px]
 
-      return (
-        <Link
-          key={item.title}
-          href={item.href}
-          onClick={(e) => handleNavigation(e, item.href)}
-          className={navClass}
+            min-h-[100px]
+
+            w-[calc(100%-32px)]
+            max-w-[1380px]
+
+            px-4
+            lg:px-8
+
+            rounded-2xl
+
+            overflow-hidden
+
+            border
+            border-white/60
+
+            transition-all
+            duration-500
+
+            ${
+              sticky
+                ? `
+                  bg-white/55
+                  shadow-[0_15px_50px_rgba(62,32,102,0.12)]
+                `
+                : `
+                  bg-white/40
+                  shadow-[0_15px_50px_rgba(62,32,102,0.14)]
+                `
+            }
+          `}
+          style={{
+            paddingLeft: "20px",
+            paddingRight: "20px",
+
+            /* Premium frosted glass */
+            backdropFilter: "blur(28px) saturate(145%)",
+            WebkitBackdropFilter: "blur(28px) saturate(145%)",
+          }}
         >
-          {item.title}
+          {/* =====================================================
+              PREMIUM WHITE GLASS OVERLAY
+          ===================================================== */}
 
-          <span
+          <div
             className="
+              pointer-events-none
               absolute
-              left-0
-              -bottom-2
-              h-[2px]
-              w-0
-              bg-[var(--primary)]
-              transition-all
-              duration-300
-              group-hover:w-full
+              inset-0
+              z-0
+              rounded-2xl
+            "
+            style={{
+              background: `
+                linear-gradient(
+                  135deg,
+                  rgba(255, 255, 255, 0.34) 0%,
+                  rgba(255, 255, 255, 0.20) 45%,
+                  rgba(255, 255, 255, 0.28) 100%
+                ),
+                radial-gradient(
+                  ellipse 70% 120% at 50% 50%,
+                  rgba(255, 255, 255, 0.10) 0%,
+                  rgba(255, 255, 255, 0.04) 55%,
+                  rgba(91, 46, 145, 0.03) 100%
+                )
+              `,
+            }}
+          />
+
+          {/* =====================================================
+              SOFT WHITE HIGHLIGHT
+          ===================================================== */}
+
+          <div
+            className="
+              pointer-events-none
+              absolute
+              inset-[1px]
+              z-0
+              rounded-[15px]
+              border
+              border-white/25
             "
           />
-        </Link>
-      );
-    })}
-</nav>
-            {/* Right Side */}
-            <div className="flex items-center justify-end gap-3 lg:min-w-[350px]">
-           <div className="hidden lg:flex items-center gap-3" style={{ marginRight: "5px" }}>
 
-  {/* External Website */}
-<a
-  href="https://auroraconstruction.ca/"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="
-    group
-    relative
-    flex
-    h-[44px]
-    items-center
-    justify-center
-    gap-2
-    overflow-hidden
-    rounded-full
-    border
-    border-[#D9A63A]
-    bg-gradient-to-r
-    from-[#FFF1B8]
-    via-[#F4C46A]
-    to-[#B8821F]
-    px-5
-    font-semibold
-    text-[#123B67]
-    shadow-[0_10px_30px_rgba(244,196,106,.35)]
-    transition-all
-    duration-300
-    hover:-translate-y-1
-    hover:shadow-[0_18px_40px_rgba(244,196,106,.45)]
-  "
-  style={{ padding: "5px 7px" }}
->
-  {/* Silver Glaze */}
-  <span
-    className="
-      absolute
-      top-0
-      -left-[120%]
-      h-full
-      w-[40%]
-      -skew-x-12
-      bg-gradient-to-r
-      from-transparent
-      via-white/80
-      to-transparent
-      transition-all
-      duration-700
-      ease-out
-      group-hover:left-[130%]
-    "
-  />
+          {/* =====================================================
+              SUBTLE PURPLE GLASS LIGHT
+          ===================================================== */}
 
-  <HiArrowTopRightOnSquare
-    size={18}
-    className="relative z-10"
-  />
+          <div
+            className="
+              pointer-events-none
+              absolute
+              -left-24
+              top-1/2
+              z-0
 
-  <span className="relative z-10 whitespace-nowrap">
-   Aurora Construction
-  </span>
-</a>
-  {/* Call */}
+              h-32
+              w-64
 
-<Button
-  href="#booking"
-  className="
-    silver-glaze
-    group
-    relative
-    overflow-hidden
-    rounded-full
-    bg-gradient-to-r
-    from-[#C1121F]
-    via-[#D62839]
-    to-[#E63946]
-    text-white
-    shadow-[0_15px_40px_rgba(214,40,57,.35)]
-    transition-all
-    duration-300
-    hover:-translate-y-1
-    hover:shadow-[0_20px_50px_rgba(214,40,57,.45)]
-  "
->
-  <span className="relative z-10 flex items-center gap-2" style={{minWidth:"77px"}}>
-    {/* <HiPhone size={18} /> */}
-    <span>Book Now</span>
-  </span>
-</Button>
+              -translate-y-1/2
 
-</div>
-              <button
-                onClick={() => setOpen(!open)}
-                className={`lg:hidden flex items-center justify-center w-10 h-10 text-3xl transition-all duration-300 ${
-                  sticky ? "text-[#1F2937]" : "text-white"
-                }`}
-              >
-                {open ? <IoClose /> : <HiOutlineMenuAlt3 />}
-              </button>
-            </div>
+              rounded-full
+
+              bg-[#5B2E91]/[0.06]
+
+              blur-3xl
+            "
+          />
+
+          <div
+            className="
+              pointer-events-none
+              absolute
+              -right-24
+              top-1/2
+              z-0
+
+              h-32
+              w-64
+
+              -translate-y-1/2
+
+              rounded-full
+
+              bg-[#7B4DB8]/[0.07]
+
+              blur-3xl
+            "
+          />
+
+          {/* =====================================================
+              SUBTLE GOLD LIGHT
+          ===================================================== */}
+
+          <div
+            className="
+              pointer-events-none
+              absolute
+              inset-0
+              z-0
+            "
+            style={{
+              background: `
+                radial-gradient(
+                  circle at 50% 100%,
+                  rgba(212, 175, 55, 0.07),
+                  transparent 42%
+                )
+              `,
+            }}
+          />
+
+          {/* =====================================================
+              LOGO
+          ===================================================== */}
+
+          <div
+            className="
+              relative
+              z-10
+              flex
+              h-full
+              items-center
+              flex-shrink-0
+            "
+            style={{
+              maxWidth: "160px",
+            }}
+          >
+            <Link
+              href="#home"
+              onClick={(e) =>
+                handleNavigation(e, "#home")
+              }
+              className="
+                flex
+                h-full
+                items-center
+                justify-center
+              "
+            >
+              {/* KEEP YOUR EXISTING LOGO / IMAGE CODE HERE */}
+
+              {/* Example:
+
+              <Image
+                src="/assets/logo.png"
+                alt="K.B.F.M. Global Services"
+                width={140}
+                height={60}
+                priority
+              />
+
+              */}
+            </Link>
           </div>
-        </Container>
+
+          {/* =====================================================
+              DESKTOP NAVIGATION
+          ===================================================== */}
+
+          <nav
+            className="
+              relative
+              z-10
+
+              hidden
+              lg:flex
+
+              items-center
+              justify-center
+
+              gap-7
+            "
+          >
+            {navigation.map((item) => {
+              const navClass = `
+                group
+                relative
+
+                text-[14px]
+                font-semibold
+                tracking-[0.01em]
+
+                text-[#3E2066]
+
+                transition-all
+                duration-300
+
+                hover:text-[#5B2E91]
+              `;
+
+              return (
+                <Link
+                  key={item.title}
+                  href={item.href}
+                  onClick={(e) =>
+                    handleNavigation(
+                      e,
+                      item.href
+                    )
+                  }
+                  className={navClass}
+                >
+                  {item.title}
+
+                  {/* Gold hover underline */}
+
+                  <span
+                    className="
+                      absolute
+                      left-1/2
+                      -bottom-2
+
+                      h-[2px]
+                      w-0
+
+                      -translate-x-1/2
+
+                      rounded-full
+
+                      bg-[#D4AF37]
+
+                      transition-all
+                      duration-300
+
+                      group-hover:w-full
+                    "
+                  />
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* =====================================================
+              REQUEST A QUOTE
+          ===================================================== */}
+
+          <div
+            className="
+              relative
+              z-10
+
+              hidden
+              lg:flex
+
+              items-center
+              justify-end
+            "
+          >
+            <Button
+              href="#contact"
+              onClick={(e) =>
+                handleNavigation(
+                  e,
+                  "#contact"
+                )
+              }
+              className="
+                group
+
+                relative
+                overflow-hidden
+
+                rounded-full
+
+                border
+                border-[#D4AF37]
+
+                bg-[#5B2E91]
+
+                px-6
+                py-3
+
+                font-semibold
+                text-[14px]
+                text-white
+
+                shadow-[0_12px_30px_rgba(91,46,145,0.25)]
+
+                transition-all
+                duration-300
+
+                hover:-translate-y-1
+
+                hover:bg-[#3E2066]
+
+                hover:shadow-[0_18px_45px_rgba(91,46,145,0.32)]
+              "
+            >
+              <span
+                className="
+                  relative
+                  z-10
+
+                  flex
+                  items-center
+                  gap-2
+
+                  whitespace-nowrap
+                "
+              >
+                Request a Quote
+
+                <HiArrowTopRightOnSquare
+                  className="
+                    text-[17px]
+
+                    transition-transform
+                    duration-300
+
+                    group-hover:translate-x-1
+                    group-hover:-translate-y-1
+                  "
+                />
+              </span>
+            </Button>
+          </div>
+
+          {/* =====================================================
+              MOBILE MENU BUTTON
+          ===================================================== */}
+
+          <button
+            type="button"
+            onClick={() => setOpen(!open)}
+            aria-label={
+              open
+                ? "Close menu"
+                : "Open menu"
+            }
+            className="
+              relative
+              z-10
+
+              lg:hidden
+
+              flex
+              h-11
+              w-11
+
+              items-center
+              justify-center
+
+              rounded-full
+
+              bg-[#5B2E91]
+
+              text-white
+
+              border
+              border-[#D4AF37]/60
+
+              shadow-[0_8px_25px_rgba(91,46,145,0.25)]
+
+              transition-all
+              duration-300
+
+              hover:bg-[#3E2066]
+              hover:-translate-y-0.5
+            "
+          >
+            {open ? (
+              <IoClose className="text-[25px]" />
+            ) : (
+              <HiOutlineMenuAlt3 className="text-[24px]" />
+            )}
+          </button>
+        </div>
+    
       </header>
+    </div>
+      {/* =====================================================
+          MOBILE MENU
+      ===================================================== */}
 
       <MobileMenu
         open={open}
         onClose={() => setOpen(false)}
-        onCareerClick={() => setCareerOpen(true)}
       />
-      <CareerModal
-  open={careerOpen}
-  onClose={() => setCareerOpen(false)}
-/>
     </>
   );
 }

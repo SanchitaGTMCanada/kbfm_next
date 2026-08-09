@@ -1,59 +1,124 @@
 @import "tailwindcss";
 
 :root {
-  /* Brand Colors */
-  --primary: #2F5D8C;
-  --primary-dark: #22384E;
-  --secondary: #C47A3A;
+  /* =========================================
+     K.B.F.M. BRAND COLORS
+     ========================================= */
+
+  /* Primary */
+  --primary: #5B2E91;
+  --primary-dark: #3E2066;
+
+  /* Secondary */
+  --secondary: #FFFFFF;
+
+  /* Accent */
+  --accent: #D4AF37;
 
   /* Neutrals */
   --white: #FFFFFF;
-  --light: #F7F8FA;
-  --border: #E5E7EB;
+  --light: #F7F3FC;
+  --section-bg: #F5F5F7;
+  --border: #D9D9E3;
 
   /* Text */
-  --heading: #123B67;   /* <-- change this */
-  --text: #667085;
+  --heading: #3E2066;
+  --text: #2D2D2D;
 
+  /* Layout */
   --container: 1280px;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+
+/* =========================================
+   RESET
+   ========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html{
-  scroll-behavior:smooth;
+
+/* =========================================
+   HTML
+   ========================================= */
+
+html {
+  scroll-behavior: smooth;
 }
 
-body{
+
+/* =========================================
+   BODY
+   ========================================= */
+
+body {
   background: var(--white);
   color: var(--text);
   font-family: var(--font-inter);
   overflow-x: hidden;
 }
 
-h1,h2,h3,h4,h5,h6{
-  font-family:var(--font-manrope);
-  color:var(--heading);
+
+/* =========================================
+   HEADINGS
+   ========================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-manrope);
+  color: var(--heading);
 }
 
-img{
-  display:block;
-  max-width:100%;
+
+/* =========================================
+   IMAGES
+   ========================================= */
+
+img {
+  display: block;
+  max-width: 100%;
 }
 
-a{
-  text-decoration:none;
-  color:inherit;
+
+/* =========================================
+   LINKS
+   ========================================= */
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-button{
-  cursor:pointer;
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+
+button {
+  cursor: pointer;
 }
 
+
+/* =========================================
+   SELECTION
+   ========================================= */
+
+::selection {
+  background: var(--primary);
+  color: var(--white);
+}
+
+
+/* =========================================
+   FLOATING ANIMATIONS
+   ========================================= */
 
 @keyframes floatSlow {
   0% {
@@ -82,7 +147,9 @@ button{
 }
 
 
-/* ===== Services Swiper ===== */
+/* =========================================
+   SERVICES SWIPER
+   ========================================= */
 
 .servicesSwiper {
   padding: 10px 5px 70px;
@@ -97,14 +164,15 @@ button{
   width: 54px;
   height: 54px;
   border-radius: 50%;
-  background: #123b67;
-  color: white;
-  transition: .3s;
+  background: var(--primary);
+  color: var(--white);
+  transition: 0.3s;
 }
 
 .servicesSwiper .swiper-button-next:hover,
 .servicesSwiper .swiper-button-prev:hover {
-  background: #c89b3c;
+  background: var(--accent);
+  color: var(--primary-dark);
 }
 
 .servicesSwiper .swiper-button-next::after,
@@ -116,27 +184,31 @@ button{
 .servicesSwiper .swiper-pagination-bullet {
   width: 12px;
   height: 12px;
-  background: #123b67;
-  opacity: .3;
+  background: var(--primary);
+  opacity: 0.3;
 }
 
 .servicesSwiper .swiper-pagination-bullet-active {
   width: 36px;
   border-radius: 20px;
   opacity: 1;
-  background: #c89b3c;
+  background: var(--accent);
 }
 
-/* ===== Services Carousel ===== */
+
+/* =========================================
+   SERVICES CAROUSEL
+   ========================================= */
 
 .react-multiple-carousel__arrow {
-  background: #123B67 !important;
+  background: var(--primary) !important;
   min-width: 48px;
   min-height: 48px;
+  transition: 0.3s ease;
 }
 
 .react-multiple-carousel__arrow:hover {
-  background: #C89B3C !important;
+  background: var(--accent) !important;
 }
 
 .react-multiple-carousel__arrow::before {
@@ -156,7 +228,9 @@ button{
 }
 
 
-/* ===== Infinite Services Marquee ===== */
+/* =========================================
+   INFINITE SERVICES MARQUEE
+   ========================================= */
 
 .marquee-track {
   will-change: transform;
@@ -166,32 +240,38 @@ button{
   cursor: grab;
 }
 
-/* Hide scrollbar */
+
+/* =========================================
+   HIDE SCROLLBAR
+   ========================================= */
+
 .scrollbar-hide {
-  -ms-overflow-style: none; /* IE & Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
 }
 
-/* globals.css */
 
-html {
-  scroll-behavior: smooth;
-}
-
-/* Hide scrollbar but allow scrolling */
+/* =========================================
+   HIDE SCROLLBAR - ALTERNATIVE
+   ========================================= */
 
 .hide-scrollbar {
-  -ms-overflow-style: none; /* IE & Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .hide-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
+  display: none;
 }
+
+
+/* =========================================
+   SWAL
+   ========================================= */
 
 .swal2-container {
   z-index: 999999 !important;
@@ -201,14 +281,25 @@ html {
   z-index: 999999 !important;
 }
 
+
+/* =========================================
+   SWIPER BACKGROUND
+   ========================================= */
+
 .swiper,
 .swiper-wrapper,
 .swiper-slide {
   background: transparent !important;
 }
 
+
+/* =========================================
+   SILVER GLAZE / SHINE EFFECT
+   ========================================= */
+
 @keyframes silverGlaze {
-  0%, 15% {
+  0%,
+  15% {
     transform: translateX(-250%) skewX(-20deg);
   }
 
@@ -229,7 +320,7 @@ html {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255,255,255,.95),
+    rgba(255, 255, 255, 0.95),
     transparent
   );
   transform: skewX(-20deg);

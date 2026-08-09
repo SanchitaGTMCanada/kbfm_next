@@ -4,12 +4,10 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { TypeAnimation } from "react-type-animation";
-import { HiPhone } from "react-icons/hi2";
+import { HiArrowRight } from "react-icons/hi2";
 
 import Container from "@/components/ui/Container/Container";
 import Button from "@/components/ui/Button/Button";
-
-import { HiArrowRight } from "react-icons/hi2";
 
 const heroImages = [
   "/assets/hero/hero-1.jpg",
@@ -28,246 +26,911 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
 
+  const handleNavigation = (e, href) => {
+    if (!href) return;
 
-  const titleContainer = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
+    e.preventDefault();
 
-const titleItem = {
-  hidden: {
-    opacity: 0,
-    y: 50,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-    },
-  },
-};
+    const section = document.querySelector(href);
 
-const handleNavigation = (e, href) => {
-  e.preventDefault();
+    if (!section) return;
 
-  const section = document.querySelector(href);
+    const headerHeight = 120;
 
-  if (!section) return;
+    const top =
+      section.getBoundingClientRect().top +
+      window.pageYOffset -
+      headerHeight;
 
-  const headerHeight = 120; // your fixed header height
-
-  const top =
-    section.getBoundingClientRect().top +
-    window.pageYOffset -
-    headerHeight;
-
-  window.scrollTo({
-    top,
-    behavior: "smooth",
-  });
-};
-  
+    window.scrollTo({
+      top,
+      behavior: "smooth",
+    });
+  };
 
   return (
-<section className="relative min-h-[100svh] overflow-hidden pt-[110px] lg:pt-[160px]" id="home" >
+    <section
+      id="home"
+      className="
+        relative
+        min-h-screen
+        overflow-hidden
+        bg-[#15151A]
+      "
+    >
+      {/* =====================================================
+          BACKGROUND SLIDER
+      ===================================================== */}
 
-      {/* Background Slider */}
+    {/* =====================================================
+    BACKGROUND SLIDER
+===================================================== */}
 
-      <div className="absolute inset-0">
+<div className="absolute inset-0 bg-[#111116]">
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={current}
-            className="absolute inset-0"
-            initial={{ opacity: 0, scale: 1 }}
-            animate={{
-              opacity: 1,
-              scale: 1.08,
-            }}
-            exit={{ opacity: 0 }}
-            transition={{
-              duration: 7,
-            }}
+  {/* =====================================================
+      CHANGING BACKGROUND IMAGE
+  ===================================================== */}
+
+  <AnimatePresence mode="sync">
+    <motion.div
+      key={current}
+      className="absolute inset-0"
+      initial={{
+        opacity: 0,
+        scale: 1,
+      }}
+      animate={{
+        opacity: 1,
+        scale: 1.04,
+      }}
+      exit={{
+        opacity: 0,
+        scale: 1.02,
+      }}
+      transition={{
+        opacity: {
+          duration: 1.6,
+          ease: "easeInOut",
+        },
+        scale: {
+          duration: 7,
+          ease: "easeOut",
+        },
+      }}
+      style={{
+        backgroundImage: `url(${heroImages[current]})`,
+        backgroundSize: "cover",
+        backgroundPosition: "70% center",
+      }}
+    />
+  </AnimatePresence>
+
+
+  {/* =====================================================
+      PERMANENT DARK OVERLAY
+
+      IMPORTANT:
+      This NEVER animates.
+      Therefore darkness remains while images change.
+  ===================================================== */}
+
+  <div
+    className="
+      pointer-events-none
+      absolute
+      inset-0
+      z-[2]
+      bg-black/25
+    "
+  />
+
+
+  {/* =====================================================
+      LEFT CONTENT PROTECTION
+
+      Darker only behind the heading/text.
+      Right side image remains visible.
+  ===================================================== */}
+
+  <div
+    className="
+      pointer-events-none
+      absolute
+      inset-0
+      z-[3]
+
+      bg-gradient-to-r
+
+      from-[#111116]/75
+      via-[#15131A]/40
+      via-[48%]
+      to-transparent
+      to-[82%]
+    "
+  />
+
+
+  {/* =====================================================
+      VERY SUBTLE PURPLE BRAND TINT
+  ===================================================== */}
+
+  <div
+    className="
+      pointer-events-none
+      absolute
+      inset-0
+      z-[4]
+
+      bg-gradient-to-r
+
+      from-[#5B2E91]/10
+      via-[#5B2E91]/[0.03]
+      to-transparent
+    "
+  />
+
+
+  {/* =====================================================
+      TOP CINEMATIC FADE
+  ===================================================== */}
+
+  <div
+    className="
+      pointer-events-none
+      absolute
+      inset-x-0
+      top-0
+      z-[5]
+
+      h-40
+
+      bg-gradient-to-b
+      from-black/30
+      via-black/10
+      to-transparent
+    "
+  />
+
+
+  {/* =====================================================
+      BOTTOM CINEMATIC FADE
+  ===================================================== */}
+
+  <div
+    className="
+      pointer-events-none
+      absolute
+      inset-x-0
+      bottom-0
+      z-[5]
+
+      h-48
+
+      bg-gradient-to-t
+      from-black/45
+      via-black/15
+      to-transparent
+    "
+  />
+
+
+  {/* =====================================================
+      SUBTLE EDGE VIGNETTE
+  ===================================================== */}
+
+  <div
+    className="
+      pointer-events-none
+      absolute
+      inset-0
+      z-[6]
+
+      shadow-[inset_0_0_150px_rgba(0,0,0,0.20)]
+    "
+  />
+
+</div>
+
+      {/* =====================================================
+          MAIN CONTENT
+      ===================================================== */}
+
+      <div
+        className="
+          relative
+          z-20
+          flex
+          justify-center
+        "
+      >
+        <Container className="relative z-20 h-full">
+          <div
+            className="
+              flex
+              min-h-[calc(100svh-110px)]
+              items-center
+              py-8
+              lg:py-0
+            "
             style={{
-              backgroundImage: `url(${heroImages[current]})`,
-              backgroundSize: "cover",
-              backgroundPosition: "70% center",
+              paddingTop: "155px",
+              paddingBottom: "75px",
             }}
-          />
-        </AnimatePresence>
-
-        {/* Overlay */}
-
-        <div className="absolute inset-0 bg-gradient-to-r from-[#081727]/80 via-[#081727]/55 to-transparent"></div>
-
-      </div>
-
-      {/* Content */}
-      <div className="relative z-20 flex justify-center " >
-      <Container className="relative z-20 h-full">
-
-       <div className="flex min-h-[calc(100svh-110px)] items-center py-8 lg:py-0" style={{paddingTop:"162px"}}>
-
-          <div className="max-w-[680px]">
-
-            {/* Badge */}
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: .2 }}
-              className="inline-flex items-center gap-4 rounded-full border border-white/20 bg-white/10 backdrop-blur-xl px-8 py-8" style={{padding:"6px", marginLeft:"5px"}}
-            
-             
+          >
+            <div
+              className="
+                w-full
+                max-w-[850px]
+              "
+              style={{
+                paddingLeft: "10px",
+                paddingRight: "10px",
+              }}
             >
-             <span className="h-3 w-3 rounded-full bg-white border-2 border-[#F4C46A] shadow-[0_0_10px_rgba(244,196,106,0.8)]"></span>
+              {/* =====================================================
+                  BADGE
+              ===================================================== */}
 
-           <span className="text-[13px] font-semibold uppercase tracking-[3px] text-white"  >
-  Fast • Reliable • Professional
-</span>
-            </motion.div>
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  y: 25,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  delay: 0.2,
+                  duration: 0.7,
+                }}
+                className="
+                  inline-flex
+                  items-center
+                  gap-3
+                  rounded-full
+                  border
+                  border-[#D4AF37]/70
+                  bg-black/20
+                  backdrop-blur-xl
+                  shadow-[0_8px_30px_rgba(0,0,0,0.18)]
+                "
+                style={{
+                  paddingLeft: "12px",
+                  paddingRight: "16px",
+                  paddingTop: "7px",
+                  paddingBottom: "7px",
+                }}
+              >
+                {/* Gold indicator */}
 
-            {/* Heading */}
+                <span
+                  className="
+                    h-2.5
+                    w-2.5
+                    flex-shrink-0
+                    rounded-full
+                    bg-[#D4AF37]
+                    shadow-[0_0_12px_rgba(212,175,55,0.7)]
+                  "
+                />
 
-<motion.h1
-  initial={{ opacity: 0, y: 40 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 1 }}
- className="mt-8 text-[52px] md:text-[64px] lg:text-[76px] font-semibold leading-[1.05] tracking-[-2px] text-white"
->
-  <span className="text-white" style={{ marginLeft:"5px", marginTop:"20px", marginBottom:"20px"}}>
-    Professional
-    <br />
-  </span>
+                <span
+                  className="
+                    text-[11px]
+                    font-bold
+                    uppercase
+                    tracking-[3px]
+                    text-white
+                    drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)]
+                    sm:text-[12px]
+                  "
+                >
+                  Trusted • Professional • Reliable
+                </span>
+              </motion.div>
 
-  <TypeAnimation
-    sequence={[
-      "Plumbing Services",
-      2500,
-      "Heating Solutions",
-      2500,
-      "Emergency Repairs",
-      2500,
-      "Drain Cleaning",
-      2500,
-    ]}
-    wrapper="span"
-    speed={45}
-    repeat={Infinity}
-    className="text-[#F4C46A]"
-  />
-</motion.h1>
+              {/* =====================================================
+                  MAIN HEADING
+              ===================================================== */}
 
-            {/* Paragraph */}
+              <motion.h1
+                initial={{
+                  opacity: 0,
+                  y: 40,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 1,
+                }}
+                className="
+                  text-[46px]
+                  font-bold
+                  leading-[1.04]
+                  tracking-[-2px]
+                  text-white
+                  sm:text-[56px]
+                  md:text-[66px]
+                  lg:text-[76px]
+                "
+                style={{
+                  marginTop: "28px",
+                }}
+              >
+                {/* Main heading */}
 
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: .55 }}
-              className="mt-8 max-w-[620px] text-[18px] leading-9 text-white/90"
-              style={{marginLeft:"5px", marginTop:"20px", marginBottom:"20px"}}
-            >
-              
-            24/7 Plumbing and Heating
-            Services at Unbeatable Prices
-            </motion.p>
+                <span
+                  className="
+                    block
+                    text-white
+                    drop-shadow-[0_4px_16px_rgba(0,0,0,0.45)]
+                  "
+                >
+                  Serving the North with
+                </span>
 
-            {/* Buttons */}
+                {/* Animated heading */}
 
-            <motion.div
-              initial={{ opacity: 0, y: 35 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: .75 }}
-              className="mt-10 flex flex-wrap items-center gap-6"
-              style={{ marginLeft:"5px" , marginTop:"20px", marginBottom:"30px"}}
-             
-              
-            >
-<Button href="tel:+18674471500">
-  <span className="flex items-center justify-center gap-2">
-    <HiPhone size={20} />
-    Call Now
-  </span>
-</Button>
+                <span
+                  className="block"
+                  style={{
+                    marginTop: "8px",
+                  }}
+                >
+                  <TypeAnimation
+                    sequence={[
+                      "Care & Integrity",
+                      2500,
+                      "Security & Trust",
+                      2500,
+                      "Professional Service",
+                      2500,
+                      "Commitment & Care",
+                      2500,
+                    ]}
+                    wrapper="span"
+                    speed={45}
+                    repeat={Infinity}
+                    className="
+                      inline-block
+                      bg-gradient-to-r
+                      from-[#FFFFFF]
+                      via-[#E7D7F5]
+                      to-[#B78CDA]
+                      bg-clip-text
+                      text-transparent
+                      drop-shadow-[0_4px_18px_rgba(91,46,145,0.45)]
+                    "
+                  />
+                </span>
+              </motion.h1>
 
-            <Link
-  href="#services"
-  onClick={(e) => handleNavigation(e, "#services")}
-  className="group inline-flex items-center gap-2 font-semibold text-white transition"
-  style={{ color: "white", marginLeft: "5px" }}
->
-  <span>Explore Services</span>
+              {/* =====================================================
+                  DESCRIPTION
+              ===================================================== */}
 
-  <HiArrowRight
-    size={18}
-    className="transition-transform duration-300 group-hover:translate-x-2"
-  />
-</Link>
-            </motion.div>
+              <motion.p
+                initial={{
+                  opacity: 0,
+                  y: 25,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  delay: 0.55,
+                  duration: 0.7,
+                }}
+                className="
+                  max-w-[700px]
+                  text-[16px]
+                  font-medium
+                  leading-[1.9]
+                  text-white
+                  drop-shadow-[0_3px_10px_rgba(0,0,0,0.55)]
+                  sm:text-[18px]
+                "
+                style={{
+                  marginTop: "28px",
+                  marginBottom: "30px",
+                  paddingRight: "20px",
+                }}
+              >
+                K.B.F.M. Global Services N.W.T. Ltd. provides
+                dependable security, caregiving, cleaning, and
+                facility support services with professionalism,
+                integrity, and a commitment to the communities
+                we serve.
+              </motion.p>
 
-            {/* Statistics */}
+              {/* =====================================================
+                  CTA BUTTONS
+              ===================================================== */}
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1 }}
-              className="mt-16 flex flex-wrap gap-6"
-               style={{margin:"20px" , marginLeft:"7px"}}
-            >
-              {[
-                {
-                  number: "10+",
-                  title: "Service Areas"
-                },
-                {
-                  number: "24/7",
-                  title: "Emergency Support",
-                },
-                {
-                  number: "100%",
-                  title: "Customer Satisfaction",
-                },
-              ].map((item) => (
-                <div
-                  key={item.title}
-                  className="min-w-[180px] rounded-2xl border border-white/15 bg-white/10 backdrop-blur-xl px-7 py-6"
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  y: 30,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  delay: 0.75,
+                  duration: 0.7,
+                }}
+                className="
+                  flex
+                  flex-wrap
+                  items-center
+                  gap-4
+                "
+                style={{
+                  marginTop: "28px",
+                  marginBottom: "42px",
+                }}
+              >
+                {/* =================================================
+                    PRIMARY CTA
+                ================================================= */}
+
+                <Button
+                  href="#contact"
+                  onClick={(e) =>
+                    handleNavigation(e, "#contact")
+                  }
+                  className="
+                    group
+                    rounded-full
+                    border
+                    border-[#D4AF37]
+                    bg-gradient-to-r
+                    from-[#5B2E91]
+                    to-[#7B4DB8]
+                    px-6
+                    py-3
+                    font-semibold
+                    text-white
+                    shadow-[0_12px_30px_rgba(62,32,102,0.35)]
+                    transition-all
+                    duration-300
+                    hover:-translate-y-1
+                    hover:from-[#3E2066]
+                    hover:to-[#5B2E91]
+                    hover:shadow-[0_18px_40px_rgba(62,32,102,0.45)]
+                  "
+                >
+                  Request a Quote
+                </Button>
+
+                {/* =================================================
+                    SECONDARY CTA
+                ================================================= */}
+
+                <Link
+                  href="#services"
+                  onClick={(e) =>
+                    handleNavigation(e, "#services")
+                  }
+                  className="
+                    group
+                    inline-flex
+                    items-center
+                    gap-3
+                    rounded-full
+                    border
+                    border-white/40
+                    bg-white/10
+                    px-6
+                    py-3
+                    font-semibold
+                    text-[14px]
+                    text-white
+                    backdrop-blur-xl
+                    shadow-[0_8px_25px_rgba(0,0,0,0.18)]
+                    transition-all
+                    duration-300
+                    hover:-translate-y-1
+                    hover:border-[#D4AF37]
+                    hover:bg-[#5B2E91]/80
+                    hover:shadow-[0_12px_30px_rgba(91,46,145,0.30)]
+                  "
                   style={{padding:"10px"}}
                 >
-                  <span className="text-[40px] font-bold leading-none bg-gradient-to-r from-white via-[#FFE9A8] to-[#F4C46A] bg-clip-text text-transparent drop-shadow-[0_4px_12px_rgba(244,196,106,0.5)]">
-                {item.number}
-              </span>
+                  <span className="text-white">
+                    Explore Services
+                  </span>
 
-                  <p className="mt-3 text-[15px] tracking-wide text-white/80">
-                    {item.title}
-                  </p>
-                </div>
-              ))}
-            </motion.div>
+                  <HiArrowRight
+                    className="
+                      text-[18px]
+                      text-white
+                      transition-transform
+                      duration-300
+                      group-hover:translate-x-1
+                    "
+                  />
+                </Link>
+              </motion.div>
 
-          </div>
+              {/* =====================================================
+                  SERVICE HIGHLIGHTS
+              ===================================================== */}
 
+ {/* =====================================================
+    SERVICE HIGHLIGHTS
+===================================================== */}
+
+<motion.div
+  initial={{
+    opacity: 0,
+    y: 30,
+  }}
+  animate={{
+    opacity: 1,
+    y: 0,
+  }}
+  transition={{
+    delay: 1,
+    duration: 0.7,
+  }}
+  className="
+    grid
+    grid-cols-2
+    gap-4
+    sm:grid-cols-4
+  "
+  style={{
+    marginTop: "8px",
+    paddingTop: "4px",
+    paddingBottom: "10px",
+  }}
+>
+  {[
+    {
+      number: "01",
+      title: "Security",
+      text: "Protection",
+    },
+    {
+      number: "02",
+      title: "Caregiving",
+      text: "Compassion",
+    },
+    {
+      number: "03",
+      title: "Cleaning",
+      text: "Quality",
+    },
+    {
+      number: "04",
+      title: "Facilities",
+      text: "Support",
+    },
+  ].map((item) => (
+    <div
+      key={item.title}
+      className="
+        group
+        relative
+        min-h-[142px]
+        overflow-hidden
+
+        rounded-[20px]
+
+        border
+        border-white/30
+
+        bg-[#15121D]/80
+
+        backdrop-blur-xl
+
+        shadow-[0_14px_35px_rgba(0,0,0,0.35)]
+
+        transition-all
+        duration-300
+
+        hover:-translate-y-2
+        hover:border-[#D4AF37]/70
+        hover:bg-[#1B1724]/90
+        hover:shadow-[0_20px_45px_rgba(62,32,102,0.45)]
+      "
+      style={{
+        padding: "20px 20px 18px 20px",
+      }}
+    >
+      {/* =================================================
+          GOLD LEFT ACCENT
+      ================================================= */}
+
+      <span
+        className="
+          absolute
+          left-0
+          top-5
+          bottom-5
+
+          w-[3px]
+
+          rounded-r-full
+
+          bg-gradient-to-b
+          from-[#D4AF37]
+          via-[#E6C95C]
+          to-transparent
+
+          opacity-90
+        "
+      />
+
+      {/* =================================================
+          GOLD TOP ACCENT
+      ================================================= */}
+
+      <span
+        className="
+          absolute
+          left-0
+          top-0
+
+          h-[2px]
+          w-full
+
+          bg-gradient-to-r
+          from-[#D4AF37]
+          via-[#E6C95C]
+          to-transparent
+        "
+      />
+
+      {/* =================================================
+          SUBTLE PURPLE GLOW
+      ================================================= */}
+
+      <span
+        className="
+          pointer-events-none
+          absolute
+
+          -right-12
+          -top-12
+
+          h-32
+          w-32
+
+          rounded-full
+
+          bg-[#7B4DB8]/15
+
+          blur-3xl
+
+          transition-all
+          duration-500
+
+          group-hover:bg-[#7B4DB8]/30
+          group-hover:scale-125
+        "
+      />
+
+      {/* =================================================
+          CONTENT
+      ================================================= */}
+
+      <div
+        className="
+          relative
+          z-10
+        "
+      >
+        {/* =================================================
+            NUMBER + INDICATOR
+        ================================================= */}
+
+        <div
+          className="
+            flex
+            items-center
+            justify-between
+          "
+        >
+          <span
+            className="
+              inline-flex
+              h-8
+              w-8
+
+              items-center
+              justify-center
+
+              rounded-full
+
+              border
+              border-[#D4AF37]/70
+
+              bg-[#D4AF37]/10
+
+              text-[10px]
+              font-bold
+              tracking-wide
+
+              text-[#F0D76A]
+
+              shadow-[0_0_15px_rgba(212,175,55,0.15)]
+            "
+
+            style={{marginBottom:"10px"}}
+          >
+            {item.number}
+          </span>
+
+          <span
+            className="
+              h-2.5
+              w-2.5
+
+              rounded-full
+
+              bg-[#D4AF37]
+
+              shadow-[0_0_12px_rgba(212,175,55,0.75)]
+            "
+          />
         </div>
 
-      </Container>
-</div>
-      {/* Scroll */}
+        {/* =================================================
+            TITLE
+        ================================================= */}
+
+<span
+  className="
+    text-[17px]
+    font-bold
+    leading-tight
+
+    bg-gradient-to-r
+    from-[#FFFFFF]
+    via-[#EDE4F8]
+    to-[#C9A9E7]
+
+    bg-clip-text
+    text-transparent
+
+    drop-shadow-[0_2px_10px_rgba(201,169,231,0.35)]
+
+    sm:text-[18px]
+  "
+  style={{
+    marginTop: "24px",
+  }}
+>
+  {item.title}
+</span>
+        {/* =================================================
+            DESCRIPTION
+        ================================================= */}
+
+        <p
+          className="
+            text-[13px]
+            font-semibold
+            tracking-wide
+
+            text-[#FFFFFF]
+
+            drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]
+          "
+          style={{
+            marginTop: "6px",
+          }}
+        >
+          {item.text}
+        </p>
+
+        {/* =================================================
+            GOLD UNDERLINE
+        ================================================= */}
+
+        <div
+          className="
+            flex
+            items-center
+            gap-1.5
+          "
+          style={{
+            marginTop: "12px",
+          }}
+        >
+          <span
+            className="
+              h-[3px]
+              w-9
+
+              rounded-full
+
+              bg-[#D4AF37]
+
+              shadow-[0_0_8px_rgba(212,175,55,0.35)]
+
+              transition-all
+              duration-300
+
+              group-hover:w-14
+            "
+          />
+
+          <span
+            className="
+              h-[3px]
+              w-1.5
+
+              rounded-full
+
+              bg-[#D4AF37]/40
+            "
+          />
+        </div>
+      </div>
+    </div>
+  ))}
+</motion.div>
+            </div>
+          </div>
+        </Container>
+      </div>
+
+      {/* =====================================================
+          SCROLL INDICATOR
+      ===================================================== */}
 
       <motion.div
-        animate={{ y: [0, 10, 0] }}
+        animate={{
+          y: [0, 10, 0],
+        }}
         transition={{
           repeat: Infinity,
           duration: 2,
         }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white text-2xl"
+        className="
+          absolute
+          bottom-7
+          left-1/2
+          z-20
+          -translate-x-1/2
+        "
       >
-        ↓
+        <div
+          className="
+            flex
+            h-11
+            w-7
+            items-start
+            justify-center
+            rounded-full
+            border
+            border-white/40
+            bg-black/10
+            p-1.5
+            backdrop-blur-sm
+            shadow-[0_5px_20px_rgba(0,0,0,0.2)]
+          "
+        >
+          <span
+            className="
+              h-2.5
+              w-1
+              rounded-full
+              bg-[#D4AF37]
+              shadow-[0_0_10px_rgba(212,175,55,0.7)]
+            "
+          />
+        </div>
       </motion.div>
-
     </section>
   );
 }
