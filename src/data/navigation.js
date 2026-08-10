@@ -11,10 +11,10 @@ const navigation = [
     title: "Services",
     href: "#services",
   },
-  // {
-  //   title: "Projects",
-  //   href: "#projects",
-  // },
+  {
+    title: "Contact",
+    href: "#contact",
+  },
  
    {
     title: "Join Us",
