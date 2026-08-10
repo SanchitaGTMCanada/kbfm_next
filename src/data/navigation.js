@@ -15,12 +15,9 @@ const navigation = [
   //   title: "Projects",
   //   href: "#projects",
   // },
-  {
-    title: "Contact",
-    href: "#contact",
-  },
+ 
    {
-    title: "Careers",
+    title: "Join Us",
     href: "#careers",
   },
 ];
