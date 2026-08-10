@@ -4,64 +4,472 @@ import AboutImages from "./AboutImages";
 
 export default function About() {
   return (
-    <section className="relative overflow-hidden bg-white py-40"  id="about">
+    <section
+      id="about"
+      className="
+        relative
+        overflow-hidden
 
-      {/* ================= Background Blur ================= */}
+        bg-gradient-to-br
+        from-white
+        via-[#FAF7FD]
+        to-[#E9DDF4]
+        flex
+        justify-center
 
-      {/* Large Blue Glow */}
-      <div className="absolute -left-48 top-20 h-[500px] w-[500px] rounded-full bg-[#123B67]/8 blur-[170px]" />
+        pt-[150px]
+        pb-24
 
-      {/* Large Gold Glow */}
-      <div className="absolute -right-56 top-32 h-[520px] w-[520px] rounded-full bg-[#C89B3C]/10 blur-[180px]" />
+        sm:pt-[170px]
+        sm:pb-28
 
-      {/* Bottom Glow */}
-      <div className="absolute left-1/3 bottom-0 h-[320px] w-[320px] rounded-full bg-[#123B67]/6 blur-[130px]" />
+        lg:pt-[190px]
+        lg:pb-32
+      "
+    >
+      {/* =====================================================
+          TOP SEPARATION AREA
+      ===================================================== */}
 
-      {/* Small Gold Glow */}
-      <div className="absolute right-20 bottom-24 h-[220px] w-[220px] rounded-full bg-[#C89B3C]/12 blur-[100px]" />
+      
 
+      <div
+        className="
+          pointer-events-none
 
+          absolute
+          left-0
+          top-0
 
-      {/* ================= Decorative Outline Circles ================= */}
+          h-[150px]
+          w-full
 
-      <div className="absolute -right-44 top-10 h-[620px] w-[620px] rounded-full border border-[#C89B3C]/10" />
+          bg-gradient-to-b
+          from-[#E9DDF4]/55
+          via-[#F4EFF9]/45
+          to-transparent
 
-      <div className="absolute -left-40 bottom-16 h-[420px] w-[420px] rounded-full border border-[#123B67]/10" />
+          sm:h-[170px]
+          lg:h-[190px]
+        "
+      />
 
-      <div className="absolute right-32 bottom-10 h-[180px] w-[180px] rounded-full border-[8px] border-[#C89B3C]/10" />
+      {/* Soft center fade */}
 
-      <div className="absolute left-[40%] top-[15%] h-[120px] w-[120px] rounded-full border border-[#123B67]/10" />
+      <div
+        className="
+          pointer-events-none
 
+          absolute
+          left-1/2
+          top-[-40px]
 
+          h-[180px]
+          w-[70%]
 
-      {/* ================= Floating Dots ================= */}
+          -translate-x-1/2
 
-      <div className="absolute left-[10%] top-[18%] h-5 w-5 rounded-full bg-[#C89B3C]/30" />
+          rounded-full
 
-      <div className="absolute right-[15%] top-[28%] h-4 w-4 rounded-full bg-[#123B67]/30" />
+          bg-[#B998D5]/10
 
-      <div className="absolute left-[48%] bottom-[20%] h-3 w-3 rounded-full bg-[#C89B3C]/40" />
+          blur-[80px]
+        "
+      />
 
-      <div className="absolute right-[28%] bottom-[12%] h-6 w-6 rounded-full border-4 border-[#123B67]/15" />
+      {/* =====================================================
+          SMALL TOP DECORATIVE LINE
+      ===================================================== */}
 
+      <div
+        className="
+          pointer-events-none
 
+          absolute
+          left-1/2
+          top-[95px]
 
-      {/* ================= Content ================= */}
-<div className="relative z-20 flex justify-center " >
-      <Container>
+          z-10
 
-        <div className="grid items-center gap-24 lg:grid-cols-2">
+          flex
+          -translate-x-1/2
+
+          items-center
+          gap-3
+
+          opacity-60
+
+          sm:top-[110px]
+          lg:top-[125px]
+        "
+      >
+        <span
+          className="
+            h-[1px]
+            w-14
+
+            bg-gradient-to-r
+            from-transparent
+            to-[#7B4DB8]/40
+          "
+        />
+
+        <span
+          className="
+            h-1.5
+            w-1.5
+
+            rounded-full
+
+            bg-[#7B4DB8]/50
+          "
+        />
+
+        <span
+          className="
+            h-[1px]
+            w-14
+
+            bg-gradient-to-l
+            from-transparent
+            to-[#7B4DB8]/40
+          "
+        />
+      </div>
+
+      {/* =====================================================
+          BACKGROUND EFFECTS
+      ===================================================== */}
+
+      {/* Large Purple Glow - Left */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -left-[220px]
+          top-[8%]
+
+          h-[600px]
+          w-[600px]
+
+          rounded-full
+
+          bg-[#6D48A8]/10
+
+          blur-[150px]
+        "
+      />
+
+      {/* Large Lavender Glow - Right */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -right-[220px]
+          top-[18%]
+
+          h-[600px]
+          w-[600px]
+
+          rounded-full
+
+          bg-[#8B65B4]/10
+
+          blur-[150px]
+        "
+      />
+
+      {/* Center White Glow */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          left-[35%]
+          top-[25%]
+
+          h-[500px]
+          w-[500px]
+
+          rounded-full
+
+          bg-white/80
+
+          blur-[150px]
+        "
+      />
+
+      {/* Bottom Purple Glow */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          bottom-[-180px]
+          left-[25%]
+
+          h-[500px]
+          w-[500px]
+
+          rounded-full
+
+          bg-[#B998D5]/15
+
+          blur-[150px]
+        "
+      />
+
+      {/* =====================================================
+          DECORATIVE OUTLINE CIRCLES
+      ===================================================== */}
+
+      {/* Large Right Circle */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -right-[280px]
+          top-[5%]
+
+          h-[680px]
+          w-[680px]
+
+          rounded-full
+
+          border
+          border-[#7B4DB8]/10
+        "
+      />
+
+      {/* Second Right Circle */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -right-[180px]
+          top-[15%]
+
+          h-[480px]
+          w-[480px]
+
+          rounded-full
+
+          border
+          border-[#B998D5]/15
+        "
+      />
+
+      {/* Left Bottom Circle */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -left-[220px]
+          bottom-[5%]
+
+          h-[460px]
+          w-[460px]
+
+          rounded-full
+
+          border
+          border-[#7B4DB8]/10
+        "
+      />
+
+      {/* Small Circle */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          left-[42%]
+          top-[18%]
+
+          h-[120px]
+          w-[120px]
+
+          rounded-full
+
+          border
+          border-[#7B4DB8]/10
+        "
+      />
+
+      {/* =====================================================
+          FLOATING DOTS
+      ===================================================== */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          left-[9%]
+          top-[22%]
+
+          h-2
+          w-2
+
+          rounded-full
+
+          bg-[#7B4DB8]/35
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          left-[12%]
+          top-[25%]
+
+          h-1.5
+          w-1.5
+
+          rounded-full
+
+          bg-[#B998D5]/40
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          right-[12%]
+          top-[30%]
+
+          h-3
+          w-3
+
+          rounded-full
+
+          bg-[#6D48A8]/25
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          right-[22%]
+          bottom-[20%]
+
+          h-2
+          w-2
+
+          rounded-full
+
+          bg-[#B998D5]/40
+        "
+      />
+
+      {/* =====================================================
+          SMALL DOT GRID
+      ===================================================== */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          right-[7%]
+          bottom-[18%]
+
+          grid
+          grid-cols-5
+          gap-3
+
+          opacity-25
+        "
+      >
+        {Array.from({ length: 25 }).map((_, index) => (
+          <span
+            key={index}
+            className="
+              h-1
+              w-1
+
+              rounded-full
+
+              bg-[#7B4DB8]
+            "
+          />
+        ))}
+      </div>
+
+      {/* =====================================================
+          CONTENT
+      ===================================================== */}
+<div
+          className="
+            relative
+            z-[2000]
+
+            flex
+            h-full
+            w-[90%]
+            mx-auto
+            justify-center
+          "
+          style={{margin:"40px 0px 40px 0px"}}
+        >
+      <Container className="w-[100%] flex justify-center">
+        <div
+          className="
+            relative
+            z-10
+
+            grid
+            w-full
+
+            items-center
+
+            gap-16
+
+            lg:grid-cols-2
+            lg:gap-20
+            xl:gap-24
+          "
+        >
+          {/* =================================================
+              ABOUT CONTENT
+          ================================================= */}
 
           <AboutContent />
 
+          {/* =================================================
+              ABOUT IMAGES
+          ================================================= */}
+
           <AboutImages />
-
         </div>
-
       </Container>
 </div>
-    
+      {/* =====================================================
+          BOTTOM SOFT PURPLE TRANSITION
+      ===================================================== */}
 
+      <div
+        className="
+          pointer-events-none
+
+          absolute
+          bottom-0
+          left-0
+
+          h-[120px]
+          w-full
+
+          bg-gradient-to-t
+          from-[#E9DDF4]/60
+          to-transparent
+        "
+      />
     </section>
   );
 }
