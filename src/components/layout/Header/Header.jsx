@@ -61,7 +61,7 @@ export default function Header() {
           fixed
           top-6
           left-0
-          z-50
+          z-999999999
 
           flex
           w-full
