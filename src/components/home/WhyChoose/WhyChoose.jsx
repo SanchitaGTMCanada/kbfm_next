@@ -2,421 +2,1220 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+
 import {
+  HiMapPin,
+  HiUserGroup,
   HiShieldCheck,
-  HiOutlineClock,
-  HiCheckBadge,
-  HiCurrencyDollar,
+  HiCheckCircle,
+  HiSquares2X2,
+  HiAdjustmentsHorizontal,
+  HiHeart,
+  HiBuildingOffice2,
+  HiArrowUpRight,
 } from "react-icons/hi2";
+
 import Container from "@/components/ui/Container/Container";
 
+/* =====================================================
+   WHY CHOOSE FEATURES
+===================================================== */
 
 const features = [
   {
-    icon: HiOutlineClock,
-    title: "24/7 Availability",
+    icon: HiMapPin,
+    title: "Locally Owned & Operated",
     description:
-      "Emergency plumbing and heating services available around the clock whenever you need us.",
+      "Proudly locally owned and operated in Yellowknife, with a strong understanding of Northern communities.",
   },
+
+  {
+    icon: HiUserGroup,
+    title: "Trained & Supervised Staff",
+    description:
+      "Our team members are carefully selected, trained, and supervised to maintain professional service standards.",
+  },
+
   {
     icon: HiShieldCheck,
-    title: "Experienced Professionals",
+    title: "Licensed & Safety Compliant",
     description:
-      "Licensed technicians providing dependable plumbing, heating and HVAC solutions with years of industry expertise.",
+      "We prioritize safety, accountability, and compliant operations across the services we provide.",
   },
+
   {
-    icon: HiCurrencyDollar,
-    title: "Unbeatable Service Cost",
+    icon: HiCheckCircle,
+    title: "Reliable Service Delivery",
     description:
-      "Affordable pricing with transparent estimates, competitive rates and exceptional value on every project.",
+      "Dependable service delivery focused on professionalism, consistency, and customer satisfaction.",
   },
+
   {
-    icon: HiCheckBadge,
-    title: "Guaranteed Satisfaction",
+    icon: HiSquares2X2,
+    title: "Multiple Services",
     description:
-      "Every project is completed with quality workmanship, fast response and a commitment to customer satisfaction.",
+      "Access security, caregiving, cleaning, and facility support through one trusted organization.",
+  },
+
+  {
+    icon: HiAdjustmentsHorizontal,
+    title: "Flexible Staffing Solutions",
+    description:
+      "Flexible staffing support designed to respond to the changing needs of our clients.",
+  },
+
+  {
+    icon: HiHeart,
+    title: "Community Focused",
+    description:
+      "We believe in strengthening Northern communities through local employment and responsible service.",
+  },
+
+  {
+    icon: HiBuildingOffice2,
+    title: "Serving Diverse Clients",
+    description:
+      "Supporting government, commercial, and residential clients throughout the Northwest Territories.",
   },
 ];
 
-
+/* =====================================================
+   COMPONENT
+===================================================== */
 
 export default function WhyChoose() {
-
   return (
+    <section
+      id="why-choose-us"
+      className="
+        relative
+        overflow-hidden
 
-    <section className="relative overflow-hidden py-24 lg:py-32"     style={{marginTop:"20px"}}>
+        bg-gradient-to-br
+        from-white
+        via-[#FAF7FD]
+        to-[#E9DDF4]
+        flex
+        justify-center
 
-      {/* Background Shape */}
+        py-24
+
+        sm:py-28
+
+        lg:py-32
+      "
+    >
+      {/* =====================================================
+          BACKGROUND EFFECTS
+      ===================================================== */}
+
+      {/* Left Purple Glow */}
 
       <div
         className="
+          pointer-events-none
           absolute
-          -left-40
-          top-20f
-          h-96
-          w-96
-          rounded-full
-          bg-[#123B67]/5
-        "
 
-         
+          -left-[220px]
+          top-[10%]
+
+          h-[600px]
+          w-[600px]
+
+          rounded-full
+
+          bg-[#6D48A8]/10
+
+          blur-[160px]
+        "
       />
 
-<div className="relative z-20 flex justify-center ">   
+      {/* Right Lavender Glow */}
 
+      <div
+        className="
+          pointer-events-none
+          absolute
 
-        {/* LEFT IMAGE */}
-        <Container   className="
-          mx-auto
-          grid
-          max-w-[1280px]
-          items-center
-          gap-16
-          px-5
-          lg:grid-cols-2
-          lg:px-8
+          -right-[220px]
+          top-[20%]
+
+          h-[620px]
+          w-[620px]
+
+          rounded-full
+
+          bg-[#B998D5]/15
+
+          blur-[160px]
         "
-        style={{marginTop:"50px"}}>
-          
-        <motion.div
-          initial={{opacity:0,x:-50}}
-          whileInView={{opacity:1,x:0}}
-          viewport={{once:true}}
-          transition={{duration:.7}}
+      />
+
+      {/* Center White Glow */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+
+          left-[35%]
+          top-[30%]
+
+          h-[500px]
+          w-[500px]
+
+          rounded-full
+
+          bg-white/80
+
+          blur-[150px]
+        "
+      />
+
+      {/* Bottom Purple Glow */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+
+          bottom-[-200px]
+          left-[35%]
+
+          h-[500px]
+          w-[500px]
+
+          rounded-full
+
+          bg-[#8060A7]/10
+
+          blur-[150px]
+        "
+      />
+
+      {/* =====================================================
+          DECORATIVE CIRCLES
+      ===================================================== */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+
+          -right-[250px]
+          top-[8%]
+
+          h-[650px]
+          w-[650px]
+
+          rounded-full
+
+          border
+          border-[#7B4DB8]/10
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+
+          -right-[160px]
+          top-[18%]
+
+          h-[430px]
+          w-[430px]
+
+          rounded-full
+
+          border
+          border-[#B998D5]/15
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+
+          -left-[200px]
+          bottom-[5%]
+
+          h-[450px]
+          w-[450px]
+
+          rounded-full
+
+          border
+          border-[#7B4DB8]/10
+        "
+      />
+
+      {/* =====================================================
+          FLOATING DOTS
+      ===================================================== */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+
+          left-[8%]
+          top-[20%]
+
+          h-2
+          w-2
+
+          rounded-full
+
+          bg-[#7B4DB8]/35
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+
+          left-[12%]
+          top-[24%]
+
+          h-1.5
+          w-1.5
+
+          rounded-full
+
+          bg-[#B998D5]/50
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+
+          right-[12%]
+          top-[35%]
+
+          h-3
+          w-3
+
+          rounded-full
+
+          bg-[#6D48A8]/25
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+
+          right-[20%]
+          bottom-[18%]
+
+          h-2
+          w-2
+
+          rounded-full
+
+          bg-[#B998D5]/50
+        "
+      />
+
+      {/* =====================================================
+          CONTENT
+      ===================================================== */}
+<div
           className="
             relative
-            h-[450px]
-            lg:h-[600px]
+            z-[2000]
+
+            flex
+            h-full
+            w-[90%]
+            mx-auto
+            justify-center
+          "
+          style={{margin:"40px 0px 40px 0px"}}
+        >
+           <Container>
+        <div
+          className="
+            relative
+            z-10
+
+            w-full
+          
           "
         >
+          {/* =================================================
+              SECTION HEADER
+          ================================================= */}
 
-          <div
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 30,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.2,
+            }}
+            transition={{
+              duration: 0.8,
+              ease: [0.22, 1, 0.36, 1],
+            }}
             className="
-              absolute
-              inset-0
-              translate-x-5
-              translate-y-5
-              rounded-[40px]
-              bg-[#C89B3C]/20
-            "
-          />
+              mx-auto
 
+              
 
-          <div
-            className="
-              relative
-              h-full
-              overflow-hidden
-              rounded-[40px]
+              text-center
             "
           >
-
-            <Image
-              src="/assets/whyChoose/whychoose.jpg"
-              alt="Professional plumbing service"
-              fill
-              className="
-                object-cover
-              "
-            />
-
+            {/* Eyebrow */}
 
             <div
               className="
-                absolute
-                inset-0
-                bg-gradient-to-t
-                from-[#123B67]/70
-                via-transparent
-                to-transparent
+                mb-5
+
+                flex
+                items-center
+                justify-center
+
+                gap-3
+              "
+            >
+              <span
+                className="
+                  h-[1px]
+                  w-12
+
+                  bg-[#7B4DB8]/50
+                "
+              />
+
+              <span
+                className="
+                  text-[11px]
+                  font-bold
+                  uppercase
+                  tracking-[0.28em]
+
+                  text-[#6D48A8]
+                "
+              >
+                Why Choose Us
+              </span>
+
+              <span
+                className="
+                  h-[1px]
+                  w-12
+
+                  bg-[#7B4DB8]/50
+                "
+              />
+            </div>
+
+            {/* Heading */}
+
+            <h2
+              className="
+                text-[40px]
+                font-semibold
+                leading-[1.05]
+                tracking-[-1.5px]
+
+                text-[#452D2D]
+
+                sm:text-[50px]
+                md:text-[58px]
+                lg:text-[64px]
+              "
+            >
+              Built on Trust,
+              <span className="block">
+                Driven by{" "}
+                <span
+                  className="
+                    bg-gradient-to-r
+                    from-[#5B2E91]
+                    via-[#8060A7]
+                    to-[#B998D5]
+
+                    bg-clip-text
+                    text-transparent
+                  "
+                >
+                  Community
+                </span>
+              </span>
+            </h2>
+
+            {/* Description */}
+
+            <p
+              className="
+                mx-auto
+                mt-6
+
+               
+
+                text-[15px]
+                leading-7
+
+                text-[#6F6873]
+
+                sm:text-[16px]
+              "
+              style={{margin:"20px 0px 20px 0px"}}
+            >
+              We combine local knowledge, trained professionals,
+              reliable service delivery, and flexible support to
+              serve communities throughout the Northwest Territories.
+            </p>
+
+            {/* Divider */}
+
+            <div
+              className="
+                mx-auto
+                mt-7
+
+                h-[3px]
+                w-14
+
+                rounded-full
+
+                bg-gradient-to-r
+                from-[#6D48A8]
+                via-[#B998D5]
+                to-[#6D48A8]
               "
             />
+          </motion.div>
 
-
-            {/* Experience Box */}
-
- <motion.div
-  initial={{
-    opacity: 0,
-    y: 50,
-    scale: 0.9,
-  }}
-  whileInView={{
-    opacity: 1,
-    y: 0,
-    scale: 1,
-  }}
-  viewport={{
-    once: true,
-    amount: 0.5,
-  }}
-  transition={{
-    duration: 0.7,
-    delay: 0.3,
-    ease: "easeOut",
-  }}
-  className="
-    absolute
-    bottom-8
-    left-8
-    rounded-[28px]
-    bg-white/95
-    px-8
-    py-7
-    shadow-[0_20px_60px_rgba(0,0,0,.15)]
-    backdrop-blur-sm
-    lg:bottom-10
-    lg:left-10
-  "
->
-
-  <div className="flex items-center gap-5" style={{padding:"10px"}}>
-
-    {/* Number */}
-
-<div className="relative inline-block overflow-hidden">
-  <motion.h3
-    initial={{ opacity: 0, y: 15 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5, delay: 0.6 }}
-    className="relative text-5xl lg:text-6xl font-black text-[#123B67]"
-  >
-    10+
-
-    <motion.span
-      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/90 to-transparent opacity-70"
-      style={{
-        mixBlendMode: "screen",
-        transform: "skewX(-20deg)",
-      }}
-      animate={{
-        x: ["-150%", "150%", "-150%"],
-      }}
-      transition={{
-        duration: 3,
-        repeat: Infinity,
-        ease: "linear",
-      }}
-    />
-  </motion.h3>
-</div>
-
-    {/* Divider */}
-
-    <div
-      className="
-        h-12
-        w-[1px]
-        bg-[#C89B3C]/40
-      "
-    />
-
-
-    {/* Text */}
-
-    <div>
-  <p
-    className="
-      max-w-[120px]
-      text-sm
-      font-semibold
-      leading-5
-      text-[#667085]
-    "
-  >
-    Plumbing
-    <br />
-     Services
-  </p>
-</div>
-
-
-  </div>
-
-
-</motion.div>
-
-
-          </div>
-
-        </motion.div>
-
-
-
-
-        {/* RIGHT CONTENT */}
-
-
-        <motion.div
-          initial={{opacity:0,x:50}}
-          whileInView={{opacity:1,x:0}}
-          viewport={{once:true}}
-          transition={{duration:.7}}
-        >
-
-
-          <span
-            className="
-              flex
-              items-center
-              gap-3
-              text-sm
-              font-bold
-              uppercase
-              tracking-[0.3em]
-              text-[#C89B3C]
-            "
-            style={{marginBottom:"30px"}}
-          >
-
-            <span className="
-              h-[2px]
-              w-10
-              bg-[#C89B3C]
-            " />
-
-            Why Choose Us
-
-          </span>
-
-
-
-          <h2
-            className="
-              mt-6
-              text-4xl
-              font-black
-              leading-[1.15]
-              text-[#123B67]
-              lg:text-5xl
-            "
-
-             style={{marginBottom:"10px"}}
-          >
-            Trusted Plumbing Solutions Built Around Your Comfort
-          </h2>
-
-
-
-          <p
-            className="
-              mt-6
-              max-w-xl
-              leading-8
-              text-[#667085]
-            "
-             style={{marginBottom:"20px"}}
-          >
-            From emergency repairs to complete heating installations,
-            our experienced team delivers dependable service with
-            transparent pricing and guaranteed quality.
-          </p>
-
-
-
-          {/* Feature Grid */}
-
+          {/* =================================================
+              MAIN CONTENT
+          ================================================= */}
 
           <div
             className="
-              mt-10
+              mt-16
+
               grid
-              gap-5
-              sm:grid-cols-2
+              items-center
+
+              gap-14
+
+              lg:mt-20
+              lg:grid-cols-[0.85fr_1.15fr]
+              lg:gap-20
             "
-           
           >
+            {/* =================================================
+                LEFT IMAGE
+            ================================================= */}
 
-            {features.map((item,index)=>{
+            <motion.div
+              initial={{
+                opacity: 0,
+                x: -40,
+              }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.2,
+              }}
+              transition={{
+                duration: 0.8,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="
+                relative
 
-              const Icon=item.icon;
+                mx-auto
 
-              return (
+                w-full
 
-                <motion.div
-                  key={index}
-                  whileHover={{
-                    y:-8
-                  }}
+                max-w-[540px]
+
+                lg:mx-0
+              "
+            >
+              {/* Back Glow */}
+
+              <div
+                className="
+                  absolute
+                  -bottom-5
+                  -left-5
+
+                  h-full
+                  w-full
+
+                  rounded-[34px]
+
+                  bg-[#8060A7]/15
+
+                  blur-[1px]
+                "
+              />
+
+              {/* Image */}
+
+              <div
+                className="
+                  relative
+
+                  h-[430px]
+                  w-full
+
+                  overflow-hidden
+
+                  rounded-[34px]
+
+                  border
+                  border-white/80
+
+                  bg-white/50
+
+                  shadow-[0_25px_70px_rgba(91,46,145,0.14)]
+
+                  sm:h-[500px]
+                  lg:h-[560px]
+                "
+              >
+                <Image
+                  src="/assets/whyChoose/whychoose.jpg"
+                  alt="K.B.F.M. Global Services team"
+                  fill
                   className="
-                    group
-                    rounded-[24px]
-                    border
-                    border-slate-100
-                    bg-white
-                    p-6
-                    shadow-[0_15px_40px_rgba(0,0,0,.09)]
-                    transition
+                    object-cover
+
+                    transition-transform
+                    duration-[1200ms]
+
+                    hover:scale-[1.04]
                   "
-                   style={{padding:"20px", marginBottom:"30px"}}
+                />
+
+                {/* Image Overlay */}
+
+                <div
+                  className="
+                    absolute
+                    inset-0
+
+                    bg-gradient-to-t
+                    from-[#452D2D]/75
+                    via-[#452D2D]/10
+                    to-transparent
+                  "
+                />
+
+                {/* Image Label */}
+
+                <div
+                  className="
+                    absolute
+                    left-6
+                    top-6
+
+                    flex
+                    items-center
+                    gap-2
+
+                    rounded-full
+
+                    border
+                    border-white/30
+
+                    bg-white/15
+
+                    px-4
+                    py-2
+
+                    text-[10px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.2em]
+
+                    text-white
+
+                    backdrop-blur-md
+                  "
                 >
-
-                  <div
+                  <span
                     className="
-                      flex
-                      h-14
-                      w-14
-                      items-center
-                      justify-center
-                      rounded-2xl
-                      bg-[#123B67]
-                      text-white
-                      transition
-                      duration-300
-                      group-hover:bg-[#C89B3C]
+                      h-2
+                      w-2
+
+                      rounded-full
+
+                      bg-[#D9B7F0]
                     "
-                    style={{marginBottom:"10px"}}
-                  >
+                  />
 
-                    <Icon size={28}/>
+                  Northern Service
+                </div>
 
-                  </div>
+                {/* Image Bottom Content */}
 
+                {/* =================================================
+    IMAGE SOFT WHITISH-PURPLE OVERLAY
+================================================= */}
 
-                  <h4
-                    className="
-                      mt-5
-                      text-lg
-                      font-bold
-                      text-[#123B67]
-                    "
-                  >
-                    {item.title}
-                  </h4>
+<div
+  className="
+    absolute
+    inset-0
 
+    bg-gradient-to-t
+    from-[#5B2E91]/35
+    via-[#B998D5]/10
+    to-white/10
+  "
+/>
 
-                  <p
-                    className="
-                      mt-3
-                      text-sm
-                      leading-6
-                      text-[#667085]
-                    "
-                  >
-                    {item.description}
-                  </p>
+{/* Image Label */}
 
+<div
+  className="
+    absolute
+    left-6
+    top-6
 
-                </motion.div>
+    flex
+    items-center
+    gap-2
 
-              );
+    rounded-full
 
-            })}
+    border
+    border-white/50
 
+    bg-white/65
+
+    px-4
+    py-2
+
+    text-[10px]
+    font-semibold
+    uppercase
+    tracking-[0.2em]
+
+    text-[#5B2E91]
+
+    shadow-[0_8px_25px_rgba(91,46,145,0.08)]
+
+    backdrop-blur-md
+  "
+>
+  <span
+    className="
+      h-2
+      w-2
+
+      rounded-full
+
+      bg-[#7B4DB8]
+    "
+  />
+
+  Northern Service
+</div>
+
+{/* Image Bottom Content */}
+
+<div
+  className="
+    absolute
+    bottom-7
+    left-7
+    right-7
+  "
+>
+  <p
+    className="
+      text-[11px]
+      font-semibold
+      uppercase
+      tracking-[0.25em]
+
+      text-[#5B2E91]
+    "
+  >
+    K.B.F.M. Global Services
+  </p>
+
+  <h3
+    className="
+      mt-2
+
+      text-[28px]
+      font-semibold
+      leading-tight
+
+      text-[#452D2D]
+
+      sm:text-[32px]
+    "
+    style={{color:"#f0e5ff"}}
+  >
+    Local expertise.
+    <br />
+    Reliable support.
+  </h3>
+</div>
+              </div>
+            </motion.div>
+
+            {/* =================================================
+                RIGHT FEATURES
+            ================================================= */}
+
+            <div
+              className="
+                w-full
+              "
+            >
+              <div
+                className="
+                  grid
+
+                  gap-4
+
+                  sm:grid-cols-2
+                "
+                style={{padding:"20px"}}
+              >
+                {features.map((item, index) => {
+                  const Icon = item.icon;
+
+                  return (
+                    <motion.div
+                      key={item.title}
+                      initial={{
+                        opacity: 0,
+                        y: 25,
+                      }}
+                      whileInView={{
+                        opacity: 1,
+                        y: 0,
+                      }}
+                      viewport={{
+                        once: true,
+                        amount: 0.15,
+                      }}
+                      transition={{
+                        duration: 0.6,
+                        delay: index * 0.06,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                      whileHover={{
+                        y: -5,
+                      }}
+                      className="
+                        group
+
+                        relative
+
+                        overflow-hidden
+
+                        rounded-[22px]
+
+                        border
+                        border-white/80
+
+                        bg-white/65
+
+                        px-5
+                        py-5
+
+                        shadow-[0_12px_35px_rgba(91,46,145,0.06)]
+
+                        backdrop-blur-xl
+
+                        transition-all
+                        duration-300
+
+                        hover:bg-white/85
+
+                        hover:shadow-[0_20px_45px_rgba(91,46,145,0.11)]
+                      "
+                    >
+                      {/* Hover Accent */}
+
+                      <div
+                        className="
+                          absolute
+                          left-0
+                          top-0
+
+                          h-full
+                          w-[3px]
+
+                          origin-bottom
+                          scale-y-0
+
+                          rounded-full
+
+                          bg-gradient-to-b
+                          from-[#5B2E91]
+                          to-[#B998D5]
+
+                          transition-transform
+                          duration-300
+
+                          group-hover:scale-y-100
+                        "
+                      />
+
+                      {/* Icon */}
+
+                      <div
+                        className="
+                          mb-4
+
+                          flex
+                          h-11
+                          w-11
+
+                          items-center
+                          justify-center
+
+                          rounded-xl
+
+                          bg-[#6D48A8]/10
+
+                          text-[#6D48A8]
+
+                          transition-all
+                          duration-300
+
+                          group-hover:bg-[#6D48A8]
+                          group-hover:text-white
+                        "
+                      >
+                        <Icon className="text-[21px]" />
+                      </div>
+
+                      {/* Number */}
+
+                      <span
+                        className="
+                          absolute
+                          right-5
+                          top-5
+
+                          text-[10px]
+                          font-bold
+                          tracking-[0.15em]
+
+                          text-[#B998D5]
+                        "
+                        style={{padding:"10px"}}
+                      >
+                        0{index + 1}
+                      </span>
+
+                      {/* Title */}
+
+                      <h3
+                        className="
+                          text-[15px]
+                          font-semibold
+                          leading-snug
+
+                          text-[#452D2D]
+                        "
+                         style={{padding:"10px"}}
+                      >
+                        {item.title}
+                      </h3>
+
+                      {/* Description */}
+
+                      <p
+                        className="
+                          mt-2
+
+                          text-[12px]
+                          leading-5
+
+                          text-[#746D78]
+                        "
+                        style={{padding:"10px"}}
+                      >
+                        {item.description}
+                      </p>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
 
+          {/* =================================================
+              OUR COMMITMENT
+          ================================================= */}
 
-        </motion.div>
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 30,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.2,
+            }}
+            transition={{
+              duration: 0.8,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="
+              relative
 
-        </Container>
+              mt-16
 
+              overflow-hidden
 
+              rounded-[30px]
 
-      </div>
-  
+              border
+              border-white/80
 
+              bg-gradient-to-r
+              from-[#5B2E91]
+              via-[#7043A0]
+              to-[#8060A7]
+
+              px-7
+              py-8
+
+              shadow-[0_25px_70px_rgba(91,46,145,0.18)]
+
+              sm:px-10
+              sm:py-9
+
+              lg:mt-20
+              lg:px-12
+              lg:py-10
+            "
+
+            style={{padding:"20px"}}
+          >
+            {/* Decorative Glow */}
+
+            <div
+              className="
+                pointer-events-none
+
+                absolute
+                -right-20
+                -top-32
+
+                h-[300px]
+                w-[300px]
+
+                rounded-full
+
+                bg-white/10
+
+                blur-[50px]
+              "
+            />
+
+            <div
+              className="
+                pointer-events-none
+
+                absolute
+                -bottom-24
+                left-1/3
+
+                h-[220px]
+                w-[220px]
+
+                rounded-full
+
+                bg-[#D8BCEF]/10
+
+                blur-[60px]
+              "
+            />
+
+            <div
+              className="
+                relative
+                z-10
+
+                grid
+
+                items-center
+
+                gap-7
+
+                lg:grid-cols-[auto_1fr_auto]
+                lg:gap-10
+              "
+            >
+              {/* Icon */}
+
+              <div
+                className="
+                  flex
+                  h-14
+                  w-14
+
+                  shrink-0
+
+                  items-center
+                  justify-center
+
+                  rounded-2xl
+
+                  border
+                  border-white/20
+
+                  bg-white/10
+
+                  text-white
+
+                  backdrop-blur-md
+                "
+              >
+                <HiHeart className="text-[26px]" />
+              </div>
+
+              {/* Content */}
+
+              <div>
+                <div
+                  className="
+                    mb-2
+
+                    text-[10px]
+                    font-bold
+                    uppercase
+                    tracking-[0.28em]
+
+                    text-[#E6D8F2]
+                  "
+                >
+                  Our Commitment
+                </div>
+
+                <h3
+                  className="
+                    text-[24px]
+                    font-semibold
+
+                    text-white
+
+                    sm:text-[28px]
+                  "
+
+                  style={{color:"#f0e5ff"}}
+                >
+                  Supporting People. Strengthening Communities.
+                </h3>
+
+                <p
+                  className="
+                    mt-3
+
+                    max-w-3xl
+
+                    text-[13px]
+                    leading-6
+
+                    text-white/75
+
+                    sm:text-[14px]
+                  "
+                >
+                  We are committed to creating local employment
+                  opportunities while delivering exceptional service
+                  throughout the Northwest Territories. Every member
+                  of our team is selected, trained, and supervised to
+                  ensure professionalism, accountability, and customer
+                  satisfaction.
+                </p>
+              </div>
+
+              {/* Arrow */}
+
+              <motion.a
+                href="#contact"
+                whileHover={{
+                  scale: 1.05,
+                }}
+                whileTap={{
+                  scale: 0.96,
+                }}
+                className="
+                  flex
+                  h-12
+                  w-12
+
+                  shrink-0
+
+                  items-center
+                  justify-center
+
+                  rounded-full
+
+                  bg-white
+
+                  text-[#5B2E91]
+
+                  shadow-[0_10px_30px_rgba(0,0,0,0.12)]
+                "
+              >
+                <HiArrowUpRight className="text-[20px]" />
+              </motion.a>
+            </div>
+          </motion.div>
+        </div>
+      </Container>
+        </div>
+     
+
+      {/* =====================================================
+          BOTTOM FADE
+      ===================================================== */}
+
+      <div
+        className="
+          pointer-events-none
+
+          absolute
+          bottom-0
+          left-0
+
+          h-[100px]
+          w-full
+
+          bg-gradient-to-t
+          from-[#E9DDF4]/50
+          to-transparent
+        "
+      />
     </section>
-
   );
 }
