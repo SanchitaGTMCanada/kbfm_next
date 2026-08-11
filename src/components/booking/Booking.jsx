@@ -247,7 +247,7 @@ export default function Booking() {
             mx-auto
             justify-center
           "
-          style={{margin:"40px 0px 40px 0px"}}
+          
         >
       <Container>
         <div
@@ -290,109 +290,12 @@ export default function Booking() {
           >
             {/* Eyebrow */}
 
-            <div
-              className="
-                mb-6
-
-                flex
-                items-center
-                justify-center
-                gap-3
-              "
-            >
-              <span
-                className="
-                  h-px
-                  w-10
-
-                  bg-[#D4AF37]
-                "
-              />
-
-              <span
-                className="
-                  flex
-                  items-center
-                  gap-2
-
-                  text-[10px]
-                  font-bold
-                  uppercase
-                  tracking-[0.32em]
-
-                  text-[#5B2E91]
-                "
-              >
-                <HiCalendarDays className="text-[14px]" />
-
-              *
-              </span>
-
-              <span
-                className="
-                  h-px
-                  w-10
-
-                  bg-[#D4AF37]
-                "
-              />
-            </div>
+         
 
             {/* Heading */}
 
-            <h2
-              className="
-                text-[42px]
-                font-semibold
-                leading-[1.02]
-                tracking-[-2px]
+        
 
-                text-[#2D2D2D]
-
-                sm:text-[52px]
-                md:text-[60px]
-                lg:text-[66px]
-              "
-            >
-       Book Your
-
-              <span className="block">
-                <span
-                  className="
-                    bg-gradient-to-r
-                    from-[#5B2E91]
-                    via-[#6B3BA5]
-                    to-[#7B4DB8]
-
-                    bg-clip-text
-                    text-transparent
-                  "
-                >
-                  Service Today
-                </span>
-              </span>
-            </h2>
-
-            <p
-              className="
-                mx-auto
-                mt-6
-
-              
-
-                text-[15px]
-                leading-7
-
-                text-[#2D2D2D]
-              "
-              style={{
-                opacity: 0.62, margin:"20px 0px 20px 0px"
-              }}
-            >
-              Tell us what you need and our team will help
-              you find the right service and support for your
-              requirements.
-            </p>
 
             {/* Gold divider */}
 
