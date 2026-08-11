@@ -9,6 +9,7 @@ import { HiArrowRight } from "react-icons/hi2";
 import Container from "@/components/ui/Container/Container";
 import Button from "@/components/ui/Button/Button";
 
+
 const heroImages = [
   "/assets/hero/hero-1.jpg",
   "/assets/hero/hero-2.jpg",

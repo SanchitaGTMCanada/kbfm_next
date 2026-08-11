@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
+
 import {
   HiArrowTopRightOnSquare,
   HiChevronDown,
@@ -14,12 +15,16 @@ import Button from "@/components/ui/Button/Button";
 import navigation from "@/data/navigation";
 import MobileMenu from "./MobileMenu";
 import Image from "next/image";
-
-
+import CareerModal from "@/components/career/CareerModal";
 
 export default function Header() {
   const [sticky, setSticky] = useState(false);
   const [open, setOpen] = useState(false);
+  const [careerOpen, setCareerOpen] = useState(false);
+
+  /* =====================================================
+     STICKY HEADER
+  ===================================================== */
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,6 +36,10 @@ export default function Header() {
     return () =>
       window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  /* =====================================================
+     NAVIGATION
+  ===================================================== */
 
   const handleNavigation = (e, href) => {
     if (!href) return;
@@ -51,6 +60,19 @@ export default function Header() {
     }
   };
 
+  /* =====================================================
+     OPEN CAREER MODAL
+  ===================================================== */
+
+  const handleCareerOpen = () => {
+    setCareerOpen(true);
+    setOpen(false);
+  };
+
+  const handleCareerClose = () => {
+    setCareerOpen(false);
+  };
+
   return (
     <>
       {/* =====================================================
@@ -62,7 +84,7 @@ export default function Header() {
           fixed
           top-6
           left-0
-          z-999999999
+          z-[999999999]
 
           flex
           w-full
@@ -288,58 +310,63 @@ export default function Header() {
             {/* =====================================================
                 LOGO
             ===================================================== */}
-<div
-  className="
-    relative
-    z-10
-    flex
-    h-full
-    items-center
-    flex-shrink-0
-  "
-  style={{
-    maxWidth: "180px",
-  }}
->
-  <Link
-    href="#home"
-    onClick={(e) =>
-      handleNavigation(e, "#home")
-    }
-    className={`
-      flex
-      items-center
-      justify-center
-      rounded-xl
-      transition-all
-      duration-300
 
-      ${
-        !sticky
-          ? "bg-white"
-          : "bg-transparent"
-      }
-    `}
-    style={{
-      padding: !sticky
-        ? "6px 10px"
-        : "0px",
-    }}
-  >
-    <Image
-      src="/assets/logos/logo.png"
-      alt="K.B.F.M. Global Services N.W.T. Ltd."
-      width={150}
-      height={60}
-      priority
-      className="
-        h-auto
-        w-[150px]
-        object-contain
-      "
-    />
-  </Link>
-</div>
+            <div
+              className="
+                relative
+                z-10
+
+                flex
+                h-full
+                items-center
+
+                flex-shrink-0
+              "
+              style={{
+                maxWidth: "180px",
+              }}
+            >
+              <Link
+                href="#home"
+                onClick={(e) =>
+                  handleNavigation(e, "#home")
+                }
+                className={`
+                  flex
+                  items-center
+                  justify-center
+
+                  rounded-xl
+
+                  transition-all
+                  duration-300
+
+                  ${
+                    !sticky
+                      ? "bg-white/70 backdrop-blur-sm"
+                      : "bg-transparent"
+                  }
+                `}
+                style={{
+                  padding: !sticky
+                    ? "5px 9px"
+                    : "0px",
+                }}
+              >
+                <Image
+                  src="/assets/logos/logo.png"
+                  alt="K.B.F.M. Global Services N.W.T. Ltd."
+                  width={150}
+                  height={60}
+                  priority
+                  className="
+                    h-auto
+                    w-[150px]
+                    object-contain
+                  "
+                />
+              </Link>
+            </div>
 
             {/* =====================================================
                 DESKTOP NAVIGATION
@@ -467,9 +494,7 @@ export default function Header() {
                         />
                       </button>
 
-                      {/* =================================================
-                          ABOUT DROPDOWN
-                      ================================================= */}
+                      {/* ABOUT DROPDOWN */}
 
                       <div
                         className="
@@ -510,7 +535,10 @@ export default function Header() {
                           group-hover:translate-y-0
                           group-hover:opacity-100
                         "
-                        style={{padding:"10px" , marginTop:"10px"}}
+                        style={{
+                          padding: "10px",
+                          marginTop: "10px",
+                        }}
                       >
                         {/* ABOUT US */}
 
@@ -545,7 +573,10 @@ export default function Header() {
                             bg-[#F7F3FC]
                             hover:text-[#5B2E91]
                           "
-                          style={{padding:"10px", marginBottom:"10px"}}
+                          style={{
+                            padding: "10px",
+                            marginBottom: "10px",
+                          }}
                         >
                           <span>
                             About Us
@@ -605,7 +636,9 @@ export default function Header() {
                             bg-[#F7F3FC]
                             hover:text-[#5B2E91]
                           "
-                          style={{padding:"10px"}}
+                          style={{
+                            padding: "10px",
+                          }}
                         >
                           <span>
                             Mission, Vision & Values
@@ -743,9 +776,7 @@ export default function Header() {
                         />
                       </button>
 
-                      {/* =================================================
-                          SERVICES DROPDOWN
-                      ================================================= */}
+                      {/* SERVICES DROPDOWN */}
 
                       <div
                         className="
@@ -786,7 +817,10 @@ export default function Header() {
                           group-hover:translate-y-0
                           group-hover:opacity-100
                         "
-                             style={{padding:"10px" , marginTop:"10px"}}
+                        style={{
+                          padding: "10px",
+                          marginTop: "10px",
+                        }}
                       >
                         {/* PRIVATE SECURITY */}
 
@@ -821,7 +855,10 @@ export default function Header() {
                             bg-[#F7F3FC]
                             hover:text-[#5B2E91]
                           "
-                          style={{padding:"10px", marginBottom:"10px"}}
+                          style={{
+                            padding: "10px",
+                            marginBottom: "10px",
+                          }}
                         >
                           <span>
                             Private Security Services
@@ -881,7 +918,10 @@ export default function Header() {
                             bg-[#F7F3FC]
                             hover:text-[#5B2E91]
                           "
-                           style={{padding:"10px", marginBottom:"10px"}}
+                          style={{
+                            padding: "10px",
+                            marginBottom: "10px",
+                          }}
                         >
                           <span>
                             Caregiving & Personal Support
@@ -941,7 +981,10 @@ export default function Header() {
                             bg-[#F7F3FC]
                             hover:text-[#5B2E91]
                           "
-                           style={{padding:"10px", marginBottom:"10px"}}
+                          style={{
+                            padding: "10px",
+                            marginBottom: "10px",
+                          }}
                         >
                           <span>
                             Cleaning Services
@@ -1001,7 +1044,10 @@ export default function Header() {
                             bg-[#F7F3FC]
                             hover:text-[#5B2E91]
                           "
-                           style={{padding:"10px", marginBottom:"10px"}}
+                          style={{
+                            padding: "10px",
+                            marginBottom: "10px",
+                          }}
                         >
                           <span>
                             Janitorial & Facility Maintenance
@@ -1033,9 +1079,94 @@ export default function Header() {
                 }
 
                 /* =================================================
-                   NORMAL MENU ITEMS
+                   JOIN US
+                ================================================= */
 
-                   Home / Contact / Join Us
+                if (item.title === "Join Us") {
+                  return (
+                    <button
+                      key={item.title}
+                      type="button"
+                      onClick={handleCareerOpen}
+                      className={`
+                        group
+
+                        relative
+
+                        flex
+                        items-center
+                        justify-center
+
+                        rounded-full
+
+                        px-5
+                        py-3
+
+                        text-[18px]
+                        font-normal
+                        tracking-[0.01em]
+
+                        transition-all
+                        duration-300
+
+                        hover:-translate-y-[1px]
+
+                        ${
+                          sticky
+                            ? `
+                              text-[#452D2D]
+                              hover:text-[#5B3535]
+                            `
+                            : `
+                              !text-white
+                              hover:!text-white
+                            `
+                        }
+                      `}
+                    >
+                      <span
+                        className="
+                          relative
+                          z-10
+
+                          whitespace-nowrap
+                        "
+                      >
+                        Join Us
+                      </span>
+
+                      {/* UNDERLINE */}
+
+                      <span
+                        className="
+                          pointer-events-none
+
+                          absolute
+                          bottom-[5px]
+                          left-1/2
+
+                          h-[2px]
+                          w-0
+
+                          -translate-x-1/2
+
+                          rounded-full
+
+                          bg-[#D4AF37]
+
+                          transition-all
+                          duration-300
+
+                          group-hover:w-8
+                        "
+                      />
+                    </button>
+                  );
+                }
+
+                /* =================================================
+                   NORMAL MENU ITEMS
+                   Home / Contact
                 ================================================= */
 
                 return (
@@ -1195,7 +1326,7 @@ export default function Header() {
                 >
                   Book Now
 
-                  {/* <HiArrowTopRightOnSquare
+                  <HiArrowTopRightOnSquare
                     className="
                       text-[17px]
 
@@ -1205,15 +1336,13 @@ export default function Header() {
                       group-hover:translate-x-1
                       group-hover:-translate-y-1
                     "
-                  /> */}
+                  />
                 </span>
               </Button>
             </div>
 
             {/* =====================================================
                 MOBILE MENU BUTTON
-
-                UNCHANGED
             ===================================================== */}
 
             <button
@@ -1267,12 +1396,20 @@ export default function Header() {
 
       {/* =====================================================
           MOBILE MENU
-          COMPLETELY UNCHANGED
       ===================================================== */}
 
       <MobileMenu
         open={open}
         onClose={() => setOpen(false)}
+      />
+
+      {/* =====================================================
+          CAREER MODAL
+      ===================================================== */}
+
+      <CareerModal
+        open={careerOpen}
+        onClose={handleCareerClose}
       />
     </>
   );
