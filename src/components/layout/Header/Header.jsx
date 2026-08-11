@@ -778,302 +778,351 @@ export default function Header() {
 
                       {/* SERVICES DROPDOWN */}
 
-                      <div
-                        className="
-                          invisible
+                     {/* =================================================
+    SERVICES DROPDOWN
+================================================= */}
 
-                          absolute
+<div
+  className="
+    invisible
+    absolute
+    left-1/2
+    top-[calc(100%-4px)]
 
-                          left-1/2
+    z-[99999]
 
-                          top-[calc(100%-4px)]
+    mt-3
 
-                          z-[99999]
+    w-[340px]
 
-                          mt-3
+    -translate-x-1/2
+    translate-y-2
 
-                          w-[340px]
+    rounded-2xl
 
-                          -translate-x-1/2
-                          translate-y-2
+    border
+    border-[#D9D9E3]
 
-                          rounded-2xl
+    bg-white
 
-                          border
-                          border-[#D9D9E3]
+    p-2
 
-                          bg-white
+    opacity-0
 
-                          p-2
+    shadow-[0_20px_50px_rgba(69,45,45,0.20)]
 
-                          opacity-0
+    transition-all
+    duration-300
 
-                          shadow-[0_20px_50px_rgba(69,45,45,0.20)]
+    group-hover:visible
+    group-hover:translate-y-0
+    group-hover:opacity-100
+  "
+  style={{
+    padding: "10px",
+    marginTop: "10px",
+  }}
+>
 
-                          transition-all
-                          duration-300
+  {/* PRIVATE SECURITY */}
 
-                          group-hover:visible
-                          group-hover:translate-y-0
-                          group-hover:opacity-100
-                        "
-                        style={{
-                          padding: "10px",
-                          marginTop: "10px",
-                        }}
-                      >
-                        {/* PRIVATE SECURITY */}
+  <Link
+    href="#services"
+    onClick={(e) =>
+      handleNavigation(e, "#services")
+    }
+    className="
+      group/item
 
-                        <Link
-                          href="#private-security"
-                          onClick={(e) =>
-                            handleNavigation(
-                              e,
-                              "#private-security"
-                            )
-                          }
-                          className="
-                            group/item
+      flex
+      items-center
+      justify-between
 
-                            flex
-                            items-center
-                            justify-between
+      rounded-xl
 
-                            rounded-xl
+      text-[15px]
+      font-medium
 
-                            px-4
-                            py-3.5
+      text-[#452D2D]
 
-                            text-[15px]
-                            font-medium
+      transition-all
+      duration-200
 
-                            text-[#452D2D]
+      bg-[#F7F3FC]
 
-                            transition-all
-                            duration-200
+      hover:bg-[#EEE5F8]
+      hover:text-[#5B2E91]
+    "
+    style={{
+      padding: "12px 14px",
+      marginBottom: "10px",
+    }}
+  >
+    <span>
+      Private Security Services
+    </span>
 
-                            bg-[#F7F3FC]
-                            hover:text-[#5B2E91]
-                          "
-                          style={{
-                            padding: "10px",
-                            marginBottom: "10px",
-                          }}
-                        >
-                          <span>
-                            Private Security Services
-                          </span>
+    <span
+      className="
+        h-1.5
+        w-1.5
 
-                          <span
-                            className="
-                              h-1.5
-                              w-1.5
+        shrink-0
 
-                              shrink-0
+        rounded-full
 
-                              rounded-full
+        bg-[#7B4DB8]
 
-                              bg-[#D4AF37]
+        opacity-0
 
-                              opacity-0
+        transition-opacity
+        duration-200
 
-                              transition-opacity
-                              duration-200
+        group-hover/item:opacity-100
+      "
+    />
+  </Link>
 
-                              group-hover/item:opacity-100
-                            "
-                          />
-                        </Link>
-
-                        {/* CAREGIVING */}
-
-                        <Link
-                          href="#caregiving"
-                          onClick={(e) =>
-                            handleNavigation(
-                              e,
-                              "#caregiving"
-                            )
-                          }
-                          className="
-                            group/item
-
-                            flex
-                            items-center
-                            justify-between
 
-                            rounded-xl
+  {/* CAREGIVING */}
 
-                            px-4
-                            py-3.5
+  <Link
+    href="#services"
+    onClick={(e) =>
+      handleNavigation(e, "#services")
+    }
+    className="
+      group/item
 
-                            text-[15px]
-                            font-medium
+      flex
+      items-center
+      justify-between
 
-                            text-[#452D2D]
+      rounded-xl
 
-                            transition-all
-                            duration-200
+      text-[15px]
+      font-medium
 
-                            bg-[#F7F3FC]
-                            hover:text-[#5B2E91]
-                          "
-                          style={{
-                            padding: "10px",
-                            marginBottom: "10px",
-                          }}
-                        >
-                          <span>
-                            Caregiving & Personal Support
-                          </span>
-
-                          <span
-                            className="
-                              h-1.5
-                              w-1.5
-
-                              shrink-0
+      text-[#452D2D]
 
-                              rounded-full
-
-                              bg-[#D4AF37]
+      transition-all
+      duration-200
 
-                              opacity-0
+      bg-[#F7F3FC]
 
-                              transition-opacity
-                              duration-200
+      hover:bg-[#EEE5F8]
+      hover:text-[#5B2E91]
+    "
+    style={{
+      padding: "12px 14px",
+      marginBottom: "10px",
+    }}
+  >
+    <span>
+      Caregiving & Personal Support
+    </span>
 
-                              group-hover/item:opacity-100
-                            "
-                          />
-                        </Link>
-
-                        {/* CLEANING */}
-
-                        <Link
-                          href="#cleaning"
-                          onClick={(e) =>
-                            handleNavigation(
-                              e,
-                              "#cleaning"
-                            )
-                          }
-                          className="
-                            group/item
-
-                            flex
-                            items-center
-                            justify-between
+    <span
+      className="
+        h-1.5
+        w-1.5
 
-                            rounded-xl
+        shrink-0
 
-                            px-4
-                            py-3.5
+        rounded-full
 
-                            text-[15px]
-                            font-medium
+        bg-[#7B4DB8]
 
-                            text-[#452D2D]
+        opacity-0
 
-                            transition-all
-                            duration-200
+        transition-opacity
+        duration-200
 
-                            bg-[#F7F3FC]
-                            hover:text-[#5B2E91]
-                          "
-                          style={{
-                            padding: "10px",
-                            marginBottom: "10px",
-                          }}
-                        >
-                          <span>
-                            Cleaning Services
-                          </span>
+        group-hover/item:opacity-100
+      "
+    />
+  </Link>
 
-                          <span
-                            className="
-                              h-1.5
-                              w-1.5
 
-                              shrink-0
+  {/* CLEANING */}
 
-                              rounded-full
+  <Link
+    href="#services"
+    onClick={(e) =>
+      handleNavigation(e, "#services")
+    }
+    className="
+      group/item
 
-                              bg-[#D4AF37]
+      flex
+      items-center
+      justify-between
 
-                              opacity-0
+      rounded-xl
 
-                              transition-opacity
-                              duration-200
+      text-[15px]
+      font-medium
 
-                              group-hover/item:opacity-100
-                            "
-                          />
-                        </Link>
+      text-[#452D2D]
 
-                        {/* JANITORIAL */}
+      transition-all
+      duration-200
 
-                        <Link
-                          href="#janitorial"
-                          onClick={(e) =>
-                            handleNavigation(
-                              e,
-                              "#janitorial"
-                            )
-                          }
-                          className="
-                            group/item
+      bg-[#F7F3FC]
 
-                            flex
-                            items-center
-                            justify-between
+      hover:bg-[#EEE5F8]
+      hover:text-[#5B2E91]
+    "
+    style={{
+      padding: "12px 14px",
+      marginBottom: "10px",
+    }}
+  >
+    <span>
+      Cleaning Services
+    </span>
 
-                            rounded-xl
+    <span
+      className="
+        h-1.5
+        w-1.5
 
-                            px-4
-                            py-3.5
+        shrink-0
 
-                            text-[15px]
-                            font-medium
+        rounded-full
 
-                            text-[#452D2D]
+        bg-[#7B4DB8]
 
-                            transition-all
-                            duration-200
+        opacity-0
 
-                            bg-[#F7F3FC]
-                            hover:text-[#5B2E91]
-                          "
-                          style={{
-                            padding: "10px",
-                            marginBottom: "10px",
-                          }}
-                        >
-                          <span>
-                            Janitorial & Facility Maintenance
-                          </span>
+        transition-opacity
+        duration-200
 
-                          <span
-                            className="
-                              h-1.5
-                              w-1.5
+        group-hover/item:opacity-100
+      "
+    />
+  </Link>
 
-                              shrink-0
 
-                              rounded-full
+  {/* JANITORIAL */}
 
-                              bg-[#D4AF37]
+  <Link
+    href="#services"
+    onClick={(e) =>
+      handleNavigation(e, "#services")
+    }
+    className="
+      group/item
 
-                              opacity-0
+      flex
+      items-center
+      justify-between
 
-                              transition-opacity
-                              duration-200
+      rounded-xl
 
-                              group-hover/item:opacity-100
-                            "
-                          />
-                        </Link>
-                      </div>
+      text-[15px]
+      font-medium
+
+      text-[#452D2D]
+
+      transition-all
+      duration-200
+
+      bg-[#F7F3FC]
+
+      hover:bg-[#EEE5F8]
+      hover:text-[#5B2E91]
+    "
+    style={{
+      padding: "12px 14px",
+      marginBottom: "10px",
+    }}
+  >
+    <span>
+      Janitorial & Facility Maintenance
+    </span>
+
+    <span
+      className="
+        h-1.5
+        w-1.5
+
+        shrink-0
+
+        rounded-full
+
+        bg-[#7B4DB8]
+
+        opacity-0
+
+        transition-opacity
+        duration-200
+
+        group-hover/item:opacity-100
+      "
+    />
+  </Link>
+
+
+  {/* STAFFING */}
+
+  <Link
+    href="#services"
+    onClick={(e) =>
+      handleNavigation(e, "#services")
+    }
+    className="
+      group/item
+
+      flex
+      items-center
+      justify-between
+
+      rounded-xl
+
+      text-[15px]
+      font-medium
+
+      text-[#452D2D]
+
+      transition-all
+      duration-200
+
+      bg-[#F7F3FC]
+
+      hover:bg-[#EEE5F8]
+      hover:text-[#5B2E91]
+    "
+    style={{
+      padding: "12px 14px",
+    }}
+  >
+    <span>
+      Staffing Solutions
+    </span>
+
+    <span
+      className="
+        h-1.5
+        w-1.5
+
+        shrink-0
+
+        rounded-full
+
+        bg-[#7B4DB8]
+
+        opacity-0
+
+        transition-opacity
+        duration-200
+
+        group-hover/item:opacity-100
+      "
+    />
+  </Link>
+
+</div>
                     </div>
                   );
                 }
