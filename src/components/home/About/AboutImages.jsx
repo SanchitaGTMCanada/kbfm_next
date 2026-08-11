@@ -17,7 +17,7 @@ export default function AboutImages() {
         className="absolute top-0 right-0"
       >
         <Image
-          src="/assets/about/about-1.jpg"
+          src="/assets/about/about-1.jpeg"
           width={500}
           height={620}
           alt=""
@@ -35,7 +35,7 @@ export default function AboutImages() {
         className="absolute bottom-8 left-0"
       >
         <Image
-          src="/assets/about/about-2.jpg"
+          src="/assets/about/about-2.jpeg"
           width={320}
           height={380}
           alt=""
