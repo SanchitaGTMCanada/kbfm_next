@@ -325,7 +325,7 @@ export default function Booking() {
               >
                 <HiCalendarDays className="text-[14px]" />
 
-                Get Started
+              *
               </span>
 
               <span
@@ -354,7 +354,7 @@ export default function Booking() {
                 lg:text-[66px]
               "
             >
-              Let's build a
+       Book Your
 
               <span className="block">
                 <span
@@ -368,7 +368,7 @@ export default function Booking() {
                     text-transparent
                   "
                 >
-                  better partnership.
+                  Service Today
                 </span>
               </span>
             </h2>
@@ -683,6 +683,337 @@ export default function Booking() {
                       ongoing support, our team is ready
                       to understand your requirements.
                     </p>
+
+                    {/* =================================================
+    INDUSTRIES WE SERVE
+================================================= */}
+
+<div className="mt-10" style={{marginTop:"20px"}}>
+
+  <p
+    className="
+      mb-5
+
+      text-[9px]
+      font-bold
+      uppercase
+      tracking-[0.28em]
+
+      text-[#D4AF37]
+    "
+    style={{margin:"10px 0px 10px 0px"}}
+  >
+    Industries We Serve
+  </p>
+
+
+  <div
+    className="
+      grid
+      grid-cols-2
+      gap-x-5
+      gap-y-4
+    "
+  >
+
+    {/* Government */}
+
+    <div className="flex items-center gap-2.5">
+      <div
+        className="
+          flex
+          h-8
+          w-8
+          shrink-0
+
+          items-center
+          justify-center
+
+          rounded-lg
+
+          bg-white/10
+
+          text-[#D4AF37]
+        "
+      >
+        <HiBuildingOffice2 className="text-[16px]" />
+      </div>
+
+      <p
+        className="
+          text-[10px]
+          font-medium
+          leading-4
+
+          text-white/75
+        "
+      >
+        Government Departments
+      </p>
+    </div>
+
+
+    {/* Healthcare */}
+
+    <div className="flex items-center gap-2.5">
+      <div
+        className="
+          flex
+          h-8
+          w-8
+          shrink-0
+
+          items-center
+          justify-center
+
+          rounded-lg
+
+          bg-white/10
+
+          text-[#D4AF37]
+        "
+      >
+        <HiHeart className="text-[16px]" />
+      </div>
+
+      <p
+        className="
+          text-[10px]
+          font-medium
+          leading-4
+
+          text-white/75
+        "
+      >
+        Healthcare Facilities
+      </p>
+    </div>
+
+
+    {/* Commercial */}
+
+    <div className="flex items-center gap-2.5">
+      <div
+        className="
+          flex
+          h-8
+          w-8
+          shrink-0
+
+          items-center
+          justify-center
+
+          rounded-lg
+
+          bg-white/10
+
+          text-[#D4AF37]
+        "
+      >
+        <HiBuildingOffice2 className="text-[16px]" />
+      </div>
+
+      <p
+        className="
+          text-[10px]
+          font-medium
+          leading-4
+
+          text-white/75
+        "
+      >
+        Commercial Businesses
+      </p>
+    </div>
+
+
+    {/* Industrial */}
+
+    <div className="flex items-center gap-2.5">
+      <div
+        className="
+          flex
+          h-8
+          w-8
+          shrink-0
+
+          items-center
+          justify-center
+
+          rounded-lg
+
+          bg-white/10
+
+          text-[#D4AF37]
+        "
+      >
+        <HiBuildingOffice2 className="text-[16px]" />
+      </div>
+
+      <p
+        className="
+          text-[10px]
+          font-medium
+          leading-4
+
+          text-white/75
+        "
+      >
+        Industrial Operations
+      </p>
+    </div>
+
+
+    {/* Residential */}
+
+    <div className="flex items-center gap-2.5">
+      <div
+        className="
+          flex
+          h-8
+          w-8
+          shrink-0
+
+          items-center
+          justify-center
+
+          rounded-lg
+
+          bg-white/10
+
+          text-[#D4AF37]
+        "
+      >
+        <HiBuildingOffice2 className="text-[16px]" />
+      </div>
+
+      <p
+        className="
+          text-[10px]
+          font-medium
+          leading-4
+
+          text-white/75
+        "
+      >
+        Residential Clients
+      </p>
+    </div>
+
+
+    {/* Non Profit */}
+
+    <div className="flex items-center gap-2.5">
+      <div
+        className="
+          flex
+          h-8
+          w-8
+          shrink-0
+
+          items-center
+          justify-center
+
+          rounded-lg
+
+          bg-white/10
+
+          text-[#D4AF37]
+        "
+      >
+        <HiUserGroup className="text-[16px]" />
+      </div>
+
+      <p
+        className="
+          text-[10px]
+          font-medium
+          leading-4
+
+          text-white/75
+        "
+      >
+        Non-Profit Organizations
+      </p>
+    </div>
+
+
+    {/* Property Management */}
+
+    <div className="flex items-center gap-2.5">
+      <div
+        className="
+          flex
+          h-8
+          w-8
+          shrink-0
+
+          items-center
+          justify-center
+
+          rounded-lg
+
+          bg-white/10
+
+          text-[#D4AF37]
+        "
+      >
+        <HiBuildingOffice2 className="text-[16px]" />
+      </div>
+
+      <p
+        className="
+          text-[10px]
+          font-medium
+          leading-4
+
+          text-white/75
+        "
+      >
+        Property Management Companies
+      </p>
+    </div>
+
+
+    {/* Construction */}
+
+    <div className="flex items-center gap-2.5">
+      <div
+        className="
+          flex
+          h-8
+          w-8
+          shrink-0
+
+          items-center
+          justify-center
+
+          rounded-lg
+
+          bg-white/10
+
+          text-[#D4AF37]
+        "
+      >
+        <HiBuildingOffice2 className="text-[16px]" />
+      </div>
+
+      <p
+        className="
+          text-[10px]
+          font-medium
+          leading-4
+
+          text-white/75
+        "
+      >
+        Construction Companies
+      </p>
+    </div>
+
+  </div>
+
+</div>
 
                     {/* Gold line */}
 

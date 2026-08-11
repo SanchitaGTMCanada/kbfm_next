@@ -1,54 +1,101 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { HiArrowUpRight } from "react-icons/hi2";
-import { HiPhone } from "react-icons/hi2";
+
+import {
+  HiArrowUpRight,
+  HiPhone,
+  HiCalendarDays,
+} from "react-icons/hi2";
+
 
 
 export default function ServiceCard({ service, index }) {
   const Icon = service.icon;
 
+  const handleBooking = (e) => {
+    e.preventDefault();
+
+    const section = document.querySelector("#booking");
+
+    if (!section) return;
+
+    const headerHeight = 120;
+
+    const top =
+      section.getBoundingClientRect().top +
+      window.pageYOffset -
+      headerHeight;
+
+    window.scrollTo({
+      top,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <motion.article
-      initial={{ opacity: 0, y: 70 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      initial={{
+        opacity: 0,
+        y: 70,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.15,
+      }}
       transition={{
         duration: 0.7,
         delay: index * 0.12,
+        ease: [0.22, 1, 0.36, 1],
       }}
       className={`
         group
+        relative
         flex
         h-full
         flex-col
         overflow-hidden
-        rounded-[32px]
-        bg-transparent
-        shadow-[0_20px_60px_rgba(0,0,0,.06)]
+
+        rounded-[30px]
+
+        border
+        border-[#E8DFF0]
+
+        bg-white
+
+        shadow-[0_18px_55px_rgba(69,45,45,0.07)]
+
         transition-all
         duration-500
-        hover:-translate-y-3
-        hover:shadow-[0_35px_80px_rgba(18,59,103,.16)]
+
+        hover:-translate-y-2
+
+        hover:border-[#CDB7DF]
+
+        hover:shadow-[0_30px_75px_rgba(91,46,145,0.14)]
 
         ${service.featured ? "lg:col-span-2" : ""}
       `}
     >
 
-      {/* Image Section */}
+      {/* =====================================================
+          IMAGE SECTION
+      ===================================================== */}
 
       <div
         className="
           relative
           aspect-[4/3]
           w-full
-          overflow-hidden
           shrink-0
+          overflow-hidden
         "
       >
-
         <Image
           src={service.image}
           alt={service.title}
@@ -60,53 +107,152 @@ export default function ServiceCard({ service, index }) {
           "
           className="
             object-cover
+
             transition-transform
             duration-700
+            ease-out
+
             group-hover:scale-110
           "
         />
 
-
-        {/* Overlay */}
+        {/* Image Overlay */}
 
         <div
           className="
             absolute
             inset-0
+
             bg-gradient-to-t
-            from-[#123B67]/95
-            via-[#123B67]/30
+
+            from-[#2E1A43]/95
+            via-[#3E2754]/35
             to-transparent
           "
         />
 
+        {/* Top Soft Overlay */}
 
-        {/* Icon */}
+        <div
+          className="
+            pointer-events-none
+
+            absolute
+            inset-x-0
+            top-0
+
+            h-24
+
+            bg-gradient-to-b
+            from-black/15
+            to-transparent
+          "
+        />
+
+        {/* =================================================
+            SERVICE NUMBER
+        ================================================= */}
 
         <div
           className="
             absolute
+            left-6
+            top-6
+
+            flex
+            h-8
+            min-w-8
+
+            items-center
+            justify-center
+
+            rounded-full
+
+            border
+            border-white/20
+
+            bg-black/20
+
+            px-2
+
+            text-[11px]
+            font-bold
+            tracking-[0.12em]
+
+            text-white/85
+
+            backdrop-blur-md
+          "
+        >
+          {String(index + 1).padStart(2, "0")}
+        </div>
+
+        {/* =================================================
+            SERVICE ICON
+        ================================================= */}
+
+        <motion.div
+          whileHover={{
+            scale: 1.08,
+            rotate: 4,
+          }}
+          className="
+            absolute
             right-6
             top-6
+
             flex
             h-14
             w-14
+
             items-center
             justify-center
-            rounded-full
-            bg-[#C89B3C]
+
+            rounded-2xl
+
+            border
+            border-white/30
+
+            bg-white/15
+
             text-white
-            shadow-xl
-            transition
+
+            shadow-[0_12px_35px_rgba(0,0,0,0.22)]
+
+            backdrop-blur-xl
+
+            transition-all
             duration-500
-            group-hover:rotate-12
           "
         >
-          <Icon size={26} />
-        </div>
+          <span
+            className="
+              pointer-events-none
+              absolute
+              inset-[-5px]
 
+              rounded-2xl
 
-        {/* Title */}
+              bg-[#B998D5]/15
+
+              blur-md
+            "
+          />
+
+          <Icon
+            size={26}
+            className="
+              relative
+              z-10
+
+              drop-shadow-[0_0_10px_rgba(255,255,255,0.35)]
+            "
+          />
+        </motion.div>
+
+        {/* =================================================
+            TITLE
+        ================================================= */}
 
         <div
           className="
@@ -116,216 +262,492 @@ export default function ServiceCard({ service, index }) {
             right-6
           "
         >
+          {service.tag && (
+            <span
+              className="
+                mb-2
 
-          <span
+                block
+
+                text-[10px]
+                font-bold
+                uppercase
+                tracking-[0.28em]
+
+                text-[#E8DDF2]
+              "
+            >
+              {service.tag}
+            </span>
+          )}
+
+          <h3
             className="
-              mb-2
-              block
-              text-[11px]
+              max-w-[340px]
+
+              text-[25px]
               font-semibold
-              uppercase
-              tracking-[0.28em]
-              text-white/80
-            "
-          >
-            {service.tag}
-          </span>
+              leading-[1.12]
+              tracking-[-0.5px]
 
-
-          <span
-            className="
-              max-w-[320px]
-              text-[26px]
-              font-bold
-              leading-tight
-              tracking-tight
               text-white
-              sm:text-[30px]
+
+              sm:text-[28px]
             "
           >
             {service.title}
-          </span>
-
+          </h3>
         </div>
-
       </div>
 
 
-
-      {/* Content Section */}
+      {/* =====================================================
+          PREMIUM CONTENT SECTION
+      ===================================================== */}
 
       <div
         className="
+          relative
+
           flex
           flex-1
           flex-col
-          px-8
-          py-10
-          lg:px-10
-        "
 
+          bg-white
+        "
         style={{
-     padding:"20px"
+          padding: "26px 26px 24px 26px",
         }}
       >
 
-        {/* <p
+        {/* =================================================
+            SMALL SERVICE LABEL
+        ================================================= */}
+
+        <div
           className="
-            line-clamp-3
-            text-[16px]
-            leading-8
-            text-[#667085]
+            flex
+            items-center
+            justify-between
           "
+          style={{
+            marginBottom: "16px",
+          }}
         >
-          {service.description}
-        </p> */}
+          <span
+            className="
+              inline-flex
+              items-center
+              gap-2
+
+              rounded-full
+
+              bg-[#F5EFF9]
+
+              text-[10px]
+              font-bold
+              uppercase
+              tracking-[0.22em]
+
+              text-[#6D48A8]
+            "
+            style={{
+              padding: "7px 11px",
+            }}
+          >
+            <span
+              className="
+                h-1.5
+                w-1.5
+
+                rounded-full
+
+                bg-[#8060A7]
+
+                shadow-[0_0_8px_rgba(128,96,167,0.5)]
+              "
+            />
+
+            {service.tag || "Professional Service"}
+          </span>
+
+          {/* Service Number */}
+
+          <span
+            className="
+              text-[11px]
+              font-semibold
+              tracking-[0.18em]
+
+              text-[#B7AFBC]
+            "
+          >
+            {String(index + 1).padStart(2, "0")}
+          </span>
+        </div>
 
 
+        {/* =================================================
+            DESCRIPTION
+        ================================================= */}
 
-        {/* Bottom Area */}
+        {service.description && (
+          <p
+            className="
+              line-clamp-3
 
-       {/* Pricing Area */}
+              text-[14px]
+              leading-[1.8]
 
-<div
-  className="
-    mt-auto
-    rounded-3xl
-    border
-    border-[#123B67]/10
-   bg-transparent
-    p-6
-    shadow-sm
-    transition-all
-    duration-500
-    group-hover:border-[#C89B3C]/40
-    group-hover:shadow-xl
-  "
+              text-[#716A78]
+            "
+            style={{
+              marginBottom: "22px",
+            }}
+          >
+            {service.description}
+          </p>
+        )}
 
-  style={{ padding: "20px" }}
->
 
-  {/* Price & Duration */}
+        {/* =================================================
+            SERVICE DETAILS
+        ================================================= */}
 
-  <div className="flex items-start justify-between" style={{ marginBottom:"10px"}}>
+        <div
+          className="
+            grid
+            grid-cols-2
 
-    <div style={{ marginBottom:"10px" , marginRight:"10px"}}>
+            overflow-hidden
 
-      <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#98A2B3]">
-        Starting From
-      </p>
+            rounded-2xl
 
-      <h2 className="mt-2 text-[30px] font-black leading-none text-[#123B67] transition-colors duration-300 group-hover:text-[#C89B3C]">
-        {service.startingPrice}
-      </h2>
+            border
+            border-[#EEE8F3]
 
-    </div>
+            bg-[#FBF9FD]
+          "
+          style={{
+            marginBottom: "22px",
+          }}
+        >
 
-<div
-  className="
-    flex
-    items-center
-    gap-3
-    rounded-2xl
-    border
-    border-[#C89B3C]/30
-    bg-gradient-to-r
-    from-[#0E2F52]
-    via-[#123B67]
-    to-[#194E82]
-    px-5
-    py-3
-    shadow-[0_15px_40px_rgba(18,59,103,.35)]
-  "
->
-  {/* Gold Glow */}
-  <div className="absolute -right-6 -top-6 h-16 w-16 rounded-full bg-[#F4C46A]/20 blur-2xl" />
+          {/* =================================================
+              STARTING PRICE
+          ================================================= */}
 
-  <div className="relative z-10" style={{padding:"7px"}}>
-    <p className="text-[10px] font-semibold uppercase tracking-[3px] text-[#F4C46A]">
-     Time
-    </p>
+          <div
+            className="
+              border-r
+              border-[#EEE8F3]
+            "
+            style={{
+              padding: "15px",
+            }}
+          >
+            <span
+              className="
+                block
 
-    <p className="mt-2 text-lg font-bold text-white">
-      {service.duration}
-    </p>
-  </div>
-</div>
+                text-[9px]
+                font-bold
+                uppercase
+                tracking-[0.2em]
 
-  </div>
+                text-[#A39AA9]
+              "
+            >
+              Starting From
+            </span>
 
-  {/* Divider */}
+            <div
+              className="
+                mt-2
 
-  <div className="my-6 h-px bg-[#123B67]/10" />
+                text-[23px]
+                font-bold
+                leading-none
 
-  {/* CTA */}
+                text-[#4B286F]
+              "
+            >
+              {service.startingPrice}
+            </div>
+          </div>
 
-<Link
-  href="tel:+18674471500"
-  className="
-    group/btn
-    flex
-    items-center
-    justify-end
-    rounded-2xl
-    bg-gradient-to-r
-    from-[#B8860B]
-    via-[#D4A017]
-    to-[#F4C46A]
-    px-5
-    py-4
-    font-semibold
-    text-[#123B67]
-    shadow-[0_12px_30px_rgba(212,160,23,.35)]
-    transition-all
-    duration-300
-    hover:-translate-y-1
-    hover:shadow-[0_18px_40px_rgba(212,160,23,.45)]
-    hover:from-[#C9971A]
-    hover:via-[#E3B23C]
-    hover:to-[#FFD56A]
-  "
-  style={{
-    width: "fit-content",
-    marginTop: "10px",
-    padding: "8px",
-  }}
->
-  <span className="flex items-center gap-2 text-white">
-    <HiPhone size={18} />
-    Call Now
-  </span>
 
-  <HiArrowUpRight
-    size={22}
-    className="
-      transition-transform
-      duration-300
-      group-hover/btn:translate-x-1
-      group-hover/btn:-translate-y-1
-    "
-  />
-</Link>
+          {/* =================================================
+              DURATION
+          ================================================= */}
 
-</div>
+          <div
+            style={{
+              padding: "15px",
+            }}
+          >
+            <span
+              className="
+                block
 
+                text-[9px]
+                font-bold
+                uppercase
+                tracking-[0.2em]
+
+                text-[#A39AA9]
+              "
+            >
+              Duration
+            </span>
+
+            <div
+              className="
+                mt-2
+
+                flex
+                items-center
+                gap-2
+
+                text-[13px]
+                font-semibold
+
+                text-[#5E5665]
+              "
+            >
+              <HiCalendarDays
+                className="
+                  text-[16px]
+                  text-[#8060A7]
+                "
+              />
+
+              {service.duration || "Flexible"}
+            </div>
+          </div>
+        </div>
+
+
+        {/* =================================================
+            BOOK NOW SECTION
+        ================================================= */}
+
+        <div
+          className="
+            mt-auto
+
+            rounded-[20px]
+
+            border
+            border-[#DDD0E8]
+
+            bg-gradient-to-r
+            from-[#F8F4FB]
+            via-[#F1EAF7]
+            to-[#F8F4FB]
+
+            shadow-[0_8px_25px_rgba(91,46,145,0.06)]
+          "
+          style={{
+            padding: "10px",
+          }}
+        >
+          <motion.a
+            href="#booking"
+            onClick={handleBooking}
+            whileHover={{
+              y: -1,
+            }}
+            whileTap={{
+              scale: 0.98,
+            }}
+            className="
+              group/book
+
+              flex
+              w-full
+
+              items-center
+              justify-between
+
+              rounded-[14px]
+
+              bg-[#5B2E91]
+
+              text-white
+
+              shadow-[0_8px_22px_rgba(91,46,145,0.20)]
+
+              transition-all
+              duration-300
+
+              hover:bg-[#6D48A8]
+
+              hover:shadow-[0_12px_28px_rgba(91,46,145,0.28)]
+            "
+            style={{
+              padding: "11px 12px 11px 15px",
+            }}
+          >
+
+            {/* LEFT SIDE */}
+
+            <span
+              className="
+                flex
+                items-center
+                gap-3
+              "
+            >
+              <span
+                className="
+                  flex
+                  h-9
+                  w-9
+
+                  items-center
+                  justify-center
+
+                  rounded-xl
+
+                  border
+                  border-white/15
+
+                  bg-white/15
+                "
+              >
+                <HiPhone
+                  className="
+                    text-[17px]
+                    text-white
+                  "
+                />
+              </span>
+
+              <span className="text-left">
+                <span
+                  className="
+                    block
+
+                    text-[9px]
+                    font-medium
+                    uppercase
+                    tracking-[0.16em]
+
+                    text-white/60
+                  "
+                >
+                  Need this service?
+                </span>
+
+                <span
+                  className="
+                    mt-0.5
+
+                    block
+
+                    text-[13px]
+                    font-bold
+
+                    text-white
+                  "
+                >
+                  Book Now
+                </span>
+              </span>
+            </span>
+
+
+            {/* RIGHT ARROW */}
+
+            <span
+              className="
+                flex
+                h-9
+                w-9
+
+                items-center
+                justify-center
+
+                rounded-full
+
+                bg-white
+
+                text-[#5B2E91]
+
+                transition-all
+                duration-300
+
+                group-hover/book:translate-x-1
+              "
+            >
+              <HiArrowUpRight
+                className="
+                  text-[17px]
+                "
+              />
+            </span>
+
+          </motion.a>
+        </div>
+
+
+        {/* =================================================
+            DECORATIVE BOTTOM LINE
+        ================================================= */}
+
+        <div
+          className="
+            pointer-events-none
+
+            absolute
+            bottom-0
+            left-1/2
+
+            h-[2px]
+            w-0
+
+            -translate-x-1/2
+
+            rounded-full
+
+            bg-gradient-to-r
+            from-[#8060A7]
+            via-[#B998D5]
+            to-[#8060A7]
+
+            transition-all
+            duration-500
+
+            group-hover:w-[45%]
+          "
+        />
 
       </div>
 
 
-
-      {/* Decorative Circle */}
+      {/* =====================================================
+          DECORATIVE BACKGROUND CIRCLE
+      ===================================================== */}
 
       <div
         className="
+          pointer-events-none
+
           absolute
           -bottom-24
           -right-24
+
           h-56
           w-56
+
           rounded-full
-          bg-[#123B67]/5
-          transition
+
+          bg-[#7B4DB8]/[0.035]
+
+          transition-all
           duration-700
+
           group-hover:scale-150
         "
       />

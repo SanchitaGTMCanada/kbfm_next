@@ -11,6 +11,7 @@ import {
   HiBuildingOffice2,
   HiUsers,
   HiStar,
+  HiPhone,
 } from "react-icons/hi2";
 
 import Container from "@/components/ui/Container/Container";
@@ -25,8 +26,8 @@ export default function Services() {
         "Protecting people, property, and assets with trained and licensed security professionals.",
       icon: HiShieldCheck,
       image:
-        services?.[0]?.image ||
-        "/images/services/service-1.jpg",
+        
+        "/assets/services/service-1.jpeg",
     },
 
     {
@@ -36,8 +37,8 @@ export default function Services() {
         "Compassionate support that helps individuals maintain independence, dignity, and quality of life.",
       icon: HiHeart,
       image:
-        services?.[1]?.image ||
-        "/images/services/service-2.jpg",
+        
+        "/assets/services/service-2.jpeg",
     },
 
     {
@@ -47,8 +48,8 @@ export default function Services() {
         "Professional cleaning solutions designed to create healthy, safe, and welcoming environments.",
       icon: HiSparkles,
       image:
-        services?.[2]?.image ||
-        "/images/services/service-3.jpg",
+        
+        "/assets/services/service-3.jpeg",
     },
 
     {
@@ -58,8 +59,8 @@ export default function Services() {
         "Complete facility support that keeps workplaces clean, safe, and operating efficiently.",
       icon: HiBuildingOffice2,
       image:
-        services?.[3]?.image ||
-        "/images/services/service-4.jpg",
+        
+        "/assets/services/service-4.jpeg",
     },
   ];
 
@@ -81,6 +82,7 @@ export default function Services() {
         flex
         justify-center
       "
+    
     >
       {/* =====================================================
           BACKGROUND EFFECTS
@@ -299,6 +301,7 @@ export default function Services() {
             mx-auto
             justify-center
           "
+            style={{padding:"20px"}}
         >
             <Container  className="w-full max-w-none flex flex-col justify-center" >
         {/* =================================================
@@ -815,13 +818,33 @@ function StairServiceCard({
 }) {
   const Icon = service.icon;
 
+  const handleBookNow = (e) => {
+    e.preventDefault();
+
+    const section = document.querySelector("#booking");
+
+    if (!section) return;
+
+    const headerHeight = 120;
+
+    const top =
+      section.getBoundingClientRect().top +
+      window.pageYOffset -
+      headerHeight;
+
+    window.scrollTo({
+      top,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <motion.article
       initial={{
         opacity: 0,
-        y: 45,
-        x: index % 2 === 0 ? -30 : 30,
-        scale: 0.97,
+        y: 50,
+        x: index % 2 === 0 ? -25 : 25,
+        scale: 0.98,
       }}
       whileInView={{
         opacity: 1,
@@ -834,101 +857,91 @@ function StairServiceCard({
         amount: 0.18,
       }}
       transition={{
-        duration: 0.85,
+        duration: 0.8,
         delay: index * 0.12,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="
-        group
-        relative
-        w-full
-      "
+      className="group relative w-full"
     >
-      {/* =================================================
-          CARD
-      ================================================= */}
+      {/* =====================================================
+          PREMIUM CARD
+      ===================================================== */}
 
       <div
         className="
           relative
-
-          min-h-[390px]
-
+          min-h-[510px]
           overflow-hidden
 
-          rounded-[30px]
+          rounded-[32px]
 
           border
           border-white
 
-          bg-gradient-to-br
-          from-white
-          via-[#FBF9FD]
-          to-[#E9DDF4]
+          bg-white/80
 
-          shadow-[0_20px_60px_rgba(91,46,145,0.10)]
+          shadow-[0_25px_70px_rgba(62,32,102,0.10)]
+
+          backdrop-blur-xl
 
           transition-all
-          duration-500
+          duration-700
 
-          group-hover:-translate-y-2
+          group-hover:-translate-y-3
+          group-hover:shadow-[0_35px_90px_rgba(62,32,102,0.18)]
 
-          group-hover:shadow-[0_30px_80px_rgba(91,46,145,0.18)]
-
-          sm:min-h-[420px]
-
-          lg:min-h-[430px]
+          sm:min-h-[530px]
+          lg:min-h-[540px]
         "
       >
+
         {/* =================================================
-            AMBIENT CARD GLOW
+            SOFT PURPLE AMBIENT LIGHT
         ================================================= */}
 
         <div
           className="
             pointer-events-none
-
             absolute
-            -right-24
-            -top-24
+            -right-32
+            -top-32
 
-            h-64
-            w-64
+            h-[320px]
+            w-[320px]
 
             rounded-full
 
-            bg-[#8B65B4]/15
+            bg-[#7B4DB8]/10
 
-            blur-[85px]
+            blur-[90px]
 
             transition-all
             duration-700
 
-            group-hover:bg-[#8B65B4]/28
+            group-hover:bg-[#7B4DB8]/20
           "
         />
 
         <div
           className="
             pointer-events-none
-
             absolute
-            -bottom-24
-            -left-24
+            -bottom-32
+            -left-32
 
-            h-56
-            w-56
+            h-[300px]
+            w-[300px]
 
             rounded-full
 
-            bg-[#B998D5]/20
+            bg-[#B998D5]/12
 
-            blur-[75px]
+            blur-[90px]
 
             transition-all
             duration-700
 
-            group-hover:bg-[#B998D5]/35
+            group-hover:bg-[#B998D5]/20
           "
         />
 
@@ -950,7 +963,7 @@ function StairServiceCard({
         >
           <motion.div
             initial={{
-              scale: 1.12,
+              scale: 1.1,
             }}
             whileInView={{
               scale: 1,
@@ -959,13 +972,10 @@ function StairServiceCard({
               once: true,
             }}
             transition={{
-              duration: 1.25,
+              duration: 1.3,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="
-              absolute
-              inset-0
-            "
+            className="absolute inset-0"
           >
             <Image
               src={service.image}
@@ -979,7 +989,7 @@ function StairServiceCard({
                 object-cover
 
                 transition-transform
-                duration-[1400ms]
+                duration-[1600ms]
                 ease-out
 
                 group-hover:scale-110
@@ -987,7 +997,9 @@ function StairServiceCard({
             />
           </motion.div>
 
-          {/* Image white fade */}
+          {/* =================================================
+              PREMIUM IMAGE FADE
+          ================================================= */}
 
           <div
             className="
@@ -996,12 +1008,29 @@ function StairServiceCard({
 
               bg-gradient-to-r
               from-white
-              via-white/65
+              via-white/60
+              via-[45%]
+              to-white/5
+            "
+          />
+
+          {/* Bottom image fade */}
+
+          <div
+            className="
+              absolute
+              inset-x-0
+              bottom-0
+
+              h-[45%]
+
+              bg-gradient-to-t
+              from-white/35
               to-transparent
             "
           />
 
-          {/* Purple hover overlay */}
+          {/* Image hover tint */}
 
           <div
             className="
@@ -1009,9 +1038,9 @@ function StairServiceCard({
               inset-0
 
               bg-gradient-to-br
-              from-[#5B2E91]/20
+              from-[#5B2E91]/10
               via-transparent
-              to-[#A98AC5]/20
+              to-[#7B4DB8]/20
 
               opacity-0
 
@@ -1021,10 +1050,42 @@ function StairServiceCard({
               group-hover:opacity-100
             "
           />
+
+          {/* =================================================
+              IMAGE LIGHT SWEEP
+          ================================================= */}
+
+          <motion.div
+            className="
+              absolute
+              inset-y-0
+              -left-[120%]
+
+              w-[80%]
+
+              rotate-[15deg]
+
+              bg-gradient-to-r
+              from-transparent
+              via-white/30
+              to-transparent
+
+              opacity-0
+
+              group-hover:opacity-100
+            "
+            transition={{
+              duration: 1.2,
+              ease: "easeInOut",
+            }}
+            whileHover={{
+              left: "140%",
+            }}
+          />
         </div>
 
         {/* =================================================
-            NUMBER
+            TOP NUMBER
         ================================================= */}
 
         <div
@@ -1033,27 +1094,29 @@ function StairServiceCard({
             left-7
             top-7
 
-            z-20
+            z-30
 
             flex
-            items-center
+            items-end
             gap-3
           "
         >
           <span
             className="
-              text-[52px]
+              text-[58px]
               font-semibold
-              leading-none
+              leading-[0.8]
 
-              text-[#E5D9EC]
+              tracking-[-3px]
+
+              text-[#E6D9EE]
 
               transition-all
               duration-500
 
-              group-hover:text-[#D5C2E0]
+              group-hover:text-[#D8C6E4]
 
-              sm:text-[60px]
+              sm:text-[64px]
             "
           >
             {service.number}
@@ -1061,26 +1124,33 @@ function StairServiceCard({
 
           <span
             className="
+              mb-1
+
               h-[2px]
-              w-10
+              w-12
 
               rounded-full
 
               bg-gradient-to-r
-              from-[#6D48A8]
+              from-[#5B2E91]
               to-[#B998D5]
+
+              transition-all
+              duration-500
+
+              group-hover:w-20
             "
           />
         </div>
 
         {/* =================================================
-            ICON
+            FLOATING ICON
         ================================================= */}
 
         <motion.div
           whileHover={{
             scale: 1.08,
-            rotate: 5,
+            rotate: 4,
           }}
           transition={{
             duration: 0.3,
@@ -1088,38 +1158,38 @@ function StairServiceCard({
           className="
             absolute
             left-7
-            top-[105px]
+            top-[120px]
 
-            z-20
+            z-30
 
             flex
-            h-14
-            w-14
+            h-[62px]
+            w-[62px]
 
             items-center
             justify-center
 
-            rounded-2xl
+            rounded-[19px]
 
             border
-            border-[#C8B2D9]/50
+            border-white/30
 
             bg-gradient-to-br
             from-[#5B2E91]
-            via-[#7043A0]
-            to-[#9670B9]
+            via-[#6D48A8]
+            to-[#7B4DB8]
 
             text-white
 
-            shadow-[0_12px_30px_rgba(91,46,145,0.25)]
+            shadow-[0_16px_35px_rgba(91,46,145,0.28)]
 
             transition-all
             duration-500
 
-            group-hover:shadow-[0_18px_40px_rgba(91,46,145,0.35)]
+            group-hover:shadow-[0_20px_45px_rgba(91,46,145,0.38)]
           "
         >
-          <Icon className="text-[27px]" />
+          <Icon className="text-[29px]" />
         </motion.div>
 
         {/* =================================================
@@ -1132,35 +1202,85 @@ function StairServiceCard({
             z-20
 
             flex
-            min-h-[390px]
+            min-h-[510px]
 
-            w-[68%]
+            w-[70%]
 
             flex-col
             justify-end
 
             p-7
 
-            sm:min-h-[420px]
+            sm:min-h-[530px]
             sm:p-8
 
-            lg:min-h-[430px]
+            lg:min-h-[540px]
+            lg:p-9
           "
+            style={{padding:"20px"}}
         >
-          {/* Accent line */}
+
+          {/* =================================================
+              SERVICE LABEL
+          ================================================= */}
 
           <div
             className="
               mb-4
 
+              flex
+              items-center
+              gap-2
+            "
+
+             style={{marginBottom:"20px" , marginTop:"-30px" , marginLeft:"10px"}}
+          >
+            <span
+              className="
+                h-[6px]
+                w-[6px]
+
+                rounded-full
+
+                bg-[#7B4DB8]
+
+                shadow-[0_0_10px_rgba(123,77,184,0.55)]
+              "
+            
+            />
+
+            <span
+              className="
+                text-[10px]
+                font-bold
+                uppercase
+                tracking-[0.24em]
+
+                text-[#806F8C]
+              "
+
+         
+            >
+              Professional Service
+            </span>
+          </div>
+
+          {/* =================================================
+              ACCENT LINE
+          ================================================= */}
+
+          <div
+            className="
+              mb-5
+
               h-[3px]
-              w-10
+              w-11
 
               rounded-full
 
               bg-gradient-to-r
-              from-[#6D48A8]
-              via-[#B998D5]
+              from-[#5B2E91]
+              via-[#7B4DB8]
               to-transparent
 
               transition-all
@@ -1168,112 +1288,300 @@ function StairServiceCard({
 
               group-hover:w-20
             "
+             style={{ marginLeft:"10px"}}
           />
 
-          {/* Title */}
+          {/* =================================================
+              TITLE
+          ================================================= */}
 
           <h3
             className="
-              max-w-[390px]
+              max-w-[430px]
 
-              text-[25px]
+              text-[27px]
               font-semibold
-              leading-[1.12]
-              tracking-[-0.5px]
+              leading-[1.08]
 
-              text-[#452D2D]
+              tracking-[-1px]
+
+              text-[#3E2066]
 
               transition-colors
               duration-300
 
               group-hover:text-[#5B2E91]
 
-              sm:text-[29px]
+              sm:text-[30px]
             "
+
+             style={{marginBottom:"20px",marginLeft:"7px"}}
           >
             {service.title}
           </h3>
 
-          {/* Description */}
+          {/* =================================================
+              DESCRIPTION
+          ================================================= */}
 
           <p
             className="
-              mt-3
+              mt-4
 
-              max-w-[400px]
+              max-w-[420px]
 
               text-[13px]
-              leading-6
+              leading-[1.8]
 
-              text-[#756E78]
+              text-[#2D2D2D]/65
 
               sm:text-[14px]
             "
+             style={{marginBottom:"20px" ,marginLeft:"7px"}}
           >
             {service.description}
           </p>
 
-          {/* Action */}
+          {/* =================================================
+              BOOK NOW
+          ================================================= */}
 
-          <div
-            className="
-              mt-5
+     <motion.a
+  href="#booking"
+  onClick={handleBookNow}
+  whileHover={{
+    y: -3,
+  }}
+  whileTap={{
+    scale: 0.985,
+  }}
+  className="
+    group/book
+    relative
+    mt-6
+    flex
+    w-full
+    max-w-[380px]
+    items-center
+    justify-between
+    overflow-hidden
+    rounded-[20px]
+    border
+    border-[#E7DDF0]
+    bg-white
+    shadow-[0_12px_35px_rgba(62,32,102,0.09)]
+    transition-all
+    duration-500
+    hover:border-[#CDB8DD]
+    hover:shadow-[0_20px_45px_rgba(62,32,102,0.16)]
+  "
+  style={{
+    padding: "9px 10px 9px 10px",
+  }}
+>
+  {/* ==============================================
+      SUBTLE PURPLE LIGHT
+  ============================================== */}
 
-              flex
-              items-center
-              gap-3
-            "
-          >
-            <span
-              className="
-                flex
-                h-10
-                w-10
+  <span
+    className="
+      pointer-events-none
+      absolute
+      -left-16
+      top-1/2
+      h-24
+      w-24
+      -translate-y-1/2
+      rounded-full
+      bg-[#7B4DB8]/10
+      blur-2xl
+      transition-all
+      duration-500
+      group-hover/book:bg-[#7B4DB8]/20
+    "
+  />
 
-                items-center
-                justify-center
+  {/* ==============================================
+      LEFT CONTENT
+  ============================================== */}
 
-                rounded-full
+  <span
+    className="
+      relative
+      z-10
+      flex
+      items-center
+      gap-3
+    "
+  >
 
-                border
-                border-[#D8CBE3]
+    {/* Phone Icon */}
 
-                bg-white/80
+    <span
+      className="
+        relative
+        flex
+        h-[44px]
+        w-[44px]
+        shrink-0
+        items-center
+        justify-center
+        overflow-hidden
+        rounded-[14px]
+        bg-gradient-to-br
+        from-[#F4EFF8]
+        to-[#E9DDF2]
+        text-[#5B2E91]
+        shadow-[inset_0_1px_0_rgba(255,255,255,.8)]
+        transition-all
+        duration-500
+        group-hover/book:scale-105
+        group-hover/book:from-[#5B2E91]
+        group-hover/book:to-[#7B4DB8]
+        group-hover/book:text-white
+      "
+    >
+      <HiPhone
+        className="
+          relative
+          z-10
+          text-[19px]
+          transition-transform
+          duration-500
+          group-hover/book:rotate-[-8deg]
+        "
+      />
 
-                text-[#5B2E91]
+      {/* Icon glow */}
 
-                backdrop-blur-md
+      <span
+        className="
+          absolute
+          inset-0
+          rounded-[14px]
+          bg-white/20
+          opacity-0
+          transition-opacity
+          duration-300
+          group-hover/book:opacity-100
+        "
+      />
+    </span>
 
-                transition-all
-                duration-500
 
-                group-hover:border-[#6D48A8]
-                group-hover:bg-[#6D48A8]
-                group-hover:text-white
+    {/* Text */}
 
-                group-hover:translate-x-1
-              "
-            >
-              <HiArrowUpRight className="text-[17px]" />
-            </span>
+    <span className="text-left">
 
-            <span
-              className="
-                text-[10px]
-                font-semibold
-                uppercase
-                tracking-[0.16em]
+      <span
+        className="
+          block
+          text-[9px]
+          font-bold
+          uppercase
+          tracking-[0.2em]
+          text-[#9A90A2]
+        "
+      >
+        Ready to get started?
+      </span>
 
-                text-[#817987]
-              "
-            >
-              Explore Service
-            </span>
-          </div>
+      <span
+        className="
+          mt-1
+          block
+          text-[14px]
+          font-bold
+          tracking-[-0.2px]
+          text-[#3E2066]
+          transition-colors
+          duration-300
+          group-hover/book:text-[#5B2E91]
+        "
+      >
+        Book This Service
+      </span>
+
+    </span>
+
+  </span>
+
+
+  {/* ==============================================
+      RIGHT ARROW
+  ============================================== */}
+
+  <span
+    className="
+      relative
+      z-10
+      flex
+      h-[44px]
+      w-[44px]
+      shrink-0
+      items-center
+      justify-center
+      rounded-full
+      bg-gradient-to-br
+      from-[#5B2E91]
+      to-[#7B4DB8]
+      text-white
+      shadow-[0_8px_20px_rgba(91,46,145,0.28)]
+      transition-all
+      duration-500
+      group-hover/book:translate-x-1
+      group-hover/book:shadow-[0_12px_28px_rgba(91,46,145,0.38)]
+    "
+  >
+
+    <HiArrowUpRight
+      className="
+        text-[18px]
+        transition-transform
+        duration-500
+        group-hover/book:rotate-[-8deg]
+      "
+    />
+
+  </span>
+
+
+  {/* ==============================================
+      HOVER LIGHT SWEEP
+  ============================================== */}
+
+  <motion.span
+    className="
+      pointer-events-none
+      absolute
+      inset-y-0
+      -left-[80%]
+      w-[45%]
+      rotate-[18deg]
+      bg-gradient-to-r
+      from-transparent
+      via-white/50
+      to-transparent
+      opacity-0
+      group-hover/book:opacity-100
+    "
+    animate={{
+      x: ["0%", "360%"],
+    }}
+    transition={{
+      duration: 1.1,
+      repeat: Infinity,
+      repeatDelay: 2.5,
+      ease: "easeInOut",
+    }}
+  />
+
+</motion.a>
+
         </div>
 
         {/* =================================================
-            PURPLE SIDE ACCENT
+            LEFT PURPLE ACCENT
         ================================================= */}
 
         <span
@@ -1283,11 +1591,13 @@ function StairServiceCard({
             top-0
             bottom-0
 
+            z-40
+
             w-[3px]
 
             bg-gradient-to-b
-            from-[#6D48A8]
-            via-[#B998D5]
+            from-[#5B2E91]
+            via-[#7B4DB8]
             to-transparent
 
             transition-all
@@ -1307,14 +1617,14 @@ function StairServiceCard({
           }}
           className="
             absolute
-            right-6
-            top-6
+            right-7
+            top-7
 
-            z-30
+            z-40
 
             flex
-            h-10
-            w-10
+            h-11
+            w-11
 
             items-center
             justify-center
@@ -1322,31 +1632,31 @@ function StairServiceCard({
             rounded-full
 
             border
-            border-[#D9CCE4]
+            border-white/70
 
-            bg-white/75
+            bg-white/80
 
             text-[#5B2E91]
 
-            shadow-[0_8px_25px_rgba(91,46,145,0.08)]
+            shadow-[0_10px_25px_rgba(62,32,102,0.10)]
 
-            backdrop-blur-md
+            backdrop-blur-xl
 
             transition-all
             duration-500
 
-            group-hover:border-[#6D48A8]
-            group-hover:bg-[#6D48A8]
+            group-hover:border-[#5B2E91]
+            group-hover:bg-[#5B2E91]
             group-hover:text-white
 
             group-hover:rotate-[-8deg]
           "
         >
-          <HiArrowUpRight className="text-[16px]" />
+          <HiArrowUpRight className="text-[17px]" />
         </motion.div>
 
         {/* =================================================
-            HOVER LIGHT
+            BOTTOM GLASS HIGHLIGHT
         ================================================= */}
 
         <div
@@ -1354,26 +1664,21 @@ function StairServiceCard({
             pointer-events-none
 
             absolute
-            -bottom-20
-            -left-20
+            bottom-0
+            left-0
+            right-0
 
-            h-44
-            w-44
+            h-px
 
-            rounded-full
+            bg-gradient-to-r
+            from-transparent
+            via-white
+            to-transparent
 
-            bg-[#7B4DB8]/15
-
-            blur-[65px]
-
-            opacity-0
-
-            transition-opacity
-            duration-700
-
-            group-hover:opacity-100
+            opacity-80
           "
         />
+
       </div>
     </motion.article>
   );
