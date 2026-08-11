@@ -1064,63 +1064,7 @@ export default function Header() {
   </Link>
 
 
-  {/* STAFFING */}
-
-  <Link
-    href="#services"
-    onClick={(e) =>
-      handleNavigation(e, "#services")
-    }
-    className="
-      group/item
-
-      flex
-      items-center
-      justify-between
-
-      rounded-xl
-
-      text-[15px]
-      font-medium
-
-      text-[#452D2D]
-
-      transition-all
-      duration-200
-
-      bg-[#F7F3FC]
-
-      hover:bg-[#EEE5F8]
-      hover:text-[#5B2E91]
-    "
-    style={{
-      padding: "12px 14px",
-    }}
-  >
-    <span>
-      Staffing Solutions
-    </span>
-
-    <span
-      className="
-        h-1.5
-        w-1.5
-
-        shrink-0
-
-        rounded-full
-
-        bg-[#7B4DB8]
-
-        opacity-0
-
-        transition-opacity
-        duration-200
-
-        group-hover/item:opacity-100
-      "
-    />
-  </Link>
+ 
 
 </div>
                     </div>
@@ -1326,7 +1270,7 @@ export default function Header() {
                 onClick={(e) =>
                   handleNavigation(
                     e,
-                    "#contact"
+                    "#booking"
                   )
                 }
                 className="
