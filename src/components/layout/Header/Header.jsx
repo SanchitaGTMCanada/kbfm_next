@@ -1326,17 +1326,7 @@ export default function Header() {
                 >
                   Book Now
 
-                  <HiArrowTopRightOnSquare
-                    className="
-                      text-[17px]
-
-                      transition-transform
-                      duration-300
-
-                      group-hover:translate-x-1
-                      group-hover:-translate-y-1
-                    "
-                  />
+               
                 </span>
               </Button>
             </div>

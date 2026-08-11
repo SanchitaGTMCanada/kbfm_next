@@ -8,6 +8,17 @@ import { HiArrowRight } from "react-icons/hi2";
 
 import Container from "@/components/ui/Container/Container";
 import Button from "@/components/ui/Button/Button";
+import {
+  
+  HiOutlineCalendarDays,
+  HiOutlineSquares2X2,
+} from "react-icons/hi2";
+
+import {
+  HiShieldCheck,
+  HiSparkles,
+  HiHeart,
+} from "react-icons/hi2";
 
 
 const heroImages = [
@@ -452,114 +463,444 @@ export default function Hero() {
               {/* =====================================================
                   CTA BUTTONS
               ===================================================== */}
+{/* =================================================
+    PREMIUM THREE ICON DECORATION
+    NO CTA / NO LINK
+================================================= */}
 
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: 30,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                transition={{
-                  delay: 0.75,
-                  duration: 0.7,
-                }}
-                className="
-                  flex
-                  flex-wrap
-                  items-center
-                  gap-4
-                "
-                style={{
-                  marginTop: "28px",
-                  marginBottom: "42px",
-                }}
-              >
-                {/* =================================================
-                    PRIMARY CTA
-                ================================================= */}
+{/* =================================================
+    PREMIUM THREE ICON DESIGN
+    NO CTA / NO LINK
+================================================= */}
 
-                <Button
-                  href="#contact"
-                  onClick={(e) =>
-                    handleNavigation(e, "#contact")
-                  }
-                  className="
-                    group
-                    rounded-full
-                    border
-                    border-[#D4AF37]
-                    bg-gradient-to-r
-                    from-[#5B2E91]
-                    to-[#7B4DB8]
-                    px-6
-                    py-3
-                    font-semibold
-                    text-white
-                    shadow-[0_12px_30px_rgba(62,32,102,0.35)]
-                    transition-all
-                    duration-300
-                    hover:-translate-y-1
-                    hover:from-[#3E2066]
-                    hover:to-[#5B2E91]
-                    hover:shadow-[0_18px_40px_rgba(62,32,102,0.45)]
-                  "
-                >
-                  Book Now
-                </Button>
+<motion.div
+  initial={{
+    opacity: 0,
+    y: 20,
+  }}
+  animate={{
+    opacity: 1,
+    y: 0,
+  }}
+  transition={{
+    delay: 0.8,
+    duration: 0.9,
+    ease: [0.22, 1, 0.36, 1],
+  }}
+  className="
+    flex
+    items-center
+  "
+  style={{
+    marginTop: "38px",
+    marginBottom: "42px",
+  }}
+>
 
-                {/* =================================================
-                    SECONDARY CTA
-                ================================================= */}
+  {/* =================================================
+      LEFT ICON
+  ================================================= */}
 
-                <Link
-                  href="#services"
-                  onClick={(e) =>
-                    handleNavigation(e, "#services")
-                  }
-                  className="
-                    group
-                    inline-flex
-                    items-center
-                    gap-3
-                    rounded-full
-                    border
-                    border-white/40
-                    bg-white/10
-                    px-6
-                    py-3
-                    font-semibold
-                    text-[14px]
-                    text-white
-                    backdrop-blur-xl
-                    shadow-[0_8px_25px_rgba(0,0,0,0.18)]
-                    transition-all
-                    duration-300
-                    hover:-translate-y-1
-                    hover:border-[#D4AF37]
-                    hover:bg-[#5B2E91]/80
-                    hover:shadow-[0_12px_30px_rgba(91,46,145,0.30)]
-                  "
-                  style={{padding:"10px"}}
-                >
-                  <span className="text-white">
-                    Explore Services
-                  </span>
+  <motion.div
+    animate={{
+      y: [0, -6, 0],
+    }}
+    transition={{
+      duration: 4,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+    className="
+      relative
+      flex
+      h-[58px]
+      w-[58px]
 
-                  <HiArrowRight
-                    className="
-                      text-[18px]
-                      text-white
-                      transition-transform
-                      duration-300
-                      group-hover:translate-x-1
-                    "
-                  />
-                </Link>
-              </motion.div>
+      items-center
+      justify-center
 
+      rounded-2xl
+
+      border
+      border-white/40
+
+      bg-white/[0.14]
+
+      backdrop-blur-xl
+
+      shadow-[0_10px_35px_rgba(0,0,0,0.25)]
+    "
+  >
+
+    {/* Strong purple glow */}
+
+    <span
+      className="
+        pointer-events-none
+        absolute
+        inset-[-12px]
+
+        rounded-full
+
+        bg-[#B998D5]/20
+
+        blur-[18px]
+      "
+    />
+
+    {/* Inner glow */}
+
+    <span
+      className="
+        pointer-events-none
+        absolute
+        inset-[7px]
+
+        rounded-xl
+
+        bg-[#B998D5]/15
+
+        blur-[4px]
+      "
+    />
+
+    <HiShieldCheck
+      className="
+        relative
+        z-10
+
+        text-[30px]
+
+        text-white
+
+        drop-shadow-[0_0_5px_rgba(255,255,255,0.9)]
+        drop-shadow-[0_0_18px_rgba(185,152,213,0.95)]
+      "
+    />
+
+  </motion.div>
+
+
+  {/* =================================================
+      CONNECTOR
+  ================================================= */}
+
+  <div
+    className="
+      relative
+      mx-4
+
+      h-[2px]
+      w-[55px]
+
+      overflow-hidden
+
+      rounded-full
+
+      bg-white/20
+    "
+  >
+
+    <motion.span
+      animate={{
+        x: ["-120%", "220%"],
+      }}
+      transition={{
+        duration: 2.5,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+      className="
+        absolute
+        left-0
+        top-0
+
+        h-full
+        w-1/2
+
+        rounded-full
+
+        bg-gradient-to-r
+        from-transparent
+        via-[#E7D7F5]
+        to-transparent
+
+        shadow-[0_0_12px_rgba(231,215,245,0.9)]
+      "
+    />
+
+  </div>
+
+
+  {/* =================================================
+      CENTER ICON
+  ================================================= */}
+
+  <motion.div
+    animate={{
+      y: [0, -9, 0],
+      scale: [1, 1.05, 1],
+    }}
+    transition={{
+      duration: 4.5,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+    className="
+      relative
+      flex
+      h-[76px]
+      w-[76px]
+
+      items-center
+      justify-center
+
+      rounded-[24px]
+
+      border
+      border-[#E7D7F5]/60
+
+      bg-gradient-to-br
+      from-white/[0.25]
+      via-[#8B65B4]/45
+      to-[#4B286F]/70
+
+      backdrop-blur-2xl
+
+      shadow-[0_15px_50px_rgba(55,25,85,0.45)]
+    "
+  >
+
+    {/* Large outer glow */}
+
+    <motion.span
+      animate={{
+        opacity: [0.25, 0.65, 0.25],
+        scale: [1, 1.15, 1],
+      }}
+      transition={{
+        duration: 3,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+      className="
+        pointer-events-none
+        absolute
+        inset-[-13px]
+
+        rounded-[30px]
+
+        bg-[#B998D5]/15
+
+        blur-[15px]
+      "
+    />
+
+    {/* Outer border */}
+
+    <span
+      className="
+        pointer-events-none
+
+        absolute
+        inset-[-6px]
+
+        rounded-[28px]
+
+        border
+        border-[#DCCCF0]/25
+      "
+    />
+
+    {/* Inner glass */}
+
+    <span
+      className="
+        pointer-events-none
+
+        absolute
+        inset-[8px]
+
+        rounded-[18px]
+
+        border
+        border-white/15
+
+        bg-white/[0.07]
+      "
+    />
+
+    {/* Icon glow */}
+
+    <span
+      className="
+        pointer-events-none
+
+        absolute
+        h-10
+        w-10
+
+        rounded-full
+
+        bg-[#E7D7F5]/20
+
+        blur-[10px]
+      "
+    />
+
+    <HiSparkles
+      className="
+        relative
+        z-10
+
+        text-[35px]
+
+        text-white
+
+        drop-shadow-[0_0_6px_rgba(255,255,255,1)]
+        drop-shadow-[0_0_22px_rgba(231,215,245,1)]
+      "
+    />
+
+  </motion.div>
+
+
+  {/* =================================================
+      CONNECTOR
+  ================================================= */}
+
+  <div
+    className="
+      relative
+      mx-4
+
+      h-[2px]
+      w-[55px]
+
+      overflow-hidden
+
+      rounded-full
+
+      bg-white/20
+    "
+  >
+
+    <motion.span
+      animate={{
+        x: ["220%", "-120%"],
+      }}
+      transition={{
+        duration: 2.8,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+      className="
+        absolute
+        right-0
+        top-0
+
+        h-full
+        w-1/2
+
+        rounded-full
+
+        bg-gradient-to-r
+        from-transparent
+        via-[#E7D7F5]
+        to-transparent
+
+        shadow-[0_0_12px_rgba(231,215,245,0.9)]
+      "
+    />
+
+  </div>
+
+
+  {/* =================================================
+      RIGHT ICON
+  ================================================= */}
+
+  <motion.div
+    animate={{
+      y: [0, -6, 0],
+    }}
+    transition={{
+      duration: 4.2,
+      delay: 0.5,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+    className="
+      relative
+      flex
+      h-[58px]
+      w-[58px]
+
+      items-center
+      justify-center
+
+      rounded-2xl
+
+      border
+      border-white/40
+
+      bg-white/[0.14]
+
+      backdrop-blur-xl
+
+      shadow-[0_10px_35px_rgba(0,0,0,0.25)]
+    "
+  >
+
+    {/* Purple glow */}
+
+    <span
+      className="
+        pointer-events-none
+        absolute
+        inset-[-12px]
+
+        rounded-full
+
+        bg-[#B998D5]/20
+
+        blur-[18px]
+      "
+    />
+
+    {/* Inner glow */}
+
+    <span
+      className="
+        pointer-events-none
+        absolute
+        inset-[7px]
+
+        rounded-xl
+
+        bg-[#B998D5]/15
+
+        blur-[4px]
+      "
+    />
+
+    <HiHeart
+      className="
+        relative
+        z-10
+
+        text-[29px]
+
+        text-white
+
+        drop-shadow-[0_0_5px_rgba(255,255,255,0.9)]
+        drop-shadow-[0_0_18px_rgba(185,152,213,0.95)]
+      "
+    />
+
+  </motion.div>
+
+</motion.div>
               {/* =====================================================
                   SERVICE HIGHLIGHTS
               ===================================================== */}
