@@ -596,7 +596,7 @@ export default function WhyChoose() {
                 "
               >
                 <Image
-                  src="/assets/whyChoose/whychoose.jpg"
+                  src="/assets/whyChoose/whychoose.jpeg"
                   alt="K.B.F.M. Global Services team"
                   fill
                   className="
