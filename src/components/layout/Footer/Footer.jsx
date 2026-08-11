@@ -343,7 +343,7 @@ export default function Footer() {
                 sm:text-[15px]
               "
 
-              style={{margin:"20px 0px 20px 0px"}}
+              style={{margin:"20px 0px 20px 0px", color:"white", fontSize:"15px"}}
             >
               Serving the North with care, security,
               and integrity. Reliable staffing and
@@ -465,7 +465,7 @@ export default function Footer() {
                   text-white
                 "
 
-                style={{color:"white"}}
+                style={{color:"white",fontSize:"16px"}}
               >
                 Navigation
               </h3>
@@ -515,6 +515,8 @@ export default function Footer() {
 
                         group-hover:opacity-100
                       "
+                      style={{fontSize:"16px"}}
+
                     />
 
                     {item.title}
@@ -765,7 +767,7 @@ export default function Footer() {
                       hover:text-[#D4AF37]
                     "
                   >
-                    867-688-2503
+                    +1 867-688-2503
                   </a>
                 </div>
               </div>
@@ -900,8 +902,10 @@ export default function Footer() {
                       text-[13px]
                       leading-6
 
-                      text-white/75
+                      text-white/90
                     "
+
+                    style={{color:"white"}}
                   >
                     K.B.F.M. Global Services N.W.T. Ltd.
                     <br />

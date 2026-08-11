@@ -451,6 +451,8 @@ export default function Hero() {
                   marginTop: "28px",
                   marginBottom: "30px",
                   paddingRight: "20px",
+                  color:"white",
+                  fontSize:"19px"
                 }}
               >
                 K.B.F.M. Global Services N.W.T. Ltd. provides

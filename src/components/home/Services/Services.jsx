@@ -445,7 +445,7 @@ export default function Services() {
 
               sm:text-[16px]
             "
-              style={{margin:"20px 0px 20px 0px"}}
+              style={{margin:"20px 0px 20px 0px", fontSize:"15px"}}
           >
             Reliable, compassionate, and high-quality
             services designed to meet the needs of
@@ -1259,7 +1259,7 @@ function StairServiceCard({
                 text-[#806F8C]
               "
 
-         
+         style={{fontSize:"19px"}}
             >
               Professional Service
             </span>

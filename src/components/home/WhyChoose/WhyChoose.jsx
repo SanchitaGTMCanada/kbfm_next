@@ -474,7 +474,7 @@ export default function WhyChoose() {
 
                 sm:text-[16px]
               "
-              style={{margin:"20px 0px 20px 0px"}}
+              style={{margin:"20px 0px 20px 0px", fontSize:"17px"}}
             >
               We combine local knowledge, trained professionals,
               reliable service delivery, and flexible support to
@@ -906,6 +906,7 @@ export default function WhyChoose() {
                           group-hover:bg-[#6D48A8]
                           group-hover:text-white
                         "
+                        style={{padding:"10px"}}
                       >
                         <Icon className="text-[21px]" />
                       </div>
@@ -939,7 +940,7 @@ export default function WhyChoose() {
 
                           text-[#452D2D]
                         "
-                         style={{padding:"10px"}}
+                         style={{padding:"10px", fontSize:"15px"}}
                       >
                         {item.title}
                       </h3>
@@ -955,7 +956,7 @@ export default function WhyChoose() {
 
                           text-[#746D78]
                         "
-                        style={{padding:"10px"}}
+                        style={{padding:"10px", fontSize:"13px"}}
                       >
                         {item.description}
                       </p>
@@ -1130,7 +1131,7 @@ export default function WhyChoose() {
                     sm:text-[28px]
                   "
 
-                  style={{color:"#f0e5ff"}}
+                  style={{color:"#ddcdf5"}}
                 >
                   Supporting People. Strengthening Communities.
                 </h3>
@@ -1148,6 +1149,7 @@ export default function WhyChoose() {
 
                     sm:text-[14px]
                   "
+                  style={{fontSize:"15px", color:"white"}}
                 >
                   We are committed to creating local employment
                   opportunities while delivering exceptional service

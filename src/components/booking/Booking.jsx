@@ -33,6 +33,8 @@ export default function Booking() {
         flex 
         justify-center
       "
+
+      
     >
       {/* =====================================================
           PREMIUM BACKGROUND
@@ -247,6 +249,8 @@ export default function Booking() {
             mx-auto
             justify-center
           "
+
+          style={{marginTop:"40px"}}
           
         >
       <Container>
@@ -581,6 +585,7 @@ export default function Booking() {
 
                         text-white/70
                       "
+                      style={{color:"#f4e0fa", fontSize:"15px"}}
                     >
                       Whether you need one service or
                       ongoing support, our team is ready
@@ -591,7 +596,7 @@ export default function Booking() {
     INDUSTRIES WE SERVE
 ================================================= */}
 
-<div className="mt-10" style={{marginTop:"20px"}}>
+<div className="mt-10" style={{marginTop:"30px"}}>
 
   <p
     className="
@@ -604,7 +609,7 @@ export default function Booking() {
 
       text-[#D4AF37]
     "
-    style={{margin:"10px 0px 10px 0px"}}
+    style={{margin:"10px 0px 10px 0px", fontSize:"16px", color:"#d5bcf5"}}
   >
     Industries We Serve
   </p>
@@ -650,6 +655,8 @@ export default function Booking() {
 
           text-white/75
         "
+
+        style={{color:"#f4e0fa",fontSize:"14px"}}
       >
         Government Departments
       </p>
@@ -687,6 +694,7 @@ export default function Booking() {
 
           text-white/75
         "
+        style={{color:"#f4e0fa",fontSize:"14px"}}
       >
         Healthcare Facilities
       </p>
@@ -724,6 +732,7 @@ export default function Booking() {
 
           text-white/75
         "
+        style={{color:"#f4e0fa",fontSize:"14px"}}
       >
         Commercial Businesses
       </p>
@@ -761,6 +770,7 @@ export default function Booking() {
 
           text-white/75
         "
+        style={{color:"#f4e0fa",fontSize:"14px"}}
       >
         Industrial Operations
       </p>
@@ -798,6 +808,7 @@ export default function Booking() {
 
           text-white/75
         "
+        style={{color:"#f4e0fa",fontSize:"14px"}}
       >
         Residential Clients
       </p>
@@ -835,6 +846,7 @@ export default function Booking() {
 
           text-white/75
         "
+        style={{color:"#f4e0fa",fontSize:"14px"}}
       >
         Non-Profit Organizations
       </p>
@@ -872,6 +884,7 @@ export default function Booking() {
 
           text-white/75
         "
+        style={{color:"#f4e0fa",fontSize:"14px"}}
       >
         Property Management Companies
       </p>
@@ -909,6 +922,7 @@ export default function Booking() {
 
           text-white/75
         "
+        style={{color:"#f4e0fa",fontSize:"14px"}}
       >
         Construction Companies
       </p>
@@ -993,6 +1007,8 @@ export default function Booking() {
                             font-semibold
                             text-white
                           "
+
+                          style={{color:"#dfcbfa", fontSize:"16px"}}
                         >
                           Reliable & Professional
                         </p>
@@ -1003,6 +1019,7 @@ export default function Booking() {
                             text-[10px]
                             text-white/50
                           "
+                            style={{color:"#f4e0fa", fontSize:"13px"}}
                         >
                           Trusted local support
                         </p>
@@ -1058,6 +1075,7 @@ export default function Booking() {
                             font-semibold
                             text-white
                           "
+                            style={{color:"#dfcbfa", fontSize:"16px"}}
                         >
                           Community Focused
                         </p>
@@ -1068,6 +1086,7 @@ export default function Booking() {
                             text-[10px]
                             text-white/50
                           "
+                            style={{color:"#f4e0fa",fontSize:"13px"}}
                         >
                           Built around local needs
                         </p>
@@ -1123,6 +1142,7 @@ export default function Booking() {
                             font-semibold
                             text-white
                           "
+                            style={{color:"#dfcbfa",fontSize:"16px"}}
                         >
                           Multiple Services
                         </p>
@@ -1133,6 +1153,7 @@ export default function Booking() {
                             text-[10px]
                             text-white/50
                           "
+                            style={{color:"#f4e0fa",fontSize:"13px"}}
                         >
                           One trusted partner
                         </p>
@@ -1373,7 +1394,7 @@ export default function Booking() {
                   text-[#2D2D2D]
                 "
                 style={{
-                  opacity: 0.68,
+                  opacity: 0.68,fontSize:"15px"
                 }}
               >
                 Professional Service
@@ -1416,7 +1437,7 @@ export default function Booking() {
                   text-[#2D2D2D]
                 "
                 style={{
-                  opacity: 0.68,
+                  opacity: 0.68,fontSize:"15px"
                 }}
               >
                 Reliable Support
@@ -1458,7 +1479,7 @@ export default function Booking() {
                   text-[#2D2D2D]
                 "
                 style={{
-                  opacity: 0.68,
+                  opacity: 0.68,fontSize:"15px"
                 }}
               >
                 Community Focused
@@ -1500,7 +1521,7 @@ export default function Booking() {
                   text-[#2D2D2D]
                 "
                 style={{
-                  opacity: 0.68,
+                  opacity: 0.68,fontSize:"15px"
                 }}
               >
                 Quick Response

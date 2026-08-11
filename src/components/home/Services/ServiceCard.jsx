@@ -402,8 +402,9 @@ export default function ServiceCard({ service, index }) {
               text-[#716A78]
             "
             style={{
-              marginBottom: "22px",
+              marginBottom: "22px",fontSize:"15px"
             }}
+          
           >
             {service.description}
           </p>

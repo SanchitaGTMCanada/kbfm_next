@@ -182,6 +182,7 @@ export default function AboutContent() {
               bg-clip-text
               text-transparent
             "
+          
           >
             Locally Delivered.
           </span>
@@ -310,7 +311,7 @@ export default function AboutContent() {
 
               text-[#452D2D]
             "
-            style={{margin:"10px 0px 10px 0px"}}
+            style={{margin:"10px 0px 10px 0px", fontSize:"15px"}}
           >
             Locally Delivered
           </p>
@@ -324,6 +325,7 @@ export default function AboutContent() {
 
               text-[#7B737E]
             "
+            style={{fontSize:"13px"}}
           >
             Serving Northern communities
           </p>
@@ -393,7 +395,7 @@ export default function AboutContent() {
 
               text-[#452D2D]
             "
-            style={{margin:"10px 0px 10px 0px"}}
+            style={{margin:"10px 0px 10px 0px", fontSize:"15px"}}
           >
             One Trusted Partner
           </p>
@@ -407,6 +409,7 @@ export default function AboutContent() {
 
               text-[#7B737E]
             "
+            style={{fontSize:"13px"}}
           >
             Multiple essential services
           </p>
@@ -477,7 +480,7 @@ export default function AboutContent() {
               text-[#452D2D]
             "
 
-            style={{margin:"10px 0px 10px 0px"}}
+            style={{margin:"10px 0px 10px 0px" ,fontSize:"15px"}}
           >
             Community Focused
           </p>
@@ -491,6 +494,7 @@ export default function AboutContent() {
 
               text-[#7B737E]
             "
+            style={{fontSize:"13px"}}
           >
             Professional & compassionate
           </p>
@@ -525,6 +529,8 @@ export default function AboutContent() {
 
             text-[#756D79]
           "
+
+          style={{fontSize:"16px"}}
          
         >
           Reliable support from one trusted organization
