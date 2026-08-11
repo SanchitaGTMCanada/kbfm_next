@@ -13,6 +13,7 @@ import {
 import Button from "@/components/ui/Button/Button";
 import navigation from "@/data/navigation";
 import MobileMenu from "./MobileMenu";
+import Image from "next/image";
 
 
 
@@ -287,37 +288,58 @@ export default function Header() {
             {/* =====================================================
                 LOGO
             ===================================================== */}
+<div
+  className="
+    relative
+    z-10
+    flex
+    h-full
+    items-center
+    flex-shrink-0
+  "
+  style={{
+    maxWidth: "180px",
+  }}
+>
+  <Link
+    href="#home"
+    onClick={(e) =>
+      handleNavigation(e, "#home")
+    }
+    className={`
+      flex
+      items-center
+      justify-center
+      rounded-xl
+      transition-all
+      duration-300
 
-            <div
-              className="
-                relative
-                z-10
-
-                flex
-                h-full
-                items-center
-
-                flex-shrink-0
-              "
-              style={{
-                maxWidth: "160px",
-              }}
-            >
-              <Link
-                href="#home"
-                onClick={(e) =>
-                  handleNavigation(e, "#home")
-                }
-                className="
-                  flex
-                  h-full
-                  items-center
-                  justify-center
-                "
-              >
-                {/* KEEP YOUR EXISTING LOGO HERE */}
-              </Link>
-            </div>
+      ${
+        !sticky
+          ? "bg-white"
+          : "bg-transparent"
+      }
+    `}
+    style={{
+      padding: !sticky
+        ? "6px 10px"
+        : "0px",
+    }}
+  >
+    <Image
+      src="/assets/logos/logo.png"
+      alt="K.B.F.M. Global Services N.W.T. Ltd."
+      width={150}
+      height={60}
+      priority
+      className="
+        h-auto
+        w-[150px]
+        object-contain
+      "
+    />
+  </Link>
+</div>
 
             {/* =====================================================
                 DESKTOP NAVIGATION
@@ -1173,7 +1195,7 @@ export default function Header() {
                 >
                   Book Now
 
-                  <HiArrowTopRightOnSquare
+                  {/* <HiArrowTopRightOnSquare
                     className="
                       text-[17px]
 
@@ -1183,7 +1205,7 @@ export default function Header() {
                       group-hover:translate-x-1
                       group-hover:-translate-y-1
                     "
-                  />
+                  /> */}
                 </span>
               </Button>
             </div>
