@@ -3,47 +3,51 @@ import Header from "@/components/layout/Header/Header";
 // import Footer from "@/components/layout/Footer/Footer";
 
 export const metadata = {
-  metadataBase: new URL("https://acplumbingheating.ca/"),
+  metadataBase: new URL("https://kbfm-next.vercel.app/"),
 
   title: {
-    default: "AC Plumbing & Heating | Plumbing & Heating Services in Canada",
-    template: "%s | AC Plumbing & Heating",
+    default: "K.B.F.M. Global Services N.W.T. Ltd. | Serving the North",
+    template: "%s | K.B.F.M. Global Services",
   },
 
   description:
-    "AC Plumbing & Heating provides professional plumbing, heating, boiler maintenance, furnace maintenance, water heater servicing, HVAC maintenance, and emergency plumbing services across Canada.",
+    "K.B.F.M. Global Services N.W.T. Ltd. provides dependable security, caregiving, cleaning, janitorial, and facility support services throughout the Northwest Territories.",
 
   keywords: [
-    "AC Plumbing",
-    "Plumbing Services",
-    "Heating Services",
-    "Boiler Maintenance",
-    "Combi Boiler",
-    "Tankless Water Heater",
-    "Water Heater Maintenance",
-    "HVAC Maintenance",
-    "Furnace Maintenance",
-    "Gas Fireplace Maintenance",
-    "HRV Maintenance",
-    "Humidifier Maintenance",
-    "MUA Unit Testing",
-    "Emergency Plumbing",
-    "Canada Plumbing",
+    "K.B.F.M. Global Services",
+    "KBFM Global Services",
+    "Security Services",
+    "Private Security Services",
+    "Caregiving Services",
+    "Personal Support",
+    "Cleaning Services",
+    "Janitorial Services",
+    "Facility Maintenance",
+    "Facility Support",
+    "Staffing Solutions",
+    "Northern Services",
+    "Northwest Territories",
+    "Yellowknife Services",
+    "Security Services Yellowknife",
+    "Cleaning Services Yellowknife",
+    "Caregiving Services Yellowknife",
+    "Facility Maintenance Yellowknife",
   ],
 
   authors: [
     {
-      name: "AC Plumbing & Heating",
+      name: "K.B.F.M. Global Services N.W.T. Ltd.",
     },
   ],
 
-  creator: "AC Plumbing & Heating",
+  creator: "K.B.F.M. Global Services N.W.T. Ltd.",
 
-  publisher: "AC Plumbing & Heating",
+  publisher: "K.B.F.M. Global Services N.W.T. Ltd.",
 
   robots: {
     index: true,
     follow: true,
+
     googleBot: {
       index: true,
       follow: true,
@@ -58,13 +62,14 @@ export const metadata = {
   },
 
   openGraph: {
-    title: "AC Plumbing & Heating",
+    title: "K.B.F.M. Global Services N.W.T. Ltd.",
+
     description:
-      "Professional Plumbing, Heating, Boiler, Furnace & HVAC Maintenance Services Across Canada.",
+      "Reliable security, caregiving, cleaning, janitorial, and facility support services delivered throughout the Northwest Territories.",
 
-    url: "https://acplumbingheating.ca/",
+    url: "https://kbfm-next.vercel.app/",
 
-    siteName: "AC Plumbing & Heating",
+    siteName: "K.B.F.M. Global Services N.W.T. Ltd.",
 
     locale: "en_CA",
 
@@ -75,16 +80,19 @@ export const metadata = {
         url: "/seo/og-image.png",
         width: 1200,
         height: 630,
-        alt: "AC Plumbing & Heating",
+        alt: "K.B.F.M. Global Services N.W.T. Ltd.",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "AC Plumbing & Heating",
+
+    title: "K.B.F.M. Global Services N.W.T. Ltd.",
+
     description:
-      "Professional Plumbing & Heating Services Across Canada.",
+      "Reliable security, caregiving, cleaning, janitorial, and facility support services throughout the Northwest Territories.",
+
     images: ["/seo/og-image.png"],
   },
 
@@ -94,7 +102,7 @@ export const metadata = {
     apple: "/apple-touch-icon.png",
   },
 
-  category: "Plumbing",
+  category: "Security, Caregiving, Cleaning & Facility Services",
 };
 
 export default function RootLayout({ children }) {
@@ -106,6 +114,7 @@ export default function RootLayout({ children }) {
           href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
         />
       </head>
+
       <body>
         <Header />
 
