@@ -1,6 +1,5 @@
 import "./globals.css";
 import Header from "@/components/layout/Header/Header";
-// import Footer from "@/components/layout/Footer/Footer";
 
 export const metadata = {
   metadataBase: new URL("https://kbfm-next.vercel.app/"),
@@ -77,7 +76,7 @@ export const metadata = {
 
     images: [
       {
-        url: "/seo/og-image.png",
+        url: "/seo/kbfm-og-image-v2.png",
         width: 1200,
         height: 630,
         alt: "K.B.F.M. Global Services N.W.T. Ltd.",
@@ -93,7 +92,7 @@ export const metadata = {
     description:
       "Reliable security, caregiving, cleaning, janitorial, and facility support services throughout the Northwest Territories.",
 
-    images: ["/seo/og-image.png"],
+    images: ["/seo/kbfm-og-image-v2.png"],
   },
 
   icons: {
@@ -119,8 +118,6 @@ export default function RootLayout({ children }) {
         <Header />
 
         {children}
-
-        {/* <Footer /> */}
       </body>
     </html>
   );
