@@ -579,7 +579,7 @@ export default function MissionVision() {
               }}
             >
               <img
-                src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1000&q=85"
+                src="assets/services/mission.jpg"
                 alt="Professional team working together"
                 className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
               />
