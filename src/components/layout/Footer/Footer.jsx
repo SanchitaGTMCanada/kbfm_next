@@ -27,7 +27,6 @@ const footerNavigation = [
     title: "About Us",
     href: "#about",
   },
- 
   {
     title: "Services",
     href: "#services",
@@ -91,900 +90,990 @@ export default function Footer() {
       id="contact"
       className="
         relative
+        w-full
         overflow-hidden
-
-        bg-[#3E2066]
-
         text-white
-        w-[100%]
-        flex justify-center
+        flex
+        justify-center
       "
       style={{
-        marginTop: "50px",
+      
+        background:
+          "linear-gradient(135deg, #241326 0%, #3A1D44 34%, #5B2E91 72%, #45204D 100%)",
       }}
     >
       {/* =====================================================
           BACKGROUND EFFECTS
       ===================================================== */}
 
-      {/* Large Purple Glow */}
+      {/* White glow */}
 
       <div
         className="
           pointer-events-none
-
           absolute
-          -left-[220px]
-          top-[80px]
-
+          -left-[180px]
+          top-[40px]
           h-[500px]
           w-[500px]
-
           rounded-full
-
-          bg-[#7B4DB8]/20
-
+          bg-white/[0.055]
           blur-[150px]
         "
       />
 
-      {/* Gold Glow */}
+      {/* Primary plum glow */}
 
       <div
         className="
           pointer-events-none
-
           absolute
-          -right-[220px]
-          bottom-[50px]
-
-          h-[480px]
-          w-[480px]
-
+          -left-[200px]
+          top-[32%]
+          h-[520px]
+          w-[520px]
           rounded-full
-
-          bg-[#D4AF37]/10
-
+          bg-[#642E60]/30
           blur-[150px]
         "
       />
 
-      {/* White Glow */}
+      {/* Secondary purple glow */}
 
       <div
         className="
           pointer-events-none
-
           absolute
-          left-[40%]
-          top-[20%]
-
-          h-[280px]
-          w-[280px]
-
+          -right-[180px]
+          top-[8%]
+          h-[600px]
+          w-[600px]
           rounded-full
+          bg-[#5B2E91]/35
+          blur-[160px]
+        "
+      />
 
-          bg-white/5
+      {/* Secondary bottom glow */}
 
+      <div
+        className="
+          pointer-events-none
+          absolute
+          right-[15%]
+          bottom-[-180px]
+          h-[430px]
+          w-[430px]
+          rounded-full
+          bg-[#5B2E91]/28
+          blur-[150px]
+        "
+      />
+
+      {/* Subtle white centre glow */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          left-[38%]
+          top-[18%]
+          h-[320px]
+          w-[320px]
+          rounded-full
+          bg-white/[0.035]
           blur-[120px]
         "
       />
 
-      {/* Decorative Circle */}
+      {/* Very subtle gold accent glow */}
 
       <div
         className="
           pointer-events-none
-
           absolute
-          -right-[180px]
-          top-[80px]
-
-          h-[500px]
-          w-[500px]
-
+          right-[20%]
+          top-[30%]
+          h-[220px]
+          w-[220px]
           rounded-full
+          bg-[#C6A15B]/[0.025]
+          blur-[110px]
+        "
+      />
 
+      {/* =====================================================
+          DECORATIVE CIRCLES
+      ===================================================== */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -right-[220px]
+          top-[55px]
+          h-[540px]
+          w-[540px]
+          rounded-full
           border
-          border-white/10
+          border-white/[0.10]
         "
       />
 
       <div
         className="
           pointer-events-none
-
           absolute
-          -left-[150px]
-          bottom-[100px]
-
+          -right-[130px]
+          top-[145px]
           h-[360px]
           w-[360px]
-
           rounded-full
-
           border
-          border-[#D4AF37]/10
+          border-[#5B2E91]/25
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -left-[180px]
+          bottom-[80px]
+          h-[380px]
+          w-[380px]
+          rounded-full
+          border
+          border-white/[0.06]
+        "
+      />
+
+      {/* =====================================================
+          FLOATING DECORATIVE DOTS
+      ===================================================== */}
+
+      <span
+        className="
+          pointer-events-none
+          absolute
+          left-[11%]
+          top-[16%]
+          h-2
+          w-2
+          rounded-full
+          bg-white/30
+        "
+      />
+
+      <span
+        className="
+          pointer-events-none
+          absolute
+          left-[15%]
+          top-[20%]
+          h-1.5
+          w-1.5
+          rounded-full
+          bg-[#5B2E91]/70
+        "
+      />
+
+      <span
+        className="
+          pointer-events-none
+          absolute
+          right-[14%]
+          top-[28%]
+          h-2
+          w-2
+          rounded-full
+          bg-white/20
+        "
+      />
+
+      <span
+        className="
+          pointer-events-none
+          absolute
+          right-[22%]
+          bottom-[20%]
+          h-1.5
+          w-1.5
+          rounded-full
+          bg-[#C6A15B]/50
         "
       />
 
       {/* =====================================================
           MAIN FOOTER
       ===================================================== */}
-<div
-          className="
-            relative
-            z-[2000]
 
-            flex
-            h-full
-            w-[90%]
-            mx-auto
-            justify-center
-          "
-          style={{margin:"40px 0px 40px 0px"}}
-        >
-              <div
+      <div
         className="
           relative
-          z-10
-
-          w-[100%]
-
+          z-[2000]
+          flex
+          h-full
+          w-[90%]
           mx-auto
-
-         
-
-          px-6
-          py-16
-
-          sm:px-8
-          sm:py-20
-
-          lg:px-10
-          lg:py-24
+          justify-center
         "
-        style={{padding:"20px"}}
+        style={{
+          margin: "40px 0px 40px 0px",
+        }}
       >
-        {/* =================================================
-            TOP BRAND AREA
-        ================================================= */}
-
         <div
           className="
-            mb-14
-
-            flex
-            flex-col
-
-            gap-8
-
-            border-b
-            border-white/10
-
-            pb-12
-
-            lg:flex-row
-            lg:items-end
-            lg:justify-between
+            relative
+            z-10
+            w-full
+            mx-auto
+            px-6
+            py-16
+            sm:px-8
+            sm:py-20
+            lg:px-10
+            lg:py-24
           "
-
-          style={{marginBottom:"10px"}}
+          style={{
+            padding: "20px",
+          }}
         >
-          {/* Brand */}
+          {/* =================================================
+              TOP BRAND AREA
+          ================================================= */}
 
-          <div className="max-w-[620px]">
-            {/* Small Label */}
-
-            <div
-              className="
-                mb-5
-
-                flex
-                items-center
-                gap-3
-              "
-            >
-              <span
-                className="
-                  h-[2px]
-                  w-10
-
-                  bg-[#D4AF37]
-                "
-              />
-
-              <span
-                className="
-                  text-[10px]
-                  font-bold
-                  uppercase
-                  tracking-[0.3em]
-
-                  text-[#D4AF37]
-                "
-              >
-                Northern Service
-              </span>
-            </div>
-
-            {/* Heading */}
-
-            <h2
-              className="
-                text-[32px]
-                font-semibold
-                leading-[1.1]
-                tracking-[-1px]
-
-                text-white
-
-                sm:text-[40px]
-              "
-
-              style={{color:"white"}}
-            >
-             K.B.F.M. Group of Companies Professional Services Ltd.
-            </h2>
-
-            {/* Description */}
-
-            <p
-              className="
-                mt-5
-
-                max-w-[600px]
-
-                text-[14px]
-                leading-7
-
-                text-white/65
-
-                sm:text-[15px]
-              "
-
-              style={{margin:"20px 0px 20px 0px", color:"white", fontSize:"15px"}}
-            >
-              Serving the North with care, security,
-              and integrity. Reliable staffing and
-              facility support services delivered
-              throughout the Northwest Territories.
-            </p>
-          </div>
-
-          {/* CTA */}
-
-          <Link
-            href="#booking"
-            onClick={(e) =>
-              handleNavigation(e, "#booking")
-            }
+          <div
             className="
-              group
-
-              inline-flex
-              w-fit
-
-              items-center
-              gap-3
-
-              rounded-full
-
-              border
-              border-[#D4AF37]
-
-              bg-[#D4AF37]
-
-              px-5
-              py-3
-
-              text-[13px]
-              font-semibold
-
-              text-[#3E2066]
-
-              transition-all
-              duration-300
-
-              hover:-translate-y-1
-              hover:bg-white
-              hover:border-white
+              mb-14
+              flex
+              flex-col
+              gap-8
+              border-b
+              border-white/10
+              pb-12
+              lg:flex-row
+              lg:items-end
+              lg:justify-between
             "
-            style={{marginBottom:"10px", paddingLeft:"10px"}}
+            style={{
+              marginBottom: "10px",
+            }}
           >
-            Request a Free Quote
+            {/* Brand */}
 
-            <span
-              className="
-                flex
-                h-7
-                w-7
-
-                items-center
-                justify-center
-
-                rounded-full
-
-                bg-white
-
-                text-[#5B2E91]
-
-                transition-transform
-                duration-300
-
-                group-hover:rotate-45
-              "
-            >
-              <HiOutlineArrowUpRight className="text-[15px]" />
-            </span>
-          </Link>
-        </div>
-
-        {/* =================================================
-            FOOTER GRID
-        ================================================= */}
-
-        <div
-          className="
-            grid
-
-            gap-12
-
-            sm:grid-cols-2
-
-            lg:grid-cols-[1fr_1fr_1.2fr]
-          "
-        >
-          {/* =================================================
-              NAVIGATION
-          ================================================= */}
-
-          <div>
-            <div
-              className="
-                mb-6
-
-                flex
-                items-center
-                gap-3
-              "
-              style={{padding:"15px", paddingLeft:"0px"}}
-            >
-              <HiOutlineSparkles
-                className="
-                  text-[18px]
-                  text-[#D4AF37]
-                "
-              />
-
-              <h3
-                className="
-                  text-[15px]
-                  font-semibold
-
-                  text-white
-                "
-
-                style={{color:"white",fontSize:"16px"}}
-              >
-                Navigation
-              </h3>
-            </div>
-
-            <ul className="space-y-3.5">
-              {footerNavigation.map((item) => (
-                <li key={item.title}>
-                  <Link
-                    href={item.href}
-                    onClick={(e) =>
-                      handleNavigation(
-                        e,
-                        item.href
-                      )
-                    }
-                    className="
-                      group
-
-                      inline-flex
-                      items-center
-                      gap-2
-
-                      text-[13px]
-
-                      text-white/55
-
-                      transition-all
-                      duration-300
-
-                      hover:text-white
-                    "
-                  >
-                    <span
-                      className="
-                        h-1
-                        w-1
-
-                        rounded-full
-
-                        bg-[#D4AF37]
-
-                        opacity-0
-
-                        transition-opacity
-                        duration-300
-
-                        group-hover:opacity-100
-                      "
-                      style={{fontSize:"16px"}}
-
-                    />
-
-                    {item.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* =================================================
-              SERVICES
-          ================================================= */}
-
-          <div>
-            <div
-              className="
-                mb-6
-
-                flex
-                items-center
-                gap-3
-              "
-
-              style={{padding:"15px", paddingLeft:"0px"}}
-            >
-              <HiOutlineShieldCheck
-                className="
-                  text-[18px]
-                  text-[#D4AF37]
-                "
-              />
-
-              <h3
-                className="
-                  text-[15px]
-                  font-semibold
-
-                  text-white
-                "
-                    style={{color:"white"}}
-              >
-                Our Services
-              </h3>
-            </div>
-
-            <ul className="space-y-4">
-              
-
-               {services.map((item) => (
-                <li key={item.title}>
-                  <Link
-                    href={item.href}
-                    onClick={(e) =>
-                      handleNavigation(
-                        e,
-                        item.href
-                      )
-                    }
-                    className="
-                      group
-
-                      inline-flex
-                      items-center
-                      gap-2
-
-                      text-[13px]
-
-                      text-white/55
-
-                      transition-all
-                      duration-300
-
-                      hover:text-white
-                    "
-                  >
-                    <span
-                      className="
-                        h-1
-                        w-1
-
-                        rounded-full
-
-                        bg-[#D4AF37]
-
-                        opacity-0
-
-                        transition-opacity
-                        duration-300
-
-                        group-hover:opacity-100
-                      "
-                    />
-
-                    {item.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* =================================================
-              CONTACT CARD
-          ================================================= */}
-
-          <div style={{margin:"20px 0px"}}>
-            <div
-              className="
-                rounded-[28px]
-
-                border
-                border-white/10
-
-                bg-white/[0.07]
-
-                backdrop-blur-xl
-              "
-              style={{
-                padding: "25px",
-              }}
-            >
-              {/* Heading */}
+            <div className="max-w-[620px]">
+              {/* Small Label */}
 
               <div
                 className="
-                  mb-7
-
+                  mb-5
                   flex
                   items-center
                   gap-3
                 "
-                style={{marginBottom:"15px"}}
+              >
+                <span
+                  className="
+                    h-[2px]
+                    w-10
+                    rounded-full
+                    bg-[#C6A15B]
+                  "
+                />
+
+                <span
+                  className="
+                    text-[10px]
+                    font-bold
+                    uppercase
+                    tracking-[0.3em]
+                    text-[#E3D7EF]
+                  "
+                >
+                  Northern Service
+                </span>
+              </div>
+
+              {/* Heading */}
+
+              <h2
+                className="
+                  text-[32px]
+                  font-semibold
+                  leading-[1.1]
+                  tracking-[-1px]
+                  text-white
+                  sm:text-[40px]
+                "
+                style={{
+                  color: "#FFFFFF",
+                }}
+              >
+                K.B.F.M. Group of Companies Professional Services Ltd.
+              </h2>
+
+              {/* Description */}
+
+              <p
+                className="
+                  mt-5
+                  max-w-[600px]
+                  text-[14px]
+                  leading-7
+                  text-white/65
+                  sm:text-[15px]
+                "
+                style={{
+                  margin: "20px 0px 20px 0px",
+                  color: "rgba(255,255,255,0.72)",
+                  fontSize: "15px",
+                }}
+              >
+                Serving the North with care, security, and integrity.
+                Reliable staffing and facility support services delivered
+                throughout the Northwest Territories.
+              </p>
+            </div>
+
+            {/* CTA */}
+<Link
+  href="#booking"
+  onClick={(e) => handleNavigation(e, "#booking")}
+  className="
+    group
+    inline-flex
+    w-fit
+    items-center
+    gap-3
+    rounded-full
+    border
+    border-[white]/40
+    bg-gradient-to-r
+    from-[#642E60]
+    via-[#6F3C7F]
+    to-[#5B2E91]
+    px-5
+    py-3
+    text-[13px]
+    font-semibold
+    text-white
+    shadow-[0_12px_30px_rgba(91,46,145,0.20)]
+    transition-all
+    duration-300
+    hover:-translate-y-1
+    hover:from-[#5B2E91]
+    hover:via-[#70408A]
+    hover:to-[#642E60]
+    hover:shadow-[0_16px_38px_rgba(91,46,145,0.28)]
+  "
+  style={{
+    marginBottom: "10px",
+    paddingLeft: "14px",
+  }}
+>
+  Request a Free Quote
+
+  <span
+    className="
+      flex
+      h-7
+      w-7
+      items-center
+      justify-center
+      rounded-full
+      bg-white
+      text-[#642E60]
+      transition-transform
+      duration-300
+      group-hover:rotate-45
+    "
+  >
+    <HiOutlineArrowUpRight className="text-[15px]" />
+  </span>
+</Link>
+          </div>
+
+          {/* =================================================
+              FOOTER GRID
+          ================================================= */}
+
+          <div
+            className="
+              grid
+              gap-12
+              sm:grid-cols-2
+              lg:grid-cols-[1fr_1fr_1.2fr]
+            "
+          >
+            {/* =================================================
+                NAVIGATION
+            ================================================= */}
+
+            <div>
+              <div
+                className="
+                  mb-6
+                  flex
+                  items-center
+                  gap-3
+                "
+                style={{
+                  padding: "15px",
+                  paddingLeft: "0px",
+                }}
               >
                 <div
+                  className="
+                    flex
+                    h-9
+                    w-9
+                    items-center
+                    justify-center
+                    rounded-xl
+                    border
+                    border-white/10
+                    bg-white/[0.07]
+                    text-[#D9C9E7]
+                  "
+                >
+                  <HiOutlineSparkles className="text-[18px]" />
+                </div>
+
+                <h3
+                  className="
+                    text-[15px]
+                    font-semibold
+                    text-white
+                  "
+                  style={{
+                    color: "white",
+                    fontSize: "16px",
+                  }}
+                >
+                  Navigation
+                </h3>
+              </div>
+
+              <ul className="space-y-3.5">
+                {footerNavigation.map((item) => (
+                  <li key={item.title}>
+                    <Link
+                      href={item.href}
+                      onClick={(e) =>
+                        handleNavigation(e, item.href)
+                      }
+                      className="
+                        group
+                        inline-flex
+                        items-center
+                        gap-3
+                        text-[13px]
+                        text-white/55
+                        transition-all
+                        duration-300
+                        hover:translate-x-1
+                        hover:text-white
+                      "
+                    >
+                      <span
+                        className="
+                          h-1.5
+                          w-1.5
+                          rounded-full
+                          bg-[#C6A15B]
+                          opacity-0
+                          transition-opacity
+                          duration-300
+                          group-hover:opacity-100
+                        "
+                      />
+
+                      {item.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* =================================================
+                SERVICES
+            ================================================= */}
+
+            <div>
+              <div
+                className="
+                  mb-6
+                  flex
+                  items-center
+                  gap-3
+                "
+                style={{
+                  padding: "15px",
+                  paddingLeft: "0px",
+                }}
+              >
+                <div
+                  className="
+                    flex
+                    h-9
+                    w-9
+                    items-center
+                    justify-center
+                    rounded-xl
+                    border
+                    border-white/10
+                    bg-white/[0.07]
+                    text-[#D9C9E7]
+                  "
+                >
+                  <HiOutlineShieldCheck className="text-[18px]" />
+                </div>
+
+                <h3
+                  className="
+                    text-[15px]
+                    font-semibold
+                    text-white
+                  "
+                  style={{
+                    color: "white",
+                  }}
+                >
+                  Our Services
+                </h3>
+              </div>
+
+              <ul className="space-y-4">
+                {services.map((item) => (
+                  <li key={item.title}>
+                    <Link
+                      href={item.href}
+                      onClick={(e) =>
+                        handleNavigation(e, item.href)
+                      }
+                      className="
+                        group
+                        inline-flex
+                        items-center
+                        gap-3
+                        text-[13px]
+                        text-white/55
+                        transition-all
+                        duration-300
+                        hover:translate-x-1
+                        hover:text-white
+                      "
+                    >
+                      <span
+                        className="
+                          h-1.5
+                          w-1.5
+                          rounded-full
+                          bg-[#C6A15B]
+                          opacity-0
+                          transition-opacity
+                          duration-300
+                          group-hover:opacity-100
+                        "
+                      />
+
+                      {item.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* =================================================
+                CONTACT CARD
+            ================================================= */}
+
+            <div
+              style={{
+                margin: "20px 0px",
+              }}
+            >
+              <div
+                className="
+                  relative
+                  overflow-hidden
+                  rounded-[28px]
+                  border
+                  border-[#5B2E91]/30
+                  bg-white/[0.10]
+                  backdrop-blur-xl
+                "
+                style={{
+                  padding: "25px",
+                  boxShadow:
+                    "0 25px 65px rgba(20,8,24,0.22)",
+                }}
+              >
+                {/* Contact card glow */}
+
+                <div
+                  className="
+                    pointer-events-none
+                    absolute
+                    -right-20
+                    -top-20
+                    h-[180px]
+                    w-[180px]
+                    rounded-full
+                    bg-[#5B2E91]/20
+                    blur-[65px]
+                  "
+                />
+
+                {/* Heading */}
+
+                <div
+                  className="
+                    relative
+                    z-10
+                    mb-7
+                    flex
+                    items-center
+                    gap-3
+                  "
+                  style={{
+                    marginBottom: "15px",
+                  }}
+                >
+                  <div
+                    className="
+                      flex
+                      h-10
+                      w-10
+                      items-center
+                      justify-center
+                      rounded-xl
+                      bg-[#642E60]
+                      text-white
+                    "
+                  >
+                    <HiOutlineHeart className="text-[20px]" />
+                  </div>
+
+                  <div>
+                    <span
+                      className="
+                        block
+                        text-[10px]
+                        font-bold
+                        uppercase
+                        tracking-[0.2em]
+                        text-[#E3D7EF]
+                      "
+                    >
+                      Get In Touch
+                    </span>
+
+                    <h3
+                      className="
+                        mt-1
+                        text-[20px]
+                        font-semibold
+                        text-white
+                      "
+                      style={{
+                        color: "white",
+                      }}
+                    >
+                      Contact Us
+                    </h3>
+                  </div>
+                </div>
+
+                <div className="relative z-10">
+                  {/* PHONE */}
+
+                  <div
+                    className="
+                      mb-5
+                      flex
+                      items-start
+                      gap-4
+                    "
+                    style={{
+                      marginBottom: "10px",
+                    }}
+                  >
+                    <div
+                      className="
+                        flex
+                        h-9
+                        w-9
+                        shrink-0
+                        items-center
+                        justify-center
+                        rounded-xl
+                        border
+                        border-white/10
+                        bg-white/[0.08]
+                        text-[#D9C9E7]
+                      "
+                    >
+                      <HiOutlinePhone className="text-[18px]" />
+                    </div>
+
+                    <div>
+                      <span
+                        className="
+                          block
+                          text-[9px]
+                          font-bold
+                          uppercase
+                          tracking-[0.2em]
+                          text-white/35
+                        "
+                      >
+                        Phone
+                      </span>
+
+                      <a
+                        href="tel:8674471131"
+                        className="
+                          mt-1
+                          block
+                          text-[13px]
+                          text-white/80
+                          transition
+                          hover:text-white
+                        "
+                      >
+                        +1 867 447 1131
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* EMAIL */}
+
+                  <div
+                    className="
+                      mb-5
+                      flex
+                      items-start
+                      gap-4
+                    "
+                    style={{
+                      marginBottom: "10px",
+                    }}
+                  >
+                    <div
+                      className="
+                        flex
+                        h-9
+                        w-9
+                        shrink-0
+                        items-center
+                        justify-center
+                        rounded-xl
+                        border
+                        border-white/10
+                        bg-white/[0.08]
+                        text-[#D9C9E7]
+                      "
+                    >
+                      <HiOutlineEnvelope className="text-[18px]" />
+                    </div>
+
+                    <div>
+                      <span
+                        className="
+                          block
+                          text-[9px]
+                          font-bold
+                          uppercase
+                          tracking-[0.2em]
+                          text-white/35
+                        "
+                      >
+                        Email
+                      </span>
+
+                      <a
+                        href="mailto:info@kbfmgroup.ca"
+                        className="
+                          mt-1
+                          block
+                          break-all
+                          text-[13px]
+                          text-white/80
+                          transition
+                          hover:text-white
+                        "
+                      >
+                        info@kbfmgroup.ca
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* ADDRESS */}
+
+                  <div
+                    className="
+                      flex
+                      items-start
+                      gap-4
+                    "
+                    style={{
+                      marginBottom: "10px",
+                    }}
+                  >
+                    <div
+                      className="
+                        flex
+                        h-9
+                        w-9
+                        shrink-0
+                        items-center
+                        justify-center
+                        rounded-xl
+                        border
+                        border-white/10
+                        bg-white/[0.08]
+                        text-[#D9C9E7]
+                      "
+                    >
+                      <HiOutlineMapPin className="text-[18px]" />
+                    </div>
+
+                    <div>
+                      <span
+                        className="
+                          block
+                          text-[9px]
+                          font-bold
+                          uppercase
+                          tracking-[0.2em]
+                          text-white/35
+                        "
+                      >
+                        Office
+                      </span>
+
+                      <p
+                        className="
+                          mt-1
+                          text-[13px]
+                          leading-6
+                          text-white/90
+                        "
+                        style={{
+                          color: "white",
+                        }}
+                      >
+                        K.B.F.M. Group of Companies Professional Services Ltd.
+                        <br />
+                        Unit 9, 5010 49th Street
+                        <br />
+                        Yellowknife, Northwest Territories
+                        <br />
+                        X1A 2N4
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* =================================================
+              BOTTOM AREA
+          ================================================= */}
+
+          <div
+            className="
+              mt-12
+              border-t
+              border-white/10
+              pt-7
+            "
+          >
+            <div
+              className="
+                flex
+                flex-col
+                gap-6
+                md:flex-row
+                md:items-center
+                md:justify-between
+              "
+            >
+              {/* Copyright */}
+
+              <p
+                className="
+                  text-[11px]
+                  text-white/40
+                "
+                style={{
+                  margin: "10px 0px",
+                  color: "rgba(255,255,255,0.45)",
+                }}
+              >
+                © {new Date().getFullYear()} K.B.F.M. Group of Companies
+                Professional Services Ltd. All rights reserved.
+              </p>
+
+              {/* Social */}
+
+              {/* <div className="flex items-center gap-3">
+                <a
+                  href="#"
+                  aria-label="LinkedIn"
                   className="
                     flex
                     h-10
                     w-10
-
                     items-center
                     justify-center
-
-                    rounded-xl
-
-                    bg-[#D4AF37]
-
-                    text-[#3E2066]
+                    rounded-full
+                    border
+                    border-white/10
+                    bg-white/[0.06]
+                    text-white/60
+                    transition-all
+                    duration-300
+                    hover:-translate-y-1
+                    hover:border-white/25
+                    hover:bg-[#642E60]
+                    hover:text-white
                   "
                 >
-                  <HiOutlineHeart className="text-[20px]" />
-                </div>
-
-                <div>
-                  <span
-                    className="
-                      block
-
-                      text-[10px]
-                      font-bold
-                      uppercase
-                      tracking-[0.2em]
-
-                      text-[#D4AF37]
-                    "
-                  >
-                    Get In Touch
-                  </span>
-
-                  <h3
-                    className="
-                      mt-1
-
-                      text-[20px]
-                      font-semibold
-
-                      text-white
-                    "
-                    style={{color:'white'}}
-                  >
-                    Contact Us
-                  </h3>
-                </div>
-              </div>
-
-              {/* =================================================
-                  PHONE
-              ================================================= */}
-
-              <div
-                className="
-                  mb-5
-
-                  flex
-                  items-start
-                  gap-4
-                "
-
-                style={{marginBottom:"10px"}}
-              >
-                <div
-                  className="
-                    flex
-                    h-9
-                    w-9
-
-                    shrink-0
-
-                    items-center
-                    justify-center
-
-                    rounded-xl
-
-                    bg-white/10
-
-                    text-[#D4AF37]
-                  "
-                >
-                  <HiOutlinePhone className="text-[18px]" />
-                </div>
-
-                <div>
-                  <span
-                    className="
-                      block
-
-                      text-[9px]
-                      font-bold
-                      uppercase
-                      tracking-[0.2em]
-
-                      text-white/35
-                    "
-                  >
-                    Phone
-                  </span>
-
-                  <a
-                    href="tel:8674471131"
-                    className="
-                      mt-1
-                      block
-
-                      text-[13px]
-
-                      text-white/80
-
-                      transition
-
-                      hover:text-[#D4AF37]
-                    "
-                  >
-                   +1 867 447 1131
-                  </a>
-                </div>
-              </div>
-
-              {/* =================================================
-                  EMAIL
-              ================================================= */}
-
-              <div
-                className="
-                  mb-5
-
-                  flex
-                  items-start
-                  gap-4
-                "
-
-                  style={{marginBottom:"10px"}}
-              >
-                <div
-                  className="
-                    flex
-                    h-9
-                    w-9
-
-                    shrink-0
-
-                    items-center
-                    justify-center
-
-                    rounded-xl
-
-                    bg-white/10
-
-                    text-[#D4AF37]
-                  "
-                >
-                  <HiOutlineEnvelope className="text-[18px]" />
-                </div>
-
-                <div>
-                  <span
-                    className="
-                      block
-
-                      text-[9px]
-                      font-bold
-                      uppercase
-                      tracking-[0.2em]
-
-                      text-white/35
-                    "
-                  >
-                    Email
-                  </span>
-
-                  <a
-                    href="mailto:info@kbfmgroup.ca"
-                    className="
-                      mt-1
-                      block
-
-                      break-all
-
-                      text-[13px]
-
-                      text-white/80
-
-                      transition
-
-                      hover:text-[#D4AF37]
-                    "
-                  >
-                    info@kbfmgroup.ca
-                  </a>
-                </div>
-              </div>
-
-              {/* =================================================
-                  ADDRESS
-              ================================================= */}
-
-              <div
-                className="
-                  flex
-                  items-start
-                  gap-4
-                "
-                  style={{marginBottom:"10px"}}
-              >
-                <div
-                  className="
-                    flex
-                    h-9
-                    w-9
-
-                    shrink-0
-
-                    items-center
-                    justify-center
-
-                    rounded-xl
-
-                    bg-white/10
-
-                    text-[#D4AF37]
-                  "
-                >
-                  <HiOutlineMapPin className="text-[18px]" />
-                </div>
-
-                <div>
-                  <span
-                    className="
-                      block
-
-                      text-[9px]
-                      font-bold
-                      uppercase
-                      tracking-[0.2em]
-
-                      text-white/35
-                    "
-                  >
-                    Office
-                  </span>
-
-                  <p
-                    className="
-                      mt-1
-
-                      text-[13px]
-                      leading-6
-
-                      text-white/90
-                    "
-
-                    style={{color:"white"}}
-                  >
-                    K.B.F.M. Group of Companies Professional Services Ltd.
-                    <br />
-                    Unit 9, 5010 49th Street
-                    <br />
-                    Yellowknife, Northwest Territories
-                    <br />
-                    X1A 2N4
-                  </p>
-                </div>
-              </div>
-
-              {/* Website */}
-
-             
+                  <FaLinkedinIn className="text-[14px]" />
+                </a>
+              </div> */}
             </div>
           </div>
+
+          {/* =================================================
+              FINAL TAGLINE
+          ================================================= */}
+
+    
         </div>
-
-        {/* =================================================
-            BUSINESS HOURS
-        ================================================= */}
-
-     
-
-        {/* =================================================
-            BOTTOM AREA
-        ================================================= */}
-
-        <div
-          className="
-            mt-12
-
-            border-t
-            border-white/10
-
-            pt-7
-          "
-        >
-          <div
-            className="
-              flex
-              flex-col
-
-              gap-6
-
-              md:flex-row
-              md:items-center
-              md:justify-between
-            "
-          >
-            {/* Copyright */}
-
-            <p
-              className="
-                text-[11px]
-
-                text-white/40
-              "
-
-              style={{margin:"10px 0px" , color:"gold"}}
-            >
-              © {new Date().getFullYear()} K.B.F.M. Group of Companies Professional Services Ltd. All rights reserved.
-            </p>
-
-            {/* Social */}
-
-         
-          </div>
-        </div>
-
-        {/* =================================================
-            FINAL TAGLINE
-        ================================================= */}
-
-      
       </div>
-        </div>
-  
+
+      {/* =====================================================
+          BOTTOM FADE
+      ===================================================== */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          bottom-0
+          left-0
+          h-[100px]
+          w-full
+          bg-gradient-to-t
+          from-[#241326]/80
+          to-transparent
+        "
+      />
     </footer>
   );
 }

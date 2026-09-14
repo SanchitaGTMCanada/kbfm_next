@@ -25,16 +25,18 @@ export default function Booking() {
       className="
         relative
         overflow-hidden
-        bg-[#F7F3FC]
-
         py-24
         sm:py-28
         lg:py-32
-        flex 
+        flex
         justify-center
       "
-
-      
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        background:
+          "linear-gradient(135deg, #FFFFFF 0%, #FAF6FC 38%, #F2EAF7 72%, #E9DDF1 100%)",
+      }}
     >
       {/* =====================================================
           PREMIUM BACKGROUND
@@ -48,24 +50,19 @@ export default function Booking() {
           absolute
           left-1/2
           top-[35%]
-
           h-[700px]
           w-[900px]
-
           -translate-x-1/2
-
           rounded-full
-
           bg-white
-
           blur-[120px]
         "
         style={{
-          opacity: 0.85,
+          opacity: 0.78,
         }}
       />
 
-      {/* Purple glow */}
+      {/* Primary plum glow */}
 
       <motion.div
         animate={{
@@ -82,19 +79,15 @@ export default function Booking() {
           absolute
           -left-[260px]
           top-[5%]
-
           h-[600px]
           w-[600px]
-
           rounded-full
-
-          bg-[#5B2E91]/[0.07]
-
+          bg-[#642E60]/[0.055]
           blur-[130px]
         "
       />
 
-      {/* Gold glow */}
+      {/* Secondary purple glow */}
 
       <motion.div
         animate={{
@@ -111,17 +104,201 @@ export default function Booking() {
           absolute
           -right-[250px]
           bottom-[5%]
-
           h-[550px]
           w-[550px]
-
           rounded-full
-
-          bg-[#D4AF37]/[0.07]
-
+          bg-[#5B2E91]/[0.075]
           blur-[130px]
         "
       />
+
+      {/* Soft secondary upper glow */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          right-[12%]
+          top-[3%]
+          h-[300px]
+          w-[300px]
+          rounded-full
+          bg-[#5B2E91]/[0.025]
+          blur-[110px]
+        "
+      />
+
+      {/* =====================================================
+          LARGE BACKGROUND WATERMARK ICONS
+      ===================================================== */}
+
+      {/* Calendar */}
+
+      <div
+        className="pointer-events-none absolute"
+        style={{
+          top: "7%",
+          left: "-55px",
+          color: "#5B2E91",
+          opacity: 0.055,
+          transform: "rotate(-10deg)",
+          zIndex: 0,
+        }}
+      >
+        <HiCalendarDays
+          style={{
+            width: "300px",
+            height: "300px",
+          }}
+        />
+      </div>
+
+      {/* Sparkles */}
+
+      <div
+        className="pointer-events-none absolute"
+        style={{
+          top: "13%",
+          right: "-60px",
+          color: "#642E60",
+          opacity: 0.045,
+          transform: "rotate(12deg)",
+          zIndex: 0,
+        }}
+      >
+        <HiSparkles
+          style={{
+            width: "320px",
+            height: "320px",
+          }}
+        />
+      </div>
+
+      {/* Shield */}
+
+      <div
+        className="pointer-events-none absolute"
+        style={{
+          left: "26%",
+          top: "28%",
+          color: "#5B2E91",
+          opacity: 0.032,
+          transform: "rotate(-7deg)",
+          zIndex: 0,
+        }}
+      >
+        <HiShieldCheck
+          style={{
+            width: "380px",
+            height: "380px",
+          }}
+        />
+      </div>
+
+      {/* Building */}
+
+      <div
+        className="pointer-events-none absolute"
+        style={{
+          left: "6%",
+          bottom: "8%",
+          color: "#642E60",
+          opacity: 0.045,
+          transform: "rotate(-7deg)",
+          zIndex: 0,
+        }}
+      >
+        <HiBuildingOffice2
+          style={{
+            width: "300px",
+            height: "300px",
+          }}
+        />
+      </div>
+
+      {/* Heart */}
+
+      <div
+        className="pointer-events-none absolute"
+        style={{
+          right: "20%",
+          bottom: "5%",
+          color: "#5B2E91",
+          opacity: 0.045,
+          transform: "rotate(8deg)",
+          zIndex: 0,
+        }}
+      >
+        <HiHeart
+          style={{
+            width: "300px",
+            height: "300px",
+          }}
+        />
+      </div>
+
+      {/* Community */}
+
+      <div
+        className="pointer-events-none absolute"
+        style={{
+          right: "3%",
+          bottom: "30%",
+          color: "#642E60",
+          opacity: 0.04,
+          transform: "rotate(7deg)",
+          zIndex: 0,
+        }}
+      >
+        <HiUserGroup
+          style={{
+            width: "270px",
+            height: "270px",
+          }}
+        />
+      </div>
+
+      {/* Check */}
+
+      <div
+        className="pointer-events-none absolute"
+        style={{
+          left: "48%",
+          top: "11%",
+          color: "#5B2E91",
+          opacity: 0.028,
+          transform: "translateX(-50%) rotate(8deg)",
+          zIndex: 0,
+        }}
+      >
+        <HiCheckCircle
+          style={{
+            width: "390px",
+            height: "390px",
+          }}
+        />
+      </div>
+
+      {/* Large center watermark */}
+
+      <div
+        className="pointer-events-none absolute"
+        style={{
+          left: "50%",
+          top: "55%",
+          transform: "translate(-50%, -50%)",
+          color: "#5B2E91",
+          opacity: 0.008,
+          zIndex: 0,
+        }}
+      >
+        <HiSparkles
+          style={{
+            width: "520px",
+            height: "520px",
+          }}
+        />
+      </div>
 
       {/* =====================================================
           DECORATIVE CIRCLES
@@ -133,14 +310,11 @@ export default function Booking() {
           absolute
           -left-[280px]
           top-[10%]
-
           h-[650px]
           w-[650px]
-
           rounded-full
-
           border
-          border-[#5B2E91]/10
+          border-[#642E60]/10
         "
       />
 
@@ -150,14 +324,11 @@ export default function Booking() {
           absolute
           -left-[220px]
           top-[17%]
-
           h-[500px]
           w-[500px]
-
           rounded-full
-
           border
-          border-[#D4AF37]/10
+          border-[#5B2E91]/10
         "
       />
 
@@ -167,25 +338,22 @@ export default function Booking() {
           absolute
           -right-[280px]
           bottom-[2%]
-
           h-[650px]
           w-[650px]
-
           rounded-full
-
           border
           border-[#5B2E91]/10
         "
       />
 
       {/* =====================================================
-          FLOATING GOLD DOT
+          FLOATING DOTS
       ===================================================== */}
 
       <motion.div
         animate={{
           y: [0, -15, 0],
-          opacity: [0.35, 0.7, 0.35],
+          opacity: [0.25, 0.55, 0.25],
         }}
         transition={{
           duration: 4,
@@ -195,23 +363,19 @@ export default function Booking() {
         className="
           pointer-events-none
           absolute
-
           right-[12%]
           top-[18%]
-
           h-3
           w-3
-
           rounded-full
-
-          bg-[#D4AF37]
+          bg-[#642E60]
         "
       />
 
       <motion.div
         animate={{
           y: [0, 12, 0],
-          opacity: [0.2, 0.45, 0.2],
+          opacity: [0.15, 0.35, 0.15],
         }}
         transition={{
           duration: 5,
@@ -221,15 +385,11 @@ export default function Booking() {
         className="
           pointer-events-none
           absolute
-
           left-[9%]
           bottom-[18%]
-
           h-2
           w-2
-
           rounded-full
-
           bg-[#5B2E91]
         "
       />
@@ -238,1299 +398,726 @@ export default function Booking() {
           CONTENT
       ===================================================== */}
 
-<div
-          className="
-            relative
-            z-[2000]
-
-            flex
-            h-full
-            w-[90%]
-            mx-auto
-            justify-center
-          "
-
-          style={{marginTop:"40px"}}
-          
-        >
-      <Container>
-        <div
-          className="
-            relative
-            z-20
-            w-full
-          "
-          style={{
-            paddingLeft: "24px",
-            paddingRight: "24px",
-          }}
-        >
-          {/* =================================================
-              HEADER
-          ================================================= */}
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 30,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-              amount: 0.2,
-            }}
-            transition={{
-              duration: 0.8,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="
-              mx-auto
-              
-              text-center
-            "
-          >
-            {/* Eyebrow */}
-
-         
-
-            {/* Heading */}
-
-        
-
-
-            {/* Gold divider */}
-
-            <div
-              className="
-                mx-auto
-                mt-7
-
-                h-[3px]
-                w-12
-
-                rounded-full
-
-                bg-[#D4AF37]
-              "
-            />
-          </motion.div>
-
-          {/* =================================================
-              MAIN CARD
-          ================================================= */}
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 45,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-              amount: 0.15,
-            }}
-            transition={{
-              duration: 0.9,
-              delay: 0.1,
-              ease: [0.22, 1, 0.36, 1],
-            }}
+      <div
+        className="
+          relative
+          z-[2000]
+          flex
+          h-full
+          w-[90%]
+          mx-auto
+          justify-center
+        "
+        style={{
+          marginTop: "40px",
+        }}
+      >
+        <Container>
+          <div
             className="
               relative
-
-              mx-auto
-              mt-16
-
+              z-20
               w-full
-              
-
-              overflow-hidden
-
-              rounded-[36px]
-
-              border
-              border-[#D9D9E3]
-
-              bg-white
-
-              shadow-[0_30px_100px_rgba(62,32,102,0.10)]
-
-              lg:mt-20
             "
+            style={{
+              paddingLeft: "24px",
+              paddingRight: "24px",
+            }}
           >
             {/* =================================================
-                TOP GOLD ACCENT
+                HEADER
             ================================================= */}
 
-            <div
-              className="
-                absolute
-                left-0
-                right-0
-                top-0
-
-                z-20
-
-                h-[3px]
-
-                bg-gradient-to-r
-                from-[#5B2E91]
-                via-[#D4AF37]
-                to-[#7B4DB8]
-              "
-            />
-
-            <div
-              className="
-                grid
-
-                lg:grid-cols-[390px_1fr]
-              "
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 30,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.2,
+              }}
+              transition={{
+                duration: 0.8,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="mx-auto text-center"
             >
-              {/* =================================================
-                  LEFT PANEL
-              ================================================= */}
+              {/* Eyebrow */}
 
               <div
                 className="
-                  relative
-                  overflow-hidden
-
-                  bg-gradient-to-br
-                  from-[#3E2066]
-                  via-[#4B247D]
-                  to-[#5B2E91]
-
-                  text-white
+                  mb-5
+                  flex
+                  items-center
+                  justify-center
+                  gap-3
                 "
               >
-                {/* Background glow */}
-
-                <div
+                <span
                   className="
-                    pointer-events-none
-
-                    absolute
-                    -right-28
-                    -top-28
-
-                    h-[330px]
-                    w-[330px]
-
-                    rounded-full
-
-                    bg-[#7B4DB8]/30
-
-                    blur-[50px]
+                    h-[1px]
+                    w-12
+                    bg-gradient-to-r
+                    from-transparent
+                    to-[#642E60]/50
                   "
                 />
 
-                <div
+                <span
                   className="
-                    pointer-events-none
+                    text-[11px]
+                    font-bold
+                    uppercase
+                    tracking-[0.28em]
+                    text-[#642E60]
+                  "
+                >
+                  Let's Connect
+                </span>
 
-                    absolute
-                    -bottom-28
-                    -left-28
-
-                    h-[300px]
-                    w-[300px]
-
-                    rounded-full
-
-                    bg-[#D4AF37]/10
-
-                    blur-[50px]
+                <span
+                  className="
+                    h-[1px]
+                    w-12
+                    bg-gradient-to-l
+                    from-transparent
+                    to-[#642E60]/50
                   "
                 />
+              </div>
 
-                {/* Decorative ring */}
+              {/* Heading */}
 
-                <div
-                  className="
-                    pointer-events-none
+              <h2
+                className="
+                  text-[40px]
+                  font-semibold
+                  leading-[1.05]
+                  tracking-[-1.5px]
+                  text-[#642E60]
+                  sm:text-[50px]
+                  md:text-[58px]
+                  lg:text-[64px]
+                "
+                style={{
+                  margin: "20px 0px 20px 0px",
+                }}
+              >
+                Request a Service
+              </h2>
 
-                    absolute
-                    -right-[100px]
-                    top-[25%]
+              <p
+                className="
+                  mx-auto
+                  mt-6
+                
+                  text-[15px]
+                  leading-7
+                  text-[#6F6873]
+                  sm:text-[16px]
+                "
+                style={{
+                  margin: "20px 0px 20px 0px",
+                  fontSize: "17px",
+                }}
+              >
+                Complete the form below and our team will contact you
+                shortly to discuss your requirements.
+              </p>
 
-                    h-[300px]
-                    w-[300px]
+              {/* Primary / Secondary divider */}
 
-                    rounded-full
+              <div
+                className="
+                  mx-auto
+                  mt-7
+                  h-[3px]
+                  w-12
+                  rounded-full
+                  bg-gradient-to-r
+                  from-[#642E60]
+                  to-[#5B2E91]
+                "
+              />
+            </motion.div>
 
-                    border
-                    border-white/10
-                  "
-                />
+            {/* =================================================
+                MAIN CARD
+            ================================================= */}
 
-                <div
-                  className="
-                    pointer-events-none
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 45,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.15,
+              }}
+              transition={{
+                duration: 0.9,
+                delay: 0.1,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="
+                relative
+                mx-auto
+                mt-16
+                w-full
+                overflow-hidden
+                rounded-[36px]
+                border
+                border-[#D6C8DF]
+                bg-white
+                shadow-[0_30px_100px_rgba(62,32,102,0.12)]
+                lg:mt-20
+              "
+            >
+              {/* TOP BRAND ACCENT */}
 
-                    absolute
-                    -right-[55px]
-                    top-[31%]
+              <div
+                className="
+                  absolute
+                  left-0
+                  right-0
+                  top-0
+                  z-20
+                  h-[3px]
+                  bg-gradient-to-r
+                  from-[#642E60]
+                  via-[#5B2E91]
+                  to-[#642E60]
+                "
+              />
 
-                    h-[210px]
-                    w-[210px]
-
-                    rounded-full
-
-                    border
-                    border-[#D4AF37]/20
-                  "
-                />
-
-                {/* Content */}
+              <div
+                className="
+                  grid
+                  lg:grid-cols-[390px_1fr]
+                "
+              >
+                {/* =================================================
+                    LEFT PANEL
+                ================================================= */}
 
                 <div
                   className="
                     relative
-                    z-10
-
-                    flex
-                    h-full
-                    flex-col
-                    justify-between
+                    overflow-hidden
+                    bg-gradient-to-br
+                    from-[#3E203A]
+                    via-[#54294F]
+                    to-[#5B2E91]
+                    text-white
                   "
+                >
+                  {/* Background glow */}
+
+                  <div
+                    className="
+                      pointer-events-none
+                      absolute
+                      -right-28
+                      -top-28
+                      h-[330px]
+                      w-[330px]
+                      rounded-full
+                      bg-[#8D70A7]/20
+                      blur-[50px]
+                    "
+                  />
+
+                  <div
+                    className="
+                      pointer-events-none
+                      absolute
+                      -bottom-28
+                      -left-28
+                      h-[300px]
+                      w-[300px]
+                      rounded-full
+                      bg-[#642E60]/25
+                      blur-[50px]
+                    "
+                  />
+
+                  {/* Decorative ring */}
+
+                  <div
+                    className="
+                      pointer-events-none
+                      absolute
+                      -right-[100px]
+                      top-[25%]
+                      h-[300px]
+                      w-[300px]
+                      rounded-full
+                      border
+                      border-white/10
+                    "
+                  />
+
+                  <div
+                    className="
+                      pointer-events-none
+                      absolute
+                      -right-[55px]
+                      top-[31%]
+                      h-[210px]
+                      w-[210px]
+                      rounded-full
+                      border
+                      border-white/10
+                    "
+                  />
+
+                  {/* Content */}
+
+                  <div
+                    className="
+                      relative
+                      z-10
+                      flex
+                      h-full
+                      flex-col
+                      justify-between
+                    "
+                    style={{
+                      padding: "48px 42px",
+                    }}
+                  >
+                    <div>
+                      {/* Icon */}
+
+                      <motion.div
+                        whileHover={{
+                          rotate: 8,
+                          scale: 1.05,
+                        }}
+                        className="
+                          mb-8
+                          flex
+                          h-16
+                          w-16
+                          items-center
+                          justify-center
+                          rounded-[20px]
+                          border
+                          border-white/15
+                          bg-white/10
+                          text-[#E5D8EA]
+                          backdrop-blur-md
+                        "
+                      >
+                        <HiSparkles className="text-[28px]" />
+                      </motion.div>
+
+                      {/* Label */}
+
+                      <span
+                        className="
+                          text-[10px]
+                          font-bold
+                          uppercase
+                          tracking-[0.3em]
+                          text-[#D7C3E0]
+                        "
+                      >
+                        Let's Connect
+                      </span>
+
+                      {/* Heading */}
+
+                      <h3
+                        className="
+                          mt-4
+                          text-[34px]
+                          font-semibold
+                          leading-[1.1]
+                          tracking-[-1px]
+                          text-white
+                          sm:text-[38px]
+                        "
+                        style={{
+                          color: "#F1E8F4",
+                        }}
+                      >
+                        Tell us how
+                        <br />
+                        we can help.
+                      </h3>
+
+                      <p
+                        className="
+                          mt-6
+                          text-[14px]
+                          leading-7
+                          text-white/70
+                        "
+                        style={{
+                          color: "#E8DDEA",
+                          fontSize: "15px",
+                        }}
+                      >
+                        Whether you need one service or ongoing support,
+                        our team is ready to understand your requirements.
+                      </p>
+
+                      {/* INDUSTRIES WE SERVE */}
+
+                      <div
+                        className="mt-10"
+                        style={{
+                          marginTop: "30px",
+                        }}
+                      >
+                        <p
+                          className="
+                            mb-5
+                            text-[9px]
+                            font-bold
+                            uppercase
+                            tracking-[0.28em]
+                            text-[#D7C3E0]
+                          "
+                          style={{
+                            margin: "10px 0px 10px 0px",
+                            fontSize: "16px",
+                          }}
+                        >
+                          Industries We Serve
+                        </p>
+
+                        <div
+                          className="
+                            grid
+                            grid-cols-2
+                            gap-x-5
+                            gap-y-4
+                          "
+                        >
+                          <IndustryItem
+                            icon={HiBuildingOffice2}
+                            text="Government Departments"
+                          />
+
+                          <IndustryItem
+                            icon={HiHeart}
+                            text="Healthcare Facilities"
+                          />
+
+                          <IndustryItem
+                            icon={HiBuildingOffice2}
+                            text="Commercial Businesses"
+                          />
+
+                          <IndustryItem
+                            icon={HiBuildingOffice2}
+                            text="Industrial Operations"
+                          />
+
+                          <IndustryItem
+                            icon={HiBuildingOffice2}
+                            text="Residential Clients"
+                          />
+
+                          <IndustryItem
+                            icon={HiUserGroup}
+                            text="Non-Profit Organizations"
+                          />
+
+                          <IndustryItem
+                            icon={HiBuildingOffice2}
+                            text="Property Management Companies"
+                          />
+
+                          <IndustryItem
+                            icon={HiBuildingOffice2}
+                            text="Construction Companies"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Secondary accent line */}
+
+                      <div
+                        className="
+                          mt-7
+                          h-[3px]
+                          w-12
+                          rounded-full
+                          bg-gradient-to-r
+                          from-[#642E60]
+                          to-[#8A68A0]
+                        "
+                      />
+                    </div>
+
+                    {/* Trust features */}
+
+                    <div
+                      className="
+                        mt-12
+                        space-y-3
+                      "
+                    >
+                      <TrustItem
+                        icon={HiShieldCheck}
+                        title="Reliable & Professional"
+                        description="Trusted local support"
+                      />
+
+                      <TrustItem
+                        icon={HiUserGroup}
+                        title="Community Focused"
+                        description="Built around local needs"
+                      />
+
+                      <TrustItem
+                        icon={HiBuildingOffice2}
+                        title="Multiple Services"
+                        description="One trusted partner"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* =================================================
+                    RIGHT FORM
+                ================================================= */}
+
+                <motion.div
+                  initial={{
+                    opacity: 0,
+                    x: 30,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    x: 0,
+                  }}
+                  viewport={{
+                    once: true,
+                  }}
+                  transition={{
+                    duration: 0.7,
+                    delay: 0.15,
+                  }}
+                  className="relative bg-white"
                   style={{
-                    padding: "48px 42px",
+                    padding: "54px",
                   }}
                 >
-                  <div>
-                    {/* Icon */}
+                  {/* Decorative circle */}
 
-                    <motion.div
-                      whileHover={{
-                        rotate: 8,
-                        scale: 1.05,
-                      }}
+                  <div
+                    className="
+                      pointer-events-none
+                      absolute
+                      -right-16
+                      -top-16
+                      h-[190px]
+                      w-[190px]
+                      rounded-full
+                      border
+                      border-[#642E60]/10
+                    "
+                  />
+
+                  <div
+                    className="
+                      pointer-events-none
+                      absolute
+                      -right-5
+                      top-5
+                      h-[90px]
+                      w-[90px]
+                      rounded-full
+                      border
+                      border-[#5B2E91]/10
+                    "
+                  />
+
+                  {/* Form heading */}
+
+                  <div
+                    className="relative z-10"
+                    style={{
+                      marginBottom: "30px",
+                    }}
+                  >
+                    <div
                       className="
-                        mb-8
-
+                        mb-4
                         flex
-                        h-16
-                        w-16
-
                         items-center
-                        justify-center
-
-                        rounded-[20px]
-
-                        border
-                        border-white/15
-
-                        bg-white/10
-
-                        text-[#D4AF37]
-
-                        backdrop-blur-md
+                        gap-2
                       "
                     >
-                      <HiSparkles className="text-[28px]" />
-                    </motion.div>
+                      <span
+                        className="
+                          h-1.5
+                          w-1.5
+                          rounded-full
+                          bg-[#642E60]
+                        "
+                      />
 
-                    {/* Label */}
-
-                    <span
-                      className="
-                        text-[10px]
-                        font-bold
-                        uppercase
-                        tracking-[0.3em]
-
-                        text-[#D4AF37]
-                      "
-                    >
-                      Let's Connect
-                    </span>
-
-                    {/* Heading */}
+                      <span
+                        className="
+                          text-[10px]
+                          font-bold
+                          uppercase
+                          tracking-[0.28em]
+                          text-[#5B2E91]
+                        "
+                      >
+                        Request Information
+                      </span>
+                    </div>
 
                     <h3
                       className="
-                        mt-4
-
-                        text-[34px]
+                        text-[32px]
                         font-semibold
-                        leading-[1.1]
+                        leading-tight
                         tracking-[-1px]
-
-                        text-white
-
-                        sm:text-[38px]
+                        text-[#642E60]
+                        sm:text-[36px]
                       "
-
-                      style={{color:"#dfcbfa"}}
                     >
-                      Tell us how
-                      <br />
-                      we can help.
+                      Request a Service
                     </h3>
 
                     <p
                       className="
-                        mt-6
-
-                       
-
-                        text-[14px]
-                        leading-7
-
-                        text-white/70
+                        mt-3
+                        text-[13px]
+                        leading-6
+                        text-[#2D2D2D]
                       "
-                      style={{color:"#f4e0fa", fontSize:"15px"}}
+                      style={{
+                        opacity: 0.58,
+                      }}
                     >
-                      Whether you need one service or
-                      ongoing support, our team is ready
-                      to understand your requirements.
+                      Complete the form below and our team will contact
+                      you shortly to discuss your requirements.
                     </p>
-
-                    {/* =================================================
-    INDUSTRIES WE SERVE
-================================================= */}
-
-<div className="mt-10" style={{marginTop:"30px"}}>
-
-  <p
-    className="
-      mb-5
-
-      text-[9px]
-      font-bold
-      uppercase
-      tracking-[0.28em]
-
-      text-[#D4AF37]
-    "
-    style={{margin:"10px 0px 10px 0px", fontSize:"16px", color:"#d5bcf5"}}
-  >
-    Industries We Serve
-  </p>
-
-
-  <div
-    className="
-      grid
-      grid-cols-2
-      gap-x-5
-      gap-y-4
-    "
-  >
-
-    {/* Government */}
-
-    <div className="flex items-center gap-2.5">
-      <div
-        className="
-          flex
-          h-8
-          w-8
-          shrink-0
-
-          items-center
-          justify-center
-
-          rounded-lg
-
-          bg-white/10
-
-          text-[#D4AF37]
-        "
-      >
-        <HiBuildingOffice2 className="text-[16px]" />
-      </div>
-
-      <p
-        className="
-          text-[10px]
-          font-medium
-          leading-4
-
-          text-white/75
-        "
-
-        style={{color:"#f4e0fa",fontSize:"14px"}}
-      >
-        Government Departments
-      </p>
-    </div>
-
-
-    {/* Healthcare */}
-
-    <div className="flex items-center gap-2.5">
-      <div
-        className="
-          flex
-          h-8
-          w-8
-          shrink-0
-
-          items-center
-          justify-center
-
-          rounded-lg
-
-          bg-white/10
-
-          text-[#D4AF37]
-        "
-      >
-        <HiHeart className="text-[16px]" />
-      </div>
-
-      <p
-        className="
-          text-[10px]
-          font-medium
-          leading-4
-
-          text-white/75
-        "
-        style={{color:"#f4e0fa",fontSize:"14px"}}
-      >
-        Healthcare Facilities
-      </p>
-    </div>
-
-
-    {/* Commercial */}
-
-    <div className="flex items-center gap-2.5">
-      <div
-        className="
-          flex
-          h-8
-          w-8
-          shrink-0
-
-          items-center
-          justify-center
-
-          rounded-lg
-
-          bg-white/10
-
-          text-[#D4AF37]
-        "
-      >
-        <HiBuildingOffice2 className="text-[16px]" />
-      </div>
-
-      <p
-        className="
-          text-[10px]
-          font-medium
-          leading-4
-
-          text-white/75
-        "
-        style={{color:"#f4e0fa",fontSize:"14px"}}
-      >
-        Commercial Businesses
-      </p>
-    </div>
-
-
-    {/* Industrial */}
-
-    <div className="flex items-center gap-2.5">
-      <div
-        className="
-          flex
-          h-8
-          w-8
-          shrink-0
-
-          items-center
-          justify-center
-
-          rounded-lg
-
-          bg-white/10
-
-          text-[#D4AF37]
-        "
-      >
-        <HiBuildingOffice2 className="text-[16px]" />
-      </div>
-
-      <p
-        className="
-          text-[10px]
-          font-medium
-          leading-4
-
-          text-white/75
-        "
-        style={{color:"#f4e0fa",fontSize:"14px"}}
-      >
-        Industrial Operations
-      </p>
-    </div>
-
-
-    {/* Residential */}
-
-    <div className="flex items-center gap-2.5">
-      <div
-        className="
-          flex
-          h-8
-          w-8
-          shrink-0
-
-          items-center
-          justify-center
-
-          rounded-lg
-
-          bg-white/10
-
-          text-[#D4AF37]
-        "
-      >
-        <HiBuildingOffice2 className="text-[16px]" />
-      </div>
-
-      <p
-        className="
-          text-[10px]
-          font-medium
-          leading-4
-
-          text-white/75
-        "
-        style={{color:"#f4e0fa",fontSize:"14px"}}
-      >
-        Residential Clients
-      </p>
-    </div>
-
-
-    {/* Non Profit */}
-
-    <div className="flex items-center gap-2.5">
-      <div
-        className="
-          flex
-          h-8
-          w-8
-          shrink-0
-
-          items-center
-          justify-center
-
-          rounded-lg
-
-          bg-white/10
-
-          text-[#D4AF37]
-        "
-      >
-        <HiUserGroup className="text-[16px]" />
-      </div>
-
-      <p
-        className="
-          text-[10px]
-          font-medium
-          leading-4
-
-          text-white/75
-        "
-        style={{color:"#f4e0fa",fontSize:"14px"}}
-      >
-        Non-Profit Organizations
-      </p>
-    </div>
-
-
-    {/* Property Management */}
-
-    <div className="flex items-center gap-2.5">
-      <div
-        className="
-          flex
-          h-8
-          w-8
-          shrink-0
-
-          items-center
-          justify-center
-
-          rounded-lg
-
-          bg-white/10
-
-          text-[#D4AF37]
-        "
-      >
-        <HiBuildingOffice2 className="text-[16px]" />
-      </div>
-
-      <p
-        className="
-          text-[10px]
-          font-medium
-          leading-4
-
-          text-white/75
-        "
-        style={{color:"#f4e0fa",fontSize:"14px"}}
-      >
-        Property Management Companies
-      </p>
-    </div>
-
-
-    {/* Construction */}
-
-    <div className="flex items-center gap-2.5">
-      <div
-        className="
-          flex
-          h-8
-          w-8
-          shrink-0
-
-          items-center
-          justify-center
-
-          rounded-lg
-
-          bg-white/10
-
-          text-[#D4AF37]
-        "
-      >
-        <HiBuildingOffice2 className="text-[16px]" />
-      </div>
-
-      <p
-        className="
-          text-[10px]
-          font-medium
-          leading-4
-
-          text-white/75
-        "
-        style={{color:"#f4e0fa",fontSize:"14px"}}
-      >
-        Construction Companies
-      </p>
-    </div>
-
-  </div>
-
-</div>
-
-                    {/* Gold line */}
-
-                    <div
-                      className="
-                        mt-7
-
-                        h-[3px]
-                        w-12
-
-                        rounded-full
-
-                        bg-[#D4AF37]
-                      "
-                    />
                   </div>
 
-                  {/* Trust features */}
+                  {/* Form */}
 
                   <div
                     className="
-                      mt-12
-
-                      space-y-3
-                      gap-6
-                    "
-                  >
-                    {/* Item */}
-
-                    <div
-                      className="
-                        flex
-                        items-center
-                        gap-3
-
-                        rounded-2xl
-
-                        border
-                        border-white/10
-
-                        bg-white/[0.07]
-
-                        backdrop-blur-md
-                      "
-                      style={{
-                        padding: "13px 15px", margin:"20px 0px 20px 0px"
-                      }}
-                    >
-                      <div
-                        className="
-                          flex
-                          h-9
-                          w-9
-
-                          shrink-0
-
-                          items-center
-                          justify-center
-
-                          rounded-xl
-
-                          bg-white/10
-
-                          text-[#D4AF37]
-                        "
-                      >
-                        <HiShieldCheck className="text-[19px]" />
-                      </div>
-
-                      <div>
-                        <p
-                          className="
-                            text-[12px]
-                            font-semibold
-                            text-white
-                          "
-
-                          style={{color:"#dfcbfa", fontSize:"16px"}}
-                        >
-                          Reliable & Professional
-                        </p>
-
-                        <p
-                          className="
-                            mt-0.5
-                            text-[10px]
-                            text-white/50
-                          "
-                            style={{color:"#f4e0fa", fontSize:"13px"}}
-                        >
-                          Trusted local support
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Item */}
-
-                    <div
-                      className="
-                        flex
-                        items-center
-                        gap-3
-
-                        rounded-2xl
-
-                        border
-                        border-white/10
-
-                        bg-white/[0.07]
-
-                        backdrop-blur-md
-                      "
-                       style={{
-                        padding: "13px 15px", margin:"20px 0px 20px 0px"
-                      }}
-                    >
-                      <div
-                        className="
-                          flex
-                          h-9
-                          w-9
-
-                          shrink-0
-
-                          items-center
-                          justify-center
-
-                          rounded-xl
-
-                          bg-white/10
-
-                          text-[#D4AF37]
-                        "
-                      >
-                        <HiUserGroup className="text-[19px]" />
-                      </div>
-
-                      <div>
-                        <p
-                          className="
-                            text-[12px]
-                            font-semibold
-                            text-white
-                          "
-                            style={{color:"#dfcbfa", fontSize:"16px"}}
-                        >
-                          Community Focused
-                        </p>
-
-                        <p
-                          className="
-                            mt-0.5
-                            text-[10px]
-                            text-white/50
-                          "
-                            style={{color:"#f4e0fa",fontSize:"13px"}}
-                        >
-                          Built around local needs
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Item */}
-
-                    <div
-                      className="
-                        flex
-                        items-center
-                        gap-3
-
-                        rounded-2xl
-
-                        border
-                        border-white/10
-
-                        bg-white/[0.07]
-
-                        backdrop-blur-md
-                      "
-                      style={{
-                        padding: "13px 15px", margin:"20px 0px 20px 0px"
-                      }}
-                    >
-                      <div
-                        className="
-                          flex
-                          h-9
-                          w-9
-
-                          shrink-0
-
-                          items-center
-                          justify-center
-
-                          rounded-xl
-
-                          bg-white/10
-
-                          text-[#D4AF37]
-                        "
-                      >
-                        <HiBuildingOffice2 className="text-[19px]" />
-                      </div>
-
-                      <div>
-                        <p
-                          className="
-                            text-[12px]
-                            font-semibold
-                            text-white
-                          "
-                            style={{color:"#dfcbfa",fontSize:"16px"}}
-                        >
-                          Multiple Services
-                        </p>
-
-                        <p
-                          className="
-                            mt-0.5
-                            text-[10px]
-                            text-white/50
-                          "
-                            style={{color:"#f4e0fa",fontSize:"13px"}}
-                        >
-                          One trusted partner
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* =================================================
-                  RIGHT FORM
-              ================================================= */}
-
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  x: 30,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  x: 0,
-                }}
-                viewport={{
-                  once: true,
-                }}
-                transition={{
-                  duration: 0.7,
-                  delay: 0.15,
-                }}
-                className="
-                  relative
-
-                  bg-white
-                "
-                style={{
-                  padding: "54px",
-                }}
-              >
-                {/* Decorative circle */}
-
-                <div
-                  className="
-                    pointer-events-none
-
-                    absolute
-                    -right-16
-                    -top-16
-
-                    h-[190px]
-                    w-[190px]
-
-                    rounded-full
-
-                    border
-                    border-[#D4AF37]/20
-                  "
-                />
-
-                <div
-                  className="
-                    pointer-events-none
-
-                    absolute
-                    -right-5
-                    top-5
-
-                    h-[90px]
-                    w-[90px]
-
-                    rounded-full
-
-                    border
-                    border-[#5B2E91]/10
-                  "
-                />
-
-                {/* Form heading */}
-
-                <div
-                  className="
-                    relative
-                    z-10
-                  "
-                  style={{
-                    marginBottom: "30px",
-                  }}
-                >
-                  <div
-                    className="
-                      mb-4
-
-                      flex
-                      items-center
-                      gap-2
-                    "
-                  >
-                    <span
-                      className="
-                        h-1.5
-                        w-1.5
-
-                        rounded-full
-
-                        bg-[#D4AF37]
-                      "
-                    />
-
-                    <span
-                      className="
-                        text-[10px]
-                        font-bold
-                        uppercase
-                        tracking-[0.28em]
-
-                        text-[#5B2E91]
-                      "
-                    >
-                      Request Information
-                    </span>
-                  </div>
-
-                  <h3
-                    className="
-                      text-[32px]
-                      font-semibold
-                      leading-tight
-                      tracking-[-1px]
-
-                      text-[#2D2D2D]
-
-                      sm:text-[36px]
-                    "
-                  >
-                    Request a Service
-                  </h3>
-
-                  <p
-                    className="
-                      mt-3
-
-                     
-
-                      text-[13px]
-                      leading-6
-
-                      text-[#2D2D2D]
+                      relative
+                      z-10
                     "
                     style={{
-                      opacity: 0.58,
+                      padding: "5px",
                     }}
                   >
-                    Complete the form below and our team
-                    will contact you shortly to discuss your
-                    requirements.
-                  </p>
-                </div>
+                    <Form />
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
 
-                {/* Form */}
+            {/* =================================================
+                BOTTOM TRUST STRIP
+            ================================================= */}
 
-                <div
-                  className="
-                    relative
-                    z-10
-                  "
-                  style={{
-                    padding: "5px",
-                  }}
-                >
-                  <Form />
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-
-          {/* =================================================
-              BOTTOM TRUST STRIP
-          ================================================= */}
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 20,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 0.7,
-              delay: 0.3,
-            }}
-            className="
-              mx-auto
-              mt-9
-
-              flex
-              
-
-
-              flex-wrap
-
-              items-center
-              justify-center
-
-              gap-x-8
-              gap-y-4
-            "
-            style={{
-              paddingLeft: "20px",
-              paddingRight: "20px",
-              marginTop:"20px"
-            }}
-
-          >
-            <div
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 20,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.7,
+                delay: 0.3,
+              }}
               className="
+                mx-auto
+                mt-9
                 flex
+                flex-wrap
                 items-center
-                gap-2
+                justify-center
+                gap-x-8
+                gap-y-4
               "
-              style={{margin:"20px 0px 20px 0px"}}
+              style={{
+                paddingLeft: "20px",
+                paddingRight: "20px",
+                marginTop: "20px",
+              }}
             >
-              <HiShieldCheck
-                className="
-                  text-[18px]
-                  text-[#5B2E91]
-                "
+              <TrustStripItem
+                icon={HiShieldCheck}
+                text="Professional Service"
               />
 
               <span
                 className="
-                  text-[11px]
-                  font-medium
-
-                  text-[#2D2D2D]
+                  hidden
+                  h-4
+                  w-px
+                  bg-[#D9D9E3]
+                  sm:block
                 "
-                style={{
-                  opacity: 0.68,fontSize:"15px"
-                }}
-              >
-                Professional Service
-              </span>
-            </div>
+              />
 
-            <span
-              className="
-                hidden
-                h-4
-                w-px
-
-                bg-[#D9D9E3]
-
-                sm:block
-              "
-            />
-
-            <div
-              className="
-                flex
-                items-center
-                gap-2
-              "
- style={{margin:"20px 0px 20px 0px"}}
-
-            >
-              <HiCheckCircle
-                className="
-                  text-[18px]
-                  text-[#5B2E91]
-                "
+              <TrustStripItem
+                icon={HiCheckCircle}
+                text="Reliable Support"
               />
 
               <span
                 className="
-                  text-[11px]
-                  font-medium
-
-                  text-[#2D2D2D]
+                  hidden
+                  h-4
+                  w-px
+                  bg-[#D9D9E3]
+                  sm:block
                 "
-                style={{
-                  opacity: 0.68,fontSize:"15px"
-                }}
-              >
-                Reliable Support
-              </span>
-            </div>
+              />
 
-            <span
-              className="
-                hidden
-                h-4
-                w-px
-
-                bg-[#D9D9E3]
-
-                sm:block
-              "
-            />
-
-            <div
-              className="
-                flex
-                items-center
-                gap-2
-              "
-               style={{margin:"20px 0px 20px 0px"}}
-            >
-              <HiHeart
-                className="
-                  text-[18px]
-                  text-[#D4AF37]
-                "
+              <TrustStripItem
+                icon={HiHeart}
+                text="Community Focused"
               />
 
               <span
                 className="
-                  text-[11px]
-                  font-medium
-
-                  text-[#2D2D2D]
-                "
-                style={{
-                  opacity: 0.68,fontSize:"15px"
-                }}
-              >
-                Community Focused
-              </span>
-            </div>
-
-            <span
-              className="
-                hidden
-                h-4
-                w-px
-
-                bg-[#D9D9E3]
-
-                sm:block
-              "
-            />
-
-            <div
-              className="
-                flex
-                items-center
-                gap-2
-              "
-               style={{margin:"20px"}}
-            >
-              <HiArrowRight
-                className="
-                  text-[18px]
-                  text-[#D4AF37]
+                  hidden
+                  h-4
+                  w-px
+                  bg-[#D9D9E3]
+                  sm:block
                 "
               />
 
-              <span
-                className="
-                  text-[11px]
-                  font-medium
-
-                  text-[#2D2D2D]
-                "
-                style={{
-                  opacity: 0.68,fontSize:"15px"
-                }}
-              >
-                Quick Response
-              </span>
-            </div>
-          </motion.div>
-        </div>
-      </Container>
-
+              <TrustStripItem
+                icon={HiArrowRight}
+                text="Quick Response"
+              />
+            </motion.div>
+          </div>
+        </Container>
       </div>
 
       {/* =====================================================
@@ -1540,19 +1127,176 @@ export default function Booking() {
       <div
         className="
           pointer-events-none
-
           absolute
           bottom-0
           left-0
-
           h-[100px]
           w-full
-
-          bg-gradient-to-t
-          from-white
-          to-transparent
         "
+        style={{
+          background:
+            "linear-gradient(to top, rgba(255,255,255,0.78), rgba(255,255,255,0))",
+        }}
       />
     </section>
+  );
+}
+
+/* ============================================================
+   INDUSTRY ITEM
+============================================================ */
+
+function IndustryItem({ icon: Icon, text }) {
+  return (
+    <div className="flex items-center gap-2.5">
+      <div
+        className="
+          flex
+          h-8
+          w-8
+          shrink-0
+          items-center
+          justify-center
+          rounded-lg
+          bg-white/10
+          text-[#D7C3E0]
+        "
+      >
+        <Icon className="text-[16px]" />
+      </div>
+
+      <p
+        className="
+          text-[10px]
+          font-medium
+          leading-4
+          text-white/75
+        "
+        style={{
+          color: "#E8DDEA",
+          fontSize: "14px",
+        }}
+      >
+        {text}
+      </p>
+    </div>
+  );
+}
+
+/* ============================================================
+   TRUST ITEM
+============================================================ */
+
+function TrustItem({
+  icon: Icon,
+  title,
+  description,
+}) {
+  return (
+    <div
+      className="
+        flex
+        items-center
+        gap-3
+        rounded-2xl
+        border
+        border-white/10
+        bg-white/[0.07]
+        backdrop-blur-md
+      "
+      style={{
+        padding: "13px 15px",
+        margin: "20px 0px 20px 0px",
+      }}
+    >
+      <div
+        className="
+          flex
+          h-9
+          w-9
+          shrink-0
+          items-center
+          justify-center
+          rounded-xl
+          bg-white/10
+          text-[#D7C3E0]
+        "
+      >
+        <Icon className="text-[19px]" />
+      </div>
+
+      <div>
+        <p
+          className="
+            text-[12px]
+            font-semibold
+            text-white
+          "
+          style={{
+            color: "#F0E5F2",
+            fontSize: "16px",
+          }}
+        >
+          {title}
+        </p>
+
+        <p
+          className="
+            mt-0.5
+            text-[10px]
+            text-white/50
+          "
+          style={{
+            color: "#E8DDEA",
+            fontSize: "13px",
+          }}
+        >
+          {description}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* ============================================================
+   TRUST STRIP ITEM
+============================================================ */
+
+function TrustStripItem({
+  icon: Icon,
+  text,
+}) {
+  return (
+    <div
+      className="
+        flex
+        items-center
+        gap-2
+      "
+      style={{
+        margin: "20px 0px 20px 0px",
+      }}
+    >
+      <Icon
+        className="
+          text-[18px]
+          text-[#5B2E91]
+        "
+      />
+
+      <span
+        className="
+          text-[11px]
+          font-medium
+          text-[#2D2D2D]
+        "
+        style={{
+          opacity: 0.68,
+          fontSize: "15px",
+        }}
+      >
+        {text}
+      </span>
+    </div>
   );
 }

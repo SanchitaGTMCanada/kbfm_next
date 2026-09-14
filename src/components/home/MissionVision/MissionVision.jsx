@@ -5,49 +5,63 @@ import {
   HiCheckCircle,
   HiEye,
   HiFlag,
+  HiHeart,
 } from "react-icons/hi2";
 
 export default function MissionVision() {
   return (
     <section
       id="mission-vision"
-      className="relative overflow-hidden bg-[#FBF9FD]"
+      className="relative overflow-hidden"
       style={{
         paddingTop: "90px",
         paddingBottom: "100px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        background:
+          "linear-gradient(135deg, #FFFFFF 0%, #FBF7FD 38%, #F3EBF8 72%, #EEE3F5 100%)",
       }}
     >
       {/* =========================================================
           BACKGROUND PHOTO OVERLAY
       ========================================================= */}
+
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1800&q=80"
           alt=""
           className="absolute inset-0 h-full w-full object-cover object-center"
           style={{
-            opacity: 0.035,
+            opacity: 0.025,
           }}
         />
 
-        {/* Soft purple overlay */}
+        {/* Soft light purple overlay */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(135deg, rgba(251,249,253,0.98) 0%, rgba(248,242,251,0.95) 50%, rgba(241,231,248,0.98) 100%)",
+              "linear-gradient(135deg, rgba(255,255,255,0.94) 0%, rgba(251,247,253,0.90) 40%, rgba(244,236,249,0.88) 72%, rgba(238,227,245,0.92) 100%)",
           }}
         />
 
-        {/* Center light */}
+        {/* Center white light */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(circle at center, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0) 60%)",
+              "radial-gradient(circle at center, rgba(255,255,255,0.68) 0%, rgba(255,255,255,0.18) 42%, rgba(255,255,255,0) 68%)",
+          }}
+        />
+
+        {/* Soft upper white wash */}
+        <div
+          className="absolute inset-x-0 top-0"
+          style={{
+            height: "240px",
+            background:
+              "linear-gradient(to bottom, rgba(255,255,255,0.55), rgba(255,255,255,0))",
           }}
         />
 
@@ -57,7 +71,7 @@ export default function MissionVision() {
           style={{
             height: "180px",
             background:
-              "linear-gradient(to top, #FBF9FD 0%, rgba(251,249,253,0) 100%)",
+              "linear-gradient(to top, #EEE3F5 0%, rgba(238,227,245,0) 100%)",
           }}
         />
       </div>
@@ -65,6 +79,9 @@ export default function MissionVision() {
       {/* =========================================================
           BACKGROUND DECORATION
       ========================================================= */}
+
+      {/* Primary subtle left glow */}
+
       <div
         className="pointer-events-none absolute rounded-full"
         style={{
@@ -72,50 +89,176 @@ export default function MissionVision() {
           height: "420px",
           left: "-220px",
           top: "250px",
-          background: "#DCC8EE",
-          opacity: 0.16,
+          background: "#642E60",
+          opacity: 0.04,
           filter: "blur(110px)",
         }}
       />
+
+      {/* Secondary subtle right glow */}
 
       <div
         className="pointer-events-none absolute rounded-full"
         style={{
-          width: "420px",
-          height: "420px",
+          width: "460px",
+          height: "460px",
           right: "-220px",
           bottom: "100px",
-          background: "#C8A8DD",
-          opacity: 0.15,
-          filter: "blur(110px)",
+          background: "#5B2E91",
+          opacity: 0.065,
+          filter: "blur(115px)",
+        }}
+      />
+
+      {/* Small secondary top glow */}
+
+      <div
+        className="pointer-events-none absolute rounded-full"
+        style={{
+          width: "260px",
+          height: "260px",
+          right: "18%",
+          top: "2%",
+          background: "#5B2E91",
+          opacity: 0.025,
+          filter: "blur(100px)",
         }}
       />
 
       {/* =========================================================
+          LARGE BACKGROUND ICONS
+      ========================================================= */}
+
+      {/* Mission Flag */}
+
+      <div
+        className="pointer-events-none absolute"
+        style={{
+          top: "8%",
+          left: "-40px",
+          color: "#642E60",
+          opacity: 0.035,
+          transform: "rotate(-12deg)",
+          zIndex: 0,
+        }}
+      >
+        <HiFlag
+          style={{
+            width: "260px",
+            height: "260px",
+          }}
+        />
+      </div>
+
+      {/* Vision Eye */}
+
+      <div
+        className="pointer-events-none absolute"
+        style={{
+          top: "14%",
+          right: "-50px",
+          color: "#5B2E91",
+          opacity: 0.03,
+          transform: "rotate(10deg)",
+          zIndex: 0,
+        }}
+      >
+        <HiEye
+          style={{
+            width: "300px",
+            height: "300px",
+          }}
+        />
+      </div>
+
+      {/* Heart */}
+
+      <div
+        className="pointer-events-none absolute"
+        style={{
+          left: "18%",
+          bottom: "7%",
+          color: "#5B2E91",
+          opacity: 0.025,
+          transform: "rotate(-8deg)",
+          zIndex: 0,
+        }}
+      >
+        <HiHeart
+          style={{
+            width: "240px",
+            height: "240px",
+          }}
+        />
+      </div>
+
+      {/* Trust / Check */}
+
+      <div
+        className="pointer-events-none absolute"
+        style={{
+          right: "17%",
+          bottom: "10%",
+          color: "#642E60",
+          opacity: 0.025,
+          transform: "rotate(8deg)",
+          zIndex: 0,
+        }}
+      >
+        <HiCheckCircle
+          style={{
+            width: "220px",
+            height: "220px",
+          }}
+        />
+      </div>
+
+      {/* Large center watermark */}
+
+      <div
+        className="pointer-events-none absolute"
+        style={{
+          left: "50%",
+          top: "48%",
+          transform: "translate(-50%, -50%)",
+          color: "#5B2E91",
+          opacity: 0.012,
+          zIndex: 0,
+        }}
+      >
+        <HiHeart
+          style={{
+            width: "420px",
+            height: "420px",
+          }}
+        />
+      </div>
+
+      {/* =========================================================
           MAIN CENTERED CONTAINER
       ========================================================= */}
+
       <div
         className="relative mx-auto w-[90%]"
         style={{
-      
           paddingLeft: "24px",
           paddingRight: "24px",
+          zIndex: 2,
         }}
       >
         {/* =======================================================
             SECTION HEADER
         ======================================================= */}
+
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7 }}
           className="mx-auto text-center"
-        //   style={{
-        //     maxWidth: "850px",
-        //   }}
         >
           {/* Label */}
+
           <div
             className="flex items-center justify-center"
             style={{
@@ -128,13 +271,13 @@ export default function MissionVision() {
                 width: "55px",
                 height: "1px",
                 background:
-                  "linear-gradient(to right, transparent, #A66CFF)",
+                  "linear-gradient(to right, transparent, rgba(91,46,145,0.55))",
               }}
             />
 
             <span
               style={{
-                color: "#795096",
+                color: "#5B2E91",
                 fontSize: "11px",
                 fontWeight: 800,
                 letterSpacing: "0.32em",
@@ -148,12 +291,13 @@ export default function MissionVision() {
                 width: "55px",
                 height: "1px",
                 background:
-                  "linear-gradient(to left, transparent, #A66CFF)",
+                  "linear-gradient(to left, transparent, rgba(91,46,145,0.55))",
               }}
             />
           </div>
 
           {/* Main Heading */}
+
           <h2
             style={{
               margin: 0,
@@ -171,7 +315,7 @@ export default function MissionVision() {
             style={{
               margin: "3px 0 0",
               background:
-                "linear-gradient(90deg, #6A3695, #A66CFF, #6A3695)",
+                "linear-gradient(90deg, #642E60, #5B2E91, #642E60)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               fontSize: "clamp(38px, 5vw, 64px)",
@@ -202,16 +346,15 @@ export default function MissionVision() {
         {/* =======================================================
             TIMELINE AREA
         ======================================================= */}
+
         <div
           className="relative mx-auto"
           style={{
-    
             marginTop: "75px",
           }}
         >
-          {/* =====================================================
-              CENTRAL TIMELINE
-          ===================================================== */}
+          {/* Central timeline */}
+
           <div
             className="pointer-events-none absolute hidden lg:block"
             style={{
@@ -221,13 +364,14 @@ export default function MissionVision() {
               width: "1px",
               transform: "translateX(-50%)",
               background:
-                "linear-gradient(to bottom, transparent 0%, #C6A5D9 10%, #C6A5D9 90%, transparent 100%)",
+                "linear-gradient(to bottom, transparent 0%, rgba(91,46,145,0.22) 10%, rgba(100,46,96,0.22) 90%, transparent 100%)",
             }}
           />
 
           {/* =====================================================
               MISSION ROW
           ===================================================== */}
+
           <motion.div
             initial={{ opacity: 0, x: -35 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -238,6 +382,7 @@ export default function MissionVision() {
             {/* =================================================
                 MISSION CONTENT — LEFT
             ================================================= */}
+
             <div
               className="relative flex h-full flex-col overflow-hidden rounded-[30px] border border-[#E2D4EA] bg-white"
               style={{
@@ -246,20 +391,22 @@ export default function MissionVision() {
                 paddingBottom: "30px",
                 paddingLeft: "32px",
                 boxShadow:
-                  "0 20px 55px rgba(91,46,145,0.09)",
+                  "0 20px 55px rgba(91,46,145,0.08)",
               }}
             >
               {/* Top accent */}
+
               <div
                 className="absolute left-0 right-0 top-0"
                 style={{
                   height: "4px",
                   background:
-                    "linear-gradient(90deg, #5B2E91, #A66CFF)",
+                    "linear-gradient(90deg, #642E60, #5B2E91)",
                 }}
               />
 
               {/* Decorative number */}
+
               <div
                 className="pointer-events-none absolute right-[-8px] top-[-30px]"
                 style={{
@@ -274,22 +421,25 @@ export default function MissionVision() {
               </div>
 
               {/* Header */}
+
               <div
                 className="relative flex items-center"
                 style={{
                   gap: "17px",
                 }}
               >
+                {/* Primary icon */}
+
                 <div
                   className="flex shrink-0 items-center justify-center rounded-[18px]"
                   style={{
                     width: "64px",
                     height: "64px",
                     background:
-                      "linear-gradient(135deg, #5B2E91, #8F55C4)",
+                      "linear-gradient(135deg, #642E60, #75436F)",
                     color: "#fff",
                     boxShadow:
-                      "0 10px 24px rgba(91,46,145,0.22)",
+                      "0 10px 24px rgba(100,46,96,0.18)",
                   }}
                 >
                   <HiFlag size={28} />
@@ -311,7 +461,7 @@ export default function MissionVision() {
                   <h3
                     style={{
                       margin: "5px 0 0",
-                      color: "#452367",
+                      color: "#642E60",
                       fontSize: "28px",
                       lineHeight: 1.1,
                       fontWeight: 800,
@@ -323,6 +473,7 @@ export default function MissionVision() {
               </div>
 
               {/* Divider */}
+
               <div
                 style={{
                   height: "1px",
@@ -333,6 +484,7 @@ export default function MissionVision() {
               />
 
               {/* Mission text */}
+
               <p
                 style={{
                   margin: 0,
@@ -350,6 +502,7 @@ export default function MissionVision() {
               </p>
 
               {/* Keywords */}
+
               <div
                 className="flex flex-wrap"
                 style={{
@@ -372,7 +525,7 @@ export default function MissionVision() {
                       paddingLeft: "12px",
                       borderRadius: "999px",
                       background: "#F4ECF8",
-                      color: "#76518D",
+                      color: "#5B2E91",
                       fontSize: "10px",
                       fontWeight: 700,
                     }}
@@ -386,6 +539,7 @@ export default function MissionVision() {
             {/* =================================================
                 CENTER NODE — 01
             ================================================= */}
+
             <div
               className="relative z-20 flex items-center justify-center"
               style={{
@@ -398,14 +552,13 @@ export default function MissionVision() {
                 style={{
                   width: "72px",
                   height: "72px",
-                  border: "7px solid #FBF9FD",
-                  background:
-                    "linear-gradient(135deg, #5B2E91, #A66CFF)",
+                  border: "7px solid #F5EDF9",
+                  background: "#5B2E91",
                   color: "#fff",
                   fontSize: "14px",
                   fontWeight: 800,
                   boxShadow:
-                    "0 12px 30px rgba(91,46,145,0.25)",
+                    "0 12px 30px rgba(91,46,145,0.18)",
                 }}
               >
                 01
@@ -414,15 +567,15 @@ export default function MissionVision() {
 
             {/* =================================================
                 MISSION PHOTO — RIGHT
-                SAME HEIGHT AS CONTENT
             ================================================= */}
+
             <motion.div
               whileHover={{ y: -5 }}
               transition={{ duration: 0.3 }}
               className="group relative h-full min-h-[310px] overflow-hidden rounded-[30px]"
               style={{
                 boxShadow:
-                  "0 20px 55px rgba(91,46,145,0.14)",
+                  "0 20px 55px rgba(91,46,145,0.12)",
               }}
             >
               <img
@@ -432,15 +585,17 @@ export default function MissionVision() {
               />
 
               {/* Purple overlay */}
+
               <div
                 className="absolute inset-0"
                 style={{
                   background:
-                    "linear-gradient(135deg, rgba(62,30,84,0.08) 10%, rgba(91,46,145,0.62) 100%)",
+                    "linear-gradient(135deg, rgba(62,30,84,0.08) 10%, rgba(91,46,145,0.60) 100%)",
                 }}
               />
 
               {/* Border */}
+
               <div
                 className="absolute inset-0 rounded-[30px]"
                 style={{
@@ -450,6 +605,7 @@ export default function MissionVision() {
               />
 
               {/* Top label */}
+
               <div
                 className="absolute left-5 right-5 top-5"
                 style={{
@@ -491,6 +647,7 @@ export default function MissionVision() {
               </div>
 
               {/* Bottom content */}
+
               <div
                 className="absolute bottom-5 left-5"
                 style={{
@@ -526,6 +683,7 @@ export default function MissionVision() {
           {/* =====================================================
               VISION ROW
           ===================================================== */}
+
           <motion.div
             initial={{ opacity: 0, x: 35 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -538,15 +696,15 @@ export default function MissionVision() {
           >
             {/* =================================================
                 VISION PHOTO — LEFT
-                SAME HEIGHT AS CONTENT
             ================================================= */}
+
             <motion.div
               whileHover={{ y: -5 }}
               transition={{ duration: 0.3 }}
               className="group relative order-2 h-full min-h-[310px] overflow-hidden rounded-[30px] lg:order-1"
               style={{
                 boxShadow:
-                  "0 20px 55px rgba(91,46,145,0.14)",
+                  "0 20px 55px rgba(91,46,145,0.12)",
               }}
             >
               <img
@@ -555,16 +713,18 @@ export default function MissionVision() {
                 className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
               />
 
-              {/* Purple overlay */}
+              {/* Secondary purple overlay */}
+
               <div
                 className="absolute inset-0"
                 style={{
                   background:
-                    "linear-gradient(135deg, rgba(91,46,145,0.62) 0%, rgba(62,30,84,0.08) 90%)",
+                    "linear-gradient(135deg, rgba(91,46,145,0.60) 0%, rgba(62,30,84,0.08) 90%)",
                 }}
               />
 
               {/* Border */}
+
               <div
                 className="absolute inset-0 rounded-[30px]"
                 style={{
@@ -574,6 +734,7 @@ export default function MissionVision() {
               />
 
               {/* Top label */}
+
               <div
                 className="absolute left-5 right-5 top-5"
                 style={{
@@ -615,6 +776,7 @@ export default function MissionVision() {
               </div>
 
               {/* Bottom content */}
+
               <div
                 className="absolute bottom-5 left-5"
                 style={{
@@ -649,34 +811,36 @@ export default function MissionVision() {
             {/* =================================================
                 CENTER NODE — 02
             ================================================= */}
-           <div
-  className="relative z-20 order-1 flex items-center justify-center lg:order-2"
-  style={{
-    marginTop: "28px",
-    marginBottom: "28px",
-  }}
->
-  <div
-    className="flex items-center justify-center rounded-full"
-    style={{
-      width: "72px",
-      height: "72px",
-      border: "7px solid #A66CFF",
-      background: "#fff",
-      color: "#5B2E91",
-      fontSize: "14px",
-      fontWeight: 800,
-      boxShadow:
-        "0 0 0 3px rgba(166,108,255,0.15), 0 12px 30px rgba(91,46,145,0.22)",
-    }}
-  >
-    02
-  </div>
-</div>
+
+            <div
+              className="relative z-20 order-1 flex items-center justify-center lg:order-2"
+              style={{
+                marginTop: "28px",
+                marginBottom: "28px",
+              }}
+            >
+              <div
+                className="flex items-center justify-center rounded-full"
+                style={{
+                  width: "72px",
+                  height: "72px",
+                  border: "7px solid #F5EDF9",
+                  background: "#642E60",
+                  color: "#fff",
+                  fontSize: "14px",
+                  fontWeight: 800,
+                  boxShadow:
+                    "0 12px 30px rgba(100,46,96,0.18)",
+                }}
+              >
+                02
+              </div>
+            </div>
 
             {/* =================================================
                 VISION CONTENT — RIGHT
             ================================================= */}
+
             <div
               className="relative order-3 flex h-full flex-col overflow-hidden rounded-[30px] text-white"
               style={{
@@ -685,12 +849,13 @@ export default function MissionVision() {
                 paddingBottom: "30px",
                 paddingLeft: "32px",
                 background:
-                  "linear-gradient(135deg, #482365 0%, #5B2E91 55%, #7547A0 100%)",
+                  "linear-gradient(135deg, #482365 0%, #5B2E91 58%, #68408A 100%)",
                 boxShadow:
-                  "0 22px 55px rgba(91,46,145,0.20)",
+                  "0 22px 55px rgba(91,46,145,0.18)",
               }}
             >
               {/* Glow */}
+
               <div
                 className="pointer-events-none absolute rounded-full"
                 style={{
@@ -698,13 +863,14 @@ export default function MissionVision() {
                   height: "230px",
                   right: "-70px",
                   top: "-80px",
-                  background: "#CDA8FF",
-                  opacity: 0.14,
+                  background: "#A98BC0",
+                  opacity: 0.13,
                   filter: "blur(45px)",
                 }}
               />
 
               {/* Decorative number */}
+
               <div
                 className="pointer-events-none absolute right-[-8px] top-[-30px]"
                 style={{
@@ -719,6 +885,7 @@ export default function MissionVision() {
               </div>
 
               {/* Header */}
+
               <div
                 className="relative flex items-center"
                 style={{
@@ -734,6 +901,7 @@ export default function MissionVision() {
                       "rgba(255,255,255,0.13)",
                     border:
                       "1px solid rgba(255,255,255,0.22)",
+                    color: "#fff",
                   }}
                 >
                   <HiEye size={29} />
@@ -767,6 +935,7 @@ export default function MissionVision() {
               </div>
 
               {/* Divider */}
+
               <div
                 style={{
                   height: "1px",
@@ -778,6 +947,7 @@ export default function MissionVision() {
               />
 
               {/* Vision text */}
+
               <p
                 style={{
                   margin: 0,
@@ -794,6 +964,7 @@ export default function MissionVision() {
               </p>
 
               {/* Keywords */}
+
               <div
                 className="flex flex-wrap"
                 style={{
@@ -830,6 +1001,7 @@ export default function MissionVision() {
               </div>
 
               {/* Bottom statement */}
+
               <div
                 className="flex items-center"
                 style={{
@@ -850,6 +1022,7 @@ export default function MissionVision() {
         {/* =======================================================
             CLOSING STATEMENT
         ======================================================= */}
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -867,7 +1040,7 @@ export default function MissionVision() {
               height: "1px",
               marginBottom: "22px",
               background:
-                "linear-gradient(90deg, transparent, #9D70BA, transparent)",
+                "linear-gradient(90deg, transparent, #5B2E91, transparent)",
             }}
           />
 
@@ -883,7 +1056,7 @@ export default function MissionVision() {
             Serving the North with{" "}
             <span
               style={{
-                color: "#6C3A91",
+                color: "#642E60",
                 fontWeight: 800,
               }}
             >

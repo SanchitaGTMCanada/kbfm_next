@@ -8,29 +8,68 @@ export default function HeroContent() {
   return (
     <div>
 
-      <span className="inline-flex items-center rounded-full bg-[#F3F6FA] px-5 py-2 text-sm font-semibold text-[var(--primary)]">
-        {heroData.badge}
-      </span>
+      {/* BADGE */}
+   <span
+  style={{
+    width: "10px",
+    height: "10px",
+    minWidth: "10px",
+    borderRadius: "50%",
+    background: "#5B2E91",
+    border: "2px solid #C6A15B",
+    boxSizing: "border-box",
+    boxShadow: "0 0 10px rgba(198,161,91,0.7)",
+  }}
+/>
 
-      <h1 className="mt-6 text-[64px] font-bold leading-[1.1] text-[var(--heading)]">
+      {/* HEADING */}
+      <h1
+        className="
+          mt-6
+          text-[64px]
+          font-bold
+          leading-[1.1]
+          text-white
+        "
+      >
         {heroData.title}
       </h1>
 
-      <p className="mt-7 max-w-[620px] text-lg leading-8 text-gray-600">
+      {/* DESCRIPTION */}
+      <p
+        className="
+          mt-7
+          max-w-[620px]
+          text-lg
+          leading-8
+          text-gray-200
+        "
+      >
         {heroData.description}
       </p>
 
+      {/* BUTTONS */}
       <div className="mt-10 flex items-center gap-5">
+
+        {/* PRIMARY BUTTON */}
         <Button href={heroData.primaryBtn.link}>
           {heroData.primaryBtn.text}
         </Button>
 
+        {/* SECONDARY LINK */}
         <Link
           href={heroData.secondaryBtn.link}
-          className="font-semibold text-[var(--heading)] hover:text-[var(--primary)]"
+          className="
+            font-semibold
+            text-white
+            transition-all
+            duration-300
+            hover:text-[#C6A15B]
+          "
         >
           {heroData.secondaryBtn.text}
         </Link>
+
       </div>
 
     </div>

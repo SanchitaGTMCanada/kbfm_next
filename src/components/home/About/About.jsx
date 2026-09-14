@@ -12,8 +12,9 @@ export default function About() {
 
         bg-gradient-to-br
         from-white
-        via-[#FAF7FD]
-        to-[#E9DDF4]
+        via-[#FBF8FC]
+        to-[#F0E7F2]
+
         flex
         justify-center
 
@@ -31,22 +32,18 @@ export default function About() {
           TOP SEPARATION AREA
       ===================================================== */}
 
-      
-
       <div
         className="
           pointer-events-none
-
           absolute
           left-0
           top-0
-
           h-[150px]
           w-full
 
           bg-gradient-to-b
-          from-[#E9DDF4]/55
-          via-[#F4EFF9]/45
+          from-[#F0E7F2]/60
+          via-[#F7F1F8]/45
           to-transparent
 
           sm:h-[170px]
@@ -59,7 +56,6 @@ export default function About() {
       <div
         className="
           pointer-events-none
-
           absolute
           left-1/2
           top-[-40px]
@@ -71,7 +67,7 @@ export default function About() {
 
           rounded-full
 
-          bg-[#B998D5]/10
+          bg-[#642E60]/[0.06]
 
           blur-[80px]
         "
@@ -84,7 +80,6 @@ export default function About() {
       <div
         className="
           pointer-events-none
-
           absolute
           left-1/2
           top-[95px]
@@ -97,7 +92,7 @@ export default function About() {
           items-center
           gap-3
 
-          opacity-60
+          opacity-70
 
           sm:top-[110px]
           lg:top-[125px]
@@ -110,10 +105,11 @@ export default function About() {
 
             bg-gradient-to-r
             from-transparent
-            to-[#7B4DB8]/40
+            to-[#642E60]/40
           "
         />
 
+        {/* Primary coloured decorative dot */}
         <span
           className="
             h-1.5
@@ -121,7 +117,7 @@ export default function About() {
 
             rounded-full
 
-            bg-[#7B4DB8]/50
+            bg-[#642E60]/70
           "
         />
 
@@ -132,7 +128,7 @@ export default function About() {
 
             bg-gradient-to-l
             from-transparent
-            to-[#7B4DB8]/40
+            to-[#642E60]/40
           "
         />
       </div>
@@ -141,7 +137,7 @@ export default function About() {
           BACKGROUND EFFECTS
       ===================================================== */}
 
-      {/* Large Purple Glow - Left */}
+      {/* Large Primary Plum Glow - Left */}
 
       <div
         className="
@@ -155,13 +151,13 @@ export default function About() {
 
           rounded-full
 
-          bg-[#6D48A8]/10
+          bg-[#642E60]/[0.07]
 
           blur-[150px]
         "
       />
 
-      {/* Large Lavender Glow - Right */}
+      {/* Large Secondary Purple Glow - Right */}
 
       <div
         className="
@@ -175,7 +171,7 @@ export default function About() {
 
           rounded-full
 
-          bg-[#8B65B4]/10
+          bg-[#5B2E91]/[0.08]
 
           blur-[150px]
         "
@@ -201,7 +197,7 @@ export default function About() {
         "
       />
 
-      {/* Bottom Purple Glow */}
+      {/* Bottom Secondary Purple Glow */}
 
       <div
         className="
@@ -215,7 +211,7 @@ export default function About() {
 
           rounded-full
 
-          bg-[#B998D5]/15
+          bg-[#5B2E91]/[0.09]
 
           blur-[150px]
         "
@@ -240,7 +236,7 @@ export default function About() {
           rounded-full
 
           border
-          border-[#7B4DB8]/10
+          border-[#642E60]/10
         "
       />
 
@@ -259,7 +255,7 @@ export default function About() {
           rounded-full
 
           border
-          border-[#B998D5]/15
+          border-[#5B2E91]/12
         "
       />
 
@@ -278,7 +274,7 @@ export default function About() {
           rounded-full
 
           border
-          border-[#7B4DB8]/10
+          border-[#642E60]/10
         "
       />
 
@@ -297,7 +293,7 @@ export default function About() {
           rounded-full
 
           border
-          border-[#7B4DB8]/10
+          border-[#5B2E91]/10
         "
       />
 
@@ -317,7 +313,7 @@ export default function About() {
 
           rounded-full
 
-          bg-[#7B4DB8]/35
+          bg-[#642E60]/35
         "
       />
 
@@ -333,7 +329,7 @@ export default function About() {
 
           rounded-full
 
-          bg-[#B998D5]/40
+          bg-[#5B2E91]/35
         "
       />
 
@@ -349,7 +345,7 @@ export default function About() {
 
           rounded-full
 
-          bg-[#6D48A8]/25
+          bg-[#642E60]/25
         "
       />
 
@@ -365,7 +361,7 @@ export default function About() {
 
           rounded-full
 
-          bg-[#B998D5]/40
+          bg-[#5B2E91]/35
         "
       />
 
@@ -396,7 +392,7 @@ export default function About() {
 
               rounded-full
 
-              bg-[#7B4DB8]
+              bg-[#642E60]
             "
           />
         ))}
@@ -405,51 +401,55 @@ export default function About() {
       {/* =====================================================
           CONTENT
       ===================================================== */}
-<div
-          className="
-            relative
-            z-[2000]
 
-            flex
-            h-full
-            w-[90%]
-            mx-auto
-            justify-center
-          "
-          style={{margin:"40px 0px 40px 0px"}}
-        >
-      <Container className="w-[100%] flex justify-center">
-        <div
-          className="
-            relative
-            z-10
+      <div
+        className="
+          relative
+          z-[2000]
 
-            grid
-            w-full
+          flex
+          h-full
+          w-[90%]
+          mx-auto
+          justify-center
+        "
+        style={{
+          margin: "40px 0px 40px 0px",
+        }}
+      >
+        <Container className="w-[100%] flex justify-center">
+          <div
+            className="
+              relative
+              z-10
 
-            items-center
+              grid
+              w-full
 
-            gap-16
+              items-center
 
-            lg:grid-cols-2
-            lg:gap-20
-            xl:gap-24
-          "
-        >
-          {/* =================================================
-              ABOUT CONTENT
-          ================================================= */}
+              gap-16
 
-          <AboutContent />
+              lg:grid-cols-2
+              lg:gap-20
+              xl:gap-24
+            "
+          >
+            {/* =================================================
+                ABOUT CONTENT
+            ================================================= */}
 
-          {/* =================================================
-              ABOUT IMAGES
-          ================================================= */}
+            <AboutContent />
 
-          <AboutImages />
-        </div>
-      </Container>
-</div>
+            {/* =================================================
+                ABOUT IMAGES
+            ================================================= */}
+
+            <AboutImages />
+          </div>
+        </Container>
+      </div>
+
       {/* =====================================================
           BOTTOM SOFT PURPLE TRANSITION
       ===================================================== */}
@@ -457,7 +457,6 @@ export default function About() {
       <div
         className="
           pointer-events-none
-
           absolute
           bottom-0
           left-0
@@ -466,7 +465,8 @@ export default function About() {
           w-full
 
           bg-gradient-to-t
-          from-[#E9DDF4]/60
+          from-[#F0E7F2]/65
+          via-[#F7F1F8]/30
           to-transparent
         "
       />

@@ -400,283 +400,322 @@ export default function Header() {
                    ABOUT DROPDOWN
                 ================================================= */
 
-                if (item.title === "About") {
-                  return (
-                    <div
-                      key={item.title}
-                      className="
-                        group
-                        relative
-                      "
-                    >
-                      {/* ABOUT BUTTON */}
-
-                      <button
-                        type="button"
-                        className={`
-                          group
-
-                          relative
-
-                          flex
-                          items-center
-                          justify-center
-
-                          gap-1
-
-                          rounded-full
-
-                          px-5
-                          py-3
-
-                          text-[18px]
-                          font-normal
-                          tracking-[0.01em]
-
-                          transition-all
-                          duration-300
-
-                          hover:-translate-y-[1px]
-
-                          ${
-                            sticky
-                              ? `
-                                text-[#452D2D]
-                                hover:text-[#5B3535]
-                              `
-                              : `
-                                !text-white
-                                hover:!text-white
-                              `
-                          }
-                        `}
-                      >
-                        <span
-                          className="
-                            relative
-                            z-10
-
-                            whitespace-nowrap
-                          "
-                        >
-                          About
-                        </span>
-
-                        <HiChevronDown
-                          className="
-                            relative
-                            z-10
-
-                            text-[15px]
-
-                            transition-transform
-                            duration-300
-
-                            group-hover:rotate-180
-                          "
-                        />
-
-                        {/* UNDERLINE */}
-
-                        <span
-                          className="
-                            pointer-events-none
-
-                            absolute
-                            bottom-[5px]
-                            left-1/2
-
-                            h-[2px]
-                            w-0
-
-                            -translate-x-1/2
-
-                            rounded-full
-
-                            bg-[#D4AF37]
-
-                            transition-all
-                            duration-300
-
-                            group-hover:w-8
-                          "
-                        />
-                      </button>
-
-                      {/* ABOUT DROPDOWN */}
-
-                      <div
-                        className="
-                          invisible
-
-                          absolute
-
-                          left-1/2
-
-                          top-[calc(100%-1px)]
-
-                          z-[99999]
-
-                          mt-3
-
-                          w-[280px]
-
-                          -translate-x-1/2
-                          translate-y-2
-
-                          rounded-2xl
-
-                          border
-                          border-[#D9D9E3]
-
-                          bg-white
-
-                          p-2
-
-                          opacity-0
-
-                          shadow-[0_20px_50px_rgba(69,45,45,0.20)]
-
-                          transition-all
-                          duration-300
-
-                          group-hover:visible
-                          group-hover:translate-y-0
-                          group-hover:opacity-100
-                        "
-                        style={{
-                          padding: "10px",
-                          marginTop: "10px",
-                        }}
-                      >
-                        {/* ABOUT US */}
-
-                        <Link
-                          href="#about"
-                          onClick={(e) =>
-                            handleNavigation(
-                              e,
-                              "#about"
-                            )
-                          }
-                          className="
-                            group/item
-
-                            flex
-                            items-center
-                            justify-between
-
-                            rounded-xl
-
-                            px-4
-                            py-3.5
-
-                            text-[15px]
-                            font-medium
-
-                            text-[#452D2D]
-
-                            transition-all
-                            duration-200
-
-                            bg-[#F7F3FC]
-                            hover:text-[#5B2E91]
-                          "
-                          style={{
-                            padding: "10px",
-                            marginBottom: "10px",
-                          }}
-                        >
-                          <span>
-                            About Us
-                          </span>
-
-                          <span
-                            className="
-                              h-1.5
-                              w-1.5
-
-                              shrink-0
-
-                              rounded-full
-
-                              bg-[#D4AF37]
-
-                              opacity-0
-
-                              transition-opacity
-                              duration-200
-
-                              group-hover/item:opacity-100
-                            "
-                          />
-                        </Link>
-
-                        {/* MISSION VISION VALUES */}
-
-                        <Link
-                          href="#mission-vision-values"
-                          onClick={(e) =>
-                            handleNavigation(
-                              e,
-                              "#mission-vision-values"
-                            )
-                          }
-                          className="
-                            group/item
-
-                            flex
-                            items-center
-                            justify-between
-
-                            rounded-xl
-
-                            px-4
-                            py-3.5
-
-                            text-[15px]
-                            font-medium
-
-                            text-[#452D2D]
-
-                            transition-all
-                            duration-200
-
-                            bg-[#F7F3FC]
-                            hover:text-[#5B2E91]
-                          "
-                          style={{
-                            padding: "10px",
-                          }}
-                        >
-                          <span>
-                            Mission, Vision & Values
-                          </span>
-
-                          <span
-                            className="
-                              h-1.5
-                              w-1.5
-
-                              shrink-0
-
-                              rounded-full
-
-                              bg-[#D4AF37]
-
-                              opacity-0
-
-                              transition-opacity
-                              duration-200
-
-                              group-hover/item:opacity-100
-                            "
-                          />
-                        </Link>
-                      </div>
-                    </div>
-                  );
-                }
+          if (item.title === "About") {
+  return (
+    <div
+      key={item.title}
+      className="
+        group
+        relative
+      "
+    >
+      {/* ABOUT BUTTON */}
+
+      <button
+        type="button"
+        className={`
+          group
+          relative
+
+          flex
+          items-center
+          justify-center
+
+          gap-1
+
+          rounded-full
+
+          px-5
+          py-3
+
+          text-[18px]
+          font-normal
+          tracking-[0.01em]
+
+          transition-all
+          duration-300
+
+          hover:-translate-y-[1px]
+
+          ${
+            sticky
+              ? `
+                text-[#452D2D]
+                hover:text-[#5B3535]
+              `
+              : `
+                !text-white
+                hover:!text-white
+              `
+          }
+        `}
+      >
+        <span
+          className="
+            relative
+            z-10
+            whitespace-nowrap
+          "
+        >
+          About
+        </span>
+
+        <HiChevronDown
+          className="
+            relative
+            z-10
+            text-[15px]
+            transition-transform
+            duration-300
+            group-hover:rotate-180
+          "
+        />
+
+        {/* UNDERLINE */}
+
+        <span
+          className="
+            pointer-events-none
+            absolute
+            bottom-[5px]
+            left-1/2
+            h-[2px]
+            w-0
+            -translate-x-1/2
+            rounded-full
+            bg-[#D4AF37]
+            transition-all
+            duration-300
+            group-hover:w-8
+          "
+        />
+      </button>
+
+      {/* ABOUT DROPDOWN */}
+
+      <div
+        className="
+          invisible
+          absolute
+          left-1/2
+          top-[calc(100%-1px)]
+          z-[99999]
+          mt-3
+          w-[280px]
+          -translate-x-1/2
+          translate-y-2
+          rounded-2xl
+          border
+          border-[#D9D9E3]
+          bg-white
+          p-2
+          opacity-0
+          shadow-[0_20px_50px_rgba(69,45,45,0.20)]
+          transition-all
+          duration-300
+          group-hover:visible
+          group-hover:translate-y-0
+          group-hover:opacity-100
+        "
+        style={{
+          padding: "10px",
+          marginTop: "10px",
+        }}
+      >
+        {/* ABOUT US */}
+
+        <Link
+          href="#about"
+          onClick={(e) =>
+            handleNavigation(
+              e,
+              "#about"
+            )
+          }
+          className="
+            group/item
+
+            flex
+            items-center
+            justify-between
+
+            rounded-xl
+
+            px-4
+            py-3.5
+
+            text-[15px]
+            font-medium
+
+            text-[#452D2D]
+
+            transition-all
+            duration-200
+
+            bg-[#F7F3FC]
+            hover:text-[#5B2E91]
+            hover:bg-[#F1E8F7]
+          "
+          style={{
+            padding: "10px",
+            marginBottom: "10px",
+          }}
+        >
+          <span>
+            About Us
+          </span>
+
+          <span
+            className="
+              h-1.5
+              w-1.5
+
+              shrink-0
+
+              rounded-full
+
+              bg-[#D4AF37]
+
+              opacity-0
+
+              transition-opacity
+              duration-200
+
+              group-hover/item:opacity-100
+            "
+          />
+        </Link>
+
+        {/* MISSION VISION VALUES */}
+
+        <Link
+          href="#mission-vision-values"
+          onClick={(e) =>
+            handleNavigation(
+              e,
+              "#mission-vision-values"
+            )
+          }
+          className="
+            group/item
+
+            flex
+            items-center
+            justify-between
+
+            rounded-xl
+
+            px-4
+            py-3.5
+
+            text-[15px]
+            font-medium
+
+            text-[#452D2D]
+
+            transition-all
+            duration-200
+
+            bg-[#F7F3FC]
+            hover:text-[#5B2E91]
+            hover:bg-[#F1E8F7]
+          "
+          style={{
+            padding: "10px",
+            marginBottom: "10px",
+          }}
+        >
+          <span>
+            Mission, Vision & Values
+          </span>
+
+          <span
+            className="
+              h-1.5
+              w-1.5
+
+              shrink-0
+
+              rounded-full
+
+              bg-[#D4AF37]
+
+              opacity-0
+
+              transition-opacity
+              duration-200
+
+              group-hover/item:opacity-100
+            "
+          />
+        </Link>
+
+        {/* WHY CHOOSE US */}
+
+        <Link
+          href="#why-choose-us"
+          onClick={(e) =>
+            handleNavigation(
+              e,
+              "#why-choose-us"
+            )
+          }
+          className="
+            group/item
+
+            flex
+            items-center
+            justify-between
+
+            rounded-xl
+
+            px-4
+            py-3.5
+
+            text-[15px]
+            font-medium
+
+            text-[#452D2D]
+
+            transition-all
+            duration-200
+
+            bg-[#F7F3FC]
+            hover:text-[#5B2E91]
+            hover:bg-[#F1E8F7]
+          "
+          style={{
+            padding: "10px",
+          }}
+        >
+          <span>
+            Why Choose Us
+          </span>
+
+          <span
+            className="
+              h-1.5
+              w-1.5
+
+              shrink-0
+
+              rounded-full
+
+              bg-[#D4AF37]
+
+              opacity-0
+
+              transition-opacity
+              duration-200
+
+              group-hover/item:opacity-100
+            "
+          />
+        </Link>
+      </div>
+    </div>
+  );
+}
 
                 /* =================================================
                    SERVICES DROPDOWN

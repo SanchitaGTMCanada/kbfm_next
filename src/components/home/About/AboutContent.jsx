@@ -33,16 +33,13 @@ export default function AboutContent() {
       className="
         relative
         z-10
-
         w-full
-
         pt-16
         sm:pt-20
         lg:pt-24
         lg:pr-8
       "
     >
-         
       {/* =================================================
           SECTION SEPARATOR
       ================================================= */}
@@ -50,10 +47,8 @@ export default function AboutContent() {
       {/* <div
         className="
           mb-10
-
           flex
           items-center
-
           gap-4
         "
       >
@@ -61,10 +56,9 @@ export default function AboutContent() {
           className="
             h-[1px]
             w-14
-
             bg-gradient-to-r
             from-transparent
-            to-[#7B4DB8]/50
+            to-[#642E60]/50
           "
         />
 
@@ -73,21 +67,14 @@ export default function AboutContent() {
             flex
             h-9
             w-9
-
             items-center
             justify-center
-
             rounded-full
-
             border
-            border-[#D9CBE5]
-
+            border-[#E2D7E5]
             bg-white/70
-
-            text-[#6D48A8]
-
-            shadow-[0_8px_25px_rgba(91,46,145,0.08)]
-
+            text-[#642E60]
+            shadow-[0_8px_25px_rgba(100,46,96,0.08)]
             backdrop-blur-md
           "
         >
@@ -98,9 +85,8 @@ export default function AboutContent() {
           className="
             h-[1px]
             w-14
-
             bg-gradient-to-r
-            from-[#7B4DB8]/50
+            from-[#642E60]/50
             to-transparent
           "
         />
@@ -110,15 +96,11 @@ export default function AboutContent() {
           EYEBROW
       ================================================= */}
 
-    
-
       <div
         className="
           mb-6
-
           flex
           items-center
-
           gap-3
         "
       >
@@ -126,10 +108,8 @@ export default function AboutContent() {
           className="
             h-[2px]
             w-10
-
             rounded-full
-
-            bg-[#7B4DB8]/60
+            bg-[#642E60]/60
           "
         />
 
@@ -139,8 +119,7 @@ export default function AboutContent() {
             font-bold
             uppercase
             tracking-[0.28em]
-
-            text-[#6D48A8]
+            text-[#642E60]
           "
         >
           About Us
@@ -154,19 +133,18 @@ export default function AboutContent() {
       <h2
         className="
           max-w-[650px]
-
           text-[42px]
           font-semibold
           leading-[1.05]
           tracking-[-1.8px]
-
-          text-[#452D2D]
-
+          text-[#642E60]
           sm:text-[50px]
           md:text-[58px]
           lg:text-[62px]
         "
-        style={{margin:"20px 0px 20px 0px"}}
+        style={{
+          margin: "20px 0px 20px 0px",
+        }}
       >
         Reliable Services.
 
@@ -175,14 +153,12 @@ export default function AboutContent() {
           <span
             className="
               bg-gradient-to-r
-              from-[#5B2E91]
-              via-[#8060A7]
-              to-[#B998D5]
-
+              from-[#642E60]
+              via-[#642E60]
+              to-[#5B2E91]
               bg-clip-text
               text-transparent
             "
-          
           >
             Locally Delivered.
           </span>
@@ -196,19 +172,16 @@ export default function AboutContent() {
       <div
         className="
           mt-7
-
           max-w-[650px]
-
           space-y-5
-
           text-[15px]
           leading-7
-
           text-[#6F6873]
-
           sm:text-[16px]
         "
-          style={{margin:"20px 0px 20px 0px"}}
+        style={{
+          margin: "20px 0px 20px 0px",
+        }}
       >
         <p>
           At K.B.F.M. Group of Companies Professional Services Ltd.,
@@ -217,8 +190,8 @@ export default function AboutContent() {
         </p>
 
         <p>
-          Founded in 2025 by Reverend Dr. Kenneth Bornking, our company was established
-          to address the growing need for dependable
+          Founded in 2025 by Reverend Dr. Kenneth Bornking, our company was
+          established to address the growing need for dependable
           security, caregiving, cleaning, and facility
           support throughout the Northwest Territories.
         </p>
@@ -228,8 +201,8 @@ export default function AboutContent() {
           multiple essential services under one trusted
           organization, making it easier for businesses,
           government departments, healthcare providers,
-          and homeowners to access quality support from
-          a single partner.
+          and homeowners to access quality support from a
+          single partner.
         </p>
       </div>
 
@@ -240,64 +213,50 @@ export default function AboutContent() {
       <div
         className="
           mt-9
-
           grid
           gap-3
-
           sm:grid-cols-3
         "
-      
       >
-        {/* Local */}
+        {/* =================================================
+            LOCAL
+        ================================================= */}
 
         <div
           className="
             group
-
             rounded-2xl
-
             border
             border-white
-
             bg-white/60
-
             px-4
             py-4
-
-            shadow-[0_10px_30px_rgba(91,46,145,0.05)]
-
+            shadow-[0_10px_30px_rgba(100,46,96,0.05)]
             backdrop-blur-md
-
             transition-all
             duration-300
-
             hover:-translate-y-1
             hover:bg-white/80
-            hover:shadow-[0_15px_35px_rgba(91,46,145,0.10)]
+            hover:shadow-[0_15px_35px_rgba(100,46,96,0.10)]
           "
-            style={{padding:"10px"}}
+          style={{
+            padding: "10px",
+          }}
         >
           <div
             className="
               mb-3
-
               flex
               h-10
               w-10
-
               items-center
               justify-center
-
               rounded-xl
-
-              bg-[#6D48A8]/10
-
-              text-[#6D48A8]
-
+              bg-[#642E60]/10
+              text-[#642E60]
               transition-all
               duration-300
-
-              group-hover:bg-[#6D48A8]
+              group-hover:bg-[#642E60]
               group-hover:text-white
             "
           >
@@ -308,10 +267,12 @@ export default function AboutContent() {
             className="
               text-[13px]
               font-semibold
-
-              text-[#452D2D]
+              text-[#642E60]
             "
-            style={{margin:"10px 0px 10px 0px", fontSize:"15px"}}
+            style={{
+              margin: "10px 0px 10px 0px",
+              fontSize: "15px",
+            }}
           >
             Locally Delivered
           </p>
@@ -319,71 +280,59 @@ export default function AboutContent() {
           <p
             className="
               mt-1
-
               text-[11px]
               leading-5
-
               text-[#7B737E]
             "
-            style={{fontSize:"13px"}}
+            style={{
+              fontSize: "13px",
+            }}
           >
             Serving Northern communities
           </p>
         </div>
 
-        {/* One Partner */}
+        {/* =================================================
+            ONE TRUSTED PARTNER
+        ================================================= */}
 
         <div
           className="
             group
-
             rounded-2xl
-
             border
             border-white
-
             bg-white/60
-
             px-4
             py-4
-
-            shadow-[0_10px_30px_rgba(91,46,145,0.05)]
-
+            shadow-[0_10px_30px_rgba(100,46,96,0.05)]
             backdrop-blur-md
-
             transition-all
             duration-300
-
             hover:-translate-y-1
             hover:bg-white/80
-            hover:shadow-[0_15px_35px_rgba(91,46,145,0.10)]
+            hover:shadow-[0_15px_35px_rgba(100,46,96,0.10)]
           "
-          style={{padding:"10px"}}
+          style={{
+            padding: "10px",
+          }}
         >
           <div
             className="
               mb-3
-
               flex
               h-10
               w-10
-
               items-center
               justify-center
-
               rounded-xl
-
-              bg-[#8060A7]/10
-
-              text-[#8060A7]
-
+              bg-[#642E60]/10
+              text-[#642E60]
               transition-all
               duration-300
-
-              group-hover:bg-[#8060A7]
+              group-hover:bg-[#642E60]
               group-hover:text-white
             "
-
           >
             <HiBuildingOffice2 className="text-[20px]" />
           </div>
@@ -392,10 +341,12 @@ export default function AboutContent() {
             className="
               text-[13px]
               font-semibold
-
-              text-[#452D2D]
+              text-[#642E60]
             "
-            style={{margin:"10px 0px 10px 0px", fontSize:"15px"}}
+            style={{
+              margin: "10px 0px 10px 0px",
+              fontSize: "15px",
+            }}
           >
             One Trusted Partner
           </p>
@@ -403,71 +354,59 @@ export default function AboutContent() {
           <p
             className="
               mt-1
-
               text-[11px]
               leading-5
-
               text-[#7B737E]
             "
-            style={{fontSize:"13px"}}
+            style={{
+              fontSize: "13px",
+            }}
           >
             Multiple essential services
           </p>
         </div>
 
-        {/* Community */}
+        {/* =================================================
+            COMMUNITY
+        ================================================= */}
 
         <div
           className="
             group
-
             rounded-2xl
-
             border
             border-white
-
             bg-white/60
-
             px-4
             py-4
-
-            shadow-[0_10px_30px_rgba(91,46,145,0.05)]
-
+            shadow-[0_10px_30px_rgba(100,46,96,0.05)]
             backdrop-blur-md
-
             transition-all
             duration-300
-
             hover:-translate-y-1
             hover:bg-white/80
-            hover:shadow-[0_15px_35px_rgba(91,46,145,0.10)]
+            hover:shadow-[0_15px_35px_rgba(100,46,96,0.10)]
           "
-            style={{padding:"10px"}}
+          style={{
+            padding: "10px",
+          }}
         >
           <div
             className="
               mb-3
-
               flex
               h-10
               w-10
-
               items-center
               justify-center
-
               rounded-xl
-
-              bg-[#B998D5]/20
-
-              text-[#6D48A8]
-
+              bg-[#642E60]/10
+              text-[#642E60]
               transition-all
               duration-300
-
-              group-hover:bg-[#6D48A8]
+              group-hover:bg-[#642E60]
               group-hover:text-white
             "
-          
           >
             <HiHeart className="text-[20px]" />
           </div>
@@ -476,11 +415,12 @@ export default function AboutContent() {
             className="
               text-[13px]
               font-semibold
-
-              text-[#452D2D]
+              text-[#642E60]
             "
-
-            style={{margin:"10px 0px 10px 0px" ,fontSize:"15px"}}
+            style={{
+              margin: "10px 0px 10px 0px",
+              fontSize: "15px",
+            }}
           >
             Community Focused
           </p>
@@ -488,13 +428,13 @@ export default function AboutContent() {
           <p
             className="
               mt-1
-
               text-[11px]
               leading-5
-
               text-[#7B737E]
             "
-            style={{fontSize:"13px"}}
+            style={{
+              fontSize: "13px",
+            }}
           >
             Professional & compassionate
           </p>
@@ -508,17 +448,19 @@ export default function AboutContent() {
       <div
         className="
           mt-7
-
           flex
           items-center
           gap-2
         "
-        style={{marginTop:"25px", marginBottom:"10px"}}
+        style={{
+          marginTop: "25px",
+          marginBottom: "10px",
+        }}
       >
         <HiShieldCheck
           className="
             text-[19px]
-            text-[#6D48A8]
+            text-[#642E60]
           "
         />
 
@@ -526,12 +468,11 @@ export default function AboutContent() {
           className="
             text-[12px]
             font-medium
-
             text-[#756D79]
           "
-
-          style={{fontSize:"16px"}}
-         
+          style={{
+            fontSize: "16px",
+          }}
         >
           Reliable support from one trusted organization
         </span>
@@ -554,29 +495,31 @@ export default function AboutContent() {
             inline-flex
             items-center
             gap-3
-
             rounded-full
 
             bg-gradient-to-r
-            from-[#5B2E91]
-            to-[#8060A7]
+            from-[#642E60]
+            to-[#5B2E91]
 
             px-6
             py-3.5
 
             text-[14px]
             font-semibold
-
             text-white
 
-            shadow-[0_12px_30px_rgba(91,46,145,0.20)]
+            shadow-[0_12px_30px_rgba(100,46,96,0.20)]
 
             transition-all
             duration-300
 
-            hover:shadow-[0_16px_40px_rgba(91,46,145,0.28)]
+            hover:shadow-[0_16px_40px_rgba(100,46,96,0.28)]
           "
-          style={{padding:"5px", marginLeft:"10px", color:"white"}}
+          style={{
+            padding: "5px",
+            marginLeft: "10px",
+            color: "white",
+          }}
         >
           Explore Our Services
 
@@ -585,23 +528,17 @@ export default function AboutContent() {
               flex
               h-7
               w-7
-
               items-center
               justify-center
-
               rounded-full
-
               bg-white
-
-              text-[#5B2E91]
+              text-[#642E60]
             "
           >
             <HiArrowUpRight className="text-[15px]" />
           </span>
         </motion.a>
       </div>
-      
-      
     </motion.div>
   );
 }
