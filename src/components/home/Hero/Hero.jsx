@@ -89,7 +89,7 @@ export default function Hero() {
             absolute
             inset-0
             z-[2]
-            bg-black/25
+            bg-black/0
           "
         />
 
