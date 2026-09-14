@@ -14,8 +14,6 @@ import {
 } from "react-icons/hi2";
 
 import Container from "@/components/ui/Container/Container";
-
-import Left from "./Left";
 import Form from "./Form";
 
 export default function Booking() {
@@ -24,50 +22,109 @@ export default function Booking() {
       id="booking"
       className="
         relative
-        overflow-hidden
-        py-24
-        sm:py-28
-        lg:py-32
         flex
+        w-full
         justify-center
+        overflow-x-hidden
+        overflow-y-hidden
+        py-16
+        sm:py-20
+        md:py-24
+        lg:py-28
+        xl:py-32
       "
       style={{
-        display: "flex",
-        justifyContent: "center",
         background:
-          "linear-gradient(135deg, #FFFFFF 0%, #FAF6FC 38%, #F2EAF7 72%, #E9DDF1 100%)",
+          "linear-gradient(135deg, #FFFFFF 0%, #FAF6FC 34%, #F4ECF8 68%, #EAE0F2 100%)",
       }}
     >
       {/* =====================================================
-          PREMIUM BACKGROUND
+          RESPONSIVE FORM RULES
       ===================================================== */}
 
-      {/* White center glow */}
+      <style>{`
+        #booking .booking-form-wrap {
+          width: 100%;
+          max-width: 100%;
+          min-width: 0;
+        }
+
+        #booking .booking-form-wrap form {
+          width: 100%;
+          max-width: 100%;
+          min-width: 0;
+        }
+
+        #booking .booking-form-wrap input,
+        #booking .booking-form-wrap textarea,
+        #booking .booking-form-wrap select,
+        #booking .booking-form-wrap button {
+          max-width: 100%;
+          box-sizing: border-box;
+        }
+
+        #booking .booking-form-wrap input,
+        #booking .booking-form-wrap textarea,
+        #booking .booking-form-wrap select {
+          min-width: 0;
+        }
+
+        @media (max-width: 767px) {
+          #booking .booking-form-wrap .grid-cols-2,
+          #booking .booking-form-wrap .md\\:grid-cols-2,
+          #booking .booking-form-wrap .md\\:grid-cols-3 {
+            grid-template-columns: minmax(0, 1fr) !important;
+          }
+
+          #booking .booking-form-wrap input,
+          #booking .booking-form-wrap textarea,
+          #booking .booking-form-wrap select {
+            width: 100% !important;
+            max-width: 100% !important;
+          }
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+          #booking .booking-form-wrap .md\\:grid-cols-3 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+        }
+      `}</style>
+
+      {/* =====================================================
+          WHITE CENTER GLOW
+      ===================================================== */}
 
       <div
         className="
           pointer-events-none
           absolute
           left-1/2
-          top-[35%]
-          h-[700px]
-          w-[900px]
+          top-[34%]
+          h-[520px]
+          w-[720px]
           -translate-x-1/2
           rounded-full
           bg-white
-          blur-[120px]
+          blur-[115px]
+          sm:h-[620px]
+          sm:w-[820px]
+          lg:h-[700px]
+          lg:w-[900px]
         "
         style={{
           opacity: 0.78,
         }}
       />
 
-      {/* Primary plum glow */}
+      {/* =====================================================
+          PRIMARY PLUM GLOW
+      ===================================================== */}
 
       <motion.div
         animate={{
-          x: [0, 25, 0],
-          y: [0, -20, 0],
+          x: [0, 22, 0],
+          y: [0, -18, 0],
         }}
         transition={{
           duration: 9,
@@ -77,22 +134,28 @@ export default function Booking() {
         className="
           pointer-events-none
           absolute
-          -left-[260px]
-          top-[5%]
-          h-[600px]
-          w-[600px]
+          -left-[250px]
+          top-[6%]
+          h-[460px]
+          w-[460px]
           rounded-full
-          bg-[#642E60]/[0.055]
-          blur-[130px]
+          bg-[#642E60]/[0.06]
+          blur-[120px]
+          sm:h-[520px]
+          sm:w-[520px]
+          lg:h-[600px]
+          lg:w-[600px]
         "
       />
 
-      {/* Secondary purple glow */}
+      {/* =====================================================
+          SECONDARY PURPLE GLOW
+      ===================================================== */}
 
       <motion.div
         animate={{
-          x: [0, -20, 0],
-          y: [0, 25, 0],
+          x: [0, -18, 0],
+          y: [0, 22, 0],
         }}
         transition={{
           duration: 10,
@@ -102,200 +165,218 @@ export default function Booking() {
         className="
           pointer-events-none
           absolute
-          -right-[250px]
+          -right-[220px]
           bottom-[5%]
-          h-[550px]
-          w-[550px]
+          h-[430px]
+          w-[430px]
           rounded-full
           bg-[#5B2E91]/[0.075]
-          blur-[130px]
+          blur-[120px]
+          sm:h-[500px]
+          sm:w-[500px]
+          lg:h-[550px]
+          lg:w-[550px]
         "
       />
 
-      {/* Soft secondary upper glow */}
+      {/* =====================================================
+          GOLD GLOW
+      ===================================================== */}
 
       <div
         className="
           pointer-events-none
           absolute
-          right-[12%]
-          top-[3%]
-          h-[300px]
-          w-[300px]
+          right-[8%]
+          top-[4%]
+          hidden
+          h-[280px]
+          w-[280px]
           rounded-full
-          bg-[#5B2E91]/[0.025]
-          blur-[110px]
+          blur-[100px]
+          sm:block
         "
+        style={{
+          background: "rgba(198,161,91,0.045)",
+        }}
       />
 
       {/* =====================================================
-          LARGE BACKGROUND WATERMARK ICONS
+          WATERMARK ICONS
       ===================================================== */}
 
-      {/* Calendar */}
-
       <div
-        className="pointer-events-none absolute"
+        className="
+          pointer-events-none
+          absolute
+          left-[-70px]
+          top-[7%]
+          hidden
+          text-[#5B2E91]/[0.045]
+          sm:block
+        "
         style={{
-          top: "7%",
-          left: "-55px",
-          color: "#5B2E91",
-          opacity: 0.055,
           transform: "rotate(-10deg)",
-          zIndex: 0,
         }}
       >
         <HiCalendarDays
           style={{
-            width: "300px",
-            height: "300px",
+            width: "250px",
+            height: "250px",
           }}
         />
       </div>
 
-      {/* Sparkles */}
-
       <div
-        className="pointer-events-none absolute"
+        className="
+          pointer-events-none
+          absolute
+          right-[-65px]
+          top-[12%]
+          hidden
+          text-[#642E60]/[0.04]
+          sm:block
+        "
         style={{
-          top: "13%",
-          right: "-60px",
-          color: "#642E60",
-          opacity: 0.045,
           transform: "rotate(12deg)",
-          zIndex: 0,
         }}
       >
         <HiSparkles
           style={{
-            width: "320px",
-            height: "320px",
+            width: "290px",
+            height: "290px",
           }}
         />
       </div>
 
-      {/* Shield */}
-
       <div
-        className="pointer-events-none absolute"
+        className="
+          pointer-events-none
+          absolute
+          left-[25%]
+          top-[30%]
+          hidden
+          text-[#5B2E91]/[0.028]
+          md:block
+        "
         style={{
-          left: "26%",
-          top: "28%",
-          color: "#5B2E91",
-          opacity: 0.032,
           transform: "rotate(-7deg)",
-          zIndex: 0,
         }}
       >
         <HiShieldCheck
           style={{
-            width: "380px",
-            height: "380px",
+            width: "330px",
+            height: "330px",
           }}
         />
       </div>
 
-      {/* Building */}
-
       <div
-        className="pointer-events-none absolute"
+        className="
+          pointer-events-none
+          absolute
+          left-[3%]
+          bottom-[8%]
+          hidden
+          text-[#642E60]/[0.04]
+          lg:block
+        "
         style={{
-          left: "6%",
-          bottom: "8%",
-          color: "#642E60",
-          opacity: 0.045,
           transform: "rotate(-7deg)",
-          zIndex: 0,
         }}
       >
         <HiBuildingOffice2
           style={{
-            width: "300px",
-            height: "300px",
+            width: "280px",
+            height: "280px",
           }}
         />
       </div>
 
-      {/* Heart */}
-
       <div
-        className="pointer-events-none absolute"
+        className="
+          pointer-events-none
+          absolute
+          right-[18%]
+          bottom-[5%]
+          hidden
+          text-[#5B2E91]/[0.04]
+          lg:block
+        "
         style={{
-          right: "20%",
-          bottom: "5%",
-          color: "#5B2E91",
-          opacity: 0.045,
           transform: "rotate(8deg)",
-          zIndex: 0,
         }}
       >
         <HiHeart
           style={{
-            width: "300px",
-            height: "300px",
+            width: "280px",
+            height: "280px",
           }}
         />
       </div>
 
-      {/* Community */}
-
       <div
-        className="pointer-events-none absolute"
+        className="
+          pointer-events-none
+          absolute
+          right-[2%]
+          bottom-[30%]
+          hidden
+          text-[#642E60]/[0.035]
+          lg:block
+        "
         style={{
-          right: "3%",
-          bottom: "30%",
-          color: "#642E60",
-          opacity: 0.04,
           transform: "rotate(7deg)",
-          zIndex: 0,
         }}
       >
         <HiUserGroup
           style={{
-            width: "270px",
-            height: "270px",
+            width: "250px",
+            height: "250px",
           }}
         />
       </div>
 
-      {/* Check */}
-
       <div
-        className="pointer-events-none absolute"
+        className="
+          pointer-events-none
+          absolute
+          left-[48%]
+          top-[11%]
+          hidden
+          text-[#C6A15B]/[0.025]
+          md:block
+        "
         style={{
-          left: "48%",
-          top: "11%",
-          color: "#5B2E91",
-          opacity: 0.028,
           transform: "translateX(-50%) rotate(8deg)",
-          zIndex: 0,
         }}
       >
         <HiCheckCircle
           style={{
-            width: "390px",
-            height: "390px",
+            width: "340px",
+            height: "340px",
           }}
         />
       </div>
 
-      {/* Large center watermark */}
-
       <div
-        className="pointer-events-none absolute"
+        className="
+          pointer-events-none
+          absolute
+          left-1/2
+          top-[55%]
+          hidden
+          text-[#5B2E91]/[0.007]
+          sm:block
+        "
         style={{
-          left: "50%",
-          top: "55%",
           transform: "translate(-50%, -50%)",
-          color: "#5B2E91",
-          opacity: 0.008,
-          zIndex: 0,
         }}
       >
         <HiSparkles
           style={{
-            width: "520px",
-            height: "520px",
+            width: "420px",
+            height: "420px",
           }}
         />
       </div>
@@ -303,48 +384,55 @@ export default function Booking() {
       {/* =====================================================
           DECORATIVE CIRCLES
       ===================================================== */}
+{/* DECORATIVE CIRCLES */}
 
-      <div
-        className="
-          pointer-events-none
-          absolute
-          -left-[280px]
-          top-[10%]
-          h-[650px]
-          w-[650px]
-          rounded-full
-          border
-          border-[#642E60]/10
-        "
-      />
+<div
+  className="
+    pointer-events-none
+    absolute
+    -left-[280px]
+    top-[10%]
+    hidden
+    h-[650px]
+    w-[650px]
+    rounded-full
+    border
+    border-[#642E60]/25
+    lg:block
+  "
+/>
 
-      <div
-        className="
-          pointer-events-none
-          absolute
-          -left-[220px]
-          top-[17%]
-          h-[500px]
-          w-[500px]
-          rounded-full
-          border
-          border-[#5B2E91]/10
-        "
-      />
+<div
+  className="
+    pointer-events-none
+    absolute
+    -left-[220px]
+    top-[17%]
+    hidden
+    h-[500px]
+    w-[500px]
+    rounded-full
+    border-3
+    border-[#5B2E91]/22
+    lg:block
+  "
+/>
 
-      <div
-        className="
-          pointer-events-none
-          absolute
-          -right-[280px]
-          bottom-[2%]
-          h-[650px]
-          w-[650px]
-          rounded-full
-          border
-          border-[#5B2E91]/10
-        "
-      />
+<div
+  className="
+    pointer-events-none
+    absolute
+    -right-[280px]
+    bottom-[2%]
+    hidden
+    h-[650px]
+    w-[650px]
+    rounded-full
+    border
+    border-[#5B2E91]/25
+    lg:block
+  "
+/>
 
       {/* =====================================================
           FLOATING DOTS
@@ -363,12 +451,14 @@ export default function Booking() {
         className="
           pointer-events-none
           absolute
-          right-[12%]
+          right-[10%]
           top-[18%]
-          h-3
-          w-3
+          h-2.5
+          w-2.5
           rounded-full
           bg-[#642E60]
+          sm:h-3
+          sm:w-3
         "
       />
 
@@ -385,45 +475,36 @@ export default function Booking() {
         className="
           pointer-events-none
           absolute
-          left-[9%]
           bottom-[18%]
+          left-[9%]
           h-2
           w-2
           rounded-full
-          bg-[#5B2E91]
+          bg-[#C6A15B]
         "
       />
 
       {/* =====================================================
-          CONTENT
+          MAIN CONTENT
       ===================================================== */}
 
       <div
         className="
           relative
           z-[2000]
-          flex
-          h-full
-          w-[90%]
           mx-auto
+          flex
+          w-full
+          max-w-[1300px]
           justify-center
+          px-3
+          sm:px-5
+          md:px-7
+          lg:px-10
         "
-        style={{
-          marginTop: "40px",
-        }}
       >
         <Container>
-          <div
-            className="
-              relative
-              z-20
-              w-full
-            "
-            style={{
-              paddingLeft: "24px",
-              paddingRight: "24px",
-            }}
-          >
+          <div className="relative z-20 w-full">
             {/* =================================================
                 HEADER
             ================================================= */}
@@ -447,34 +528,38 @@ export default function Booking() {
               }}
               className="mx-auto text-center"
             >
-              {/* Eyebrow */}
-
               <div
                 className="
-                  mb-5
                   flex
                   items-center
                   justify-center
-                  gap-3
+                  gap-2.5
+                  sm:gap-3
                 "
+                style={{
+                  marginBottom: "18px",
+                }}
               >
                 <span
                   className="
                     h-[1px]
-                    w-12
+                    w-8
                     bg-gradient-to-r
                     from-transparent
                     to-[#642E60]/50
+                    sm:w-12
                   "
                 />
 
                 <span
                   className="
-                    text-[11px]
+                    text-[9px]
                     font-bold
                     uppercase
-                    tracking-[0.28em]
+                    tracking-[0.22em]
                     text-[#642E60]
+                    sm:text-[11px]
+                    sm:tracking-[0.28em]
                   "
                 >
                   Let's Connect
@@ -483,66 +568,78 @@ export default function Booking() {
                 <span
                   className="
                     h-[1px]
-                    w-12
+                    w-8
                     bg-gradient-to-l
                     from-transparent
                     to-[#642E60]/50
+                    sm:w-12
                   "
                 />
               </div>
 
-              {/* Heading */}
-
               <h2
                 className="
-                  text-[40px]
+                  text-[31px]
                   font-semibold
-                  leading-[1.05]
-                  tracking-[-1.5px]
-                  text-[#642E60]
-                  sm:text-[50px]
-                  md:text-[58px]
-                  lg:text-[64px]
+                  leading-[1.08]
+                  tracking-[-1px]
+                  sm:text-[40px]
+                  sm:tracking-[-1.3px]
+                  md:text-[50px]
+                  lg:text-[58px]
+                  xl:text-[64px]
                 "
                 style={{
-                  margin: "20px 0px 20px 0px",
+                  marginTop: "10px",
+                  marginBottom: "12px",
+                  color: "#642E60",
                 }}
               >
-                Request a Service
+                Request a{" "}
+                <span
+                  style={{
+                    background:
+                      "linear-gradient(90deg, #642E60 0%, #5B2E91 55%, #76508C 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  Service
+                </span>
               </h2>
 
               <p
                 className="
                   mx-auto
-                  mt-6
-                
-                  text-[15px]
-                  leading-7
-                  text-[#6F6873]
-                  sm:text-[16px]
+                  max-w-[700px]
+                  text-[13px]
+                  leading-6
+                  sm:text-[15px]
+                  sm:leading-7
+                  md:text-[16px]
                 "
                 style={{
-                  margin: "20px 0px 20px 0px",
-                  fontSize: "17px",
+                  marginTop: "12px",
+                  marginBottom: "18px",
+                  color: "#6F6873",
                 }}
               >
                 Complete the form below and our team will contact you
                 shortly to discuss your requirements.
               </p>
 
-              {/* Primary / Secondary divider */}
-
               <div
                 className="
                   mx-auto
-                  mt-7
                   h-[3px]
-                  w-12
+                  w-10
                   rounded-full
-                  bg-gradient-to-r
-                  from-[#642E60]
-                  to-[#5B2E91]
+                  sm:w-12
                 "
+                style={{
+                  background:
+                    "linear-gradient(90deg, #642E60 0%, #5B2E91 65%, #C6A15B 100%)",
+                }}
               />
             </motion.div>
 
@@ -553,7 +650,7 @@ export default function Booking() {
             <motion.div
               initial={{
                 opacity: 0,
-                y: 45,
+                y: 40,
               }}
               whileInView={{
                 opacity: 1,
@@ -561,7 +658,7 @@ export default function Booking() {
               }}
               viewport={{
                 once: true,
-                amount: 0.15,
+                amount: 0.12,
               }}
               transition={{
                 duration: 0.9,
@@ -571,18 +668,22 @@ export default function Booking() {
               className="
                 relative
                 mx-auto
-                mt-16
                 w-full
+                max-w-[1220px]
                 overflow-hidden
-                rounded-[36px]
+                rounded-[24px]
                 border
                 border-[#D6C8DF]
                 bg-white
-                shadow-[0_30px_100px_rgba(62,32,102,0.12)]
-                lg:mt-20
+                shadow-[0_20px_60px_rgba(62,32,102,0.10)]
+                sm:rounded-[30px]
+                lg:rounded-[36px]
               "
+              style={{
+                marginTop: "45px",
+              }}
             >
-              {/* TOP BRAND ACCENT */}
+              {/* TOP ACCENT */}
 
               <div
                 className="
@@ -592,17 +693,19 @@ export default function Booking() {
                   top-0
                   z-20
                   h-[3px]
-                  bg-gradient-to-r
-                  from-[#642E60]
-                  via-[#5B2E91]
-                  to-[#642E60]
                 "
+                style={{
+                  background:
+                    "linear-gradient(90deg, #642E60 0%, #5B2E91 55%, #C6A15B 100%)",
+                }}
               />
 
               <div
                 className="
                   grid
-                  lg:grid-cols-[390px_1fr]
+                  min-w-0
+                  grid-cols-1
+                  lg:grid-cols-[minmax(320px,390px)_minmax(0,1fr)]
                 "
               >
                 {/* =================================================
@@ -612,54 +715,63 @@ export default function Booking() {
                 <div
                   className="
                     relative
+                    min-w-0
                     overflow-hidden
-                    bg-gradient-to-br
-                    from-[#3E203A]
-                    via-[#54294F]
-                    to-[#5B2E91]
                     text-white
                   "
+                  style={{
+                    background:
+                      "linear-gradient(145deg, #40213C 0%, #54294F 38%, #642E60 68%, #5B2E91 100%)",
+                  }}
                 >
-                  {/* Background glow */}
+                  {/* Gold glow */}
 
                   <div
                     className="
                       pointer-events-none
                       absolute
-                      -right-28
-                      -top-28
-                      h-[330px]
-                      w-[330px]
+                      -right-20
+                      -top-16
+                      h-[240px]
+                      w-[240px]
                       rounded-full
-                      bg-[#8D70A7]/20
-                      blur-[50px]
+                      blur-[60px]
                     "
+                    style={{
+                      background:
+                        "rgba(198,161,91,0.12)",
+                    }}
                   />
 
+                  {/* Purple glow */}
+
                   <div
                     className="
                       pointer-events-none
                       absolute
-                      -bottom-28
-                      -left-28
-                      h-[300px]
-                      w-[300px]
+                      -bottom-20
+                      -left-20
+                      h-[250px]
+                      w-[250px]
                       rounded-full
-                      bg-[#642E60]/25
-                      blur-[50px]
+                      blur-[60px]
                     "
+                    style={{
+                      background:
+                        "rgba(91,46,145,0.25)",
+                    }}
                   />
 
-                  {/* Decorative ring */}
+                  {/* Decorative rings */}
 
                   <div
                     className="
                       pointer-events-none
                       absolute
-                      -right-[100px]
+                      -right-[90px]
                       top-[25%]
-                      h-[300px]
-                      w-[300px]
+                      h-[270px]
+                      w-[270px]
                       rounded-full
                       border
                       border-white/10
@@ -670,17 +782,17 @@ export default function Booking() {
                     className="
                       pointer-events-none
                       absolute
-                      -right-[55px]
+                      -right-[50px]
                       top-[31%]
-                      h-[210px]
-                      w-[210px]
+                      h-[190px]
+                      w-[190px]
                       rounded-full
                       border
-                      border-white/10
+                      border-[#C6A15B]/15
                     "
                   />
 
-                  {/* Content */}
+                  {/* LEFT CONTENT */}
 
                   <div
                     className="
@@ -688,49 +800,199 @@ export default function Booking() {
                       z-10
                       flex
                       h-full
+                      min-w-0
                       flex-col
-                      justify-between
                     "
                     style={{
-                      padding: "48px 42px",
+                      padding:
+                        "34px 24px 30px 24px",
                     }}
                   >
                     <div>
-                      {/* Icon */}
+                      {/* =================================================
+                          MAIN SHINY ICON
+                      ================================================= */}
 
                       <motion.div
+                        initial={{
+                          scale: 0.85,
+                          opacity: 0,
+                        }}
+                        animate={{
+                          scale: 1,
+                          opacity: 1,
+                        }}
+                        transition={{
+                          duration: 0.7,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
                         whileHover={{
-                          rotate: 8,
-                          scale: 1.05,
+                          scale: 1.08,
                         }}
                         className="
-                          mb-8
+                          relative
                           flex
                           h-16
                           w-16
                           items-center
                           justify-center
-                          rounded-[20px]
+                          rounded-[22px]
                           border
-                          border-white/15
-                          bg-white/10
-                          text-[#E5D8EA]
+                          border-[#E6D3A8]/40
+                          bg-gradient-to-br
+                          from-[#8A5C86]
+                          via-[#642E60]
+                          to-[#5B2E91]
+                          shadow-[0_12px_35px_rgba(91,46,145,0.38)]
                           backdrop-blur-md
+                          sm:h-[72px]
+                          sm:w-[72px]
+                          sm:rounded-[24px]
                         "
+                        style={{
+                          marginBottom: "22px",
+                        }}
                       >
-                        <HiSparkles className="text-[28px]" />
+                        {/* Rotating ring */}
+
+                        <motion.span
+                          animate={{
+                            rotate: 360,
+                          }}
+                          transition={{
+                            duration: 8,
+                            repeat: Infinity,
+                            ease: "linear",
+                          }}
+                          className="
+                            pointer-events-none
+                            absolute
+                            -inset-[5px]
+                            rounded-[26px]
+                            border
+                            border-[#C6A15B]/25
+                            sm:rounded-[28px]
+                          "
+                        />
+
+                        {/* Pulsing glow */}
+
+                        <motion.span
+                          animate={{
+                            scale: [1, 1.18, 1],
+                            opacity: [
+                              0.18,
+                              0.38,
+                              0.18,
+                            ],
+                          }}
+                          transition={{
+                            duration: 2.8,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                          }}
+                          className="
+                            pointer-events-none
+                            absolute
+                            -inset-3
+                            rounded-[28px]
+                            bg-[#C6A15B]/20
+                            blur-xl
+                          "
+                        />
+
+                        {/* Shine sweep */}
+
+
+                        {/* Inner highlight */}
+
+                        <span
+                          className="
+                            pointer-events-none
+                            absolute
+                            inset-[3px]
+                            rounded-[19px]
+                            border
+                            border-white/15
+                            bg-white/[0.06]
+                            sm:rounded-[21px]
+                          "
+                        />
+
+                        {/* Icon */}
+
+                        <motion.div
+                          animate={{
+                            rotate: [0, 4, -4, 0],
+                            scale: [1, 1.05, 1],
+                          }}
+                          transition={{
+                            duration: 3.2,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                          }}
+                          className="
+                            relative
+                            z-10
+                            flex
+                            items-center
+                            justify-center
+                          "
+                        >
+                          <HiSparkles
+                            className="
+                              text-[27px]
+                              text-[#FFF8E8]
+                              drop-shadow-[0_0_10px_rgba(255,255,255,0.55)]
+                              sm:text-[31px]
+                            "
+                          />
+                        </motion.div>
+
+                        {/* Gold sparkle */}
+
+                        <motion.span
+                          animate={{
+                            scale: [1, 1.7, 1],
+                            opacity: [
+                              0.4,
+                              0.9,
+                              0.4,
+                            ],
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                          }}
+                          className="
+                            absolute
+                            right-[7px]
+                            top-[7px]
+                            z-20
+                            h-1.5
+                            w-1.5
+                            rounded-full
+                            bg-[#F6D98C]
+                            shadow-[0_0_10px_rgba(246,217,140,0.95)]
+                          "
+                        />
                       </motion.div>
 
                       {/* Label */}
 
                       <span
                         className="
-                          text-[10px]
+                          text-[9px]
                           font-bold
                           uppercase
-                          tracking-[0.3em]
-                          text-[#D7C3E0]
+                          tracking-[0.24em]
+                          sm:text-[10px]
+                          sm:tracking-[0.3em]
                         "
+                        style={{
+                          color: "#D9C5E1",
+                        }}
                       >
                         Let's Connect
                       </span>
@@ -739,136 +1001,153 @@ export default function Booking() {
 
                       <h3
                         className="
-                          mt-4
-                          text-[34px]
+                          text-[28px]
                           font-semibold
-                          leading-[1.1]
-                          tracking-[-1px]
-                          text-white
-                          sm:text-[38px]
+                          leading-[1.08]
+                          tracking-[-0.8px]
+                          sm:text-[34px]
+                          sm:tracking-[-1px]
                         "
                         style={{
-                          color: "#F1E8F4",
+                          marginTop: "10px",
+                          marginBottom: "14px",
+                          color: "#FAF5FB",
                         }}
                       >
                         Tell us how
                         <br />
-                        we can help.
+
+                        <span
+                          style={{
+                            color: "#E7D7ED",
+                          }}
+                        >
+                          we can help.
+                        </span>
                       </h3>
 
                       <p
                         className="
-                          mt-6
-                          text-[14px]
-                          leading-7
-                          text-white/70
+                          max-w-[560px]
+                          text-[13px]
+                          leading-6
+                          sm:text-[14px]
+                          sm:leading-7
                         "
                         style={{
-                          color: "#E8DDEA",
-                          fontSize: "15px",
+                          color: "#E2D2E8",
+                          marginBottom: "26px",
                         }}
                       >
                         Whether you need one service or ongoing support,
                         our team is ready to understand your requirements.
                       </p>
 
-                      {/* INDUSTRIES WE SERVE */}
+                      {/* Industries */}
 
-                      <div
-                        className="mt-10"
+                      <p
+                        className="
+                          text-[9px]
+                          font-bold
+                          uppercase
+                          tracking-[0.24em]
+                          sm:text-[10px]
+                          sm:tracking-[0.28em]
+                        "
                         style={{
-                          marginTop: "30px",
+                          color: "#D6BEE0",
+                          marginBottom: "14px",
                         }}
                       >
-                        <p
-                          className="
-                            mb-5
-                            text-[9px]
-                            font-bold
-                            uppercase
-                            tracking-[0.28em]
-                            text-[#D7C3E0]
-                          "
-                          style={{
-                            margin: "10px 0px 10px 0px",
-                            fontSize: "16px",
-                          }}
-                        >
-                          Industries We Serve
-                        </p>
-
-                        <div
-                          className="
-                            grid
-                            grid-cols-2
-                            gap-x-5
-                            gap-y-4
-                          "
-                        >
-                          <IndustryItem
-                            icon={HiBuildingOffice2}
-                            text="Government Departments"
-                          />
-
-                          <IndustryItem
-                            icon={HiHeart}
-                            text="Healthcare Facilities"
-                          />
-
-                          <IndustryItem
-                            icon={HiBuildingOffice2}
-                            text="Commercial Businesses"
-                          />
-
-                          <IndustryItem
-                            icon={HiBuildingOffice2}
-                            text="Industrial Operations"
-                          />
-
-                          <IndustryItem
-                            icon={HiBuildingOffice2}
-                            text="Residential Clients"
-                          />
-
-                          <IndustryItem
-                            icon={HiUserGroup}
-                            text="Non-Profit Organizations"
-                          />
-
-                          <IndustryItem
-                            icon={HiBuildingOffice2}
-                            text="Property Management Companies"
-                          />
-
-                          <IndustryItem
-                            icon={HiBuildingOffice2}
-                            text="Construction Companies"
-                          />
-                        </div>
-                      </div>
-
-                      {/* Secondary accent line */}
+                        Industries We Serve
+                      </p>
 
                       <div
                         className="
-                          mt-7
-                          h-[3px]
-                          w-12
-                          rounded-full
-                          bg-gradient-to-r
-                          from-[#642E60]
-                          to-[#8A68A0]
+                          grid
+                          grid-cols-1
+                          gap-3
+                          min-[400px]:grid-cols-2
+                          sm:gap-x-4
+                          sm:gap-y-4
                         "
+                      >
+                        <IndustryItem
+                          icon={HiBuildingOffice2}
+                          text="Government Departments"
+                          variant="gold"
+                        />
+
+                        <IndustryItem
+                          icon={HiHeart}
+                          text="Healthcare Facilities"
+                          variant="rose"
+                        />
+
+                        <IndustryItem
+                          icon={HiBuildingOffice2}
+                          text="Commercial Businesses"
+                          variant="purple"
+                        />
+
+                        <IndustryItem
+                          icon={HiBuildingOffice2}
+                          text="Industrial Operations"
+                          variant="violet"
+                        />
+
+                        <IndustryItem
+                          icon={HiBuildingOffice2}
+                          text="Residential Clients"
+                          variant="lavender"
+                        />
+
+                        <IndustryItem
+                          icon={HiUserGroup}
+                          text="Non-Profit Organizations"
+                          variant="goldPurple"
+                        />
+
+                        <IndustryItem
+                          icon={HiBuildingOffice2}
+                          text="Property Management Companies"
+                          variant="plum"
+                        />
+
+                        <IndustryItem
+                          icon={HiBuildingOffice2}
+                          text="Construction Companies"
+                          variant="silverPurple"
+                        />
+                      </div>
+
+                      {/* Accent */}
+
+                      <div
+                        className="
+                          h-[3px]
+                          w-10
+                          rounded-full
+                        "
+                        style={{
+                          marginTop: "22px",
+                          background:
+                            "linear-gradient(90deg, #C6A15B 0%, #8A68A0 100%)",
+                        }}
                       />
                     </div>
 
-                    {/* Trust features */}
+                    {/* Trust */}
 
                     <div
                       className="
-                        mt-12
-                        space-y-3
+                        grid
+                        gap-2.5
+                        sm:gap-3
                       "
+                      style={{
+                        marginTop: "26px",
+                      }}
                     >
                       <TrustItem
                         icon={HiShieldCheck}
@@ -898,7 +1177,7 @@ export default function Booking() {
                 <motion.div
                   initial={{
                     opacity: 0,
-                    x: 30,
+                    x: 25,
                   }}
                   whileInView={{
                     opacity: 1,
@@ -911,24 +1190,31 @@ export default function Booking() {
                     duration: 0.7,
                     delay: 0.15,
                   }}
-                  className="relative bg-white"
+                  className="
+                    relative
+                    min-w-0
+                    w-full
+                    bg-white
+                  "
                   style={{
-                    padding: "54px",
+                    padding: "30px 20px 34px 20px",
                   }}
                 >
-                  {/* Decorative circle */}
+                  {/* Decorative ring */}
 
                   <div
                     className="
                       pointer-events-none
                       absolute
-                      -right-16
-                      -top-16
-                      h-[190px]
-                      w-[190px]
+                      -right-14
+                      -top-14
+                      hidden
+                      h-[170px]
+                      w-[170px]
                       rounded-full
                       border
                       border-[#642E60]/10
+                      sm:block
                     "
                   />
 
@@ -936,48 +1222,54 @@ export default function Booking() {
                     className="
                       pointer-events-none
                       absolute
-                      -right-5
+                      -right-3
                       top-5
-                      h-[90px]
-                      w-[90px]
+                      hidden
+                      h-[80px]
+                      w-[80px]
                       rounded-full
                       border
-                      border-[#5B2E91]/10
+                      border-[#C6A15B]/20
+                      sm:block
                     "
                   />
 
-                  {/* Form heading */}
+                  {/* Heading */}
 
                   <div
                     className="relative z-10"
                     style={{
-                      marginBottom: "30px",
+                      marginBottom: "24px",
                     }}
                   >
                     <div
                       className="
-                        mb-4
                         flex
                         items-center
                         gap-2
                       "
+                      style={{
+                        marginBottom: "10px",
+                      }}
                     >
                       <span
                         className="
                           h-1.5
                           w-1.5
                           rounded-full
-                          bg-[#642E60]
+                          bg-[#C6A15B]
                         "
                       />
 
                       <span
                         className="
-                          text-[10px]
+                          text-[9px]
                           font-bold
                           uppercase
-                          tracking-[0.28em]
+                          tracking-[0.22em]
                           text-[#5B2E91]
+                          sm:text-[10px]
+                          sm:tracking-[0.28em]
                         "
                       >
                         Request Information
@@ -986,26 +1278,37 @@ export default function Booking() {
 
                     <h3
                       className="
-                        text-[32px]
+                        text-[27px]
                         font-semibold
                         leading-tight
-                        tracking-[-1px]
-                        text-[#642E60]
-                        sm:text-[36px]
+                        tracking-[-0.8px]
+                        sm:text-[32px]
+                        lg:text-[36px]
                       "
+                      style={{
+                        color: "#4A2850",
+                        marginBottom: "9px",
+                      }}
                     >
-                      Request a Service
+                      Request a{" "}
+                      <span
+                        style={{
+                          color: "#5B2E91",
+                        }}
+                      >
+                        Service
+                      </span>
                     </h3>
 
                     <p
                       className="
-                        mt-3
-                        text-[13px]
+                        max-w-[680px]
+                        text-[12px]
                         leading-6
-                        text-[#2D2D2D]
+                        sm:text-[13px]
                       "
                       style={{
-                        opacity: 0.58,
+                        color: "#6F6873",
                       }}
                     >
                       Complete the form below and our team will contact
@@ -1019,19 +1322,24 @@ export default function Booking() {
                     className="
                       relative
                       z-10
+                      w-full
+                      min-w-0
+                      max-w-full
                     "
                     style={{
-                      padding: "5px",
+                      padding: "4px",
                     }}
                   >
-                    <Form />
+                    <div className="booking-form-wrap w-full">
+                      <Form />
+                    </div>
                   </div>
                 </motion.div>
               </div>
             </motion.div>
 
             {/* =================================================
-                BOTTOM TRUST STRIP
+                TRUST STRIP
             ================================================= */}
 
             <motion.div
@@ -1052,18 +1360,20 @@ export default function Booking() {
               }}
               className="
                 mx-auto
-                mt-9
                 flex
+          
                 flex-wrap
                 items-center
                 justify-center
-                gap-x-8
-                gap-y-4
+                gap-x-6
+                gap-y-2
+                px-2
+                sm:gap-x-8
+                sm:gap-y-3
               "
               style={{
-                paddingLeft: "20px",
-                paddingRight: "20px",
-                marginTop: "20px",
+                marginTop: "24px",
+                marginBottom: "24px",
               }}
             >
               <TrustStripItem
@@ -1130,7 +1440,7 @@ export default function Booking() {
           absolute
           bottom-0
           left-0
-          h-[100px]
+          h-[80px]
           w-full
         "
         style={{
@@ -1146,40 +1456,249 @@ export default function Booking() {
    INDUSTRY ITEM
 ============================================================ */
 
-function IndustryItem({ icon: Icon, text }) {
+function IndustryItem({
+  icon: Icon,
+  text,
+  variant = "purple",
+}) {
+  const variants = {
+    gold: {
+      background:
+        "linear-gradient(135deg, rgba(198,161,91,0.20), rgba(255,255,255,0.04))",
+      border: "rgba(246,217,140,0.28)",
+      icon: "#F6D98C",
+      glow: "rgba(246,217,140,0.28)",
+      shine: "rgba(255,248,224,0.45)",
+    },
+
+    rose: {
+      background:
+        "linear-gradient(135deg, rgba(154,94,130,0.22), rgba(255,255,255,0.04))",
+      border: "rgba(214,163,195,0.25)",
+      icon: "#E9C8DF",
+      glow: "rgba(214,163,195,0.24)",
+      shine: "rgba(255,235,249,0.40)",
+    },
+
+    purple: {
+      background:
+        "linear-gradient(135deg, rgba(91,46,145,0.24), rgba(100,46,96,0.12))",
+      border: "rgba(172,139,205,0.25)",
+      icon: "#D9C0E9",
+      glow: "rgba(172,139,205,0.28)",
+      shine: "rgba(235,220,255,0.42)",
+    },
+
+    violet: {
+      background:
+        "linear-gradient(135deg, rgba(124,81,157,0.23), rgba(91,46,145,0.10))",
+      border: "rgba(192,167,216,0.24)",
+      icon: "#E0CFF0",
+      glow: "rgba(192,167,216,0.26)",
+      shine: "rgba(244,236,255,0.42)",
+    },
+
+    lavender: {
+      background:
+        "linear-gradient(135deg, rgba(132,101,157,0.20), rgba(255,255,255,0.05))",
+      border: "rgba(209,193,222,0.25)",
+      icon: "#E4D7EC",
+      glow: "rgba(209,193,222,0.25)",
+      shine: "rgba(250,244,255,0.45)",
+    },
+
+    goldPurple: {
+      background:
+        "linear-gradient(135deg, rgba(198,161,91,0.14), rgba(91,46,145,0.18))",
+      border: "rgba(209,183,132,0.26)",
+      icon: "#E8D39D",
+      glow: "rgba(198,161,91,0.23)",
+      shine: "rgba(255,244,207,0.42)",
+    },
+
+    plum: {
+      background:
+        "linear-gradient(135deg, rgba(100,46,96,0.25), rgba(126,76,122,0.12))",
+      border: "rgba(202,151,193,0.23)",
+      icon: "#E7CFE3",
+      glow: "rgba(202,151,193,0.24)",
+      shine: "rgba(255,236,252,0.42)",
+    },
+
+    silverPurple: {
+      background:
+        "linear-gradient(135deg, rgba(214,200,221,0.18), rgba(91,46,145,0.16))",
+      border: "rgba(217,203,224,0.25)",
+      icon: "#E4DCE9",
+      glow: "rgba(217,203,224,0.24)",
+      shine: "rgba(255,252,255,0.45)",
+    },
+  };
+
+  const colors =
+    variants[variant] || variants.purple;
+
   return (
-    <div className="flex items-center gap-2.5">
-      <div
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: 8,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.2,
+      }}
+      transition={{
+        duration: 0.4,
+      }}
+      whileHover={{
+        y: -2,
+      }}
+      className="
+        group
+        flex
+        min-w-0
+        items-center
+        gap-2.5
+      "
+      style={{
+        padding: "2px 0",
+      }}
+    >
+      {/* Shiny icon */}
+
+      <motion.div
+        whileHover={{
+          scale: 1.08,
+        }}
         className="
+          relative
           flex
           h-8
           w-8
           shrink-0
           items-center
           justify-center
-          rounded-lg
-          bg-white/10
-          text-[#D7C3E0]
+          overflow-hidden
+          rounded-xl
         "
+        style={{
+          background: colors.background,
+          border: `1px solid ${colors.border}`,
+          boxShadow: `0 6px 18px ${colors.glow}`,
+          color: colors.icon,
+        }}
       >
-        <Icon className="text-[16px]" />
-      </div>
+        {/* Rotating border */}
+
+        <motion.span
+          animate={{
+            rotate: 360,
+          }}
+          transition={{
+            duration: 7,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="
+            pointer-events-none
+            absolute
+            -inset-[4px]
+            rounded-[14px]
+            border
+          "
+          style={{
+            borderColor: `${colors.icon}25`,
+          }}
+        />
+
+        {/* Pulse */}
+
+        <motion.span
+          animate={{
+            scale: [1, 1.22, 1],
+            opacity: [0.12, 0.28, 0.12],
+          }}
+          transition={{
+            duration: 2.6,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="
+            pointer-events-none
+            absolute
+            -inset-1
+            rounded-xl
+            blur-md
+          "
+          style={{
+            background: colors.glow,
+          }}
+        />
+
+        {/* Shine */}
+
+      
+
+        {/* Inner glass */}
+
+        <span
+          className="
+            pointer-events-none
+            absolute
+            inset-[2px]
+            rounded-[10px]
+            border
+            border-white/10
+            bg-white/[0.04]
+          "
+        />
+
+        {/* Icon */}
+
+        <motion.div
+          animate={{
+            rotate: [0, 3, -3, 0],
+            scale: [1, 1.05, 1],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="relative z-10"
+        >
+          <Icon
+            className="text-[15px]"
+            style={{
+              filter:
+                "drop-shadow(0 0 5px rgba(255,255,255,0.30))",
+            }}
+          />
+        </motion.div>
+      </motion.div>
+
+      {/* Text */}
 
       <p
         className="
-          text-[10px]
+          min-w-0
+          text-[12px]
           font-medium
           leading-4
-          text-white/75
+          sm:text-[13px]
         "
         style={{
           color: "#E8DDEA",
-          fontSize: "14px",
         }}
       >
         {text}
       </p>
-    </div>
+    </motion.div>
   );
 }
 
@@ -1196,17 +1715,17 @@ function TrustItem({
     <div
       className="
         flex
+        min-w-0
         items-center
         gap-3
         rounded-2xl
-        border
-        border-white/10
-        bg-white/[0.07]
         backdrop-blur-md
       "
       style={{
-        padding: "13px 15px",
-        margin: "20px 0px 20px 0px",
+        padding: "11px 12px",
+        background:
+          "linear-gradient(90deg, rgba(255,255,255,0.10), rgba(255,255,255,0.05))",
+        border: "1px solid rgba(255,255,255,0.10)",
       }}
     >
       <div
@@ -1218,23 +1737,30 @@ function TrustItem({
           items-center
           justify-center
           rounded-xl
-          bg-white/10
-          text-[#D7C3E0]
         "
+        style={{
+          background:
+            "linear-gradient(145deg, rgba(198,161,91,0.18), rgba(255,255,255,0.08))",
+          color: "#E7D7ED",
+          border:
+            "1px solid rgba(198,161,91,0.16)",
+          boxShadow:
+            "0 6px 18px rgba(198,161,91,0.10)",
+        }}
       >
-        <Icon className="text-[19px]" />
+        <Icon className="text-[18px]" />
       </div>
 
-      <div>
+      <div className="min-w-0">
         <p
           className="
-            text-[12px]
+            truncate
+            text-[13px]
             font-semibold
-            text-white
+            sm:text-[14px]
           "
           style={{
-            color: "#F0E5F2",
-            fontSize: "16px",
+            color: "#F5EEF7",
           }}
         >
           {title}
@@ -1243,12 +1769,11 @@ function TrustItem({
         <p
           className="
             mt-0.5
-            text-[10px]
-            text-white/50
+            text-[11px]
+            sm:text-[12px]
           "
           style={{
-            color: "#E8DDEA",
-            fontSize: "13px",
+            color: "#D8C8DE",
           }}
         >
           {description}
@@ -1274,25 +1799,27 @@ function TrustStripItem({
         gap-2
       "
       style={{
-        margin: "20px 0px 20px 0px",
+        padding: "4px 0",
       }}
     >
       <Icon
         className="
-          text-[18px]
-          text-[#5B2E91]
+          text-[16px]
+          sm:text-[18px]
         "
+        style={{
+          color: "#5B2E91",
+        }}
       />
 
       <span
         className="
           text-[11px]
           font-medium
-          text-[#2D2D2D]
+          sm:text-[13px]
         "
         style={{
-          opacity: 0.68,
-          fontSize: "15px",
+          color: "#4E4652",
         }}
       >
         {text}
