@@ -745,18 +745,38 @@ export default function WhyChoose() {
     right-7
   "
 >
+ <div className="flex flex-col items-start">
+<div className="flex flex-col items-start">
   <p
     className="
       text-[11px]
       font-semibold
       uppercase
       tracking-[0.25em]
-
-      text-[#5B2E91]
+      text-white
     "
+    style={{ color: "#f0e5ff" }}
   >
-    K.B.F.M. Global Services
+    K.B.F.M. Group of Companies Professional Services Ltd.
   </p>
+
+  <span
+    className="
+      mt-3
+      h-[2px]
+      w-32
+      rounded-full
+      bg-gradient-to-r
+      from-[#5B2E91]
+      via-[#A66CFF]
+      to-[#D8B4FF]
+      shadow-[0_0_8px_rgba(166,108,255,0.4)]
+    "
+  />
+</div>
+
+
+</div>
 
   <h3
     className="

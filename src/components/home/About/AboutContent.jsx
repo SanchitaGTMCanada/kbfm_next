@@ -211,7 +211,7 @@ export default function AboutContent() {
           style={{margin:"20px 0px 20px 0px"}}
       >
         <p>
-          At K.B.F.M. Global Services N.W.T. Ltd.,
+          At K.B.F.M. Group of Companies Professional Services Ltd.,
           we believe every client deserves reliable,
           professional, and locally delivered services.
         </p>

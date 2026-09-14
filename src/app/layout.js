@@ -5,12 +5,12 @@ export const metadata = {
   metadataBase: new URL("https://kbfm-next.vercel.app/"),
 
   title: {
-    default: "K.B.F.M. Global Services N.W.T. Ltd. | Serving the North",
+    default: "K.B.F.M. Group of Companies Professional Services Ltd. | Serving the North",
     template: "%s | K.B.F.M. Global Services",
   },
 
   description:
-    "K.B.F.M. Global Services N.W.T. Ltd. provides dependable security, caregiving, cleaning, janitorial, and facility support services throughout the Northwest Territories.",
+    "K.B.F.M. Group of Companies Professional Services Ltd. provides dependable security, caregiving, cleaning, janitorial, and facility support services throughout the Northwest Territories.",
 
   keywords: [
     "K.B.F.M. Global Services",
@@ -35,13 +35,13 @@ export const metadata = {
 
   authors: [
     {
-      name: "K.B.F.M. Global Services N.W.T. Ltd.",
+      name: "K.B.F.M. Group of Companies Professional Services Ltd.",
     },
   ],
 
-  creator: "K.B.F.M. Global Services N.W.T. Ltd.",
+  creator: "K.B.F.M. Group of Companies Professional Services Ltd.",
 
-  publisher: "K.B.F.M. Global Services N.W.T. Ltd.",
+  publisher: "K.B.F.M. Group of Companies Professional Services Ltd.",
 
   robots: {
     index: true,
@@ -61,14 +61,14 @@ export const metadata = {
   },
 
   openGraph: {
-    title: "K.B.F.M. Global Services N.W.T. Ltd.",
+    title: "K.B.F.M. Group of Companies Professional Services Ltd.",
 
     description:
       "Reliable security, caregiving, cleaning, janitorial, and facility support services delivered throughout the Northwest Territories.",
 
     url: "https://kbfm-next.vercel.app/",
 
-    siteName: "K.B.F.M. Global Services N.W.T. Ltd.",
+    siteName: "K.B.F.M. Group of Companies Professional Services Ltd.",
 
     locale: "en_CA",
 
@@ -79,7 +79,7 @@ export const metadata = {
         url: "/seo/kbfm-og-image-v2.png",
         width: 1200,
         height: 630,
-        alt: "K.B.F.M. Global Services N.W.T. Ltd.",
+        alt: "K.B.F.M. Group of Companies Professional Services Ltd.",
       },
     ],
   },
@@ -87,7 +87,7 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
 
-    title: "K.B.F.M. Global Services N.W.T. Ltd.",
+    title: "K.B.F.M. Group of Companies Professional Services Ltd.",
 
     description:
       "Reliable security, caregiving, cleaning, janitorial, and facility support services throughout the Northwest Territories.",

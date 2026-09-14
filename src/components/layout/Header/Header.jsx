@@ -41,6 +41,19 @@ export default function Header() {
      NAVIGATION
   ===================================================== */
 
+  const services = [
+  "Security Services",
+  "Cleaning Services",
+  "Caregiver & Personal Support Services",
+  "General Labour Services",
+  "Warehouse & Inventory ",
+  "Employment Services",
+  "Home Healthcare Services",
+  "Errands & Shopping Services",
+  "Maintenance & Handyman Services",
+  "Administrative & Office Support",
+];
+
   const handleNavigation = (e, href) => {
     if (!href) return;
 
@@ -347,21 +360,17 @@ export default function Header() {
                       : "bg-transparent"
                   }
                 `}
-                style={{
-                  padding: !sticky
-                    ? "5px 9px"
-                    : "0px",
-                }}
+                
               >
                 <Image
-                  src="/assets/logos/logo.png"
-                  alt="K.B.F.M. Global Services N.W.T. Ltd."
-                  width={150}
-                  height={60}
+                  src="/assets/logos/logo-new.png"
+                  alt="K.B.F.M. Group of Companies Professional Services Ltd."
+                  width={140}
+                  height={50}
                   priority
                   className="
                     h-auto
-                    w-[150px]
+                    w-[140px]
                     object-contain
                   "
                 />
@@ -793,7 +802,7 @@ export default function Header() {
 
     mt-3
 
-    w-[340px]
+    w-[380px]
 
     -translate-x-1/2
     translate-y-2
@@ -817,255 +826,77 @@ export default function Header() {
     group-hover:visible
     group-hover:translate-y-0
     group-hover:opacity-100
+
+    max-h-[520px]
+    overflow-y-auto
   "
   style={{
     padding: "10px",
     marginTop: "10px",
   }}
 >
-
-  {/* PRIVATE SECURITY */}
-
-  <Link
-    href="#services"
-    onClick={(e) =>
-      handleNavigation(e, "#services")
-    }
-    className="
-      group/item
-
-      flex
-      items-center
-      justify-between
-
-      rounded-xl
-
-      text-[15px]
-      font-medium
-
-      text-[#452D2D]
-
-      transition-all
-      duration-200
-
-      bg-[#F7F3FC]
-
-      hover:bg-[#EEE5F8]
-      hover:text-[#5B2E91]
-    "
-    style={{
-      padding: "12px 14px",
-      marginBottom: "10px",
-    }}
-  >
-    <span>
-      Private Security Services
-    </span>
-
-    <span
+  {services.map((service, index) => (
+    <Link
+      key={index}
+      href="#services"
+      onClick={(e) =>
+        handleNavigation(e, "#services")
+      }
       className="
-        h-1.5
-        w-1.5
+        group/item
 
-        shrink-0
+        flex
+        items-center
+        justify-between
 
-        rounded-full
+        rounded-xl
 
-        bg-[#7B4DB8]
+        text-[15px]
+        font-medium
 
-        opacity-0
+        text-[#452D2D]
 
-        transition-opacity
+        transition-all
         duration-200
 
-        group-hover/item:opacity-100
+        bg-[#F7F3FC]
+
+        hover:bg-[#EEE5F8]
+        hover:text-[#5B2E91]
       "
-    />
-  </Link>
+      style={{
+        padding: "12px 14px",
+        marginBottom:
+          index === services.length - 1
+            ? "0px"
+            : "10px",
+      }}
+    >
+      <span>
+        {service}
+      </span>
 
+      <span
+        className="
+          h-1.5
+          w-1.5
 
-  {/* CAREGIVING */}
+          shrink-0
 
-  <Link
-    href="#services"
-    onClick={(e) =>
-      handleNavigation(e, "#services")
-    }
-    className="
-      group/item
+          rounded-full
 
-      flex
-      items-center
-      justify-between
+          bg-[#7B4DB8]
 
-      rounded-xl
+          opacity-0
 
-      text-[15px]
-      font-medium
+          transition-opacity
+          duration-200
 
-      text-[#452D2D]
-
-      transition-all
-      duration-200
-
-      bg-[#F7F3FC]
-
-      hover:bg-[#EEE5F8]
-      hover:text-[#5B2E91]
-    "
-    style={{
-      padding: "12px 14px",
-      marginBottom: "10px",
-    }}
-  >
-    <span>
-      Caregiving & Personal Support
-    </span>
-
-    <span
-      className="
-        h-1.5
-        w-1.5
-
-        shrink-0
-
-        rounded-full
-
-        bg-[#7B4DB8]
-
-        opacity-0
-
-        transition-opacity
-        duration-200
-
-        group-hover/item:opacity-100
-      "
-    />
-  </Link>
-
-
-  {/* CLEANING */}
-
-  <Link
-    href="#services"
-    onClick={(e) =>
-      handleNavigation(e, "#services")
-    }
-    className="
-      group/item
-
-      flex
-      items-center
-      justify-between
-
-      rounded-xl
-
-      text-[15px]
-      font-medium
-
-      text-[#452D2D]
-
-      transition-all
-      duration-200
-
-      bg-[#F7F3FC]
-
-      hover:bg-[#EEE5F8]
-      hover:text-[#5B2E91]
-    "
-    style={{
-      padding: "12px 14px",
-      marginBottom: "10px",
-    }}
-  >
-    <span>
-      Cleaning Services
-    </span>
-
-    <span
-      className="
-        h-1.5
-        w-1.5
-
-        shrink-0
-
-        rounded-full
-
-        bg-[#7B4DB8]
-
-        opacity-0
-
-        transition-opacity
-        duration-200
-
-        group-hover/item:opacity-100
-      "
-    />
-  </Link>
-
-
-  {/* JANITORIAL */}
-
-  <Link
-    href="#services"
-    onClick={(e) =>
-      handleNavigation(e, "#services")
-    }
-    className="
-      group/item
-
-      flex
-      items-center
-      justify-between
-
-      rounded-xl
-
-      text-[15px]
-      font-medium
-
-      text-[#452D2D]
-
-      transition-all
-      duration-200
-
-      bg-[#F7F3FC]
-
-      hover:bg-[#EEE5F8]
-      hover:text-[#5B2E91]
-    "
-    style={{
-      padding: "12px 14px",
-      marginBottom: "10px",
-    }}
-  >
-    <span>
-      Janitorial & Facility Maintenance
-    </span>
-
-    <span
-      className="
-        h-1.5
-        w-1.5
-
-        shrink-0
-
-        rounded-full
-
-        bg-[#7B4DB8]
-
-        opacity-0
-
-        transition-opacity
-        duration-200
-
-        group-hover/item:opacity-100
-      "
-    />
-  </Link>
-
-
- 
-
+          group-hover/item:opacity-100
+        "
+      />
+    </Link>
+  ))}
 </div>
                     </div>
                   );
@@ -1266,7 +1097,7 @@ export default function Header() {
               "
             >
               <Button
-                href="#contact"
+                href="#booking"
                 onClick={(e) =>
                   handleNavigation(
                     e,

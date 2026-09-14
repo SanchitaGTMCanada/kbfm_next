@@ -2,67 +2,129 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 import {
   HiArrowUpRight,
-  HiShieldCheck,
-  HiHeart,
+ HiUserGroup,
+
   HiSparkles,
   HiBuildingOffice2,
   HiUsers,
   HiStar,
   HiPhone,
 } from "react-icons/hi2";
+import {
+  HiShieldCheck,
+
+  HiHeart,
+
+  HiArchiveBox,
+  HiBriefcase,
+  HiOutlineHeart,
+  HiShoppingCart,
+  HiWrenchScrewdriver,
+  HiDocumentText,
+} from "react-icons/hi2";
 
 import Container from "@/components/ui/Container/Container";
 import services from "./servicesData";
 
 export default function Services() {
-  const serviceItems = [
-    {
-      number: "01",
-      title: "Private Security Services",
-      description:
-        "Protecting people, property, and assets with trained and licensed security professionals.",
-      icon: HiShieldCheck,
-      image:
-        
-        "/assets/services/service-1.jpeg",
-    },
 
-    {
-      number: "02",
-      title: "Caregiving & Personal Support",
-      description:
-        "Compassionate support that helps individuals maintain independence, dignity, and quality of life.",
-      icon: HiHeart,
-      image:
-        
-        "/assets/services/service-2.jpeg",
-    },
+  const [serviceIndex, setServiceIndex] = useState(0);
 
-    {
-      number: "03",
-      title: "Cleaning Services",
-      description:
-        "Professional cleaning solutions designed to create healthy, safe, and welcoming environments.",
-      icon: HiSparkles,
-      image:
-        
-        "/assets/services/service-3.jpeg",
-    },
+const serviceItems = [
+  {
+    number: "01",
+    title: "Security Services",
+    description:
+      "Protecting people, property, and assets with trained and licensed security professionals.",
+    icon: HiShieldCheck,
+    image: "/assets/services/service-1.jpeg",
+  },
 
-    {
-      number: "04",
-      title: "Janitorial & Facility Maintenance",
-      description:
-        "Complete facility support that keeps workplaces clean, safe, and operating efficiently.",
-      icon: HiBuildingOffice2,
-      image:
-        
-        "/assets/services/service-4.jpeg",
-    },
-  ];
+  {
+    number: "02",
+    title: "Cleaning Services",
+    description:
+      "Professional cleaning solutions designed to create healthy, safe, and welcoming environments.",
+    icon: HiSparkles,
+    image: "/assets/services/service-3.jpeg",
+  },
+
+  {
+    number: "03",
+    title: "Caregiver & Personal Support Services",
+    description:
+      "Compassionate support that helps individuals maintain independence, dignity, and quality of life.",
+    icon: HiHeart,
+    image: "/assets/services/service-2.jpeg",
+  },
+
+  {
+    number: "04",
+    title: "General Labour Services",
+    description:
+      "Reliable and flexible workforce solutions supporting a wide range of labour and operational needs.",
+    icon: HiUserGroup,
+    image: "/assets/services/service-4.jpeg",
+  },
+
+  {
+    number: "05",
+    title: "Warehouse & Inventory Services",
+    description:
+      "Efficient warehouse and inventory support to help businesses maintain organized, accurate, and productive operations.",
+    icon: HiArchiveBox,
+    image: "/assets/services/service-5.jpeg",
+  },
+
+  {
+    number: "06",
+    title: "Employment Services",
+    description:
+      "Connecting employers with dependable talent and helping individuals find meaningful employment opportunities.",
+    icon: HiBriefcase,
+    image: "/assets/services/service-6.jpeg",
+  },
+
+  {
+    number: "07",
+    title: "Home Healthcare Services",
+    description:
+      "Dedicated healthcare support delivered in the comfort of home with a focus on safety, comfort, and well-being.",
+    icon: HiOutlineHeart,
+    image: "/assets/services/service-7.jpeg",
+  },
+
+  {
+    number: "08",
+    title: "Errands & Shopping Services",
+    description:
+      "Convenient assistance with everyday errands, shopping, and personal tasks to make daily life easier.",
+    icon: HiShoppingCart,
+    image: "/assets/services/service-8.jpeg",
+  },
+
+  {
+    number: "09",
+    title: "Maintenance & Handyman Services",
+    description:
+      "Reliable maintenance and handyman solutions for repairs, upkeep, and everyday property needs.",
+    icon: HiWrenchScrewdriver,
+    image: "/assets/services/service-9.jpeg",
+  },
+
+  {
+    number: "10",
+    title: "Administrative & Office Support",
+    description:
+      "Professional administrative support that helps businesses stay organized, efficient, and focused on their priorities.",
+    icon: HiDocumentText,
+    image: "/assets/services/service-10.jpeg",
+  },
+];
 
   return (
     <section
@@ -303,386 +365,542 @@ export default function Services() {
           "
             style={{padding:"20px"}}
         >
-            <Container  className="w-full max-w-none flex flex-col justify-center" >
-        {/* =================================================
-            SECTION HEADER
-        ================================================= */}
+  <Container className="w-full max-w-none flex flex-col justify-center">
+  {/* =================================================
+      SECTION HEADER
+  ================================================= */}
 
-       <motion.div
-  initial={{
-    opacity: 0,
-    y: 30,
-  }}
-  whileInView={{
-    opacity: 1,
-    y: 0,
-  }}
-  viewport={{
-    once: true,
-    amount: 0.25,
-  }}
-  transition={{
-    duration: 0.8,
-    ease: [0.22, 1, 0.36, 1],
-  }}
-  className="
-    relative
-    z-10
+  <motion.div
+    initial={{
+      opacity: 0,
+      y: 30,
+    }}
+    whileInView={{
+      opacity: 1,
+      y: 0,
+    }}
+    viewport={{
+      once: true,
+      amount: 0.25,
+    }}
+    transition={{
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1],
+    }}
+    className="
+      relative
+      z-10
+      mx-auto
+      flex
+      w-full
+      flex-col
+      items-center
+      justify-center
+      text-center
+    "
+    style={{
+      paddingLeft: "20px",
+      paddingRight: "20px",
+    }}
+  >
+    {/* Eyebrow */}
 
-    mx-auto
+    <div
+      className="
+        mb-5
+        flex
+        items-center
+        justify-center
+        gap-3
+      "
+      style={{
+        margin: "20px 0px 20px 0px",
+      }}
+    >
+      <span
+        className="
+          h-[1px]
+          w-12
+          bg-[#7B4DB8]/50
+        "
+      />
 
-    flex
-    w-full
-    
+      <span
+        className="
+          text-[11px]
+          font-bold
+          uppercase
+          tracking-[0.28em]
+          text-[#6D48A8]
+        "
+      >
+        Our Services
+      </span>
 
-    flex-col
-    items-center
-    justify-center
+      <span
+        className="
+          h-[1px]
+          w-12
+          bg-[#7B4DB8]/50
+        "
+      />
+    </div>
 
-    text-center
-  "
-  style={{
-    paddingLeft: "20px",
-    paddingRight: "20px",
-  }}
->
-          {/* Eyebrow */}
+    {/* Heading */}
 
-          <div
-            className="
-              mb-5
+    <h2
+      className="
+        text-[40px]
+        font-semibold
+        leading-[1.05]
+        tracking-[-1.5px]
+        text-[#452D2D]
 
-              flex
-              items-center
-              justify-center
+        sm:text-[50px]
+        md:text-[58px]
+        lg:text-[64px]
+      "
+      style={{
+        margin: "20px 0px 20px 0px",
+      }}
+    >
+      Professional Services,
+      <span className="block">
+        Delivered with{" "}
+        <span
+          className="
+            bg-gradient-to-r
+            from-[#5B2E91]
+            via-[#8060A7]
+            to-[#B99BD1]
+            bg-clip-text
+            text-transparent
+          "
+        >
+          Care
+        </span>
+      </span>
+    </h2>
 
-              gap-3
-            "
-             style={{margin:"20px 0px 20px 0px"}}
-          >
-            <span
-              className="
-                h-[1px]
-                w-12
+    {/* Description */}
 
-                bg-[#7B4DB8]/50
-              "
-            />
+    <p
+      className="
+        mx-auto
+        mt-6
+        max-w-2xl
+        text-[15px]
+        leading-7
+        text-[#6F6873]
+        sm:text-[16px]
+      "
+      style={{
+        margin: "20px 0px 20px 0px",
+        fontSize: "15px",
+      }}
+    >
+      Reliable, compassionate, and high-quality
+      services designed to meet the needs of
+      Northern communities.
+    </p>
 
-            <span
-              className="
-                text-[11px]
-                font-bold
-                uppercase
-                tracking-[0.28em]
+    {/* Small divider */}
 
-                text-[#6D48A8]
-              "
-             
-            >
-              Our Services
-            </span>
+    <div
+      className="
+        mx-auto
+        mt-7
+        h-[3px]
+        w-14
+        rounded-full
+        bg-gradient-to-r
+        from-[#6D48A8]
+        via-[#B998D5]
+        to-[#6D48A8]
+      "
+    />
+  </motion.div>
 
-            <span
-              className="
-                h-[1px]
-                w-12
 
-                bg-[#7B4DB8]/50
-              "
-            />
-          </div>
+  {/* =================================================
+      SERVICES CAROUSEL
+  ================================================= */}
 
-          {/* Heading */}
-
-          <h2
-            className="
-              text-[40px]
-              font-semibold
-              leading-[1.05]
-              tracking-[-1.5px]
-
-              text-[#452D2D]
-
-              sm:text-[50px]
-              md:text-[58px]
-              lg:text-[64px]
-            "
-              style={{margin:"20px 0px 20px 0px"}}
-          >
-            Professional Services,
-            <span className="block">
-              Delivered with{" "}
-              <span
-                className="
-                  bg-gradient-to-r
-                  from-[#5B2E91]
-                  via-[#8060A7]
-                  to-[#B99BD1]
-
-                  bg-clip-text
-                  text-transparent
-                "
-              >
-                Care
-              </span>
-            </span>
-          </h2>
-
-          {/* Description */}
-
-          <p
-            className="
-              mx-auto
-              mt-6
-
-              max-w-2xl
-
-              text-[15px]
-              leading-7
-
-              text-[#6F6873]
-
-              sm:text-[16px]
-            "
-              style={{margin:"20px 0px 20px 0px", fontSize:"15px"}}
-          >
-            Reliable, compassionate, and high-quality
-            services designed to meet the needs of
-            Northern communities.
-          </p>
-
-          {/* Small divider */}
-
-          <div
-            className="
-              mx-auto
-              mt-7
-
-              h-[3px]
-              w-14
-
-              rounded-full
-
-              bg-gradient-to-r
-              from-[#6D48A8]
-              via-[#B998D5]
-              to-[#6D48A8]
-            "
-          />
-        </motion.div>
-
-        {/* =================================================
-            2 × 2 STAIRCASE GRID
-        ================================================= */}
-
-       <div
-  className="
-    relative
-    z-10
-
-    mx-auto
-
-    mt-16
-    sm:mt-20
-    lg:mt-24
-
-    w-full
-    max-w-[1180px]
-
-    px-5
-    sm:px-8
-    lg:px-10
-  "
-  style={{
-    margin: "20px auto",
-  }}
->
   <div
     className="
-      grid
-      grid-cols-1
+      relative
+      z-10
+      mx-auto
+      w-full
+      max-w-[1400px]
 
-      gap-7
-
-      md:grid-cols-2
-
-      md:gap-x-7
-      md:gap-y-12
-
-      lg:gap-x-8
-      lg:gap-y-16
+      px-5
+      sm:px-8
+      lg:px-12
     "
+    style={{
+      marginTop: "35px",
+      marginBottom: "30px",
+    }}
   >
-    {/* ==============================================
-        UPPER LEFT
-    ============================================== */}
 
-    <StairServiceCard
-      service={serviceItems[0]}
-      index={0}
-    />
+    {/* =================================================
+        CAROUSEL WRAPPER
+    ================================================= */}
 
-    {/* ==============================================
-        UPPER RIGHT
-    ============================================== */}
+    <div className="relative">
 
-    <StairServiceCard
-      service={serviceItems[1]}
-      index={1}
-    />
+      {/* =================================================
+          LEFT ARROW
+      ================================================= */}
 
-    {/* ==============================================
-        LOWER LEFT
-    ============================================== */}
+      <button
+        type="button"
+        onClick={() => {
+          setServiceIndex((prev) =>
+            prev === 0
+              ? serviceItems.length - 1
+              : prev - 1
+          );
+        }}
+        aria-label="Previous services"
+        className="
+          absolute
+          left-0
+          top-1/2
+          z-30
 
-    <div
-      className="
-        md:translate-x-[7%]
-        lg:translate-x-[8%]
-      "
-    >
-      <StairServiceCard
-        service={serviceItems[2]}
-        index={2}
-      />
-    </div>
+          flex
+          h-12
+          w-12
+          -translate-x-1/2
+          -translate-y-1/2
 
-    {/* ==============================================
-        LOWER RIGHT
-    ============================================== */}
+          items-center
+          justify-center
 
-    <div
-      className="
-        md:translate-x-[7%]
-        lg:translate-x-[8%]
-      "
-    >
-      <StairServiceCard
-        service={serviceItems[3]}
-        index={3}
-      />
-    </div>
-  </div>
-</div>
-        {/* =================================================
-            TRUST STRIP
-        ================================================= */}
+          rounded-full
 
+          border
+          border-[#D4AF37]/60
+
+          bg-white
+
+          text-[#5B2E91]
+
+          shadow-[0_10px_30px_rgba(91,46,145,0.18)]
+
+          transition-all
+          duration-300
+
+          hover:-translate-x-1/2
+          hover:-translate-y-1/2
+          hover:bg-[#5B2E91]
+          hover:text-white
+          hover:shadow-[0_15px_40px_rgba(91,46,145,0.28)]
+
+          active:scale-95
+        "
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          className="h-5 w-5"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M15 19l-7-7 7-7"
+          />
+        </svg>
+      </button>
+
+
+      {/* =================================================
+          RIGHT ARROW
+      ================================================= */}
+
+      <button
+        type="button"
+        onClick={() => {
+          setServiceIndex((prev) =>
+            prev === serviceItems.length - 1
+              ? 0
+              : prev + 1
+          );
+        }}
+        aria-label="Next services"
+        className="
+          absolute
+          right-0
+          top-1/2
+          z-30
+
+          flex
+          h-12
+          w-12
+          translate-x-1/2
+          -translate-y-1/2
+
+          items-center
+          justify-center
+
+          rounded-full
+
+          border
+          border-[#D4AF37]/60
+
+          bg-white
+
+          text-[#5B2E91]
+
+          shadow-[0_10px_30px_rgba(91,46,145,0.18)]
+
+          transition-all
+          duration-300
+
+          hover:translate-x-1/2
+          hover:-translate-y-1/2
+          hover:bg-[#5B2E91]
+          hover:text-white
+          hover:shadow-[0_15px_40px_rgba(91,46,145,0.28)]
+
+          active:scale-95
+        "
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          className="h-5 w-5"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M9 5l7 7-7 7"
+          />
+        </svg>
+      </button>
+
+
+      {/* =================================================
+          CARDS VIEWPORT
+      ================================================= */}
+
+      <div
+        className="
+          overflow-hidden
+          px-3
+          sm:px-4
+        "
+      >
         <motion.div
+          key={serviceIndex}
           initial={{
             opacity: 0,
-            y: 25,
+            x: 30,
           }}
-          whileInView={{
+          animate={{
             opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
+            x: 0,
           }}
           transition={{
-            duration: 0.8,
+            duration: 0.45,
+            ease: [0.22, 1, 0.36, 1],
           }}
           className="
-            relative
-            z-10
+            grid
+            grid-cols-1
 
-            mx-auto
-            mt-20
+            gap-6
 
-           
+            sm:grid-cols-2
 
-            rounded-[24px]
+            lg:grid-cols-4
 
-            border
-            border-white/80
-
-            bg-white/60
-
-            px-6
-            py-6
-
-            shadow-[0_20px_60px_rgba(91,46,145,0.08)]
-
-            backdrop-blur-xl
-
-            sm:px-10
-            sm:py-7
+            lg:gap-6
           "
-
-          style={{margin:"40px 0px 40px 0px"}}
         >
-          <div
-            className="
-              flex
-              flex-wrap
+          {/* =================================================
+              DESKTOP — 4 SERVICES
+          ================================================= */}
 
-              items-center
-              justify-center
-
-              gap-x-8
-              gap-y-5
-            "
-          >
-            <TrustPoint
-              icon={HiShieldCheck}
-              text="Licensed & Insured"
+          {[
+            serviceItems[serviceIndex],
+            serviceItems[
+              (serviceIndex + 1) % serviceItems.length
+            ],
+            serviceItems[
+              (serviceIndex + 2) % serviceItems.length
+            ],
+            serviceItems[
+              (serviceIndex + 3) % serviceItems.length
+            ],
+          ].map((service, index) => (
+            <StairServiceCard
+              key={`${service.number}-${serviceIndex}`}
+              service={service}
+              index={index}
             />
-
-            <div
-              className="
-                hidden
-                h-8
-                w-px
-
-                bg-[#D9CDE2]
-
-                sm:block
-              "
-            />
-
-            <TrustPoint
-              icon={HiUsers}
-              text="Trained Professionals"
-            />
-
-            <div
-              className="
-                hidden
-                h-8
-                w-px
-
-                bg-[#D9CDE2]
-
-                sm:block
-              "
-            />
-
-            <TrustPoint
-              icon={HiStar}
-              text="Quality Assured"
-            />
-
-            <div
-              className="
-                hidden
-                h-8
-                w-px
-
-                bg-[#D9CDE2]
-
-                sm:block
-              "
-            />
-
-            <TrustPoint
-              icon={HiHeart}
-              text="Community Focused"
-            />
-          </div>
+          ))}
         </motion.div>
-      </Container>
+      </div>
+    </div>
+
+
+    {/* =================================================
+        CAROUSEL INDICATORS
+    ================================================= */}
+
+    <div
+      className="
+        mt-7
+        flex
+        items-center
+        justify-center
+        gap-2
+      "
+    >
+      {serviceItems.map((service, index) => (
+        <button
+          key={service.number}
+          type="button"
+          onClick={() => setServiceIndex(index)}
+          aria-label={`Go to service ${index + 1}`}
+          className={`
+            h-2
+            rounded-full
+            transition-all
+            duration-300
+
+            ${
+              serviceIndex === index
+                ? "w-8 bg-[#5B2E91]"
+                : "w-2 bg-[#CDBBDD] hover:bg-[#9C76BD]"
+            }
+          `}
+        />
+      ))}
+    </div>
+  </div>
+
+
+  {/* =================================================
+      TRUST STRIP
+  ================================================= */}
+
+  <motion.div
+    initial={{
+      opacity: 0,
+      y: 25,
+    }}
+    whileInView={{
+      opacity: 1,
+      y: 0,
+    }}
+    viewport={{
+      once: true,
+    }}
+    transition={{
+      duration: 0.8,
+    }}
+    className="
+      relative
+      z-10
+
+      mx-auto
+      mt-16
+
+      rounded-[24px]
+
+      border
+      border-white/80
+
+      bg-white/60
+
+      px-6
+      py-6
+
+      shadow-[0_20px_60px_rgba(91,46,145,0.08)]
+
+      backdrop-blur-xl
+
+      sm:px-10
+      sm:py-7
+    "
+    style={{
+      margin: "40px 0px 40px 0px",
+    }}
+  >
+    <div
+      className="
+        flex
+        flex-wrap
+
+        items-center
+        justify-center
+
+        gap-x-8
+        gap-y-5
+      "
+    >
+      <TrustPoint
+        icon={HiShieldCheck}
+        text="Licensed & Insured"
+      />
+
+      <div
+        className="
+          hidden
+          h-8
+          w-px
+          bg-[#D9CDE2]
+          sm:block
+        "
+      />
+
+      <TrustPoint
+        icon={HiUsers}
+        text="Trained Professionals"
+      />
+
+      <div
+        className="
+          hidden
+          h-8
+          w-px
+          bg-[#D9CDE2]
+          sm:block
+        "
+      />
+
+      <TrustPoint
+        icon={HiStar}
+        text="Quality Assured"
+      />
+
+      <div
+        className="
+          hidden
+          h-8
+          w-px
+          bg-[#D9CDE2]
+          sm:block
+        "
+      />
+
+      <TrustPoint
+        icon={HiHeart}
+        text="Community Focused"
+      />
+    </div>
+  </motion.div>
+</Container>
         </div>
     
 
@@ -811,879 +1029,445 @@ export default function Services() {
 /* ============================================================
    STAIR SERVICE CARD
 ============================================================ */
-
-function StairServiceCard({
-  service,
-  index,
-}) {
+function StairServiceCard({ service, index }) {
   const Icon = service.icon;
 
-  const handleBookNow = (e) => {
-    e.preventDefault();
-
-    const section = document.querySelector("#booking");
-
-    if (!section) return;
-
-    const headerHeight = 120;
-
-    const top =
-      section.getBoundingClientRect().top +
-      window.pageYOffset -
-      headerHeight;
-
-    window.scrollTo({
-      top,
-      behavior: "smooth",
-    });
-  };
-
   return (
-    <motion.article
-      initial={{
-        opacity: 0,
-        y: 50,
-        x: index % 2 === 0 ? -25 : 25,
-        scale: 0.98,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-        x: 0,
-        scale: 1,
-      }}
-      viewport={{
-        once: true,
-        amount: 0.18,
-      }}
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
       transition={{
-        duration: 0.8,
-        delay: index * 0.12,
+        duration: 0.55,
+        delay: index * 0.07,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="group relative w-full"
+      className="
+        group
+        relative
+        flex
+        w-full
+        flex-col
+        overflow-hidden
+        rounded-[24px]
+        border
+        border-[#E6D9F1]
+        bg-white
+        shadow-[0_12px_35px_rgba(91,46,145,0.10)]
+        transition-all
+        duration-500
+        hover:-translate-y-2
+        hover:border-[#D4BDE8]
+        hover:shadow-[0_22px_50px_rgba(91,46,145,0.18)]
+      "
     >
-      {/* =====================================================
-          PREMIUM CARD
-      ===================================================== */}
-
+      {/* =========================================
+          IMAGE
+      ========================================= */}
       <div
         className="
           relative
-          min-h-[510px]
-          overflow-hidden
-
-          rounded-[32px]
-
-          border
-          border-white
-
-          bg-white/80
-
-          shadow-[0_25px_70px_rgba(62,32,102,0.10)]
-
-          backdrop-blur-xl
-
-          transition-all
-          duration-700
-
-          group-hover:-translate-y-3
-          group-hover:shadow-[0_35px_90px_rgba(62,32,102,0.18)]
-
-          sm:min-h-[530px]
-          lg:min-h-[540px]
+          h-[190px]
+          w-full
+          shrink-0
+          overflow-visible
         "
       >
-
-        {/* =================================================
-            SOFT PURPLE AMBIENT LIGHT
-        ================================================= */}
-
-        <div
-          className="
-            pointer-events-none
-            absolute
-            -right-32
-            -top-32
-
-            h-[320px]
-            w-[320px]
-
-            rounded-full
-
-            bg-[#7B4DB8]/10
-
-            blur-[90px]
-
-            transition-all
-            duration-700
-
-            group-hover:bg-[#7B4DB8]/20
-          "
-        />
-
-        <div
-          className="
-            pointer-events-none
-            absolute
-            -bottom-32
-            -left-32
-
-            h-[300px]
-            w-[300px]
-
-            rounded-full
-
-            bg-[#B998D5]/12
-
-            blur-[90px]
-
-            transition-all
-            duration-700
-
-            group-hover:bg-[#B998D5]/20
-          "
-        />
-
-        {/* =================================================
-            IMAGE
-        ================================================= */}
-
+        {/* IMAGE */}
         <div
           className="
             absolute
-            right-0
-            top-0
-
-            h-full
-            w-[43%]
-
+            inset-0
             overflow-hidden
+            rounded-t-[24px]
           "
         >
-          <motion.div
-            initial={{
-              scale: 1.1,
-            }}
-            whileInView={{
-              scale: 1,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 1.3,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="absolute inset-0"
-          >
-            <Image
-              src={service.image}
-              alt={service.title}
-              fill
-              sizes="
-                (max-width: 768px) 100vw,
-                43vw
-              "
-              className="
-                object-cover
-
-                transition-transform
-                duration-[1600ms]
-                ease-out
-
-                group-hover:scale-110
-              "
-            />
-          </motion.div>
-
-          {/* =================================================
-              PREMIUM IMAGE FADE
-          ================================================= */}
-
-          <div
-            className="
-              absolute
-              inset-0
-
-              bg-gradient-to-r
-              from-white
-              via-white/60
-              via-[45%]
-              to-white/5
+          <Image
+            src={service.image}
+            alt={service.title}
+            fill
+            sizes="
+              (max-width: 640px) 100vw,
+              (max-width: 1024px) 50vw,
+              25vw
             "
-          />
-
-          {/* Bottom image fade */}
-
-          <div
             className="
-              absolute
-              inset-x-0
-              bottom-0
-
-              h-[45%]
-
-              bg-gradient-to-t
-              from-white/35
-              to-transparent
-            "
-          />
-
-          {/* Image hover tint */}
-
-          <div
-            className="
-              absolute
-              inset-0
-
-              bg-gradient-to-br
-              from-[#5B2E91]/10
-              via-transparent
-              to-[#7B4DB8]/20
-
-              opacity-0
-
-              transition-opacity
+              object-cover
+              transition-transform
               duration-700
-
-              group-hover:opacity-100
+              ease-out
+              group-hover:scale-105
             "
           />
 
-          {/* =================================================
-              IMAGE LIGHT SWEEP
-          ================================================= */}
-
-          <motion.div
+          {/* DARK IMAGE OVERLAY */}
+          <div
             className="
               absolute
-              inset-y-0
-              -left-[120%]
-
-              w-[80%]
-
-              rotate-[15deg]
-
-              bg-gradient-to-r
-              from-transparent
-              via-white/30
+              inset-0
+              bg-gradient-to-t
+              from-[#2B1740]/70
+              via-[#5B2E91]/10
               to-transparent
-
-              opacity-0
-
-              group-hover:opacity-100
             "
-            transition={{
-              duration: 1.2,
-              ease: "easeInOut",
-            }}
-            whileHover={{
-              left: "140%",
-            }}
+          />
+
+          {/* WHITE BLEND INTO CONTENT */}
+          <div
+            className="
+              absolute
+              bottom-0
+              left-0
+              right-0
+              h-[85px]
+              bg-gradient-to-t
+              from-white
+              via-white/65
+              to-transparent
+            "
           />
         </div>
 
-        {/* =================================================
-            TOP NUMBER
-        ================================================= */}
-
+        {/* =====================================
+            NUMBER
+        ===================================== */}
         <div
           className="
             absolute
-            left-7
-            top-7
-
+            left-5
+            top-5
             z-30
-
             flex
-            items-end
-            gap-3
-          "
-        >
-          <span
-            className="
-              text-[58px]
-              font-semibold
-              leading-[0.8]
-
-              tracking-[-3px]
-
-              text-[#E6D9EE]
-
-              transition-all
-              duration-500
-
-              group-hover:text-[#D8C6E4]
-
-              sm:text-[64px]
-            "
-          >
-            {service.number}
-          </span>
-
-          <span
-            className="
-              mb-1
-
-              h-[2px]
-              w-12
-
-              rounded-full
-
-              bg-gradient-to-r
-              from-[#5B2E91]
-              to-[#B998D5]
-
-              transition-all
-              duration-500
-
-              group-hover:w-20
-            "
-          />
-        </div>
-
-        {/* =================================================
-            FLOATING ICON
-        ================================================= */}
-
-        <motion.div
-          whileHover={{
-            scale: 1.08,
-            rotate: 4,
-          }}
-          transition={{
-            duration: 0.3,
-          }}
-          className="
-            absolute
-            left-7
-            top-[120px]
-
-            z-30
-
-            flex
-            h-[62px]
-            w-[62px]
-
+            h-[42px]
+            w-[42px]
             items-center
             justify-center
-
-            rounded-[19px]
-
-            border
-            border-white/30
-
-            bg-gradient-to-br
-            from-[#5B2E91]
-            via-[#6D48A8]
-            to-[#7B4DB8]
-
+            rounded-full
+            border-[3px]
+            border-white
+            bg-[#5B2E91]
+            text-[11px]
+            font-bold
+            tracking-[0.08em]
             text-white
-
-            shadow-[0_16px_35px_rgba(91,46,145,0.28)]
-
-            transition-all
-            duration-500
-
-            group-hover:shadow-[0_20px_45px_rgba(91,46,145,0.38)]
+            shadow-[0_6px_18px_rgba(45,20,70,0.30)]
           "
         >
-          <Icon className="text-[29px]" />
-        </motion.div>
+          {service.number}
+        </div>
 
-        {/* =================================================
-            CONTENT
-        ================================================= */}
+        {/* =====================================
+            ICON
+        ===================================== */}
+        <div
+          className="
+            absolute
+            bottom-[-21px]
+            left-5
+            z-40
+            flex
+            h-[48px]
+            w-[48px]
+            items-center
+            justify-center
+            rounded-[15px]
+            border-[3px]
+            border-white
+            bg-white
+            text-[#5B2E91]
+            shadow-[0_8px_24px_rgba(45,20,70,0.20)]
+            transition-all
+            duration-300
+            group-hover:scale-110
+            group-hover:rotate-2
+          "
+        >
+          {Icon && (
+            <Icon
+              className="
+                h-[23px]
+                w-[23px]
+              "
+            />
+          )}
+        </div>
+      </div>
 
+      {/* =========================================
+          CONTENT
+      ========================================= */}
+      <div
+        className="
+          relative
+          z-20
+          -mt-[20px]
+          flex
+          min-h-[235px]
+          flex-1
+          flex-col
+          overflow-hidden
+          rounded-t-[30px]
+          bg-gradient-to-br
+          from-white
+          via-[#FCF9FF]
+          to-[#F6EFFC]
+        "
+        style={{
+          paddingTop: "34px",
+          paddingRight: "24px",
+          paddingBottom: "22px",
+          paddingLeft: "24px",
+        }}
+      >
+        {/* DECORATIVE CIRCLE */}
+        <div
+          className="
+            pointer-events-none
+            absolute
+            right-[-35px]
+            top-[-35px]
+            h-[110px]
+            w-[110px]
+            rounded-full
+            bg-[#EBDDF7]
+            opacity-40
+          "
+        />
+
+        {/* =====================================
+            SERVICE LABEL
+        ===================================== */}
         <div
           className="
             relative
-            z-20
-
             flex
-            min-h-[510px]
-
-            w-[70%]
-
-            flex-col
-            justify-end
-
-            p-7
-
-            sm:min-h-[530px]
-            sm:p-8
-
-            lg:min-h-[540px]
-            lg:p-9
+            items-center
           "
-            style={{padding:"20px"}}
+          style={{
+            marginBottom: "9px",
+          }}
         >
+          <span
+            className="
+              block
+              h-[3px]
+              rounded-full
+              bg-gradient-to-r
+              from-[#5B2E91]
+              to-[#A66CFF]
+              transition-all
+              duration-500
+              group-hover:w-14
+            "
+            style={{
+              width: "34px",
+              marginRight: "9px",
+            }}
+          />
 
-          {/* =================================================
-              SERVICE LABEL
-          ================================================= */}
+          <span
+            className="
+              text-[9px]
+              font-bold
+              uppercase
+              tracking-[0.20em]
+              text-[#8865A6]
+            "
+          >
+            Professional Service
+          </span>
+        </div>
 
+        {/* =====================================
+            TITLE
+        ===================================== */}
+        <h3
+          className="
+            relative
+            text-[20px]
+            font-bold
+            leading-[1.3]
+            tracking-[-0.01em]
+            text-[#41235E]
+            transition-colors
+            duration-300
+            group-hover:text-[#5B2E91]
+          "
+          style={{
+            minHeight: "47px",
+            paddingTop: "0px",
+            paddingRight: "2px",
+            paddingBottom: "0px",
+            paddingLeft: "2px",
+          }}
+        >
+          {service.title}
+        </h3>
+
+        {/* =====================================
+            DESCRIPTION
+            NO SCROLL
+        ===================================== */}
+    
+          {/* LEFT ACCENT */}
+        
+<div
+  style={{
+    marginTop: "14px",
+    paddingTop: "4px",
+    paddingRight: "6px",
+    paddingBottom: "4px",
+    paddingLeft: "6px",
+    minHeight: "78px",
+  }}
+>
+  <p
+    className="
+      m-0
+      overflow-hidden
+      text-[12px]
+      leading-[1.7]
+      text-[#685E6D]
+    "
+    style={{
+      display: "-webkit-box",
+      WebkitBoxOrient: "vertical",
+      WebkitLineClamp: 4,
+      overflow: "hidden",
+    }}
+  >
+    {service.description}
+  </p>
+</div>
+
+        {/* =====================================
+            BOTTOM AREA
+        ===================================== */}
+        <div
+          className="
+            relative
+            mt-auto
+            flex
+            items-center
+            justify-between
+            border-t
+            border-[#E6D9EF]
+          "
+          style={{
+            marginTop: "15px",
+            paddingTop: "12px",
+          }}
+        >
+          {/* SERVICE NUMBER */}
           <div
             className="
-              mb-4
-
               flex
               items-center
-              gap-2
             "
-
-             style={{marginBottom:"20px" , marginTop:"-30px" , marginLeft:"10px"}}
           >
             <span
               className="
-                h-[6px]
-                w-[6px]
-
+                flex
+                h-[25px]
+                w-[25px]
+                items-center
+                justify-center
                 rounded-full
-
-                bg-[#7B4DB8]
-
-                shadow-[0_0_10px_rgba(123,77,184,0.55)]
+                bg-[#EDE2F6]
+                text-[9px]
+                font-bold
+                text-[#5B2E91]
               "
-            
-            />
+            >
+              {service.number}
+            </span>
 
             <span
               className="
-                text-[10px]
+                text-[9px]
                 font-bold
                 uppercase
-                tracking-[0.24em]
-
-                text-[#806F8C]
+                tracking-[0.12em]
+                text-[#8A7A91]
               "
-
-         style={{fontSize:"19px"}}
+              style={{
+                marginLeft: "8px",
+              }}
             >
-              Professional Service
+              KBFM Services
             </span>
           </div>
 
-          {/* =================================================
-              ACCENT LINE
-          ================================================= */}
-
-          <div
-            className="
-              mb-5
-
-              h-[3px]
-              w-11
-
-              rounded-full
-
-              bg-gradient-to-r
-              from-[#5B2E91]
-              via-[#7B4DB8]
-              to-transparent
-
-              transition-all
-              duration-500
-
-              group-hover:w-20
-            "
-             style={{ marginLeft:"10px"}}
-          />
-
-          {/* =================================================
-              TITLE
-          ================================================= */}
-
-          <h3
-            className="
-              max-w-[430px]
-
-              text-[27px]
-              font-semibold
-              leading-[1.08]
-
-              tracking-[-1px]
-
-              text-[#3E2066]
-
-              transition-colors
-              duration-300
-
-              group-hover:text-[#5B2E91]
-
-              sm:text-[30px]
-            "
-
-             style={{marginBottom:"20px",marginLeft:"7px"}}
-          >
-            {service.title}
-          </h3>
-
-          {/* =================================================
-              DESCRIPTION
-          ================================================= */}
-
-          <p
-            className="
-              mt-4
-
-              max-w-[420px]
-
-              text-[13px]
-              leading-[1.8]
-
-              text-[#2D2D2D]/65
-
-              sm:text-[14px]
-            "
-             style={{marginBottom:"20px" ,marginLeft:"7px"}}
-          >
-            {service.description}
-          </p>
-
-          {/* =================================================
-              BOOK NOW
-          ================================================= */}
-
-     <motion.a
+          {/* EXPLORE */}
+       <a
   href="#booking"
-  onClick={handleBookNow}
-  whileHover={{
-    y: -3,
-  }}
-  whileTap={{
-    scale: 0.985,
-  }}
   className="
-    group/book
-    relative
-    mt-6
+    group/explore
     flex
-    w-full
-    max-w-[380px]
     items-center
-    justify-between
-    overflow-hidden
-    rounded-[20px]
+    rounded-full
     border
-    border-[#E7DDF0]
+    border-[#D8C5E7]
     bg-white
-    shadow-[0_12px_35px_rgba(62,32,102,0.09)]
+    text-[9px]
+    font-bold
+    uppercase
+    tracking-[0.12em]
+    text-[#5B2E91]
+    shadow-[0_4px_12px_rgba(91,46,145,0.07)]
     transition-all
-    duration-500
-    hover:border-[#CDB8DD]
-    hover:shadow-[0_20px_45px_rgba(62,32,102,0.16)]
+    duration-300
+    hover:border-[#5B2E91]
+    hover:bg-[#5B2E91]
+    hover:text-white
   "
   style={{
-    padding: "9px 10px 9px 10px",
+    gap: "7px",
+    paddingTop: "6px",
+    paddingRight: "11px",
+    paddingBottom: "6px",
+    paddingLeft: "11px",
   }}
 >
-  {/* ==============================================
-      SUBTLE PURPLE LIGHT
-  ============================================== */}
-
-  <span
-    className="
-      pointer-events-none
-      absolute
-      -left-16
-      top-1/2
-      h-24
-      w-24
-      -translate-y-1/2
-      rounded-full
-      bg-[#7B4DB8]/10
-      blur-2xl
-      transition-all
-      duration-500
-      group-hover/book:bg-[#7B4DB8]/20
-    "
-  />
-
-  {/* ==============================================
-      LEFT CONTENT
-  ============================================== */}
-
-  <span
-    className="
-      relative
-      z-10
-      flex
-      items-center
-      gap-3
-    "
-  >
-
-    {/* Phone Icon */}
-
-    <span
-      className="
-        relative
-        flex
-        h-[44px]
-        w-[44px]
-        shrink-0
-        items-center
-        justify-center
-        overflow-hidden
-        rounded-[14px]
-        bg-gradient-to-br
-        from-[#F4EFF8]
-        to-[#E9DDF2]
-        text-[#5B2E91]
-        shadow-[inset_0_1px_0_rgba(255,255,255,.8)]
-        transition-all
-        duration-500
-        group-hover/book:scale-105
-        group-hover/book:from-[#5B2E91]
-        group-hover/book:to-[#7B4DB8]
-        group-hover/book:text-white
-      "
-    >
-      <HiPhone
-        className="
-          relative
-          z-10
-          text-[19px]
-          transition-transform
-          duration-500
-          group-hover/book:rotate-[-8deg]
-        "
-      />
-
-      {/* Icon glow */}
-
-      <span
-        className="
-          absolute
-          inset-0
-          rounded-[14px]
-          bg-white/20
-          opacity-0
-          transition-opacity
-          duration-300
-          group-hover/book:opacity-100
-        "
-      />
-    </span>
-
-
-    {/* Text */}
-
-    <span className="text-left">
-
-      <span
-        className="
-          block
-          text-[9px]
-          font-bold
-          uppercase
-          tracking-[0.2em]
-          text-[#9A90A2]
-        "
-      >
-        Ready to get started?
-      </span>
-
-      <span
-        className="
-          mt-1
-          block
-          text-[14px]
-          font-bold
-          tracking-[-0.2px]
-          text-[#3E2066]
-          transition-colors
-          duration-300
-          group-hover/book:text-[#5B2E91]
-        "
-      >
-        Book This Service
-      </span>
-
-    </span>
-
+  <span className="text-[#5B2E91] transition-colors duration-300 group-hover/explore:text-white">
+    Explore
   </span>
 
-
-  {/* ==============================================
-      RIGHT ARROW
-  ============================================== */}
-
   <span
     className="
-      relative
-      z-10
-      flex
-      h-[44px]
-      w-[44px]
-      shrink-0
-      items-center
-      justify-center
-      rounded-full
-      bg-gradient-to-br
-      from-[#5B2E91]
-      to-[#7B4DB8]
-      text-white
-      shadow-[0_8px_20px_rgba(91,46,145,0.28)]
+      text-[13px]
+      leading-none
+      text-[#5B2E91]
       transition-all
-      duration-500
-      group-hover/book:translate-x-1
-      group-hover/book:shadow-[0_12px_28px_rgba(91,46,145,0.38)]
+      duration-300
+      group-hover/explore:translate-x-1
+      group-hover/explore:text-white
     "
   >
-
-    <HiArrowUpRight
-      className="
-        text-[18px]
-        transition-transform
-        duration-500
-        group-hover/book:rotate-[-8deg]
-      "
-    />
-
+    →
   </span>
-
-
-  {/* ==============================================
-      HOVER LIGHT SWEEP
-  ============================================== */}
-
-  <motion.span
-    className="
-      pointer-events-none
-      absolute
-      inset-y-0
-      -left-[80%]
-      w-[45%]
-      rotate-[18deg]
-      bg-gradient-to-r
-      from-transparent
-      via-white/50
-      to-transparent
-      opacity-0
-      group-hover/book:opacity-100
-    "
-    animate={{
-      x: ["0%", "360%"],
-    }}
-    transition={{
-      duration: 1.1,
-      repeat: Infinity,
-      repeatDelay: 2.5,
-      ease: "easeInOut",
-    }}
-  />
-
-</motion.a>
-
+</a>
         </div>
 
-        {/* =================================================
-            LEFT PURPLE ACCENT
-        ================================================= */}
-
-        <span
-          className="
-            absolute
-            left-0
-            top-0
-            bottom-0
-
-            z-40
-
-            w-[3px]
-
-            bg-gradient-to-b
-            from-[#5B2E91]
-            via-[#7B4DB8]
-            to-transparent
-
-            transition-all
-            duration-500
-
-            group-hover:w-[5px]
-          "
-        />
-
-        {/* =================================================
-            TOP RIGHT ARROW
-        ================================================= */}
-
-        <motion.div
-          whileHover={{
-            scale: 1.08,
-          }}
-          className="
-            absolute
-            right-7
-            top-7
-
-            z-40
-
-            flex
-            h-11
-            w-11
-
-            items-center
-            justify-center
-
-            rounded-full
-
-            border
-            border-white/70
-
-            bg-white/80
-
-            text-[#5B2E91]
-
-            shadow-[0_10px_25px_rgba(62,32,102,0.10)]
-
-            backdrop-blur-xl
-
-            transition-all
-            duration-500
-
-            group-hover:border-[#5B2E91]
-            group-hover:bg-[#5B2E91]
-            group-hover:text-white
-
-            group-hover:rotate-[-8deg]
-          "
-        >
-          <HiArrowUpRight className="text-[17px]" />
-        </motion.div>
-
-        {/* =================================================
-            BOTTOM GLASS HIGHLIGHT
-        ================================================= */}
-
+        {/* BOTTOM GLOW */}
         <div
           className="
             pointer-events-none
-
             absolute
             bottom-0
             left-0
-            right-0
-
-            h-px
-
+            h-[2px]
+            w-full
             bg-gradient-to-r
             from-transparent
-            via-white
+            via-[#A66CFF]/50
             to-transparent
-
-            opacity-80
           "
         />
-
       </div>
-    </motion.article>
+    </motion.div>
   );
 }
-
 /* ============================================================
    TRUST POINT
 ============================================================ */

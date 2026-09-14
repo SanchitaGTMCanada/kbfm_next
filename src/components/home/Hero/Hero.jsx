@@ -455,7 +455,7 @@ export default function Hero() {
                   fontSize:"19px"
                 }}
               >
-                K.B.F.M. Global Services N.W.T. Ltd. provides
+                K.B.F.M. Group of Companies Professional Services Ltd. provides
                 dependable security, caregiving, cleaning, and
                 facility support services with professionalism,
                 integrity, and a commitment to the communities

@@ -324,7 +324,7 @@ export default function Footer() {
 
               style={{color:"white"}}
             >
-              K.B.F.M. Global Services
+             K.B.F.M. Group of Companies Professional Services Ltd.
             </h2>
 
             {/* Description */}
@@ -753,7 +753,7 @@ export default function Footer() {
                   </span>
 
                   <a
-                    href="tel:8676882503"
+                    href="tel:8674471131"
                     className="
                       mt-1
                       block
@@ -767,7 +767,7 @@ export default function Footer() {
                       hover:text-[#D4AF37]
                     "
                   >
-                    +1 867-688-2503
+                   +1 867 447 1131
                   </a>
                 </div>
               </div>
@@ -825,7 +825,7 @@ export default function Footer() {
                   </span>
 
                   <a
-                    href="mailto:pastorbornking@yahoo.fr"
+                    href="mailto:info@kbfmgroup.ca"
                     className="
                       mt-1
                       block
@@ -841,7 +841,7 @@ export default function Footer() {
                       hover:text-[#D4AF37]
                     "
                   >
-                    pastorbornking@yahoo.fr
+                    info@kbfmgroup.ca
                   </a>
                 </div>
               </div>
@@ -907,7 +907,7 @@ export default function Footer() {
 
                     style={{color:"white"}}
                   >
-                    K.B.F.M. Global Services N.W.T. Ltd.
+                    K.B.F.M. Group of Companies Professional Services Ltd.
                     <br />
                     Unit 9, 5010 49th Street
                     <br />
@@ -968,8 +968,7 @@ export default function Footer() {
 
               style={{margin:"10px 0px" , color:"gold"}}
             >
-              © {new Date().getFullYear()} K.B.F.M. Global
-              Services N.W.T. Ltd. All rights reserved.
+              © {new Date().getFullYear()} K.B.F.M. Group of Companies Professional Services Ltd. All rights reserved.
             </p>
 
             {/* Social */}
