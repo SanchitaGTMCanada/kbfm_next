@@ -708,7 +708,7 @@ export default function MissionVision() {
               }}
             >
               <img
-                src="assets/services/vision.jpg"
+                src="assets/services/vission.jpg"
                 alt="Community and teamwork"
                 className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
               />
