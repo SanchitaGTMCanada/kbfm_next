@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { IoClose } from "react-icons/io5";
 
 import {
   HiArrowUpRight,
@@ -239,17 +238,18 @@ export default function MobileMenu({
                 CONTENT
             ================================================= */}
 
-            <div className="relative z-10 px-5 pb-8" style={{ marginTop: "130px" , padding:"20px"}}>
-              {/* =================================================
-                  TOP BAR
-              ================================================= */}
-
-
-              {/* =================================================
-                  DIVIDER
-              ================================================= */}
-
-
+            <div
+              className="
+                relative
+                z-10
+                px-5
+                pb-8
+              "
+              style={{
+                marginTop: "130px",
+                padding: "20px",
+              }}
+            >
               {/* =================================================
                   NAVIGATION ITEMS
               ================================================= */}
@@ -280,15 +280,25 @@ export default function MobileMenu({
                             JOIN US
                         ================================================= */}
 
-                        {item.title === "Join Us" ? (
+                        {item.title?.trim().toLowerCase() === "join us" ? (
                           <button
                             type="button"
-                            onClick={() => {
-                              onClose();
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
 
-                              setTimeout(() => {
-                                onCareerClick?.();
-                              }, 250);
+                              /*
+                               * IMPORTANT:
+                               * Open the career modal before closing
+                               * the mobile menu.
+                               */
+                              if (
+                                typeof onCareerClick === "function"
+                              ) {
+                                onCareerClick();
+                              }
+
+                              onClose();
                             }}
                             className="
                               group
@@ -445,7 +455,8 @@ export default function MobileMenu({
                               hover:shadow-[0_14px_30px_rgba(91,46,145,0.10)]
                             "
                             style={{
-                              padding: "14px 16px", marginBottom: "5px"
+                              padding: "14px 16px",
+                              marginBottom: "5px",
                             }}
                           >
                             {/* Purple left indicator */}
@@ -800,8 +811,6 @@ export default function MobileMenu({
                     bg-[#642E60]/15
                   "
                 />
-
-          
 
                 <span
                   className="

@@ -1254,6 +1254,7 @@ export default function Header() {
       <MobileMenu
         open={open}
         onClose={() => setOpen(false)}
+        onCareerClick={handleCareerOpen}
       />
 
       {/* =====================================================
