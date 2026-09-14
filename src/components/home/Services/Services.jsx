@@ -141,9 +141,13 @@ const serviceItems = [
         py-24
         sm:py-28
         lg:py-32
+       
         flex
         justify-center
       "
+
+      style={{display:"flex", justifyContent:"center"
+      }}
     
     >
       {/* =====================================================
@@ -167,6 +171,7 @@ const serviceItems = [
           bg-[#6D48A8]/10
 
           blur-[140px]
+           
         "
       />
 

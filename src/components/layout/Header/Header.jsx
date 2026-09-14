@@ -956,7 +956,7 @@ export default function Header() {
                           whitespace-nowrap
                         "
                       >
-                        Join Us
+                        Careers
                       </span>
 
                       {/* UNDERLINE */}

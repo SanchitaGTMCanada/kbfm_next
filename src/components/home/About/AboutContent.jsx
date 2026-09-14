@@ -217,7 +217,7 @@ export default function AboutContent() {
         </p>
 
         <p>
-          Founded in 2025, our company was established
+          Founded in 2025 by Reverend Dr. Kenneth Bornking, our company was established
           to address the growing need for dependable
           security, caregiving, cleaning, and facility
           support throughout the Northwest Territories.
