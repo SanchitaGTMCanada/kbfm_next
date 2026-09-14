@@ -738,11 +738,11 @@ export default function Header() {
                         {/* MISSION VISION VALUES */}
 
                         <Link
-                          href="#mission-vision-values"
+                          href="#mission-vision"
                           onClick={(e) =>
                             handleNavigation(
                               e,
-                              "#mission-vision-values"
+                              "#mission-vision"
                             )
                           }
                           className="
