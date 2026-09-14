@@ -708,7 +708,7 @@ export default function MissionVision() {
               }}
             >
               <img
-                src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1000&q=85"
+                src="assets/services/vision.jpg"
                 alt="Community and teamwork"
                 className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
               />
