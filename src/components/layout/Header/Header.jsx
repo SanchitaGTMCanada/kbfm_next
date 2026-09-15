@@ -12,6 +12,9 @@ import {
   HiArrowUpRight,
   HiChevronDown,
   HiMagnifyingGlass,
+  HiInformationCircle,
+  HiFlag,
+  HiShieldCheck,
   HiXMark,
 } from "react-icons/hi2";
 
@@ -50,18 +53,81 @@ export default function Header() {
      NAVIGATION
   ===================================================== */
 
-  const services = [
-    "Security Services",
-    "Cleaning Services",
-    "Caregiver & Personal Support Services",
-    "General Labour Services",
-    "Warehouse & Inventory",
-    "Employment Services",
-    "Home Healthcare Services",
-    "Errands & Shopping Services",
-    "Maintenance & Handyman Services",
-    "Administrative & Office Support",
-  ];
+const serviceCategories = [
+  {
+    title: "Private Security Services",
+    icon: "🛡️",
+    items: [
+      "Mobile Patrol",
+      "Event Security Guards",
+      "Executive Protection",
+      "Gatehouse Concierge",
+      "Surveillance Operations",
+      "Retail Security",
+      "Construction Security",
+    ],
+  },
+
+  {
+    title: "Cleaning & Janitorial Services",
+    icon: "✨",
+    items: [
+      "Offices & Residential",
+      "Carpet & Window Cleaning",
+      "Auto Detailing",
+      "Deep Cleaning",
+      "Move In & Move Out",
+      "Restaurant & Kitchen",
+      "Garage & Basement",
+      "Outdoor & Exterior",
+      "Schools, Churches & Day Care",
+      "Snow Removal",
+      "Floor Waxing & Polishing",
+      "Facility Maintenance",
+      "Junk Removal",
+      "Duct & Vent Cleaning",
+    ],
+  },
+
+  {
+    title: "Private Healthcare Services",
+    icon: "♥",
+    items: [
+      "Caregiver",
+      "Personal Support Worker",
+      "Companionship",
+      "Special Child & Adult Care",
+      "Nanny & Child Care",
+      "Errand Helper",
+    ],
+  },
+
+  {
+    title: "Remote Camp Services",
+    icon: "⌂",
+    items: [
+      "Camp Housekeeping",
+      "Kitchen Helper",
+      "Dishwasher",
+      "Dining Attendant",
+      "Sandwich Maker",
+      "Camp Janitorial",
+    ],
+  },
+
+  {
+    title: "General Labour Services",
+    icon: "◈",
+    items: [
+      "General Labourer",
+      "Construction Worker",
+      "Retail Space",
+      "Store Restocking",
+      "Housekeeping",
+      "Warehouse Support",
+    ],
+  },
+];
 
   const handleNavigation = (e, href) => {
     if (!href) return;
@@ -544,522 +610,1085 @@ export default function Header() {
                    ABOUT DROPDOWN
                 ================================================= */
 
-                if (item.title === "About") {
-                  return (
-                    <div
-                      key={item.title}
-                      className="
-                        group
-                        relative
-                      "
-                    >
-                      {/* ABOUT BUTTON */}
+if (item.title === "About") {
+  return (
+    <div
+      key={item.title}
+      className="group relative"
+    >
+      {/* =================================================
+          ABOUT BUTTON
+      ================================================= */}
 
-                      <button
-                        type="button"
-                        className={`
-                          group
-                          relative
+      <button
+        type="button"
+        className={`
+          group
+          relative
+          flex
+          items-center
+          justify-center
+          gap-1
+          rounded-full
+          px-5
+          py-3
+          text-[18px]
+          font-normal
+          tracking-[0.01em]
+          transition-all
+          duration-300
+          hover:-translate-y-[1px]
 
-                          flex
-                          items-center
-                          justify-center
+          ${
+            sticky
+              ? `
+                text-[#452D2D]
+                hover:text-[#5B3535]
+              `
+              : `
+                !text-white
+                hover:!text-white
+              `
+          }
+        `}
+      >
+        <span
+          className="
+            relative
+            z-10
+            whitespace-nowrap
+          "
+        >
+          About
+        </span>
 
-                          gap-1
+        <HiChevronDown
+          className="
+            relative
+            z-10
+            text-[15px]
+            transition-transform
+            duration-300
+            group-hover:rotate-180
+          "
+        />
 
-                          rounded-full
+        {/* UNDERLINE */}
 
-                          px-5
-                          py-3
+        <span
+          className="
+            pointer-events-none
+            absolute
+            bottom-[5px]
+            left-1/2
+            h-[2px]
+            w-0
+            -translate-x-1/2
+            rounded-full
+            bg-[#D4AF37]
+            transition-all
+            duration-300
+            group-hover:w-8
+          "
+        />
+      </button>
 
-                          text-[18px]
-                          font-normal
-                          tracking-[0.01em]
+      {/* =================================================
+          ABOUT DROPDOWN
+      ================================================= */}
 
-                          transition-all
-                          duration-300
+      <div
+        className="
+          invisible
+          absolute
+          left-1/2
+          top-[calc(100%-1px)]
+          z-[99999]
 
-                          hover:-translate-y-[1px]
+          w-[300px]
 
-                          ${
-                            sticky
-                              ? `
-                                text-[#452D2D]
-                                hover:text-[#5B3535]
-                              `
-                              : `
-                                !text-white
-                                hover:!text-white
-                              `
-                          }
-                        `}
-                      >
-                        <span
-                          className="
-                            relative
-                            z-10
-                            whitespace-nowrap
-                          "
-                        >
-                          About
-                        </span>
+          -translate-x-1/2
+          translate-y-3
 
-                        <HiChevronDown
-                          className="
-                            relative
-                            z-10
-                            text-[15px]
-                            transition-transform
-                            duration-300
-                            group-hover:rotate-180
-                          "
-                        />
+          rounded-[10px]
 
-                        {/* UNDERLINE */}
+          border
+          border-[#D8CCDF]
 
-                        <span
-                          className="
-                            pointer-events-none
-                            absolute
-                            bottom-[5px]
-                            left-1/2
-                            h-[2px]
-                            w-0
-                            -translate-x-1/2
-                            rounded-full
-                            bg-[#D4AF37]
-                            transition-all
-                            duration-300
-                            group-hover:w-8
-                          "
-                        />
-                      </button>
+          bg-white/98
 
-                      {/* ABOUT DROPDOWN */}
+          opacity-0
 
-                      <div
-                        className="
-                          invisible
-                          absolute
-                          left-1/2
-                          top-[calc(100%-1px)]
-                          z-[99999]
+          shadow-[0_25px_65px_rgba(52,28,65,0.20)]
 
-                          mt-3
+          backdrop-blur-2xl
 
-                          w-[280px]
+          transition-all
+          duration-300
 
-                          -translate-x-1/2
-                          translate-y-2
+          group-hover:visible
+          group-hover:translate-y-0
+          group-hover:opacity-100
+        "
+        style={{
+          padding: "12px",
+          marginTop: "10px",
+        }}
+      >
+        {/* =================================================
+            HEADER
+        ================================================= */}
 
-                          rounded-2xl
+        <div
+          className="
+            border-b
+            border-[#EAE2EF]
 
-                          border
-                          border-[#D9D9E3]
+            bg-gradient-to-r
+            from-[#FBF8FD]
+            via-white
+            to-[#F8F3FB]
+          "
+          style={{
+            padding: "14px 14px 13px 14px",
+          }}
+        >
+          <p
+            className="
+              text-[9px]
+              font-bold
+              uppercase
+              tracking-[0.22em]
+              text-[#642E60]
+            "
+          >
+            About Us
+          </p>
 
-                          bg-white
+          <h3
+            className="
+              mt-1
+              text-[17px]
+              font-semibold
+              tracking-[-0.2px]
+              text-[#382C3B]
+            "
+          >
+            Discover Our Company
+          </h3>
 
-                          p-2
+          <p
+            className="
+              mt-1
+              text-[10px]
+              leading-5
+              text-[#786D7D]
+            "
+          >
+            Learn more about who we are and what
+            makes us different.
+          </p>
+        </div>
 
-                          opacity-0
+        {/* =================================================
+            ITEMS
+        ================================================= */}
 
-                          shadow-[0_20px_50px_rgba(69,45,45,0.20)]
+        <div
+          className="
+            bg-gradient-to-b
+            from-[#FBF8FD]
+            via-white
+            to-[#F5EFF8]
+          "
+          style={{
+            padding: "12px",
+          }}
+        >
+          {/* =================================================
+              ABOUT US
+          ================================================= */}
 
-                          transition-all
-                          duration-300
+          <Link
+            href="#about"
+            onClick={(e) =>
+              handleNavigation(e, "#about")
+            }
+            className="
+              group/item
+              flex
+              items-center
+              justify-between
 
-                          group-hover:visible
-                          group-hover:translate-y-0
-                          group-hover:opacity-100
-                        "
-                        style={{
-                          padding: "10px",
-                          marginTop: "10px",
-                        }}
-                      >
-                        {/* ABOUT US */}
+              rounded-[11px]
 
-                        <Link
-                          href="#about"
-                          onClick={(e) =>
-                            handleNavigation(
-                              e,
-                              "#about"
-                            )
-                          }
-                          className="
-                            group/item
+              border
+              border-transparent
 
-                            flex
-                            items-center
-                            justify-between
+              bg-[#F8F5FA]
 
-                            rounded-xl
+              text-[13px]
+              font-medium
 
-                            px-4
-                            py-3.5
+              text-[#514557]
 
-                            text-[15px]
-                            font-medium
+              transition-all
+              duration-200
 
-                            text-[#452D2D]
+              hover:border-[#DED2E6]
+              hover:bg-[#F1E8F7]
+              hover:text-[#5B2E91]
+            "
+            style={{
+              padding: "10px 11px",
+              marginBottom: "6px",
+            }}
+          >
+            <span
+              className="
+                flex
+                items-center
+                gap-2.5
+              "
+            >
+              <HiInformationCircle
+                className="
+                  shrink-0
+                  text-[16px]
+                  text-[#642E60]
+                  transition-colors
+                  duration-200
+                  group-hover/item:text-[#5B2E91]
+                "
+              />
 
-                            transition-all
-                            duration-200
+              <span>
+                About Us
+              </span>
+            </span>
 
-                            bg-[#F7F3FC]
-                            hover:text-[#5B2E91]
-                            hover:bg-[#F1E8F7]
-                          "
-                          style={{
-                            padding: "10px",
-                            marginBottom: "10px",
-                          }}
-                        >
-                          <span>
-                            About Us
-                          </span>
+            <HiArrowUpRight
+              className="
+                shrink-0
+                text-[13px]
+                text-[#998B9F]
+                opacity-0
+                transition-all
+                duration-200
+                group-hover/item:translate-x-0.5
+                group-hover/item:-translate-y-0.5
+                group-hover/item:text-[#5B2E91]
+                group-hover/item:opacity-100
+              "
+            />
+          </Link>
 
-                          <span
-                            className="
-                              h-1.5
-                              w-1.5
-                              shrink-0
-                              rounded-full
-                              bg-[#D4AF37]
-                              opacity-0
-                              transition-opacity
-                              duration-200
-                              group-hover/item:opacity-100
-                            "
-                          />
-                        </Link>
+          {/* =================================================
+              MISSION VISION VALUES
+          ================================================= */}
 
-                        {/* MISSION VISION VALUES */}
+          <Link
+            href="#mission-vision"
+            onClick={(e) =>
+              handleNavigation(
+                e,
+                "#mission-vision"
+              )
+            }
+            className="
+              group/item
+              flex
+              items-center
+              justify-between
 
-                        <Link
-                          href="#mission-vision"
-                          onClick={(e) =>
-                            handleNavigation(
-                              e,
-                              "#mission-vision"
-                            )
-                          }
-                          className="
-                            group/item
+              rounded-[11px]
 
-                            flex
-                            items-center
-                            justify-between
+              border
+              border-transparent
 
-                            rounded-xl
+              bg-[#F8F5FA]
 
-                            px-4
-                            py-3.5
+              text-[13px]
+              font-medium
 
-                            text-[15px]
-                            font-medium
+              text-[#514557]
 
-                            text-[#452D2D]
+              transition-all
+              duration-200
 
-                            transition-all
-                            duration-200
+              hover:border-[#DED2E6]
+              hover:bg-[#F1E8F7]
+              hover:text-[#5B2E91]
+            "
+            style={{
+              padding: "10px 11px",
+              marginBottom: "6px",
+            }}
+          >
+            <span
+              className="
+                flex
+                items-center
+                gap-2.5
+              "
+            >
+              <HiFlag
+                className="
+                  shrink-0
+                  text-[16px]
+                  text-[#642E60]
+                  transition-colors
+                  duration-200
+                  group-hover/item:text-[#5B2E91]
+                "
+              />
 
-                            bg-[#F7F3FC]
-                            hover:text-[#5B2E91]
-                            hover:bg-[#F1E8F7]
-                          "
-                          style={{
-                            padding: "10px",
-                            marginBottom: "10px",
-                          }}
-                        >
-                          <span>
-                            Mission, Vision & Values
-                          </span>
+              <span>
+                Mission, Vision & Values
+              </span>
+            </span>
 
-                          <span
-                            className="
-                              h-1.5
-                              w-1.5
-                              shrink-0
-                              rounded-full
-                              bg-[#D4AF37]
-                              opacity-0
-                              transition-opacity
-                              duration-200
-                              group-hover/item:opacity-100
-                            "
-                          />
-                        </Link>
+            <HiArrowUpRight
+              className="
+                shrink-0
+                text-[13px]
+                text-[#998B9F]
+                opacity-0
+                transition-all
+                duration-200
+                group-hover/item:translate-x-0.5
+                group-hover/item:-translate-y-0.5
+                group-hover/item:text-[#5B2E91]
+                group-hover/item:opacity-100
+              "
+            />
+          </Link>
 
-                        {/* WHY CHOOSE US */}
+          {/* =================================================
+              WHY CHOOSE US
+          ================================================= */}
 
-                        <Link
-                          href="#why-choose-us"
-                          onClick={(e) =>
-                            handleNavigation(
-                              e,
-                              "#why-choose-us"
-                            )
-                          }
-                          className="
-                            group/item
+          <Link
+            href="#why-choose-us"
+            onClick={(e) =>
+              handleNavigation(
+                e,
+                "#why-choose-us"
+              )
+            }
+            className="
+              group/item
+              flex
+              items-center
+              justify-between
 
-                            flex
-                            items-center
-                            justify-between
+              rounded-[11px]
 
-                            rounded-xl
+              border
+              border-transparent
 
-                            px-4
-                            py-3.5
+              bg-[#F8F5FA]
 
-                            text-[15px]
-                            font-medium
+              text-[13px]
+              font-medium
 
-                            text-[#452D2D]
+              text-[#514557]
 
-                            transition-all
-                            duration-200
+              transition-all
+              duration-200
 
-                            bg-[#F7F3FC]
-                            hover:text-[#5B2E91]
-                            hover:bg-[#F1E8F7]
-                          "
-                          style={{
-                            padding: "10px",
-                          }}
-                        >
-                          <span>
-                            Why Choose Us
-                          </span>
+              hover:border-[#DED2E6]
+              hover:bg-[#F1E8F7]
+              hover:text-[#5B2E91]
+            "
+            style={{
+              padding: "10px 11px",
+            }}
+          >
+            <span
+              className="
+                flex
+                items-center
+                gap-2.5
+              "
+            >
+              <HiShieldCheck
+                className="
+                  shrink-0
+                  text-[16px]
+                  text-[#642E60]
+                  transition-colors
+                  duration-200
+                  group-hover/item:text-[#5B2E91]
+                "
+              />
 
-                          <span
-                            className="
-                              h-1.5
-                              w-1.5
-                              shrink-0
-                              rounded-full
-                              bg-[#D4AF37]
-                              opacity-0
-                              transition-opacity
-                              duration-200
-                              group-hover/item:opacity-100
-                            "
-                          />
-                        </Link>
-                      </div>
-                    </div>
-                  );
-                }
+              <span>
+                Why Choose Us
+              </span>
+            </span>
 
+            <HiArrowUpRight
+              className="
+                shrink-0
+                text-[13px]
+                text-[#998B9F]
+                opacity-0
+                transition-all
+                duration-200
+                group-hover/item:translate-x-0.5
+                group-hover/item:-translate-y-0.5
+                group-hover/item:text-[#5B2E91]
+                group-hover/item:opacity-100
+              "
+            />
+          </Link>
+        </div>
+
+        {/* =================================================
+            FOOTER
+        ================================================= */}
+
+        <div
+          className="
+            border-t
+            border-[#EAE3EE]
+            bg-[#FBF9FD]
+            rounded-b-[10px]
+          "
+          style={{
+            padding: "10px 12px",
+          }}
+        >
+          <Link
+            href="#about"
+            onClick={(e) =>
+              handleNavigation(
+                e,
+                "#about"
+              )
+            }
+            className="
+              flex
+              items-center
+              justify-center
+              gap-1.5
+
+              rounded-full
+
+              bg-[#642E60]
+
+              text-[10px]
+              font-semibold
+              text-white
+
+              transition-all
+              duration-300
+
+              hover:-translate-y-0.5
+              hover:bg-[#5B2E91]
+            "
+            style={{
+              padding: "8px 12px",
+              color: "#fff",
+            }}
+          >
+            Explore About Us
+
+            <HiArrowUpRight
+              className="text-[12px]"
+            />
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
                 /* =================================================
                    SERVICES DROPDOWN
                 ================================================= */
+if (item.title === "Services") {
+  return (
+    <div
+      key={item.title}
+      className="group relative"
+    >
+      {/* =================================================
+          SERVICES BUTTON
+      ================================================= */}
 
-                if (item.title === "Services") {
-                  return (
-                    <div
-                      key={item.title}
+      <button
+        type="button"
+        className={`
+          group
+          relative
+          flex
+          items-center
+          justify-center
+          gap-1
+          rounded-full
+          px-5
+          py-3
+          text-[18px]
+          font-normal
+          tracking-[0.01em]
+          transition-all
+          duration-300
+          hover:-translate-y-[1px]
+
+          ${
+            sticky
+              ? `
+                text-[#452D2D]
+                hover:text-[#5B3535]
+              `
+              : `
+                !text-white
+                hover:!text-white
+              `
+          }
+        `}
+      >
+        <span
+          className="
+            relative
+            z-10
+            whitespace-nowrap
+          "
+        >
+          Services
+        </span>
+
+        <HiChevronDown
+          className="
+            relative
+            z-10
+            text-[15px]
+            transition-transform
+            duration-300
+            group-hover:rotate-180
+          "
+        />
+
+        {/* UNDERLINE */}
+
+        <span
+          className="
+            pointer-events-none
+            absolute
+            bottom-[5px]
+            left-1/2
+            h-[2px]
+            w-0
+            -translate-x-1/2
+            rounded-[10px]
+            bg-[#D4AF37]
+            transition-all
+            duration-300
+            group-hover:w-8
+          "
+        />
+      </button>
+
+      {/* =================================================
+          SERVICES MAIN DROPDOWN
+      ================================================= */}
+
+     <div
+  className="
+    invisible
+    absolute
+    left-1/2
+    top-[calc(100%-1px)]
+    z-[99999]
+    mt-4
+    w-[390px]
+    -translate-x-1/2
+    translate-y-3
+
+    rounded-[20px]
+
+    border
+    border-[#D8CCDF]
+
+    bg-white/98
+
+    opacity-0
+
+    shadow-[0_25px_65px_rgba(52,28,65,0.20)]
+
+    backdrop-blur-2xl
+
+    transition-all
+    duration-300
+
+    group-hover:visible
+    group-hover:translate-y-0
+    group-hover:opacity-100
+  "
+  
+>
+        {/* =================================================
+            HEADER
+        ================================================= */}
+
+        <div
+          className="
+            border-b
+            border-[#EAE2EF]
+ rounded-[20px]
+            bg-gradient-to-r
+            from-[#FBF8FD]
+            via-white
+            to-[#F8F3FB]
+          "
+          style={{
+            padding: "18px 20px 16px 20px",
+          }}
+        >
+          <p
+            className="
+              text-[9px]
+              font-bold
+              uppercase
+              tracking-[0.22em]
+              text-[#642E60]
+            "
+          >
+            Our Services
+          </p>
+
+          <h3
+            className="
+              mt-1
+              text-[19px]
+              font-semibold
+              tracking-[-0.3px]
+              text-[#382C3B]
+            "
+          >
+            Explore Our Core Services
+          </h3>
+
+          <p
+            className="
+              mt-1.5
+              text-[11px]
+              leading-5
+              text-[#786D7D]
+            "
+          >
+            Hover over a service category to explore
+            the services available.
+          </p>
+        </div>
+
+        {/* =================================================
+            MAIN 5 SERVICES
+        ================================================= */}
+
+        <div
+          className="
+            w-full
+            bg-gradient-to-b
+            from-[#FBF8FD]
+            via-white
+            to-[#F5EFF8]
+          "
+          style={{
+            padding: "18px 18px 20px 18px",
+          }}
+        >
+          <div className="space-y-2">
+            {serviceCategories.map((category) => (
+              <div
+                key={category.title}
+                className="
+                  group/service
+                  relative
+                "
+                style={{ marginBottom: "10px" }}
+              >
+                {/* =================================================
+                    MAIN SERVICE ITEM
+                ================================================= */}
+
+                <Link
+                  href="#services"
+                  onClick={(e) =>
+                    handleNavigation(
+                      e,
+                      "#services"
+                    )
+                  }
+                  className="
+                    relative
+
+                    flex
+                    w-full
+                    items-center
+                    justify-between
+
+                    rounded-[15px]
+
+                    border
+                    border-[#E2D7E8]
+
+                    bg-white
+
+                    text-left
+
+                    shadow-[0_5px_18px_rgba(91,46,145,0.045)]
+
+                    transition-all
+                    duration-200
+
+                    hover:-translate-y-0.5
+                    hover:border-[#CFC0D9]
+                    hover:bg-[#FCFAFD]
+                    hover:shadow-[0_10px_24px_rgba(91,46,145,0.10)]
+                  "
+                  style={{
+                    padding:
+                      "12px 14px 12px 16px",
+                  }}
+                >
+                  {/* ACTIVE LEFT INDICATOR */}
+
+                  <span
+                    className="
+                      pointer-events-none
+                      absolute
+                      left-0
+                      top-1/2
+
+                      h-0
+                      w-[3px]
+
+                      -translate-y-1/2
+
+                      rounded-full
+
+                      bg-gradient-to-b
+                      from-[#642E60]
+                      to-[#5B2E91]
+
+                      transition-all
+                      duration-200
+
+                      group-hover/service:h-8
+                    "
+                  />
+
+                  {/* LEFT CONTENT */}
+
+                  <span
+                    className="
+                      flex
+                      min-w-0
+                      items-center
+                      gap-3
+                    "
+                  >
+                    {/* ICON */}
+
+                    <span
                       className="
-                        group
-                        relative
+                        flex
+                        h-10
+                        w-10
+                        shrink-0
+
+                        items-center
+                        justify-center
+
+                        rounded-[13px]
+
+                        bg-[#642E60]/[0.07]
+
+                        text-[16px]
+                        text-[#642E60]
+
+                        shadow-[0_5px_15px_rgba(91,46,145,0.06)]
+
+                        transition-all
+                        duration-200
+
+                        group-hover/service:bg-[#642E60]
+                        group-hover/service:text-white
                       "
                     >
-                      {/* SERVICES BUTTON */}
+                      {category.icon}
+                    </span>
 
-                      <button
-                        type="button"
-                        className={`
-                          group
-                          relative
+                    {/* TITLE */}
 
-                          flex
-                          items-center
-                          justify-center
+                    <span
+                      className="
+                        min-w-0
 
-                          gap-1
+                        text-[13px]
+                        font-semibold
+                        leading-5
 
-                          rounded-full
+                        text-[#453747]
 
-                          px-5
-                          py-3
+                        transition-colors
+                        duration-200
 
-                          text-[18px]
-                          font-normal
-                          tracking-[0.01em]
+                        group-hover/service:text-[#5B2E91]
+                      "
+                    >
+                      {category.title}
+                    </span>
+                  </span>
 
-                          transition-all
-                          duration-300
+                  {/* RIGHT ARROW */}
 
-                          hover:-translate-y-[1px]
+                  <HiArrowUpRight
+                    className="
+                      ml-3
+                      shrink-0
 
-                          ${
-                            sticky
-                              ? `
-                                text-[#452D2D]
-                                hover:text-[#5B3535]
-                              `
-                              : `
-                                !text-white
-                                hover:!text-white
-                              `
-                          }
-                        `}
-                      >
-                        <span
-                          className="
-                            relative
-                            z-10
-                            whitespace-nowrap
-                          "
-                        >
-                          Services
-                        </span>
+                      text-[15px]
+                      text-[#998B9F]
 
-                        <HiChevronDown
-                          className="
-                            relative
-                            z-10
-                            text-[15px]
-                            transition-transform
-                            duration-300
-                            group-hover:rotate-180
-                          "
-                        />
+                      transition-all
+                      duration-200
 
-                        {/* UNDERLINE */}
+                      group-hover/service:translate-x-0.5
+                      group-hover/service:-translate-y-0.5
+                      group-hover/service:text-[#5B2E91]
+                    "
+                  />
+                </Link>
 
-                        <span
-                          className="
-                            pointer-events-none
-                            absolute
-                            bottom-[5px]
-                            left-1/2
-                            h-[2px]
-                            w-0
-                            -translate-x-1/2
-                            rounded-full
-                            bg-[#D4AF37]
-                            transition-all
-                            duration-300
-                            group-hover:w-8
-                          "
-                        />
-                      </button>
+                {/* =================================================
+                    HOVER SUBMENU
+                ================================================= */}
 
-                      {/* SERVICES DROPDOWN */}
+                <div
+                  className="
+                    invisible
 
-                      <div
-                        className="
-                          invisible
-                          absolute
-                          left-1/2
-                          top-[calc(100%-4px)]
+                    absolute
+                    left-full
+                    top-0
 
-                          z-[99999]
+                    z-[100]
 
-                          mt-3
+                    ml-3
 
-                          w-[380px]
+                    w-[360px]
 
-                          -translate-x-1/2
-                          translate-y-2
+                    translate-x-2
 
-                          rounded-2xl
+                    overflow-hidden
 
-                          border
-                          border-[#D9D9E3]
+                    rounded-[18px]
 
-                          bg-white
+                    border
+                    border-[#D8CCDF]
 
-                          p-2
+                    bg-white
 
-                          opacity-0
+                    opacity-0
 
-                          shadow-[0_20px_50px_rgba(69,45,45,0.20)]
+                    shadow-[0_20px_50px_rgba(52,28,65,0.18)]
 
-                          transition-all
-                          duration-300
+                    transition-all
+                    duration-200
 
-                          group-hover:visible
-                          group-hover:translate-y-0
-                          group-hover:opacity-100
+                    group-hover/service:visible
+                    group-hover/service:translate-x-0
+                    group-hover/service:opacity-100
+                  "
+                  style={{
+                    padding: "16px",  marginLeft:"5px"
+                  }}
+                >
+                  {/* SUBMENU HEADER */}
 
-                          max-h-[520px]
-                          overflow-y-auto
-                        "
-                        style={{
-                          padding: "10px",
-                          marginTop: "10px",
-                        }}
-                      >
-                        {services.map((service, index) => (
-                          <Link
-                            key={index}
-                            href="#services"
-                            onClick={(e) =>
-                              handleNavigation(
-                                e,
-                                "#services"
-                              )
-                            }
-                            className="
-                              group/item
+                  <div
+                    className="
+                      rounded-[12px]
+                      border
+                      border-[#EEE7F2]
+                      bg-[#FBF9FD]
+                    "
+                    style={{
+                      padding:
+                        "10px 12px 10px 12px",
+                      marginBottom: "12px",
+                    }}
+                  >
+                    <p
+                      className="
+                        text-[9px]
+                        font-bold
+                        uppercase
+                        tracking-[0.18em]
+                        text-[#642E60]
+                      "
+                    >
+                      Services
+                    </p>
 
-                              flex
-                              items-center
-                              justify-between
+                    <h4
+                      className="
+                        mt-1
+                        text-[16px]
+                        font-semibold
+                        leading-tight
+                        text-[#3D3040]
+                      "
+                     
+                    >
+                      {category.title}
+                    </h4>
+                  </div>
 
-                              rounded-xl
+                  {/* =================================================
+                      SUB SERVICES
+                  ================================================= */}
 
-                              text-[15px]
-                              font-medium
+                  <div
+                    className={
+                      category.items.length > 8
+                        ? "grid grid-cols-2 gap-2"
+                        : "space-y-2"
+                    }
+                  >
+                {category.items.map((service) => (
+  <Link
+    key={service}
+    href="#services"
+    onClick={(e) =>
+      handleNavigation(e, "#services")
+    }
+    className="
+      group/sub
+      flex
+      rounded-[11px]
+      border
+      border-transparent
+      bg-[#F8F5FA]
+      text-[11px]
+      font-medium
+      leading-4
+      text-[#514557]
+      transition-all
+      duration-200
+      hover:border-[#DED2E6]
+      hover:bg-[#F1E8F7]
+      hover:text-[#5B2E91]
+    "
+    style={{
+      padding: "9px 11px 9px 10px",
+      marginBottom: "10px",
+      display: "flex",
+      alignItems: "center",
+      gap: "5px",
+    }}
+  >
+    <span
+      className="
+        h-1.5
+        w-1.5
+        shrink-0
+        rounded-full
+        bg-[#8E6AA1]
+        transition-all
+        duration-200
+        group-hover/sub:bg-[#642E60]
+      "
+    />
 
-                              text-[#452D2D]
+    <span>
+      {service}
+    </span>
+  </Link>
+))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
 
-                              transition-all
-                              duration-200
+        {/* =================================================
+            FOOTER
+        ================================================= */}
 
-                              bg-[#F7F3FC]
+        <div
+          className="
+            flex
+            items-center
+            justify-between
 
-                              hover:bg-[#EEE5F8]
-                              hover:text-[#5B2E91]
-                            "
-                            style={{
-                              padding: "12px 14px",
-                              marginBottom:
-                                index ===
-                                services.length - 1
-                                  ? "0px"
-                                  : "10px",
-                            }}
-                          >
-                            <span>
-                              {service}
-                            </span>
+            border-t
+            border-[#EAE3EE]
 
-                            <span
-                              className="
-                                h-1.5
-                                w-1.5
-                                shrink-0
-                                rounded-full
-                                bg-[#7B4DB8]
-                                opacity-0
-                                transition-opacity
-                                duration-200
-                                group-hover/item:opacity-100
-                              "
-                            />
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  );
-                }
+            rounded-b-[20px]
 
+            bg-[#FBF9FD]
+          "
+          style={{
+            padding: "12px 18px 12px 20px",
+          }}
+        >
+          <span
+            className="
+              text-[10px]
+              font-medium
+              text-[#7B7180]
+            "
+          >
+            Explore our complete service capabilities
+          </span>
+
+          <Link
+            href="#services"
+            onClick={(e) =>
+              handleNavigation(
+                e,
+                "#services"
+              )
+            }
+            className="
+              inline-flex
+              items-center
+              gap-1.5
+
+              rounded-full
+
+              bg-[#642E60]
+
+              text-[10px]
+              font-semibold
+              text-white
+
+              shadow-[0_7px_18px_rgba(100,46,96,0.18)]
+
+              transition-all
+              duration-300
+
+              hover:-translate-y-0.5
+              hover:bg-[#5B2E91]
+            "
+            style={{
+              padding: "8px 13px",color: "#fff"
+            }}
+          >
+            View All Services
+
+            <HiArrowUpRight className="text-[12px]" />
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
                 /* =================================================
                    JOIN US
                 ================================================= */
