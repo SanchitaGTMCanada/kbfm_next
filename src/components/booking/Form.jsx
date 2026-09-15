@@ -27,6 +27,57 @@ const initialForm = {
   message: "",
 };
 
+const subServices = [
+  // Private Security Services
+  "Mobile Patrol",
+  "Event Security Guards",
+  "Executive Protection",
+  "Gatehouse Concierge",
+  "Surveillance Operations",
+  "Retail Security",
+  "Construction Security",
+
+  // Cleaning & Janitorial Services
+  "Offices & Residential",
+  "Carpet & Window Cleaning",
+  "Auto Detailing",
+  "Deep Cleaning",
+  "Move In & Move Out",
+  "Restaurant & Kitchen",
+  "Garage & Basement",
+  "Outdoor & Exterior",
+  "Schools, Churches & Day Care",
+  "Snow Removal",
+  "Floor Waxing & Polishing",
+  "Facility Maintenance",
+  "Junk Removal",
+  "Duct & Vent Cleaning",
+
+  // Private Healthcare Services
+  "Caregiver",
+  "Personal Support Worker",
+  "Companionship",
+  "Special Child & Adult Care",
+  "Nanny & Child Care",
+  "Errand Helper",
+
+  // Remote Camp Services
+  "Camp Housekeeping",
+  "Kitchen Helper",
+  "Dishwasher",
+  "Dining Attendant",
+  "Sandwich Maker",
+  "Camp Janitorial",
+
+  // General Labour Services
+  "General Labourer",
+  "Construction Worker",
+  "Retail Space",
+  "Store Restocking",
+  "Housekeeping",
+  "Warehouse Support",
+];
+
 const timeSlots = [
   "08:00 AM",
   "09:00 AM",
@@ -254,26 +305,41 @@ async function handleSubmit(e) {
           icon={HiChatBubbleLeftRight}
           error={errors.service}
         >
-          <select
-            name="service"
-            value={form.service}
-            onChange={handleChange}
-            className={selectClass}
-             style={{
+   <select
+  name="service"
+  value={form.service}
+  onChange={handleChange}
+  className={selectClass}
+  style={{
     paddingLeft: "72px",
   }}
-          >
-            <option value="">Choose a Service</option>
+>
+  <option value="">
+    Choose a Service
+  </option>
 
-            {services.map((item) => (
-              <option
-                key={item.id}
-                value={item.name}
-              >
-                {item.name}
-              </option>
-            ))}
-          </select>
+  {/* EXISTING SERVICES */}
+
+  {services.map((item) => (
+    <option
+      key={`existing-${item.id}`}
+      value={item.name}
+    >
+      {item.name}
+    </option>
+  ))}
+
+  {/* ALL SUB SERVICES */}
+
+  {subServices.map((item) => (
+    <option
+      key={`sub-${item}`}
+      value={item}
+    >
+      {item}
+    </option>
+  ))}
+</select>
         </Field>
 
         {/* Preferred Date */}
