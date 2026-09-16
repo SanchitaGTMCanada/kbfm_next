@@ -1,5 +1,6 @@
 import "./globals.css";
 import Header from "@/components/layout/Header/Header";
+import ScamAlertPopup from "@/components/ScamAlertPopup";
 
 export const metadata = {
   metadataBase: new URL("https://kbfm-next.vercel.app/"),
@@ -116,6 +117,7 @@ export default function RootLayout({ children }) {
 
       <body>
         <Header />
+        <ScamAlertPopup />
 
         {children}
       </body>
