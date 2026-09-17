@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -32,6 +33,31 @@ export default function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+
+  /* =====================================================
+     RESPONSIVE SERVICES SUBMENU
+  ===================================================== */
+
+  const [activeService, setActiveService] = useState(null);
+  const [servicesOpen, setServicesOpen] = useState(false);
+
+  const [serviceSubmenuStyle, setServiceSubmenuStyle] = useState({
+    left: 0,
+    top: 0,
+    width: 360,
+    maxHeight: 600,
+  });
+
+  const [mounted, setMounted] = useState(false);
+
+  const serviceCloseTimer = useRef(null);
+  const serviceSubmenuRef = useRef(null);
+
+  useEffect(() => {
+    setMounted(true);
+
+    return () => setMounted(false);
+  }, []);
 
   /* =====================================================
      STICKY HEADER
@@ -128,6 +154,105 @@ const serviceCategories = [
     ],
   },
 ];
+
+  /* =====================================================
+     RESPONSIVE SERVICE SUBMENU POSITIONING
+  ===================================================== */
+
+  const openServiceSubmenu = (event, category) => {
+    if (serviceCloseTimer.current) {
+      clearTimeout(serviceCloseTimer.current);
+    }
+
+    const rect = event.currentTarget.getBoundingClientRect();
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    const edge = 14;
+    const gap = 10;
+
+    const submenuWidth = Math.min(360, viewportWidth - edge * 2);
+
+    const fitsRight =
+      rect.right + gap + submenuWidth <= viewportWidth - edge;
+
+    let left = fitsRight
+      ? rect.right + gap
+      : rect.left - submenuWidth - gap;
+
+    left = Math.max(
+      edge,
+      Math.min(left, viewportWidth - submenuWidth - edge)
+    );
+
+    let top = rect.top;
+
+    top = Math.max(
+      edge,
+      Math.min(top, viewportHeight - edge - 260)
+    );
+
+    setServiceSubmenuStyle({
+      left,
+      top,
+      width: submenuWidth,
+      maxHeight: viewportHeight - edge * 2,
+    });
+
+    setServicesOpen(true);
+    setActiveService(category.title);
+  };
+
+  const scheduleServiceClose = () => {
+    if (serviceCloseTimer.current) {
+      clearTimeout(serviceCloseTimer.current);
+    }
+
+    serviceCloseTimer.current = setTimeout(() => {
+      setActiveService(null);
+      setServicesOpen(false);
+    }, 350);
+  };
+
+  const cancelServiceClose = () => {
+    if (serviceCloseTimer.current) {
+      clearTimeout(serviceCloseTimer.current);
+      serviceCloseTimer.current = null;
+    }
+  };
+
+  useLayoutEffect(() => {
+    if (!activeService || !serviceSubmenuRef.current) return;
+
+    const rect = serviceSubmenuRef.current.getBoundingClientRect();
+    const edge = 14;
+    let top = serviceSubmenuStyle.top;
+
+    if (rect.bottom > window.innerHeight - edge) {
+      top -= rect.bottom - (window.innerHeight - edge);
+    }
+
+    if (top < edge) top = edge;
+
+    if (Math.abs(top - serviceSubmenuStyle.top) > 1) {
+      setServiceSubmenuStyle((current) => ({ ...current, top }));
+    }
+  }, [activeService, serviceSubmenuStyle.top]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setActiveService(null);
+      setServicesOpen(false);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      if (serviceCloseTimer.current) {
+        clearTimeout(serviceCloseTimer.current);
+      }
+    };
+  }, []);
 
   const handleNavigation = (e, href) => {
     if (!href) return;
@@ -296,6 +421,140 @@ const serviceCategories = [
     setSearchOpen(false);
     setSearchQuery("");
   };
+
+  const serviceSubmenuPortal =
+    mounted && activeService
+      ? createPortal(
+          (() => {
+            const category = serviceCategories.find(
+              (item) => item.title === activeService
+            );
+
+            if (!category) return null;
+
+            return (
+              <div
+                ref={serviceSubmenuRef}
+                className="
+                  fixed
+                  z-[9999999999]
+                  overflow-y-auto
+                  rounded-[18px]
+                  border
+                  border-[#D8CCDF]
+                  bg-white
+                  shadow-[0_20px_50px_rgba(52,28,65,0.18)]
+                "
+                style={{
+                  left: serviceSubmenuStyle.left,
+                  top: serviceSubmenuStyle.top,
+                  width: serviceSubmenuStyle.width,
+                  maxHeight: serviceSubmenuStyle.maxHeight,
+                  padding: "16px",
+                  boxSizing: "border-box",
+                }}
+                onMouseEnter={cancelServiceClose}
+                onMouseLeave={scheduleServiceClose}
+              >
+                <div
+                  className="
+                    rounded-[12px]
+                    border
+                    border-[#EEE7F2]
+                    bg-[#FBF9FD]
+                  "
+                  style={{
+                    padding: "10px 12px",
+                    marginBottom: "12px",
+                  }}
+                >
+                  <p
+                    className="
+                      text-[9px]
+                      font-bold
+                      uppercase
+                      tracking-[0.18em]
+                      text-[#642E60]
+                    "
+                  >
+                    Services
+                  </p>
+
+                  <h4
+                    className="
+                      mt-1
+                      text-[16px]
+                      font-semibold
+                      leading-tight
+                      text-[#3D3040]
+                    "
+                  >
+                    {category.title}
+                  </h4>
+                </div>
+
+                <div
+                  className={
+                    category.items.length > 8
+                      ? "grid grid-cols-2 gap-2"
+                      : "space-y-2"
+                  }
+                >
+                  {category.items.map((service) => (
+                    <Link
+                      key={service}
+                      href="#services"
+                      onClick={(e) =>
+                        handleNavigation(e, "#services")
+                      }
+                      className="
+                        group/sub
+                        flex
+                        rounded-[11px]
+                        border
+                        border-transparent
+                        bg-[#F8F5FA]
+                        text-[11px]
+                        font-medium
+                        leading-4
+                        text-[#514557]
+                        transition-all
+                        duration-200
+                        hover:border-[#DED2E6]
+                        hover:bg-[#F1E8F7]
+                        hover:text-[#5B2E91]
+                      "
+                      style={{
+                        padding: "9px 11px 9px 10px",
+                        marginBottom: "8px",
+                        alignItems: "center",
+                        gap: "5px",
+                        boxSizing: "border-box",
+                      }}
+                    >
+                      <span
+                        className="
+                          h-1.5
+                          w-1.5
+                          shrink-0
+                          rounded-full
+                          bg-[#8E6AA1]
+                          transition-all
+                          duration-200
+                          group-hover/sub:bg-[#642E60]
+                        "
+                      />
+
+                      <span>{service}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            );
+          })(),
+          document.body
+        )
+      : null;
 
   return (
     <>
@@ -615,6 +874,12 @@ if (item.title === "About") {
     <div
       key={item.title}
       className="group relative"
+      onMouseEnter={() => {
+        // About is completely independent from the Services dropdown.
+        cancelServiceClose();
+        setActiveService(null);
+        setServicesOpen(false);
+      }}
     >
       {/* =================================================
           ABOUT BUTTON
@@ -1112,6 +1377,8 @@ if (item.title === "Services") {
     <div
       key={item.title}
       className="group relative"
+      onMouseEnter={(event) => openServiceSubmenu(event, item)}
+      onMouseLeave={scheduleServiceClose}
     >
       {/* =================================================
           SERVICES BUTTON
@@ -1194,40 +1461,33 @@ if (item.title === "Services") {
           SERVICES MAIN DROPDOWN
       ================================================= */}
 
-     <div
-  className="
-    invisible
-    absolute
-    left-1/2
-    top-[calc(100%-1px)]
-    z-[99999]
-    mt-4
-    w-[390px]
-    -translate-x-1/2
-    translate-y-3
-
-    rounded-[20px]
-
-    border
-    border-[#D8CCDF]
-
-    bg-white/98
-
-    opacity-0
-
-    shadow-[0_25px_65px_rgba(52,28,65,0.20)]
-
-    backdrop-blur-2xl
-
-    transition-all
-    duration-300
-
-    group-hover:visible
-    group-hover:translate-y-0
-    group-hover:opacity-100
-  "
-  
->
+      <div
+        className={`
+          absolute
+          left-1/2
+          top-[calc(100%-1px)]
+          z-[99999]
+          mt-4
+          w-[min(390px,calc(100vw-24px))]
+          max-h-[calc(100vh-110px)]
+          overflow-y-auto
+          -translate-x-1/2
+          rounded-[20px]
+          border
+          border-[#D8CCDF]
+          bg-white/98
+          shadow-[0_25px_65px_rgba(52,28,65,0.20)]
+          backdrop-blur-2xl
+          transition-all
+          duration-300
+          ${
+            servicesOpen
+              ? "visible translate-y-0 opacity-100"
+              : "invisible translate-y-3 opacity-0 pointer-events-none"
+          }
+        `}
+        onMouseEnter={cancelServiceClose}
+      >
         {/* =================================================
             HEADER
         ================================================= */}
@@ -1308,6 +1568,10 @@ if (item.title === "Services") {
                   relative
                 "
                 style={{ marginBottom: "10px" }}
+                onMouseEnter={(event) =>
+                  openServiceSubmenu(event, category)
+                }
+                onMouseLeave={scheduleServiceClose}
               >
                 {/* =================================================
                     MAIN SERVICE ITEM
@@ -1463,154 +1727,6 @@ if (item.title === "Services") {
                   />
                 </Link>
 
-                {/* =================================================
-                    HOVER SUBMENU
-                ================================================= */}
-
-                <div
-                  className="
-                    invisible
-
-                    absolute
-                    left-full
-                    top-0
-
-                    z-[100]
-
-                    ml-3
-
-                    w-[360px]
-
-                    translate-x-2
-
-                    overflow-hidden
-
-                    rounded-[18px]
-
-                    border
-                    border-[#D8CCDF]
-
-                    bg-white
-
-                    opacity-0
-
-                    shadow-[0_20px_50px_rgba(52,28,65,0.18)]
-
-                    transition-all
-                    duration-200
-
-                    group-hover/service:visible
-                    group-hover/service:translate-x-0
-                    group-hover/service:opacity-100
-                  "
-                  style={{
-                    padding: "16px",  marginLeft:"5px"
-                  }}
-                >
-                  {/* SUBMENU HEADER */}
-
-                  <div
-                    className="
-                      rounded-[12px]
-                      border
-                      border-[#EEE7F2]
-                      bg-[#FBF9FD]
-                    "
-                    style={{
-                      padding:
-                        "10px 12px 10px 12px",
-                      marginBottom: "12px",
-                    }}
-                  >
-                    <p
-                      className="
-                        text-[9px]
-                        font-bold
-                        uppercase
-                        tracking-[0.18em]
-                        text-[#642E60]
-                      "
-                    >
-                      Services
-                    </p>
-
-                    <h4
-                      className="
-                        mt-1
-                        text-[16px]
-                        font-semibold
-                        leading-tight
-                        text-[#3D3040]
-                      "
-                     
-                    >
-                      {category.title}
-                    </h4>
-                  </div>
-
-                  {/* =================================================
-                      SUB SERVICES
-                  ================================================= */}
-
-                  <div
-                    className={
-                      category.items.length > 8
-                        ? "grid grid-cols-2 gap-2"
-                        : "space-y-2"
-                    }
-                  >
-                {category.items.map((service) => (
-  <Link
-    key={service}
-    href="#services"
-    onClick={(e) =>
-      handleNavigation(e, "#services")
-    }
-    className="
-      group/sub
-      flex
-      rounded-[11px]
-      border
-      border-transparent
-      bg-[#F8F5FA]
-      text-[11px]
-      font-medium
-      leading-4
-      text-[#514557]
-      transition-all
-      duration-200
-      hover:border-[#DED2E6]
-      hover:bg-[#F1E8F7]
-      hover:text-[#5B2E91]
-    "
-    style={{
-      padding: "9px 11px 9px 10px",
-      marginBottom: "10px",
-      display: "flex",
-      alignItems: "center",
-      gap: "5px",
-    }}
-  >
-    <span
-      className="
-        h-1.5
-        w-1.5
-        shrink-0
-        rounded-full
-        bg-[#8E6AA1]
-        transition-all
-        duration-200
-        group-hover/sub:bg-[#642E60]
-      "
-    />
-
-    <span>
-      {service}
-    </span>
-  </Link>
-))}
-                  </div>
-                </div>
               </div>
             ))}
           </div>
@@ -2073,6 +2189,8 @@ if (item.title === "Services") {
           </div>
         </div>
       </header>
+
+      {serviceSubmenuPortal}
 
       {/* =====================================================
           WEBSITE SEARCH OVERLAY
