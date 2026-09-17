@@ -944,13 +944,13 @@ if (item.title === "About") {
           className="
             pointer-events-none
             absolute
-            bottom-[5px]
+            bottom-[2px]
             left-1/2
             h-[2px]
             w-0
             -translate-x-1/2
             rounded-full
-            bg-[#D4AF37]
+            bg-white
             transition-all
             duration-300
             group-hover:w-8
@@ -1443,13 +1443,13 @@ if (item.title === "Services") {
           className="
             pointer-events-none
             absolute
-            bottom-[5px]
+            bottom-[2px]
             left-1/2
             h-[2px]
             w-0
             -translate-x-1/2
             rounded-[10px]
-            bg-[#D4AF37]
+            bg-white
             transition-all
             duration-300
             group-hover:w-8
@@ -1867,7 +1867,7 @@ if (item.title === "Services") {
                         className="
                           pointer-events-none
                           absolute
-                          bottom-[5px]
+                          bottom-[2px]
                           left-1/2
 
                           h-[2px]
@@ -1877,7 +1877,7 @@ if (item.title === "Services") {
 
                           rounded-full
 
-                          bg-[#D4AF37]
+                          bg-white
 
                           transition-all
                           duration-300
@@ -1956,13 +1956,13 @@ if (item.title === "Services") {
                       className="
                         pointer-events-none
                         absolute
-                        bottom-[5px]
+                        bottom-[2px]
                         left-1/2
                         h-[2px]
                         w-0
                         -translate-x-1/2
                         rounded-full
-                        bg-[#D4AF37]
+                        bg-white
                         transition-all
                         duration-300
                         group-hover:w-8
