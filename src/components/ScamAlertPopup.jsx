@@ -72,6 +72,9 @@ export default function ScamAlertPopup() {
         items-center
         justify-center
         bg-[#120d16]/75
+        px-3
+        py-3
+        sm:p-[18px]
         backdrop-blur-[7px]
         transition-all
         duration-300
@@ -83,7 +86,6 @@ export default function ScamAlertPopup() {
         }
       `}
       style={{
-        padding: "18px",
         transitionProperty: "opacity, background-color",
       }}
       role="dialog"
@@ -93,16 +95,22 @@ export default function ScamAlertPopup() {
       <div
         className={`
           relative
+          flex
           w-full
           max-w-[720px]
+          flex-col
           overflow-hidden
-          rounded-[24px]
+          rounded-[20px]
           border
           border-[#d8ccdf]
           bg-white
           shadow-[0_30px_100px_rgba(35,18,40,0.35)]
           transition-all
+          duration-[350ms]
           ease-out
+          max-h-[calc(100dvh-24px)]
+          sm:max-h-[calc(100dvh-36px)]
+          sm:rounded-[24px]
           ${
             visible
               ? "translate-y-0 scale-100 opacity-100"
@@ -111,14 +119,13 @@ export default function ScamAlertPopup() {
         `}
         style={{
           transitionProperty: "transform, opacity",
-          transitionDuration: "350ms",
         }}
       >
         {/* =====================================================
             TOP ACCENT
         ===================================================== */}
 
-        <div className="h-1.5 w-full bg-gradient-to-r from-[#642E60] via-[#C6A15B] to-[#5B2E91]" />
+        <div className="h-1.5 w-full shrink-0 bg-gradient-to-r from-[#642E60] via-[#C6A15B] to-[#5B2E91]" />
 
         {/* =====================================================
             HEADER
@@ -126,6 +133,7 @@ export default function ScamAlertPopup() {
 
         <div
           className="
+            shrink-0
             border-b
             border-[#eee7f0]
             bg-gradient-to-br
@@ -134,17 +142,17 @@ export default function ScamAlertPopup() {
             to-[#f7f1f9]
           "
           style={{
-            padding: "22px 24px",
+            padding: "18px 20px",
           }}
         >
-          <div className="flex items-start gap-4">
+          <div className="flex items-start gap-3 sm:gap-4">
             {/* ALERT ICON */}
 
             <div
               className="
                 flex
-                h-14
-                w-14
+                h-12
+                w-12
                 shrink-0
                 items-center
                 justify-center
@@ -152,6 +160,8 @@ export default function ScamAlertPopup() {
                 bg-[#fff2f0]
                 text-[#c24135]
                 shadow-sm
+                sm:h-14
+                sm:w-14
               "
             >
               <svg
@@ -171,13 +181,20 @@ export default function ScamAlertPopup() {
             </div>
 
             <div className="min-w-0 flex-1">
-              <p className="mb-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#642E60]">
+              <p className="mb-1 text-[9px] font-bold uppercase tracking-[0.18em] text-[#642E60] sm:text-[10px] sm:tracking-[0.2em]">
                 KBFM Group of Companies
               </p>
 
               <h2
                 id="scam-alert-title"
-                className="text-[30px] font-extrabold tracking-tight text-[#241B27]"
+                className="
+                  text-[26px]
+                  font-extrabold
+                  leading-tight
+                  tracking-tight
+                  text-[#241B27]
+                  sm:text-[30px]
+                "
               >
                 Scam Alert!
               </h2>
@@ -230,13 +247,23 @@ export default function ScamAlertPopup() {
         ===================================================== */}
 
         <div
-          className="max-h-[70vh] overflow-y-auto"
+          className="
+            min-h-0
+            flex-1
+            overflow-y-auto
+            overscroll-contain
+            scrollbar-thin
+            scrollbar-thumb-[#d8ccdf]
+            scrollbar-track-transparent
+          "
           style={{
-            padding: "24px",
+            padding: "20px",
           }}
         >
           <div className="space-y-5 text-[15px] leading-7 text-[#514754]">
-            {/* OFFICIAL WEBSITE */}
+            {/* =====================================================
+                OFFICIAL WEBSITE
+            ===================================================== */}
 
             <div
               className="
@@ -246,7 +273,7 @@ export default function ScamAlertPopup() {
                 bg-[#faf7fb]
               "
               style={{
-                padding: "18px",
+                padding: "16px",
               }}
             >
               <p>
@@ -261,6 +288,7 @@ export default function ScamAlertPopup() {
                 className="
                   mt-2
                   inline-flex
+                  max-w-full
                   items-center
                   gap-2
                   break-all
@@ -275,7 +303,7 @@ export default function ScamAlertPopup() {
                   hover:text-[#5B2E91]
                 "
               >
-                www.kbfmgroup.ca
+                <span className="break-all">www.kbfmgroup.ca</span>
 
                 <svg
                   width="14"
@@ -286,6 +314,7 @@ export default function ScamAlertPopup() {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
+                  className="shrink-0"
                 >
                   <path d="M14 3h7v7" />
                   <path d="M10 14 21 3" />
@@ -294,7 +323,9 @@ export default function ScamAlertPopup() {
               </a>
             </div>
 
-            {/* WARNING */}
+            {/* =====================================================
+                WARNING
+            ===================================================== */}
 
             <p>
               Any other website using our business name, logo, or similar
@@ -302,7 +333,9 @@ export default function ScamAlertPopup() {
               KBFM Group of Companies Professional Services Ltd.
             </p>
 
-            {/* SECURITY NOTICE */}
+            {/* =====================================================
+                SECURITY NOTICE
+            ===================================================== */}
 
             <div
               className="
@@ -312,7 +345,7 @@ export default function ScamAlertPopup() {
                 bg-[#fffaf0]
               "
               style={{
-                padding: "18px",
+                padding: "16px",
               }}
             >
               <div className="flex gap-3">
@@ -333,7 +366,7 @@ export default function ScamAlertPopup() {
                   </svg>
                 </div>
 
-                <p>
+                <p className="min-w-0">
                   For your safety and security, please confirm the address
                   reads{" "}
                   <strong className="font-extrabold text-[#241B27]">
@@ -345,17 +378,27 @@ export default function ScamAlertPopup() {
               </div>
             </div>
 
+            {/* =====================================================
+                DISCLAIMER
+            ===================================================== */}
+
             <p>
               We accept no responsibility for transactions, communications, or
               losses arising from unauthorized websites.
             </p>
+
+            {/* =====================================================
+                CONTACT INTRO
+            ===================================================== */}
 
             <p>
               If you are unsure whether you are on the correct site, contact us
               directly before you proceed:
             </p>
 
-            {/* CONTACT */}
+            {/* =====================================================
+                CONTACT
+            ===================================================== */}
 
             <div
               className="
@@ -366,7 +409,7 @@ export default function ScamAlertPopup() {
                 shadow-[0_8px_30px_rgba(52,28,65,0.06)]
               "
               style={{
-                padding: "18px",
+                padding: "16px",
               }}
             >
               <p className="font-extrabold text-[#241B27]">
@@ -397,7 +440,7 @@ export default function ScamAlertPopup() {
                     hover:bg-[#f1e8f3]
                   "
                   style={{
-                    padding: "12px 14px",
+                    padding: "10px 12px",
                   }}
                 >
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#642E60] text-white">
@@ -411,16 +454,18 @@ export default function ScamAlertPopup() {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     >
-                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92Z" />
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 0 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92Z" />
                     </svg>
                   </span>
 
-                  <span>
+                  <span className="min-w-0">
                     <span className="block text-[10px] uppercase tracking-wide text-[#8b7d8f]">
                       Phone
                     </span>
 
-                    +1 (867) 447 1131
+                    <span className="break-all">
+                      +1 (867) 447 1131
+                    </span>
                   </span>
                 </a>
 
@@ -442,7 +487,7 @@ export default function ScamAlertPopup() {
                     hover:bg-[#f1e8f3]
                   "
                   style={{
-                    padding: "12px 14px",
+                    padding: "10px 12px",
                   }}
                 >
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#5B2E91] text-white">
@@ -468,23 +513,27 @@ export default function ScamAlertPopup() {
                     </svg>
                   </span>
 
-                  <span>
+                  <span className="min-w-0">
                     <span className="block text-[10px] uppercase tracking-wide text-[#8b7d8f]">
                       Email
                     </span>
 
-                    info@kbfmgroup.ca
+                    <span className="break-all">
+                      info@kbfmgroup.ca
+                    </span>
                   </span>
                 </a>
               </div>
             </div>
 
-            {/* SIGNATURE */}
+            {/* =====================================================
+                SIGNATURE
+            ===================================================== */}
 
             <p
               className="font-medium text-[#6c606f]"
               style={{
-                paddingTop: "4px",
+                paddingTop: "2px",
               }}
             >
               Thanks,
@@ -502,9 +551,10 @@ export default function ScamAlertPopup() {
 
         <div
           className="
+            shrink-0
             flex
             flex-col
-            gap-3
+            gap-2.5
             border-t
             border-[#eee7f0]
             bg-[#fcfafd]
@@ -513,10 +563,10 @@ export default function ScamAlertPopup() {
             sm:justify-between
           "
           style={{
-            padding: "16px 24px",
+            padding: "12px 20px",
           }}
         >
-          <p className="text-[11px] leading-5 text-[#8a7d8d]">
+          <p className="text-[10px] leading-4 text-[#8a7d8d] sm:text-[11px] sm:leading-5">
             Please verify the website address before sharing information.
           </p>
 
@@ -525,6 +575,8 @@ export default function ScamAlertPopup() {
             onClick={handleClose}
             className="
               inline-flex
+              w-full
+              shrink-0
               items-center
               justify-center
               rounded-xl
@@ -536,6 +588,7 @@ export default function ScamAlertPopup() {
               transition
               duration-200
               hover:bg-[#5B2E91]
+              sm:w-auto
             "
             style={{
               padding: "10px 24px",
