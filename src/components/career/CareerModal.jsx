@@ -8,8 +8,6 @@ import {
   TransitionChild,
 } from "@headlessui/react";
 
-import { motion } from "framer-motion";
-
 import {
   HiUser,
   HiPhone,
@@ -22,7 +20,6 @@ import {
 } from "react-icons/hi2";
 
 import { IoClose } from "react-icons/io5";
-
 import Swal from "sweetalert2";
 
 const initialForm = {
@@ -34,12 +31,39 @@ const initialForm = {
   resume: null,
 };
 
+const MAX_FILE_SIZE = 5 * 1024 * 1024;
+
+const ALLOWED_FILE_TYPES = [
+  "application/pdf",
+  "application/msword",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+];
+
+const ALLOWED_FILE_EXTENSIONS = [".pdf", ".doc", ".docx"];
+
 export default function CareerModal({ open, onClose }) {
   const [form, setForm] = useState(initialForm);
-
   const [errors, setErrors] = useState({});
-
   const [loading, setLoading] = useState(false);
+
+  /* =========================================================
+     SWEETALERT CONFIG
+  ========================================================= */
+
+  const swalOptions = {
+    customClass: {
+      popup: "career-swal-popup",
+      confirmButton: "career-swal-button",
+    },
+
+    didOpen: () => {
+      const container = document.querySelector(".swal2-container");
+
+      if (container) {
+        container.style.zIndex = "99999999999";
+      }
+    },
+  };
 
   /* =========================================================
      HANDLE CHANGE
@@ -48,9 +72,69 @@ export default function CareerModal({ open, onClose }) {
   const handleChange = (e) => {
     const { name, value, files } = e.target;
 
+    if (files && files.length > 0) {
+      const file = files[0];
+
+      const extension = `.${file.name
+        .split(".")
+        .pop()
+        .toLowerCase()}`;
+
+      /* File type validation */
+
+      if (
+        !ALLOWED_FILE_TYPES.includes(file.type) &&
+        !ALLOWED_FILE_EXTENSIONS.includes(extension)
+      ) {
+        setErrors((prev) => ({
+          ...prev,
+          resume: "Only PDF, DOC or DOCX files are allowed.",
+        }));
+
+        setForm((prev) => ({
+          ...prev,
+          resume: null,
+        }));
+
+        e.target.value = "";
+
+        return;
+      }
+
+      /* File size validation */
+
+      if (file.size > MAX_FILE_SIZE) {
+        setErrors((prev) => ({
+          ...prev,
+          resume: "Resume size must not exceed 5MB.",
+        }));
+
+        setForm((prev) => ({
+          ...prev,
+          resume: null,
+        }));
+
+        e.target.value = "";
+
+        return;
+      }
+
+      setForm((prev) => ({
+        ...prev,
+        resume: file,
+      }));
+
+      setErrors((prev) => ({
+        ...prev,
+        resume: "",
+      }));
+
+      return;
+    }
+
     setForm((prev) => ({
       ...prev,
-      [name]: files ? files[0] : value,
+      [name]: value,
     }));
 
     setErrors((prev) => ({
@@ -72,10 +156,18 @@ export default function CareerModal({ open, onClose }) {
 
     if (!form.phone.trim()) {
       err.phone = "Phone number is required.";
+    } else if (form.phone.trim().length < 7) {
+      err.phone = "Please enter a valid phone number.";
     }
 
     if (!form.email.trim()) {
       err.email = "Email address is required.";
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!emailRegex.test(form.email.trim())) {
+        err.email = "Please enter a valid email address.";
+      }
     }
 
     if (!form.job.trim()) {
@@ -84,6 +176,22 @@ export default function CareerModal({ open, onClose }) {
 
     if (!form.resume) {
       err.resume = "Resume is required.";
+    } else {
+      const extension = `.${form.resume.name
+        .split(".")
+        .pop()
+        .toLowerCase()}`;
+
+      if (
+        !ALLOWED_FILE_TYPES.includes(form.resume.type) &&
+        !ALLOWED_FILE_EXTENSIONS.includes(extension)
+      ) {
+        err.resume = "Only PDF, DOC or DOCX files are allowed.";
+      }
+
+      if (form.resume.size > MAX_FILE_SIZE) {
+        err.resume = "Resume size must not exceed 5MB.";
+      }
     }
 
     setErrors(err);
@@ -98,18 +206,22 @@ export default function CareerModal({ open, onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validate()) return;
+    if (loading) return;
+
+    if (!validate()) {
+      return;
+    }
 
     setLoading(true);
 
     try {
       const formData = new FormData();
 
-      formData.append("fullName", form.fullName);
-      formData.append("phone", form.phone);
-      formData.append("email", form.email);
-      formData.append("job", form.job);
-      formData.append("message", form.message);
+      formData.append("fullName", form.fullName.trim());
+      formData.append("phone", form.phone.trim());
+      formData.append("email", form.email.trim());
+      formData.append("job", form.job.trim());
+      formData.append("message", form.message.trim());
 
       if (form.resume) {
         formData.append("resume", form.resume);
@@ -120,38 +232,83 @@ export default function CareerModal({ open, onClose }) {
         body: formData,
       });
 
-      const result = await response.json();
+      let result;
 
-      if (!response.ok || !result.success) {
-        throw new Error(result.message);
+      try {
+        result = await response.json();
+      } catch {
+        throw new Error(
+          "Something went wrong while submitting your application."
+        );
       }
 
-      await Swal.fire({
-        icon: "success",
-        title: "Application Submitted",
-        text: "Thank you for applying.",
-        confirmButtonColor: "#642E60",
-        iconColor: "#5B2E91",
-        customClass: {
-          popup: "career-swal-popup",
-          confirmButton: "career-swal-button",
-        },
-      });
+      if (!response.ok || !result.success) {
+        throw new Error(
+          result.message || "Failed to submit career application."
+        );
+      }
 
+      /* =====================================================
+         SUCCESSFUL SUBMISSION
+      ===================================================== */
+
+      // Reset form
       setForm(initialForm);
 
+      // Clear validation errors
+      setErrors({});
+
+      // Close the Career Modal FIRST
       onClose();
+
+      /*
+        Wait for Headless UI modal closing animation,
+        then show SweetAlert success popup.
+      */
+      setTimeout(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Application Submitted",
+          text:
+            result.message ||
+            "Thank you for applying. Your application has been received successfully.",
+          confirmButtonColor: "#642E60",
+          iconColor: "#5B2E91",
+          ...swalOptions,
+        });
+      }, 300);
     } catch (err) {
+      console.error("Career Form Error:", err);
+
+      /* =====================================================
+         ERROR POPUP
+      ===================================================== */
+
       Swal.fire({
         icon: "error",
         title: "Submission Failed",
-        text: err.message,
+        text:
+          err?.message ||
+          "Something went wrong. Please try again.",
         confirmButtonColor: "#642E60",
         iconColor: "#B42318",
+        ...swalOptions,
       });
     } finally {
       setLoading(false);
     }
+  };
+
+  /* =========================================================
+     CLOSE MODAL
+  ========================================================= */
+
+  const handleClose = () => {
+    if (loading) return;
+
+    setErrors({});
+
+    onClose();
   };
 
   return (
@@ -159,7 +316,7 @@ export default function CareerModal({ open, onClose }) {
       <Dialog
         as="div"
         className="relative z-[9999999999]"
-        onClose={onClose}
+        onClose={handleClose}
       >
         {/* =====================================================
             BACKDROP
@@ -316,8 +473,9 @@ export default function CareerModal({ open, onClose }) {
                 ================================================= */}
 
                 <button
-                  onClick={onClose}
+                  onClick={handleClose}
                   aria-label="Close modal"
+                  disabled={loading}
                   className="
                     group
                     absolute
@@ -344,6 +502,8 @@ export default function CareerModal({ open, onClose }) {
                     hover:to-[#5B2E91]
                     hover:text-white
                     hover:shadow-[0_12px_30px_rgba(91,46,145,0.25)]
+                    disabled:cursor-not-allowed
+                    disabled:opacity-50
                   "
                 >
                   <IoClose
@@ -510,6 +670,7 @@ export default function CareerModal({ open, onClose }) {
                     ================================================= */}
 
                     <div className="grid gap-5 md:grid-cols-2">
+
                       {/* FULL NAME */}
 
                       <div
@@ -662,6 +823,7 @@ export default function CareerModal({ open, onClose }) {
                     ================================================= */}
 
                     <div className="grid gap-5 md:grid-cols-2">
+
                       {/* EMAIL */}
 
                       <div

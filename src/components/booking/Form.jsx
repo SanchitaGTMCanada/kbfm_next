@@ -12,6 +12,8 @@ import {
   HiChatBubbleLeftRight,
 } from "react-icons/hi2";
 
+import Swal from "sweetalert2";
+
 import services from "./services";
 import Field from "./Field";
 import SubmitButton from "./SubmitButton";
@@ -221,13 +223,37 @@ async function handleSubmit(e) {
       throw new Error(result.message || "Failed to submit booking.");
     }
 
-    alert("Booking request submitted successfully!");
+    // Success SweetAlert
+    await Swal.fire({
+      icon: "success",
+      title: "Booking Submitted",
+      text:
+        result.message ||
+        "Booking request submitted successfully!",
+      confirmButtonColor: "#5B2E91",
+      iconColor: "#5B2E91",
+      confirmButtonText: "OK",
+    });
 
+    // Reset form
     setForm(initialForm);
+
+    // Clear validation errors
     setErrors({});
   } catch (error) {
     console.error(error);
-    alert(error.message || "Something went wrong. Please try again.");
+
+    // Error SweetAlert
+    Swal.fire({
+      icon: "error",
+      title: "Submission Failed",
+      text:
+        error.message ||
+        "Something went wrong. Please try again.",
+      confirmButtonColor: "#5B2E91",
+      iconColor: "#B42318",
+      confirmButtonText: "OK",
+    });
   } finally {
     setLoading(false);
   }
