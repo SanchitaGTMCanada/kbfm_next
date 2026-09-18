@@ -356,7 +356,7 @@ export default function Hero() {
             "
             style={{
               paddingTop: isMobile
-                ? "125px"
+                ? "134px"
                 : "155px",
 
               paddingBottom: isMobile
@@ -478,7 +478,7 @@ export default function Hero() {
                   lg:tracking-[-2px]
                 "
                 style={{
-                  marginTop: "27px",
+                  marginTop: "27px", minHeight:"192px"
                 }}
               >
                 {/* =================================================
