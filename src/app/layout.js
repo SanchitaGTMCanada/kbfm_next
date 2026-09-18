@@ -3,7 +3,7 @@ import Header from "@/components/layout/Header/Header";
 import ScamAlertPopup from "@/components/ScamAlertPopup";
 
 export const metadata = {
-  metadataBase: new URL("https://kbfm-next.vercel.app/"),
+  metadataBase: new URL("https://kbfmgroup.ca/"),
 
   title: {
     default: "K.B.F.M. Group of Companies Professional Services Ltd. | Serving the North",
@@ -67,7 +67,7 @@ export const metadata = {
     description:
       "Reliable security, caregiving, cleaning, janitorial, and facility support services delivered throughout the Northwest Territories.",
 
-    url: "https://kbfm-next.vercel.app/",
+    url: "https://kbfmgroup.ca/",
 
     siteName: "K.B.F.M. Group of Companies Professional Services Ltd.",
 
