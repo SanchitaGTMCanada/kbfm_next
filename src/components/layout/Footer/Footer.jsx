@@ -557,7 +557,7 @@ export default function Footer() {
 
               <ul className="space-y-3.5">
                 {footerNavigation.map((item) => (
-                  <li key={item.title}>
+                  <li key={item.title} style={{marginLeft:"30px"}}>
                     <Link
                       href={item.href}
                       onClick={(e) =>
@@ -646,7 +646,7 @@ export default function Footer() {
 
               <ul className="space-y-4">
                 {services.map((item) => (
-                  <li key={item.title}>
+                  <li key={item.title} style={{marginLeft:"30px"}}>
                     <Link
                       href={item.href}
                       onClick={(e) =>
