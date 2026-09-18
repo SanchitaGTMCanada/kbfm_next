@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -7,8 +8,6 @@ import {
   HiArrowUpRight,
   HiPhone,
   HiSparkles,
-  HiOutlineHeart,
-  HiOutlineShieldCheck,
   HiHome,
   HiInformationCircle,
   HiSquares2X2,
@@ -23,14 +22,20 @@ export default function MobileMenu({
   onClose,
   onCareerClick,
 }) {
+  /* =========================================================
+     NAVIGATION HANDLER
+  ========================================================= */
+
   const handleNavigation = (e, href) => {
     e.preventDefault();
 
+    // Close menu immediately
     onClose();
 
     if (!href) return;
 
-    setTimeout(() => {
+    // Wait one frame so the menu starts closing before scrolling
+    requestAnimationFrame(() => {
       const section = document.querySelector(href);
 
       if (section) {
@@ -39,28 +44,28 @@ export default function MobileMenu({
           block: "start",
         });
       }
-    }, 250);
+    });
   };
 
   /* =========================================================
-     MENU ICONS
+     MENU ICON
   ========================================================= */
 
   const getMenuIcon = (title) => {
-    switch (title) {
-      case "Home":
+    switch (title?.trim().toLowerCase()) {
+      case "home":
         return HiHome;
 
-      case "About":
+      case "about":
         return HiInformationCircle;
 
-      case "Services":
+      case "services":
         return HiSquares2X2;
 
-      case "Contact":
+      case "contact":
         return HiEnvelope;
 
-      case "Join Us":
+      case "join us":
         return HiUserGroup;
 
       default:
@@ -81,76 +86,34 @@ export default function MobileMenu({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.25 }}
+          transition={{
+            duration: 0.12,
+            ease: "linear",
+          }}
         >
           {/* =====================================================
-              SOFT BACKDROP
+              SIMPLE BACKDROP
+
+              IMPORTANT:
+              No backdrop-blur here.
+              backdrop-filter can be expensive on mobile.
           ===================================================== */}
 
-          <motion.div
+          <div
             className="
               absolute
               inset-0
-              bg-[#241B27]/35
-              backdrop-blur-[10px]
+              bg-[#241B27]/40
             "
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
             onClick={onClose}
-          />
-
-          {/* =====================================================
-              FLOATING BACKGROUND GLOWS
-          ===================================================== */}
-
-          <div
-            className="
-              pointer-events-none
-              absolute
-              -left-24
-              -top-20
-              h-[280px]
-              w-[280px]
-              rounded-full
-              bg-[#642E60]/[0.10]
-              blur-[90px]
-            "
-          />
-
-          <div
-            className="
-              pointer-events-none
-              absolute
-              -right-24
-              top-[35%]
-              h-[320px]
-              w-[320px]
-              rounded-full
-              bg-[#5B2E91]/[0.10]
-              blur-[100px]
-            "
-          />
-
-          <div
-            className="
-              pointer-events-none
-              absolute
-              bottom-[-100px]
-              left-[20%]
-              h-[300px]
-              w-[300px]
-              rounded-full
-              bg-[#C6A15B]/[0.06]
-              blur-[100px]
-            "
+            aria-hidden="true"
           />
 
           {/* =====================================================
               MOBILE PANEL
           ===================================================== */}
 
-          <motion.div
+          <motion.aside
             initial={{
               x: "100%",
             }}
@@ -161,7 +124,7 @@ export default function MobileMenu({
               x: "100%",
             }}
             transition={{
-              duration: 0.45,
+              duration: 0.2,
               ease: [0.22, 1, 0.36, 1],
             }}
             className="
@@ -172,68 +135,18 @@ export default function MobileMenu({
               w-full
               max-w-[430px]
               overflow-y-auto
+              overscroll-contain
               bg-gradient-to-br
               from-white
               via-[#FBF8FD]
               to-[#F0E7F6]
-              shadow-[-20px_0_70px_rgba(52,27,58,0.15)]
+              shadow-[-15px_0_40px_rgba(52,27,58,0.14)]
+              will-change-transform
             "
+            style={{
+              WebkitOverflowScrolling: "touch",
+            }}
           >
-            {/* =================================================
-                PANEL WATERMARKS
-            ================================================= */}
-
-            <div
-              className="
-                pointer-events-none
-                absolute
-                -left-20
-                top-[20%]
-                text-[#642E60]/[0.025]
-              "
-            >
-              <HiSparkles
-                style={{
-                  width: "220px",
-                  height: "220px",
-                }}
-              />
-            </div>
-
-            <div
-              className="
-                pointer-events-none
-                absolute
-                -right-20
-                bottom-[12%]
-                text-[#5B2E91]/[0.025]
-              "
-            >
-              <HiOutlineShieldCheck
-                style={{
-                  width: "260px",
-                  height: "260px",
-                }}
-              />
-            </div>
-
-            <div
-              className="
-                pointer-events-none
-                absolute
-                left-[38%]
-                top-[50%]
-                text-[#642E60]/[0.018]
-              "
-            >
-              <HiOutlineHeart
-                style={{
-                  width: "190px",
-                  height: "190px",
-                }}
-              />
-            </div>
-
             {/* =================================================
                 CONTENT
             ================================================= */}
@@ -244,54 +157,34 @@ export default function MobileMenu({
                 z-10
                 px-5
                 pb-8
+                pt-[105px]
               "
-              style={{
-                marginTop: "130px",
-                padding: "20px",
-              }}
             >
               {/* =================================================
-                  NAVIGATION ITEMS
+                  NAVIGATION
               ================================================= */}
 
-              <nav>
+              <nav aria-label="Mobile navigation" style={{marginTop:"130px"}}>
                 <ul className="space-y-3">
-                  {navigation.map((item, index) => {
+                  {navigation.map((item) => {
                     const MenuIcon = getMenuIcon(item.title);
 
-                    return (
-                      <motion.li
-                        key={item.title}
-                        initial={{
-                          opacity: 0,
-                          y: 18,
-                        }}
-                        animate={{
-                          opacity: 1,
-                          y: 0,
-                        }}
-                        transition={{
-                          delay: 0.14 + index * 0.06,
-                          duration: 0.4,
-                          ease: [0.22, 1, 0.36, 1],
-                        }}
-                      >
-                        {/* =================================================
-                            JOIN US
-                        ================================================= */}
+                    const isJoinUs =
+                      item.title?.trim().toLowerCase() === "join us";
 
-                        {item.title?.trim().toLowerCase() === "join us" ? (
+                    /* =================================================
+                       JOIN US
+                    ================================================= */
+
+                    if (isJoinUs) {
+                      return (
+                        <li key={item.title}>
                           <button
                             type="button"
                             onClick={(e) => {
                               e.preventDefault();
                               e.stopPropagation();
 
-                              /*
-                               * IMPORTANT:
-                               * Open the career modal before closing
-                               * the mobile menu.
-                               */
                               if (
                                 typeof onCareerClick === "function"
                               ) {
@@ -311,40 +204,34 @@ export default function MobileMenu({
                               rounded-[20px]
                               border
                               border-[#642E60]/10
-                              bg-white/85
+                              bg-white
                               text-left
                               text-[#483948]
-                              shadow-[0_8px_25px_rgba(91,46,145,0.05)]
-                              backdrop-blur-md
-                              transition-all
-                              duration-300
-                              hover:-translate-y-0.5
-                              hover:border-[#642E60]/20
-                              hover:bg-white
-                              hover:shadow-[0_14px_30px_rgba(91,46,145,0.10)]
+                              shadow-[0_6px_20px_rgba(91,46,145,0.05)]
+                              active:scale-[0.99]
                             "
                             style={{
                               padding: "14px 16px",
+                              WebkitTapHighlightColor:
+                                "transparent",
                             }}
                           >
-                            {/* Purple left indicator */}
+                            {/* Left accent */}
 
                             <span
                               className="
                                 absolute
                                 left-0
                                 top-1/2
-                                h-0
+                                h-7
                                 w-[3px]
                                 -translate-y-1/2
                                 rounded-full
                                 bg-gradient-to-b
                                 from-[#642E60]
                                 to-[#5B2E91]
-                                transition-all
-                                duration-300
-                                group-hover:h-7
                               "
+                              aria-hidden="true"
                             />
 
                             {/* Left content */}
@@ -352,6 +239,7 @@ export default function MobileMenu({
                             <span
                               className="
                                 flex
+                                min-w-0
                                 items-center
                                 gap-3
                               "
@@ -367,23 +255,20 @@ export default function MobileMenu({
                                   rounded-xl
                                   bg-[#642E60]/[0.07]
                                   text-[#642E60]
-                                  transition-all
-                                  duration-300
-                                  group-hover:bg-[#642E60]
-                                  group-hover:text-white
                                 "
                               >
-                                <MenuIcon className="text-[17px]" />
+                                <MenuIcon
+                                  className="text-[17px]"
+                                  aria-hidden="true"
+                                />
                               </span>
 
                               <span
                                 className="
+                                  truncate
                                   text-[16px]
                                   font-semibold
                                   text-[#483948]
-                                  transition-colors
-                                  duration-300
-                                  group-hover:text-[#642E60]
                                 "
                               >
                                 {item.title}
@@ -403,157 +288,136 @@ export default function MobileMenu({
                                 rounded-full
                                 bg-[#F4EDF8]
                                 text-[#6B4D73]
-                                transition-all
-                                duration-300
-                                group-hover:bg-[#EDE2F3]
-                                group-hover:text-[#5B2E91]
                               "
                             >
                               <HiArrowUpRight
                                 size={15}
-                                className="
-                                  transition-transform
-                                  duration-300
-                                  group-hover:translate-x-0.5
-                                  group-hover:-translate-y-0.5
-                                "
+                                aria-hidden="true"
                               />
                             </span>
                           </button>
-                        ) : (
-                          /* =================================================
-                             NORMAL NAV ITEM
-                          ================================================= */
+                        </li>
+                      );
+                    }
 
-                          <Link
-                            href={item.href}
-                            onClick={(e) =>
-                              handleNavigation(
-                                e,
-                                item.href
-                              )
-                            }
+                    /* =================================================
+                       NORMAL NAVIGATION ITEM
+                    ================================================= */
+
+                    return (
+                      <li key={item.title}>
+                        <Link
+                          href={item.href}
+                          onClick={(e) =>
+                            handleNavigation(
+                              e,
+                              item.href
+                            )
+                          }
+                          className="
+                            group
+                            relative
+                            flex
+                            w-full
+                            items-center
+                            justify-between
+                            overflow-hidden
+                            rounded-[20px]
+                            border
+                            border-[#642E60]/10
+                            bg-white
+                            text-[#483948]
+                            shadow-[0_6px_20px_rgba(91,46,145,0.05)]
+                            active:scale-[0.99]
+                          "
+                          style={{
+                            padding: "14px 16px",
+                            marginBottom: "5px",
+                            WebkitTapHighlightColor:
+                              "transparent",
+                          }}
+                        >
+                          {/* Left accent */}
+
+                          <span
                             className="
-                              group
-                              relative
-                              flex
-                              items-center
-                              justify-between
-                              overflow-hidden
-                              rounded-[20px]
-                              border
-                              border-[#642E60]/10
-                              bg-white/85
-                              text-[#483948]
-                              shadow-[0_8px_25px_rgba(91,46,145,0.05)]
-                              backdrop-blur-md
-                              transition-all
-                              duration-300
-                              hover:-translate-y-0.5
-                              hover:border-[#642E60]/20
-                              hover:bg-white
-                              hover:shadow-[0_14px_30px_rgba(91,46,145,0.10)]
+                              absolute
+                              left-0
+                              top-1/2
+                              h-7
+                              w-[3px]
+                              -translate-y-1/2
+                              rounded-full
+                              bg-gradient-to-b
+                              from-[#642E60]
+                              to-[#5B2E91]
                             "
-                            style={{
-                              padding: "14px 16px",
-                              marginBottom: "5px",
-                            }}
+                            aria-hidden="true"
+                          />
+
+                          {/* Left content */}
+
+                          <span
+                            className="
+                              flex
+                              min-w-0
+                              items-center
+                              gap-3
+                            "
                           >
-                            {/* Purple left indicator */}
-
-                            <span
-                              className="
-                                absolute
-                                left-0
-                                top-1/2
-                                h-0
-                                w-[3px]
-                                -translate-y-1/2
-                                rounded-full
-                                bg-gradient-to-b
-                                from-[#642E60]
-                                to-[#5B2E91]
-                                transition-all
-                                duration-300
-                                group-hover:h-7
-                              "
-                            />
-
-                            {/* Left content */}
-
                             <span
                               className="
                                 flex
-                                items-center
-                                gap-3
-                              "
-                            >
-                              <span
-                                className="
-                                  flex
-                                  h-9
-                                  w-9
-                                  shrink-0
-                                  items-center
-                                  justify-center
-                                  rounded-xl
-                                  bg-[#642E60]/[0.07]
-                                  text-[#642E60]
-                                  transition-all
-                                  duration-300
-                                  group-hover:bg-[#642E60]
-                                  group-hover:text-white
-                                "
-                              >
-                                <MenuIcon className="text-[17px]" />
-                              </span>
-
-                              <span
-                                className="
-                                  text-[16px]
-                                  font-semibold
-                                  text-[#483948]
-                                  transition-colors
-                                  duration-300
-                                  group-hover:text-[#642E60]
-                                "
-                              >
-                                {item.title}
-                              </span>
-                            </span>
-
-                            {/* Right arrow */}
-
-                            <span
-                              className="
-                                flex
-                                h-8
-                                w-8
+                                h-9
+                                w-9
                                 shrink-0
                                 items-center
                                 justify-center
-                                rounded-full
-                                bg-[#F4EDF8]
-                                text-[#6B4D73]
-                                transition-all
-                                duration-300
-                                group-hover:bg-[#EDE2F3]
-                                group-hover:text-[#5B2E91]
+                                rounded-xl
+                                bg-[#642E60]/[0.07]
+                                text-[#642E60]
                               "
                             >
-                              <HiArrowUpRight
-                                size={15}
-                                className="
-                                  transition-transform
-                                  duration-300
-                                  group-hover:translate-x-0.5
-                                  group-hover:-translate-y-0.5
-                                "
+                              <MenuIcon
+                                className="text-[17px]"
+                                aria-hidden="true"
                               />
                             </span>
-                          </Link>
-                        )}
-                      </motion.li>
+
+                            <span
+                              className="
+                                truncate
+                                text-[16px]
+                                font-semibold
+                                text-[#483948]
+                              "
+                            >
+                              {item.title}
+                            </span>
+                          </span>
+
+                          {/* Right arrow */}
+
+                          <span
+                            className="
+                              flex
+                              h-8
+                              w-8
+                              shrink-0
+                              items-center
+                              justify-center
+                              rounded-full
+                              bg-[#F4EDF8]
+                              text-[#6B4D73]
+                            "
+                          >
+                            <HiArrowUpRight
+                              size={15}
+                              aria-hidden="true"
+                            />
+                          </span>
+                        </Link>
+                      </li>
                     );
                   })}
                 </ul>
@@ -563,58 +427,24 @@ export default function MobileMenu({
                   CONTACT CTA
               ================================================= */}
 
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: 20,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                transition={{
-                  delay: 0.5,
-                  duration: 0.5,
-                }}
-                className="mt-8"
-              >
+              <div className="mt-7">
                 <div
                   className="
                     relative
                     overflow-hidden
-                    rounded-[26px]
+                    rounded-[24px]
                     border
                     border-[#642E60]/10
                     bg-gradient-to-br
                     from-white
                     via-[#F8F2FB]
                     to-[#EEE3F5]
-                    shadow-[0_18px_45px_rgba(91,46,145,0.09)]
+                    shadow-[0_12px_35px_rgba(91,46,145,0.08)]
                   "
                   style={{
                     padding: "20px",
-                    marginTop: "18px",
                   }}
                 >
-                  {/* Decorative watermark */}
-
-                  <div
-                    className="
-                      pointer-events-none
-                      absolute
-                      -right-8
-                      -top-8
-                      text-[#5B2E91]/[0.045]
-                    "
-                  >
-                    <HiOutlineHeart
-                      style={{
-                        width: "125px",
-                        height: "125px",
-                      }}
-                    />
-                  </div>
-
                   {/* Gold accent */}
 
                   <div
@@ -629,9 +459,12 @@ export default function MobileMenu({
                       via-[#642E60]
                       to-[#5B2E91]
                     "
+                    aria-hidden="true"
                   />
 
                   <div className="relative z-10">
+                    {/* Label */}
+
                     <div
                       className="
                         flex
@@ -646,6 +479,7 @@ export default function MobileMenu({
                           rounded-full
                           bg-[#C6A15B]
                         "
+                        aria-hidden="true"
                       />
 
                       <span
@@ -661,6 +495,8 @@ export default function MobileMenu({
                       </span>
                     </div>
 
+                    {/* Heading */}
+
                     <h3
                       className="
                         mt-3
@@ -674,16 +510,16 @@ export default function MobileMenu({
                       Need our support?
                     </h3>
 
+                    {/* Description */}
+
                     <p
                       className="
                         mt-2
+                        mb-4
                         text-[13px]
                         leading-6
                         text-[#756D77]
                       "
-                      style={{
-                        marginBottom: "15px",
-                      }}
                     >
                       Connect with our team for professional
                       services and assistance.
@@ -695,8 +531,6 @@ export default function MobileMenu({
                       href="tel:+18674471500"
                       onClick={onClose}
                       className="
-                        group
-                        mt-5
                         flex
                         items-center
                         gap-3
@@ -706,16 +540,16 @@ export default function MobileMenu({
                         via-[#5B2E91]
                         to-[#6B427A]
                         text-white
-                        shadow-[0_12px_28px_rgba(91,46,145,0.16)]
-                        transition-all
-                        duration-300
-                        hover:-translate-y-0.5
-                        hover:shadow-[0_16px_35px_rgba(91,46,145,0.22)]
+                        shadow-[0_10px_25px_rgba(91,46,145,0.14)]
                       "
                       style={{
                         padding: "11px 14px",
+                        WebkitTapHighlightColor:
+                          "transparent",
                       }}
                     >
+                      {/* Phone icon */}
+
                       <span
                         className="
                           flex
@@ -729,10 +563,15 @@ export default function MobileMenu({
                           text-[#EADDAF]
                         "
                       >
-                        <HiPhone size={17} />
+                        <HiPhone
+                          size={17}
+                          aria-hidden="true"
+                        />
                       </span>
 
-                      <span className="flex-1">
+                      {/* Text */}
+
+                      <span className="min-w-0 flex-1">
                         <span
                           className="
                             block
@@ -750,6 +589,7 @@ export default function MobileMenu({
                           className="
                             mt-0.5
                             block
+                            truncate
                             text-[14px]
                             font-semibold
                             text-white
@@ -759,50 +599,43 @@ export default function MobileMenu({
                         </span>
                       </span>
 
+                      {/* Arrow */}
+
                       <span
                         className="
                           flex
                           h-8
                           w-8
+                          shrink-0
                           items-center
                           justify-center
                           rounded-full
                           bg-white/10
-                          transition-transform
-                          duration-300
-                          group-hover:translate-x-0.5
                         "
                       >
-                        <HiArrowUpRight size={15} />
+                        <HiArrowUpRight
+                          size={15}
+                          aria-hidden="true"
+                        />
                       </span>
                     </Link>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
               {/* =================================================
-                  BOTTOM BRAND LINE
+                  BOTTOM DECORATIVE LINE
               ================================================= */}
 
-              <motion.div
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: 1,
-                }}
-                transition={{
-                  delay: 0.65,
-                  duration: 0.5,
-                }}
+              <div
                 className="
                   mt-6
                   flex
                   items-center
                   justify-center
                   gap-3
-                  text-center
                 "
+                aria-hidden="true"
               >
                 <span
                   className="
@@ -819,11 +652,12 @@ export default function MobileMenu({
                     bg-[#642E60]/15
                   "
                 />
-              </motion.div>
+              </div>
             </div>
-          </motion.div>
+          </motion.aside>
         </motion.div>
       )}
     </AnimatePresence>
   );
 }
+
