@@ -35,7 +35,7 @@ export default function Booking() {
       "
       style={{
         background:
-          "linear-gradient(135deg, #FFFFFF 0%, #FAF6FC 34%, #F4ECF8 68%, #EAE0F2 100%)",
+          "linear-gradient(135deg, #FFFFFF 0%, #FAF6FC 34%, #F4ECF8 68%, #EAE0F2 100%)", marginTop:"30px"
       }}
     >
       {/* =====================================================

@@ -14,8 +14,8 @@ export default function MissionVision() {
       id="mission-vision"
       className="relative overflow-hidden"
       style={{
-        paddingTop: "90px",
-        paddingBottom: "100px",
+        paddingTop: "40px",
+        paddingBottom: "40px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -1030,7 +1030,7 @@ export default function MissionVision() {
           transition={{ duration: 0.6 }}
           className="text-center"
           style={{
-            marginTop: "70px",
+            marginTop: "20px",
           }}
         >
           <div
@@ -1038,7 +1038,7 @@ export default function MissionVision() {
             style={{
               width: "70px",
               height: "1px",
-              marginBottom: "22px",
+          
               background:
                 "linear-gradient(90deg, transparent, #5B2E91, transparent)",
             }}
