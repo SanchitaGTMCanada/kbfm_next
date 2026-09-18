@@ -12,7 +12,7 @@ className="
 relative
 overflow-hidden
 
-```
+
     bg-gradient-to-br
     from-white
     via-[#FBF8FC]
