@@ -1,14 +1,19 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Container from "@/components/ui/Container/Container";
 import { TypeAnimation } from "react-type-animation";
+
 import {
   HiShieldCheck,
   HiSparkles,
   HiHeart,
 } from "react-icons/hi2";
+
+/* =========================================================
+   HERO IMAGES
+========================================================= */
 
 const heroImages = [
   "/assets/hero/hero-1.jpg",
@@ -16,82 +21,198 @@ const heroImages = [
   "/assets/hero/hero-3.jpg",
 ];
 
+/* =========================================================
+   HERO TEXT
+========================================================= */
+
+const heroWords = [
+  "Care & Integrity",
+  "Security & Trust",
+  "Professional Service",
+  "Commitment & Care",
+];
+
+/* =========================================================
+   HERO COMPONENT
+========================================================= */
+
 export default function Hero() {
   const [current, setCurrent] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const [reduceMotion, setReduceMotion] = useState(false);
+
+  /* =========================================================
+     DEVICE / MOTION DETECTION
+  ========================================================= */
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % heroImages.length);
-    }, 7000);
+    const mobileQuery = window.matchMedia(
+      "(max-width: 767px)"
+    );
 
-    return () => clearInterval(interval);
+    const motionQuery = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+
+    const updateDevice = () => {
+      setIsMobile(mobileQuery.matches);
+    };
+
+    const updateMotion = () => {
+      setReduceMotion(motionQuery.matches);
+    };
+
+    updateDevice();
+    updateMotion();
+
+    mobileQuery.addEventListener(
+      "change",
+      updateDevice
+    );
+
+    motionQuery.addEventListener(
+      "change",
+      updateMotion
+    );
+
+    return () => {
+      mobileQuery.removeEventListener(
+        "change",
+        updateDevice
+      );
+
+      motionQuery.removeEventListener(
+        "change",
+        updateMotion
+      );
+    };
   }, []);
+
+  /* =========================================================
+     BACKGROUND SLIDER
+
+     Desktop:
+     7 seconds
+
+     Mobile:
+     10 seconds
+
+     Reduced motion:
+     no slider
+  ========================================================= */
+
+  useEffect(() => {
+    if (reduceMotion) {
+      return;
+    }
+
+    const intervalTime = isMobile
+      ? 10000
+      : 7000;
+
+    const interval = setInterval(() => {
+      setCurrent((prev) => {
+        return (prev + 1) % heroImages.length;
+      });
+    }, intervalTime);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [isMobile, reduceMotion]);
+
+  /* =========================================================
+     ANIMATION SETTINGS
+  ========================================================= */
+
+  const fadeTransition = reduceMotion
+    ? {
+        duration: 0,
+      }
+    : {
+        duration: isMobile ? 0.5 : 1.2,
+        ease: "easeOut",
+      };
 
   return (
     <section
       id="home"
       className="
         relative
-        min-h-screen
+        min-h-[100svh]
         overflow-hidden
         bg-[#15151A]
       "
     >
       {/* =====================================================
-          BACKGROUND SLIDER
+          BACKGROUND
       ===================================================== */}
 
       <div className="absolute inset-0 bg-[#111116]">
 
-        {/* CHANGING BACKGROUND IMAGE */}
+        {/* ===================================================
+            HERO BACKGROUND IMAGE
 
-        <AnimatePresence mode="sync">
+            IMPORTANT PERFORMANCE CHANGE:
+
+            Mobile:
+            - opacity only
+            - no scale
+            - no expensive transform
+
+            Desktop:
+            - subtle image movement retained
+        =================================================== */}
+
+        <AnimatePresence
+          initial={false}
+          mode="sync"
+        >
           <motion.div
             key={current}
             className="absolute inset-0"
             initial={{
               opacity: 0,
-              scale: 1,
+              scale: isMobile ? 1 : 1.01,
             }}
             animate={{
               opacity: 1,
-              scale: 1.04,
+              scale:
+                isMobile || reduceMotion
+                  ? 1
+                  : 1.035,
             }}
             exit={{
               opacity: 0,
-              scale: 1.02,
+              scale: 1.01,
             }}
             transition={{
-              opacity: {
-                duration: 1.6,
-                ease: "easeInOut",
-              },
-              scale: {
-                duration: 7,
-                ease: "easeOut",
-              },
+              opacity: fadeTransition,
+              scale: reduceMotion
+                ? {
+                    duration: 0,
+                  }
+                : {
+                    duration: isMobile
+                      ? 0
+                      : 7,
+                    ease: "easeOut",
+                  },
             }}
             style={{
               backgroundImage: `url(${heroImages[current]})`,
               backgroundSize: "cover",
               backgroundPosition: "70% center",
+
+              /*
+               * Helps browser optimize the animated layer.
+               */
+              willChange: reduceMotion
+                ? "auto"
+                : "opacity, transform",
             }}
           />
         </AnimatePresence>
-
-        {/* =====================================================
-            PERMANENT DARK OVERLAY
-        ===================================================== */}
-
-        <div
-          className="
-            pointer-events-none
-            absolute
-            inset-0
-            z-[2]
-            bg-black/0
-          "
-        />
 
         {/* =====================================================
             LEFT CONTENT PROTECTION
@@ -102,10 +223,10 @@ export default function Hero() {
             pointer-events-none
             absolute
             inset-0
-            z-[3]
+            z-[2]
             bg-gradient-to-r
-            from-[#111116]/75
-            via-[#15131A]/40
+            from-[#111116]/80
+            via-[#15131A]/45
             via-[48%]
             to-transparent
             to-[82%]
@@ -121,7 +242,7 @@ export default function Hero() {
             pointer-events-none
             absolute
             inset-0
-            z-[4]
+            z-[3]
             bg-gradient-to-r
             from-[#5B2E91]/20
             via-[#5B2E91]/[0.06]
@@ -130,23 +251,29 @@ export default function Hero() {
         />
 
         {/* =====================================================
-            SUBTLE PURPLE GLOW
+            DESKTOP PURPLE GLOW
+
+            Disabled on mobile.
+
+            Large blur filters are expensive on phones.
         ===================================================== */}
 
-        <div
-          className="
-            pointer-events-none
-            absolute
-            left-[-180px]
-            top-[25%]
-            z-[4]
-            h-[420px]
-            w-[420px]
-            rounded-full
-            bg-[#5B2E91]/10
-            blur-[120px]
-          "
-        />
+        {!isMobile && !reduceMotion && (
+          <div
+            className="
+              pointer-events-none
+              absolute
+              left-[-180px]
+              top-[25%]
+              z-[4]
+              h-[420px]
+              w-[420px]
+              rounded-full
+              bg-[#5B2E91]/10
+              blur-[120px]
+            "
+          />
+        )}
 
         {/* =====================================================
             TOP CINEMATIC FADE
@@ -159,11 +286,12 @@ export default function Hero() {
             inset-x-0
             top-0
             z-[5]
-            h-40
+            h-32
             bg-gradient-to-b
             from-black/30
             via-black/10
             to-transparent
+            sm:h-40
           "
         />
 
@@ -178,16 +306,19 @@ export default function Hero() {
             inset-x-0
             bottom-0
             z-[5]
-            h-48
+            h-40
             bg-gradient-to-t
             from-black/45
             via-black/15
             to-transparent
+            sm:h-48
           "
         />
 
         {/* =====================================================
-            SUBTLE EDGE VIGNETTE
+            EDGE VIGNETTE
+
+            Uses gradient instead of large inset shadow.
         ===================================================== */}
 
         <div
@@ -196,7 +327,7 @@ export default function Hero() {
             absolute
             inset-0
             z-[6]
-            shadow-[inset_0_0_150px_rgba(0,0,0,0.20)]
+            bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(0,0,0,0.18)_100%)]
           "
         />
       </div>
@@ -224,38 +355,47 @@ export default function Hero() {
               lg:py-0
             "
             style={{
-              paddingTop: "155px",
-              paddingBottom: "75px",
+              paddingTop: isMobile
+                ? "125px"
+                : "155px",
+
+              paddingBottom: isMobile
+                ? "65px"
+                : "75px",
             }}
           >
-
             <div
               className="
                 w-full
                 max-w-[850px]
+                px-2
+                sm:px-[10px]
               "
-              style={{
-                paddingLeft: "10px",
-                paddingRight: "10px",
-              }}
             >
 
-              {/* =====================================================
-                  BADGE
-              ===================================================== */}
+              {/* =================================================
+                  TRUST BADGE
+              ================================================= */}
 
               <motion.div
                 initial={{
                   opacity: 0,
-                  y: 25,
+                  y: reduceMotion
+                    ? 0
+                    : 20,
                 }}
                 animate={{
                   opacity: 1,
                   y: 0,
                 }}
                 transition={{
-                  delay: 0.2,
-                  duration: 0.7,
+                  duration: reduceMotion
+                    ? 0
+                    : 0.55,
+                  delay: reduceMotion
+                    ? 0
+                    : 0.1,
+                  ease: "easeOut",
                 }}
                 className="
                   inline-flex
@@ -265,93 +405,99 @@ export default function Hero() {
                   border
                   border-[#5B2E91]
                   bg-black/25
-                  backdrop-blur-xl
-                  shadow-[0_8px_30px_rgba(91,46,145,0.28)]
+                  shadow-[0_6px_22px_rgba(91,46,145,0.20)]
                 "
                 style={{
-                  paddingLeft: "12px",
-                  paddingRight: "16px",
-                  paddingTop: "7px",
-                  paddingBottom: "7px",
+                  padding:
+                    "7px 16px 7px 12px",
                 }}
               >
-
-                {/* Purple indicator */}
-{/* Gold bordered brand indicator */}
-
-<span
-  className="
-    h-2.5
-    w-2.5
-    flex-shrink-0
-    rounded-full
-    border-1
-    border-[#FDD017]
-    bg-[#5B2E91]
-    
-  "
-/>
+                {/* Purple / Gold indicator */}
 
                 <span
                   className="
-                    text-[11px]
+                    flex
+                    h-2.5
+                    w-2.5
+                    shrink-0
+                    rounded-full
+                    border
+                    border-[#FDD017]
+                    bg-[#5B2E91]
+                  "
+                />
+
+                <span
+                  className="
+                    text-[10px]
                     font-bold
                     uppercase
-                    tracking-[3px]
+                    tracking-[2px]
                     text-white
-                    drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)]
                     sm:text-[12px]
+                    sm:tracking-[3px]
                   "
                 >
                   Trusted • Professional • Reliable
                 </span>
-
               </motion.div>
 
-              {/* =====================================================
+              {/* =================================================
                   MAIN HEADING
-              ===================================================== */}
+              ================================================= */}
 
               <motion.h1
                 initial={{
                   opacity: 0,
-                  y: 40,
+                  y: reduceMotion
+                    ? 0
+                    : 30,
                 }}
                 animate={{
                   opacity: 1,
                   y: 0,
                 }}
                 transition={{
-                  duration: 1,
+                  duration: reduceMotion
+                    ? 0
+                    : 0.65,
+                  delay: reduceMotion
+                    ? 0
+                    : 0.15,
+                  ease: "easeOut",
                 }}
                 className="
-                  text-[46px]
+                  text-[44px]
                   font-bold
                   leading-[1.04]
-                  tracking-[-2px]
+                  tracking-[-1.8px]
                   text-white
                   sm:text-[56px]
                   md:text-[66px]
                   lg:text-[76px]
+                  lg:tracking-[-2px]
                 "
                 style={{
-                  marginTop: "28px",
+                  marginTop: "27px",
                 }}
               >
-
-                {/* Main heading */}
+                {/* =================================================
+                    STATIC HEADING
+                ================================================= */}
 
                 <span
                   className="
                     block
                     text-white
-                    drop-shadow-[0_4px_16px_rgba(0,0,0,0.45)]
+                    drop-shadow-[0_4px_14px_rgba(0,0,0,0.45)]
                   "
                 >
                   Serving the North with
                 </span>
 
-                {/* Animated heading */}
+                {/* =================================================
+                    TYPEWRITER HEADING
+                ================================================= */}
 
                 <span
                   className="block"
@@ -361,17 +507,26 @@ export default function Hero() {
                 >
                   <TypeAnimation
                     sequence={[
-                      "Care & Integrity",
+                      heroWords[0],
                       2500,
-                      "Security & Trust",
+                      heroWords[1],
                       2500,
-                      "Professional Service",
+                      heroWords[2],
                       2500,
-                      "Commitment & Care",
+                      heroWords[3],
                       2500,
                     ]}
                     wrapper="span"
-                    speed={45}
+                    speed={
+                      isMobile
+                        ? 38
+                        : 45
+                    }
+                    deletionSpeed={
+                      isMobile
+                        ? 50
+                        : 45
+                    }
                     repeat={Infinity}
                     className="
                       inline-block
@@ -381,75 +536,87 @@ export default function Hero() {
                       to-[#9B6AC4]
                       bg-clip-text
                       text-transparent
-                      drop-shadow-[0_4px_18px_rgba(91,46,145,0.65)]
                     "
                   />
                 </span>
-
               </motion.h1>
 
-              {/* =====================================================
+              {/* =================================================
                   DESCRIPTION
-              ===================================================== */}
+              ================================================= */}
 
               <motion.p
                 initial={{
                   opacity: 0,
-                  y: 25,
+                  y: reduceMotion
+                    ? 0
+                    : 18,
                 }}
                 animate={{
                   opacity: 1,
                   y: 0,
                 }}
                 transition={{
-                  delay: 0.55,
-                  duration: 0.7,
+                  duration: reduceMotion
+                    ? 0
+                    : 0.55,
+                  delay: reduceMotion
+                    ? 0
+                    : 0.35,
+                  ease: "easeOut",
                 }}
                 className="
                   max-w-[700px]
                   text-[16px]
                   font-medium
-                  leading-[1.9]
+                  leading-[1.8]
                   text-white
-                  drop-shadow-[0_3px_10px_rgba(0,0,0,0.55)]
                   sm:text-[18px]
                 "
                 style={{
                   marginTop: "28px",
                   marginBottom: "30px",
                   paddingRight: "20px",
-                  color: "white",
-                  fontSize: "19px",
+
+                  /*
+                   * Explicit white color so the text remains
+                   * readable over the background image.
+                   */
+                  color: "#FFFFFF",
                 }}
               >
-                K.B.F.M. Group of Companies Professional Services Ltd. provides
-                dependable security, caregiving, cleaning, and facility support
-                services with professionalism, integrity, and a commitment to
-                the communities we serve.
+                K.B.F.M. Group of Companies Professional
+                Services Ltd. provides dependable security,
+                caregiving, cleaning, and facility support
+                services with professionalism, integrity, and
+                a commitment to the communities we serve.
               </motion.p>
 
-              {/* =====================================================
-                  PREMIUM THREE ICON DESIGN
-              ===================================================== */}
+              {/* =================================================
+                  THREE ICON DESIGN
+              ================================================= */}
 
               <motion.div
                 initial={{
                   opacity: 0,
-                  y: 20,
+                  y: reduceMotion
+                    ? 0
+                    : 15,
                 }}
                 animate={{
                   opacity: 1,
                   y: 0,
                 }}
                 transition={{
-                  delay: 0.8,
-                  duration: 0.9,
+                  duration: reduceMotion
+                    ? 0
+                    : 0.6,
+                  delay: reduceMotion
+                    ? 0
+                    : 0.55,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="
-                  flex
-                  items-center
-                "
+                className="flex items-center"
                 style={{
                   marginTop: "38px",
                   marginBottom: "42px",
@@ -461,109 +628,91 @@ export default function Hero() {
                 ================================================= */}
 
                 <motion.div
-                  animate={{
-                    y: [0, -6, 0],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
+                  animate={
+                    isMobile || reduceMotion
+                      ? undefined
+                      : {
+                          y: [0, -6, 0],
+                        }
+                  }
+                  transition={
+                    isMobile || reduceMotion
+                      ? undefined
+                      : {
+                          duration: 4,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        }
+                  }
                   className="
                     relative
                     flex
-                    h-[58px]
-                    w-[58px]
+                    h-[54px]
+                    w-[54px]
+                    shrink-0
                     items-center
                     justify-center
                     rounded-2xl
                     border
                     border-[#5B2E91]/60
                     bg-white/[0.12]
-                    backdrop-blur-xl
-                    shadow-[0_10px_35px_rgba(0,0,0,0.25)]
+                    shadow-[0_8px_25px_rgba(0,0,0,0.20)]
+                    sm:h-[58px]
+                    sm:w-[58px]
                   "
                 >
-
-                  {/* Strong purple glow */}
-
-                  <span
-                    className="
-                      pointer-events-none
-                      absolute
-                      inset-[-12px]
-                      rounded-full
-                      bg-[#5B2E91]/25
-                      blur-[18px]
-                    "
-                  />
-
-                  {/* Inner glow */}
-
-                  <span
-                    className="
-                      pointer-events-none
-                      absolute
-                      inset-[7px]
-                      rounded-xl
-                      bg-[#5B2E91]/20
-                      blur-[4px]
-                    "
-                  />
-
                   <HiShieldCheck
                     className="
                       relative
                       z-10
-                      text-[30px]
+                      text-[29px]
                       text-white
-                      drop-shadow-[0_0_5px_rgba(255,255,255,0.9)]
-                      drop-shadow-[0_0_18px_rgba(91,46,145,0.95)]
+                      sm:text-[30px]
                     "
                   />
-
                 </motion.div>
 
                 {/* =================================================
-                    CONNECTOR
+                    CONNECTOR 1
                 ================================================= */}
 
                 <div
                   className="
                     relative
-                    mx-4
+                    mx-3
                     h-[2px]
-                    w-[55px]
+                    w-[40px]
                     overflow-hidden
                     rounded-full
-                    bg-[#5B2E91]/30
+                    bg-[#5B2E91]/35
+                    sm:mx-4
+                    sm:w-[55px]
                   "
                 >
-
-                  <motion.span
-                    animate={{
-                      x: ["-120%", "220%"],
-                    }}
-                    transition={{
-                      duration: 2.5,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className="
-                      absolute
-                      left-0
-                      top-0
-                      h-full
-                      w-1/2
-                      rounded-full
-                      bg-gradient-to-r
-                      from-transparent
-                      via-[#A66CFF]
-                      to-transparent
-                      shadow-[0_0_12px_rgba(166,108,255,0.9)]
-                    "
-                  />
-
+                  {!reduceMotion && (
+                    <motion.span
+                      animate={{
+                        x: [
+                          "-120%",
+                          "220%",
+                        ],
+                      }}
+                      transition={{
+                        duration: 2.8,
+                        repeat: Infinity,
+                        ease: "linear",
+                      }}
+                      className="
+                        absolute
+                        left-0
+                        top-0
+                        h-full
+                        w-1/2
+                        rounded-full
+                        bg-[#A66CFF]
+                      "
+                    />
+                  )}
                 </div>
 
                 {/* =================================================
@@ -571,150 +720,116 @@ export default function Hero() {
                 ================================================= */}
 
                 <motion.div
-                  animate={{
-                    y: [0, -9, 0],
-                    scale: [1, 1.05, 1],
-                  }}
-                  transition={{
-                    duration: 4.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
+                  animate={
+                    isMobile || reduceMotion
+                      ? undefined
+                      : {
+                          y: [0, -8, 0],
+                          scale: [
+                            1,
+                            1.035,
+                            1,
+                          ],
+                        }
+                  }
+                  transition={
+                    isMobile || reduceMotion
+                      ? undefined
+                      : {
+                          duration: 4.5,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        }
+                  }
                   className="
                     relative
                     flex
-                    h-[76px]
-                    w-[76px]
+                    h-[70px]
+                    w-[70px]
+                    shrink-0
                     items-center
                     justify-center
-                    rounded-[24px]
+                    rounded-[23px]
                     border
                     border-[#A66CFF]/70
                     bg-gradient-to-br
-                    from-[#FFFFFF]/20
-                    via-[#5B2E91]/70
+                    from-white/20
+                    via-[#5B2E91]/75
                     to-[#452367]/90
-                    backdrop-blur-2xl
-                    shadow-[0_15px_50px_rgba(91,46,145,0.55)]
+                    shadow-[0_12px_38px_rgba(91,46,145,0.40)]
+                    sm:h-[76px]
+                    sm:w-[76px]
+                    sm:rounded-[24px]
                   "
                 >
-
-                  {/* Large outer glow */}
-
-                  <motion.span
-                    animate={{
-                      opacity: [0.25, 0.65, 0.25],
-                      scale: [1, 1.15, 1],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className="
-                      pointer-events-none
-                      absolute
-                      inset-[-13px]
-                      rounded-[30px]
-                      bg-[#5B2E91]/30
-                      blur-[15px]
-                    "
-                  />
-
-                  {/* Outer border */}
-
-                  <span
-                    className="
-                      pointer-events-none
-                      absolute
-                      inset-[-6px]
-                      rounded-[28px]
-                      border
-                      border-[#A66CFF]/40
-                    "
-                  />
-
-                  {/* Inner glass */}
+                  {/* Inner border */}
 
                   <span
                     className="
                       pointer-events-none
                       absolute
                       inset-[8px]
-                      rounded-[18px]
+                      rounded-[17px]
                       border
                       border-[#A66CFF]/30
-                      bg-white/[0.07]
+                      bg-white/[0.06]
                     "
                   />
 
-                  {/* Icon glow */}
-
-                  <span
-                    className="
-                      pointer-events-none
-                      absolute
-                      h-10
-                      w-10
-                      rounded-full
-                      bg-[#A66CFF]/25
-                      blur-[10px]
-                    "
-                  />
+                  {/* Icon */}
 
                   <HiSparkles
                     className="
                       relative
                       z-10
-                      text-[35px]
+                      text-[32px]
                       text-white
-                      drop-shadow-[0_0_6px_rgba(255,255,255,1)]
-                      drop-shadow-[0_0_22px_rgba(166,108,255,1)]
+                      sm:text-[35px]
                     "
                   />
-
                 </motion.div>
 
                 {/* =================================================
-                    CONNECTOR
+                    CONNECTOR 2
                 ================================================= */}
 
                 <div
                   className="
                     relative
-                    mx-4
+                    mx-3
                     h-[2px]
-                    w-[55px]
+                    w-[40px]
                     overflow-hidden
                     rounded-full
-                    bg-[#5B2E91]/30
+                    bg-[#5B2E91]/35
+                    sm:mx-4
+                    sm:w-[55px]
                   "
                 >
-
-                  <motion.span
-                    animate={{
-                      x: ["220%", "-120%"],
-                    }}
-                    transition={{
-                      duration: 2.8,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className="
-                      absolute
-                      right-0
-                      top-0
-                      h-full
-                      w-1/2
-                      rounded-full
-                      bg-gradient-to-r
-                      from-transparent
-                      via-[#A66CFF]
-                      to-transparent
-                      shadow-[0_0_12px_rgba(166,108,255,0.9)]
-                    "
-                  />
-
+                  {!reduceMotion && (
+                    <motion.span
+                      animate={{
+                        x: [
+                          "220%",
+                          "-120%",
+                        ],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "linear",
+                      }}
+                      className="
+                        absolute
+                        right-0
+                        top-0
+                        h-full
+                        w-1/2
+                        rounded-full
+                        bg-[#A66CFF]
+                      "
+                    />
+                  )}
                 </div>
 
                 {/* =================================================
@@ -722,130 +837,115 @@ export default function Hero() {
                 ================================================= */}
 
                 <motion.div
-                  animate={{
-                    y: [0, -6, 0],
-                  }}
-                  transition={{
-                    duration: 4.2,
-                    delay: 0.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
+                  animate={
+                    isMobile || reduceMotion
+                      ? undefined
+                      : {
+                          y: [0, -6, 0],
+                        }
+                  }
+                  transition={
+                    isMobile || reduceMotion
+                      ? undefined
+                      : {
+                          duration: 4.2,
+                          delay: 0.4,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        }
+                  }
                   className="
                     relative
                     flex
-                    h-[58px]
-                    w-[58px]
+                    h-[54px]
+                    w-[54px]
+                    shrink-0
                     items-center
                     justify-center
                     rounded-2xl
                     border
                     border-[#5B2E91]/60
                     bg-white/[0.12]
-                    backdrop-blur-xl
-                    shadow-[0_10px_35px_rgba(0,0,0,0.25)]
+                    shadow-[0_8px_25px_rgba(0,0,0,0.20)]
+                    sm:h-[58px]
+                    sm:w-[58px]
                   "
                 >
-
-                  {/* Purple glow */}
-
-                  <span
-                    className="
-                      pointer-events-none
-                      absolute
-                      inset-[-12px]
-                      rounded-full
-                      bg-[#5B2E91]/25
-                      blur-[18px]
-                    "
-                  />
-
-                  {/* Inner glow */}
-
-                  <span
-                    className="
-                      pointer-events-none
-                      absolute
-                      inset-[7px]
-                      rounded-xl
-                      bg-[#5B2E91]/20
-                      blur-[4px]
-                    "
-                  />
-
                   <HiHeart
                     className="
                       relative
                       z-10
-                      text-[29px]
+                      text-[28px]
                       text-white
-                      drop-shadow-[0_0_5px_rgba(255,255,255,0.9)]
-                      drop-shadow-[0_0_18px_rgba(91,46,145,0.95)]
+                      sm:text-[29px]
                     "
                   />
-
                 </motion.div>
-
               </motion.div>
-
             </div>
           </div>
-
         </Container>
       </div>
 
       {/* =====================================================
           SCROLL INDICATOR
+
+          Hidden on mobile to remove another continuously
+          animated element.
       ===================================================== */}
 
-      <motion.div
-        animate={{
-          y: [0, 10, 0],
-        }}
-        transition={{
-          repeat: Infinity,
-          duration: 2,
-        }}
-        className="
-          absolute
-          bottom-7
-          left-1/2
-          z-20
-          -translate-x-1/2
-        "
-      >
-
-        <div
+      {!isMobile && (
+        <motion.div
+          animate={
+            reduceMotion
+              ? undefined
+              : {
+                  y: [0, 8, 0],
+                }
+          }
+          transition={
+            reduceMotion
+              ? undefined
+              : {
+                  repeat: Infinity,
+                  duration: 2.2,
+                  ease: "easeInOut",
+                }
+          }
           className="
-            flex
-            h-11
-            w-7
-            items-start
-            justify-center
-            rounded-full
-            border
-            border-[#5B2E91]/70
-            bg-black/10
-            p-1.5
-            backdrop-blur-sm
-            shadow-[0_5px_20px_rgba(91,46,145,0.25)]
+            absolute
+            bottom-7
+            left-1/2
+            z-20
+            -translate-x-1/2
           "
         >
-
-          <span
+          <div
             className="
-              h-2.5
-              w-1
+              flex
+              h-11
+              w-7
+              items-start
+              justify-center
               rounded-full
-              bg-[#5B2E91]
-              shadow-[0_0_10px_rgba(91,46,145,0.9)]
+              border
+              border-[#5B2E91]/70
+              bg-black/10
+              p-1.5
+              shadow-[0_5px_18px_rgba(91,46,145,0.22)]
             "
-          />
-
-        </div>
-
-      </motion.div>
-
+          >
+            <span
+              className="
+                h-2.5
+                w-1
+                rounded-full
+                bg-[#5B2E91]
+              "
+            />
+          </div>
+        </motion.div>
+      )}
     </section>
   );
 }
