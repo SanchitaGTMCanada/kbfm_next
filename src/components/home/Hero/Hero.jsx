@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Container from "@/components/ui/Container/Container";
 import { TypeAnimation } from "react-type-animation";
 
@@ -12,14 +12,13 @@ import {
 } from "react-icons/hi2";
 
 /* =========================================================
-   HERO IMAGES
+   HERO BACKGROUND VIDEO
+
+   Place your video here:
+   /public/assets/hero/hero-video.mp4
 ========================================================= */
 
-const heroImages = [
-  "/assets/hero/hero-1.jpg",
-  "/assets/hero/hero-2.jpg",
-  "/assets/hero/hero-3.jpg",
-];
+const heroVideo = "/assets/hero/hero-video.mp4";
 
 /* =========================================================
    HERO TEXT
@@ -37,7 +36,6 @@ const heroWords = [
 ========================================================= */
 
 export default function Hero() {
-  const [current, setCurrent] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
 
@@ -88,52 +86,6 @@ export default function Hero() {
     };
   }, []);
 
-  /* =========================================================
-     BACKGROUND SLIDER
-
-     Desktop:
-     7 seconds
-
-     Mobile:
-     10 seconds
-
-     Reduced motion:
-     no slider
-  ========================================================= */
-
-  useEffect(() => {
-    if (reduceMotion) {
-      return;
-    }
-
-    const intervalTime = isMobile
-      ? 10000
-      : 7000;
-
-    const interval = setInterval(() => {
-      setCurrent((prev) => {
-        return (prev + 1) % heroImages.length;
-      });
-    }, intervalTime);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, [isMobile, reduceMotion]);
-
-  /* =========================================================
-     ANIMATION SETTINGS
-  ========================================================= */
-
-  const fadeTransition = reduceMotion
-    ? {
-        duration: 0,
-      }
-    : {
-        duration: isMobile ? 0.5 : 1.2,
-        ease: "easeOut",
-      };
-
   return (
     <section
       id="home"
@@ -145,74 +97,24 @@ export default function Hero() {
       "
     >
       {/* =====================================================
-          BACKGROUND
+          BACKGROUND VIDEO
       ===================================================== */}
 
       <div className="absolute inset-0 bg-[#111116]">
-
-        {/* ===================================================
-            HERO BACKGROUND IMAGE
-
-            IMPORTANT PERFORMANCE CHANGE:
-
-            Mobile:
-            - opacity only
-            - no scale
-            - no expensive transform
-
-            Desktop:
-            - subtle image movement retained
-        =================================================== */}
-
-        <AnimatePresence
-          initial={false}
-          mode="sync"
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          style={{
+            objectPosition: "70% center",
+          }}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
         >
-          <motion.div
-            key={current}
-            className="absolute inset-0"
-            initial={{
-              opacity: 0,
-              scale: isMobile ? 1 : 1.01,
-            }}
-            animate={{
-              opacity: 1,
-              scale:
-                isMobile || reduceMotion
-                  ? 1
-                  : 1.035,
-            }}
-            exit={{
-              opacity: 0,
-              scale: 1.01,
-            }}
-            transition={{
-              opacity: fadeTransition,
-              scale: reduceMotion
-                ? {
-                    duration: 0,
-                  }
-                : {
-                    duration: isMobile
-                      ? 0
-                      : 7,
-                    ease: "easeOut",
-                  },
-            }}
-            style={{
-              backgroundImage: `url(${heroImages[current]})`,
-              backgroundSize: "cover",
-              backgroundPosition: "70% center",
-
-              /*
-               * Helps browser optimize the animated layer.
-               */
-              willChange: reduceMotion
-                ? "auto"
-                : "opacity, transform",
-            }}
-          />
-        </AnimatePresence>
+          <source src={heroVideo} type="video/mp4" />
+        </video>
 
         {/* =====================================================
             LEFT CONTENT PROTECTION
@@ -254,8 +156,6 @@ export default function Hero() {
             DESKTOP PURPLE GLOW
 
             Disabled on mobile.
-
-            Large blur filters are expensive on phones.
         ===================================================== */}
 
         {!isMobile && !reduceMotion && (
@@ -317,8 +217,6 @@ export default function Hero() {
 
         {/* =====================================================
             EDGE VIGNETTE
-
-            Uses gradient instead of large inset shadow.
         ===================================================== */}
 
         <div
