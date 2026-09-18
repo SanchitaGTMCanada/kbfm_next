@@ -1,8 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import {
+  AnimatePresence,
+  motion,
+  useReducedMotion,
+} from "framer-motion";
+import {
+  memo,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 import {
   HiArchiveBox,
@@ -118,95 +128,110 @@ const serviceItems = [
   },
 ];
 
+const EASE = [0.22, 1, 0.36, 1];
+
+const DOTS = Array.from({ length: 25 }, (_, index) => index);
+
 /* ============================================================
-   MAIN SERVICES COMPONENT
+   MAIN SERVICES
 ============================================================ */
 
 export default function Services() {
   const [serviceIndex, setServiceIndex] = useState(0);
-  const [selectedService, setSelectedService] =
-    useState(null);
+  const [selectedService, setSelectedService] = useState(null);
+
+  const reduceMotion = useReducedMotion();
 
   /* ==========================================================
-     OPEN MODAL
+     MODAL
   ========================================================== */
 
-  const openServiceModal = (service) => {
+  const openServiceModal = useCallback((service) => {
     setSelectedService(service);
-  };
+  }, []);
 
-  /* ==========================================================
-     CLOSE MODAL
-  ========================================================== */
-
-  const closeServiceModal = () => {
+  const closeServiceModal = useCallback(() => {
     setSelectedService(null);
-  };
+  }, []);
 
   /* ==========================================================
      BOOK NOW
   ========================================================== */
 
-  const handleBookNow = () => {
+  const handleBookNow = useCallback(() => {
     setSelectedService(null);
 
-    setTimeout(() => {
-      const bookingSection =
-        document.getElementById("booking");
+    requestAnimationFrame(() => {
+      const bookingSection = document.getElementById("booking");
 
-      if (bookingSection) {
-        bookingSection.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
-    }, 120);
-  };
+      if (!bookingSection) return;
+
+      bookingSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  }, []);
 
   /* ==========================================================
-     ESCAPE KEY
+     ESCAPE + BODY SCROLL
   ========================================================== */
 
   useEffect(() => {
+    if (!selectedService) return;
+
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
-        closeServiceModal();
+        setSelectedService(null);
       }
     };
 
-    if (selectedService) {
-      document.body.style.overflow = "hidden";
+    const previousOverflow = document.body.style.overflow;
 
-      window.addEventListener(
-        "keydown",
-        handleKeyDown
-      );
-    }
+    document.body.style.overflow = "hidden";
+
+    window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      document.body.style.overflow = "";
-
-      window.removeEventListener(
-        "keydown",
-        handleKeyDown
-      );
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [selectedService]);
 
   /* ==========================================================
-     VISIBLE CAROUSEL SERVICES
+     VISIBLE SERVICES
   ========================================================== */
 
-  const getVisibleServices = () => {
-    return Array.from(
-      { length: 4 },
-      (_, offset) =>
-        serviceItems[
-          (serviceIndex + offset) %
-            serviceItems.length
-        ]
+  const visibleServices = useMemo(() => {
+    const total = serviceItems.length;
+
+    return [
+      serviceItems[serviceIndex % total],
+      serviceItems[(serviceIndex + 1) % total],
+      serviceItems[(serviceIndex + 2) % total],
+      serviceItems[(serviceIndex + 3) % total],
+    ];
+  }, [serviceIndex]);
+
+  /* ==========================================================
+     CAROUSEL CONTROLS
+  ========================================================== */
+
+  const handlePrevious = useCallback(() => {
+    setServiceIndex((current) =>
+      current === 0 ? serviceItems.length - 1 : current - 1
     );
-  };
+  }, []);
+
+  const handleNext = useCallback(() => {
+    setServiceIndex((current) =>
+      current === serviceItems.length - 1 ? 0 : current + 1
+    );
+  }, []);
+
+  const handleIndicatorClick = useCallback((index) => {
+    setServiceIndex(index);
+  }, []);
 
   return (
     <>
@@ -235,6 +260,7 @@ export default function Services() {
         ================================================= */}
 
         <div
+          aria-hidden="true"
           className="
             pointer-events-none
             absolute
@@ -243,12 +269,12 @@ export default function Services() {
             h-[600px]
             w-[600px]
             rounded-full
-            bg-[#5B2E91]/12
-            blur-[140px]
+            bg-[radial-gradient(circle,rgba(91,46,145,0.13)_0%,rgba(91,46,145,0.05)_35%,transparent_70%)]
           "
         />
 
         <div
+          aria-hidden="true"
           className="
             pointer-events-none
             absolute
@@ -257,12 +283,12 @@ export default function Services() {
             h-[520px]
             w-[520px]
             rounded-full
-            bg-white/80
-            blur-[150px]
+            bg-[radial-gradient(circle,rgba(255,255,255,0.85)_0%,rgba(255,255,255,0.35)_40%,transparent_72%)]
           "
         />
 
         <div
+          aria-hidden="true"
           className="
             pointer-events-none
             absolute
@@ -271,12 +297,12 @@ export default function Services() {
             h-[550px]
             w-[550px]
             rounded-full
-            bg-[#5B2E91]/10
-            blur-[140px]
+            bg-[radial-gradient(circle,rgba(91,46,145,0.11)_0%,rgba(91,46,145,0.04)_38%,transparent_72%)]
           "
         />
 
         <div
+          aria-hidden="true"
           className="
             pointer-events-none
             absolute
@@ -285,8 +311,7 @@ export default function Services() {
             h-[650px]
             w-[650px]
             rounded-full
-            bg-[#5B2E91]/12
-            blur-[150px]
+            bg-[radial-gradient(circle,rgba(91,46,145,0.12)_0%,rgba(91,46,145,0.04)_38%,transparent_72%)]
           "
         />
 
@@ -295,6 +320,7 @@ export default function Services() {
         ================================================= */}
 
         <div
+          aria-hidden="true"
           className="
             pointer-events-none
             absolute
@@ -307,19 +333,17 @@ export default function Services() {
             sm:left-14
           "
         >
-          {Array.from({ length: 25 }).map(
-            (_, index) => (
-              <span
-                key={index}
-                className="
-                  h-1
-                  w-1
-                  rounded-full
-                  bg-[#5B2E91]
-                "
-              />
-            )
-          )}
+          {DOTS.map((dot) => (
+            <span
+              key={`left-${dot}`}
+              className="
+                h-1
+                w-1
+                rounded-full
+                bg-[#5B2E91]
+              "
+            />
+          ))}
         </div>
 
         {/* =================================================
@@ -327,6 +351,7 @@ export default function Services() {
         ================================================= */}
 
         <div
+          aria-hidden="true"
           className="
             pointer-events-none
             absolute
@@ -338,19 +363,17 @@ export default function Services() {
             opacity-15
           "
         >
-          {Array.from({ length: 25 }).map(
-            (_, index) => (
-              <span
-                key={index}
-                className="
-                  h-1
-                  w-1
-                  rounded-full
-                  bg-[#5B2E91]
-                "
-              />
-            )
-          )}
+          {DOTS.map((dot) => (
+            <span
+              key={`right-${dot}`}
+              className="
+                h-1
+                w-1
+                rounded-full
+                bg-[#5B2E91]
+              "
+            />
+          ))}
         </div>
 
         {/* =================================================
@@ -358,9 +381,14 @@ export default function Services() {
         ================================================= */}
 
         <motion.div
-          animate={{
-            rotate: [0, 8, 0],
-          }}
+          initial={false}
+          animate={
+            reduceMotion
+              ? undefined
+              : {
+                  rotate: [0, 8, 0],
+                }
+          }
           transition={{
             duration: 14,
             repeat: Infinity,
@@ -371,11 +399,13 @@ export default function Services() {
             absolute
             -left-24
             top-[18%]
+            hidden
             h-[260px]
             w-[260px]
             rounded-full
             border
             border-[#5B2E91]/15
+            md:block
           "
         />
 
@@ -384,9 +414,14 @@ export default function Services() {
         ================================================= */}
 
         <motion.div
-          animate={{
-            rotate: [0, -8, 0],
-          }}
+          initial={false}
+          animate={
+            reduceMotion
+              ? undefined
+              : {
+                  rotate: [0, -8, 0],
+                }
+          }
           transition={{
             duration: 16,
             repeat: Infinity,
@@ -397,11 +432,13 @@ export default function Services() {
             absolute
             -right-20
             bottom-[15%]
+            hidden
             h-[300px]
             w-[300px]
             rounded-full
             border
             border-[#5B2E91]/15
+            md:block
           "
         />
 
@@ -426,21 +463,29 @@ export default function Services() {
             ================================================= */}
 
             <motion.div
-              initial={{
-                opacity: 0,
-                y: 30,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
+              initial={
+                reduceMotion
+                  ? false
+                  : {
+                      opacity: 0,
+                      y: 20,
+                    }
+              }
+              whileInView={
+                reduceMotion
+                  ? undefined
+                  : {
+                      opacity: 1,
+                      y: 0,
+                    }
+              }
               viewport={{
                 once: true,
-                amount: 0.25,
+                amount: 0.15,
               }}
               transition={{
-                duration: 0.8,
-                ease: [0.22, 1, 0.36, 1],
+                duration: 0.55,
+                ease: EASE,
               }}
               className="
                 mx-auto
@@ -464,17 +509,18 @@ export default function Services() {
                   gap-3
                 "
                 style={{
-                  margin: "20px 0px",
+                  margin: "20px 0",
                 }}
               >
                 <span
-                  style={{
-                    width: "30px",
-                    height: "1px",
-                    borderRadius: "999px",
-                    background: "#642E60",
-                    opacity: 0.35,
-                  }}
+                  aria-hidden="true"
+                  className="
+                    h-px
+                    w-[30px]
+                    rounded-full
+                    bg-[#642E60]
+                    opacity-35
+                  "
                 />
 
                 <span
@@ -490,13 +536,14 @@ export default function Services() {
                 </span>
 
                 <span
-                  style={{
-                    width: "30px",
-                    height: "1px",
-                    borderRadius: "999px",
-                    background: "#642E60",
-                    opacity: 0.35,
-                  }}
+                  aria-hidden="true"
+                  className="
+                    h-px
+                    w-[30px]
+                    rounded-full
+                    bg-[#642E60]
+                    opacity-35
+                  "
                 />
               </div>
 
@@ -514,7 +561,7 @@ export default function Services() {
                   lg:text-[64px]
                 "
                 style={{
-                  margin: "20px 0px",
+                  margin: "20px 0",
                 }}
               >
                 Professional Services,
@@ -538,7 +585,7 @@ export default function Services() {
                   sm:text-[16px]
                 "
                 style={{
-                  margin: "20px 0px",
+                  margin: "20px 0",
                 }}
               >
                 Reliable, compassionate, and
@@ -550,13 +597,16 @@ export default function Services() {
               {/* DIVIDER */}
 
               <div
+                aria-hidden="true"
+                className="
+                  h-[2px]
+                  w-[45px]
+                  rounded-full
+                  bg-[#642E60]
+                  opacity-70
+                "
                 style={{
-                  width: "45px",
-                  height: "2px",
                   margin: "28px auto 0",
-                  borderRadius: "999px",
-                  background: "#642E60",
-                  opacity: 0.7,
                 }}
               />
             </motion.div>
@@ -575,7 +625,7 @@ export default function Services() {
               style={{
                 marginTop: "35px",
                 marginBottom: "30px",
-                padding: "0px 18px",
+                padding: "0 18px",
               }}
             >
               <div className="relative">
@@ -583,13 +633,7 @@ export default function Services() {
 
                 <button
                   type="button"
-                  onClick={() =>
-                    setServiceIndex((prev) =>
-                      prev === 0
-                        ? serviceItems.length - 1
-                        : prev - 1
-                    )
-                  }
+                  onClick={handlePrevious}
                   aria-label="Previous services"
                   className="
                     absolute
@@ -609,15 +653,18 @@ export default function Services() {
                     bg-white
                     text-[#642E60]
                     shadow-[0_8px_25px_rgba(100,46,96,0.10)]
-                    transition-all
-                    duration-300
+                    transition-[background-color,border-color,color,transform]
+                    duration-200
                     hover:border-[#642E60]
                     hover:bg-[#642E60]
                     hover:text-white
                     active:scale-95
                   "
                 >
-                  <span className="text-[22px]">
+                  <span
+                    aria-hidden="true"
+                    className="text-[22px]"
+                  >
                     ←
                   </span>
                 </button>
@@ -626,14 +673,7 @@ export default function Services() {
 
                 <button
                   type="button"
-                  onClick={() =>
-                    setServiceIndex((prev) =>
-                      prev ===
-                      serviceItems.length - 1
-                        ? 0
-                        : prev + 1
-                    )
-                  }
+                  onClick={handleNext}
                   aria-label="Next services"
                   className="
                     absolute
@@ -653,15 +693,18 @@ export default function Services() {
                     bg-white
                     text-[#642E60]
                     shadow-[0_8px_25px_rgba(100,46,96,0.10)]
-                    transition-all
-                    duration-300
+                    transition-[background-color,border-color,color,transform]
+                    duration-200
                     hover:border-[#642E60]
                     hover:bg-[#642E60]
                     hover:text-white
                     active:scale-95
                   "
                 >
-                  <span className="text-[22px]">
+                  <span
+                    aria-hidden="true"
+                    className="text-[22px]"
+                  >
                     →
                   </span>
                 </button>
@@ -677,22 +720,21 @@ export default function Services() {
                 >
                   <motion.div
                     key={serviceIndex}
-                    initial={{
-                      opacity: 0,
-                      x: 30,
-                    }}
+                    initial={
+                      reduceMotion
+                        ? false
+                        : {
+                            opacity: 0,
+                            x: 20,
+                          }
+                    }
                     animate={{
                       opacity: 1,
                       x: 0,
                     }}
                     transition={{
-                      duration: 0.45,
-                      ease: [
-                        0.22,
-                        1,
-                        0.36,
-                        1,
-                      ],
+                      duration: reduceMotion ? 0 : 0.28,
+                      ease: EASE,
                     }}
                     className="
                       grid
@@ -702,15 +744,14 @@ export default function Services() {
                       lg:grid-cols-4
                     "
                   >
-                    {getVisibleServices().map(
+                    {visibleServices.map(
                       (service, index) => (
                         <StairServiceCard
-                          key={`${service.number}-${serviceIndex}`}
+                          key={service.number}
                           service={service}
                           index={index}
-                          onOpen={() =>
-                            openServiceModal(service)
-                          }
+                          onOpen={openServiceModal}
+                          reduceMotion={reduceMotion}
                         />
                       )
                     )}
@@ -719,7 +760,7 @@ export default function Services() {
               </div>
 
               {/* =================================================
-                  CAROUSEL INDICATORS
+                  INDICATORS
               ================================================= */}
 
               <div
@@ -737,16 +778,21 @@ export default function Services() {
                       key={service.number}
                       type="button"
                       onClick={() =>
-                        setServiceIndex(index)
+                        handleIndicatorClick(index)
                       }
                       aria-label={`Go to service ${
                         index + 1
                       }`}
+                      aria-current={
+                        serviceIndex === index
+                          ? "true"
+                          : undefined
+                      }
                       className={`
                         h-2
                         rounded-full
-                        transition-all
-                        duration-300
+                        transition-[width,background-color]
+                        duration-200
                         ${
                           serviceIndex === index
                             ? "w-8 bg-[#642E60]"
@@ -764,19 +810,29 @@ export default function Services() {
             ================================================= */}
 
             <motion.div
-              initial={{
-                opacity: 0,
-                y: 25,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
+              initial={
+                reduceMotion
+                  ? false
+                  : {
+                      opacity: 0,
+                      y: 20,
+                    }
+              }
+              whileInView={
+                reduceMotion
+                  ? undefined
+                  : {
+                      opacity: 1,
+                      y: 0,
+                    }
+              }
               viewport={{
                 once: true,
+                amount: 0.1,
               }}
               transition={{
-                duration: 0.8,
+                duration: 0.55,
+                ease: EASE,
               }}
               className="
                 relative
@@ -786,10 +842,10 @@ export default function Services() {
                 border-[#642E60]/10
                 bg-white/65
                 shadow-[0_20px_60px_rgba(100,46,96,0.07)]
-                backdrop-blur-xl
+                backdrop-blur-[6px]
               "
               style={{
-                margin: "40px 0px",
+                margin: "40px 0",
                 padding: "24px",
               }}
             >
@@ -809,6 +865,7 @@ export default function Services() {
                 />
 
                 <div
+                  aria-hidden="true"
                   className="
                     hidden
                     h-8
@@ -824,6 +881,7 @@ export default function Services() {
                 />
 
                 <div
+                  aria-hidden="true"
                   className="
                     hidden
                     h-8
@@ -839,6 +897,7 @@ export default function Services() {
                 />
 
                 <div
+                  aria-hidden="true"
                   className="
                     hidden
                     h-8
@@ -862,6 +921,7 @@ export default function Services() {
         ================================================= */}
 
         <div
+          aria-hidden="true"
           className="
             pointer-events-none
             absolute
@@ -959,455 +1019,12 @@ export default function Services() {
 
       <AnimatePresence>
         {selectedService && (
-          <motion.div
-            initial={{
-              opacity: 0,
-            }}
-            animate={{
-              opacity: 1,
-            }}
-            exit={{
-              opacity: 0,
-            }}
-            className="
-              fixed
-              inset-0
-              z-[9999999999]
-              flex
-              items-center
-              justify-center
-              bg-[#241B27]/40
-              p-4
-              backdrop-blur-[8px]
-              sm:p-6
-            "
-            onClick={closeServiceModal}
-          >
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: 24,
-                scale: 0.97,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-                scale: 1,
-              }}
-              exit={{
-                opacity: 0,
-                y: 15,
-                scale: 0.98,
-              }}
-              transition={{
-                duration: 0.3,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="
-                relative
-                max-h-[90vh]
-                w-full
-                max-w-[760px]
-                overflow-hidden
-                rounded-[24px]
-                border
-                border-[#D8CCDF]
-                bg-white
-                shadow-[0_30px_90px_rgba(52,28,65,0.28)]
-              "
-              onClick={(event) =>
-                event.stopPropagation()
-              }
-            >
-              {/* =================================================
-                  MODAL HEADER
-              ================================================= */}
-
-              <div
-                className="
-                  relative
-                  overflow-hidden
-                  bg-gradient-to-br
-                  from-[#40213C]
-                  via-[#642E60]
-                  to-[#5B2E91]
-                "
-                style={{
-                  padding:
-                    "28px 24px 26px 24px",
-                }}
-              >
-                {/* BACKGROUND GLOW */}
-
-                <div
-                  className="
-                    pointer-events-none
-                    absolute
-                    -right-20
-                    -top-20
-                    h-48
-                    w-48
-                    rounded-full
-                    bg-white/10
-                    blur-2xl
-                  "
-                />
-
-                <div
-                  className="
-                    pointer-events-none
-                    absolute
-                    -bottom-16
-                    left-[35%]
-                    h-40
-                    w-40
-                    rounded-full
-                    bg-[#C6A15B]/10
-                    blur-3xl
-                  "
-                />
-
-                {/* CLOSE BUTTON */}
-
-                <button
-                  type="button"
-                  onClick={closeServiceModal}
-                  aria-label="Close service details"
-                  className="
-                    absolute
-                    right-4
-                    top-4
-                    z-30
-                    flex
-                    h-11
-                    w-11
-                    items-center
-                    justify-center
-                    rounded-full
-                    border
-                    border-white/25
-                    bg-white/10
-                    text-white
-                    backdrop-blur-md
-                    transition-all
-                    duration-200
-                    hover:border-white/40
-                    hover:bg-white/20
-                    active:scale-95
-                  "
-                >
-                  <HiXMark className="text-[21px]" />
-                </button>
-
-                {/* HEADER CONTENT */}
-
-                <div
-                  className="
-                    relative
-                    z-10
-                    flex
-                    items-start
-                    gap-4
-                    pr-14
-                  "
-                >
-                  {/* ICON */}
-
-                  <div
-                    className="
-                      flex
-                      h-[58px]
-                      w-[58px]
-                      shrink-0
-                      items-center
-                      justify-center
-                      rounded-[17px]
-                      border-[2px]
-                      border-[#C6A15B]
-                      bg-white
-                      text-[#642E60]
-                      shadow-[0_8px_24px_rgba(0,0,0,0.14)]
-                    "
-                  >
-                    {(() => {
-                      const ServiceIcon =
-                        selectedService.icon;
-
-                      return (
-                        <ServiceIcon className="h-7 w-7" />
-                      );
-                    })()}
-                  </div>
-
-                  {/* TEXT */}
-
-               <div className="min-w-0">
-  <p
-    className="
-      !text-[#F1DFAF]
-      text-[9px]
-      font-bold
-      uppercase
-      tracking-[0.24em]
-    "
-  >
-    Professional Service
-  </p>
-
-  <h3
-    className="
-      mt-1.5
-      !text-white
-      text-[24px]
-      font-bold
-      leading-[1.15]
-      tracking-[-0.5px]
-      sm:text-[29px]
-    "
-    style={{
-      color: "#FFFFFF",
-    }}
-  >
-    {selectedService.title}
-  </h3>
-
-  <p
-    className="
-      mt-2.5
-      max-w-[610px]
-      !text-[#F6EFF8]
-      text-[12px]
-      leading-6
-      sm:text-[13px]
-    "
-    style={{
-      color: "#F6EFF8",
-    }}
-  >
-    {selectedService.description}
-  </p>
-</div>
-                </div>
-              </div>
-
-              {/* =================================================
-                  MODAL BODY
-              ================================================= */}
-
-              <div
-                className="
-                  max-h-[48vh]
-                  overflow-y-auto
-                  bg-gradient-to-b
-                  from-white
-                  via-[#FBF8FD]
-                  to-[#F5EFF8]
-                "
-                style={{
-                  padding:
-                    "22px 24px 22px 24px",
-                }}
-              >
-                {/* BODY HEADER */}
-
-                <div
-                  className="
-                    mb-5
-                    flex
-                    items-end
-                    justify-between
-                    gap-4
-                  "
-                >
-                  <div>
-                    <p
-                      className="
-                        text-[9px]
-                        font-bold
-                        uppercase
-                        tracking-[0.22em]
-                        text-[#642E60]
-                      "
-                    >
-                      Available Services
-                    </p>
-
-                    <h4
-                      className="
-                        mt-1
-                        text-[18px]
-                        font-semibold
-                        leading-tight
-                        text-[#3D3040]
-                        sm:text-[20px]
-                      "
-                      style={{marginTop: "4px", marginBottom: "10px"}}
-                    >
-                      Choose the service you need
-                    </h4>
-                  </div>
-
-                  {/* SERVICE COUNT */}
-
-                  <span
-                    className="
-                      shrink-0
-                      whitespace-nowrap
-                      rounded-full
-                      border
-                      border-[#DCCBE4]
-                      bg-[#F4EBF8]
-                      text-[10px]
-                      font-bold
-                      tracking-[0.01em]
-                      text-[#642E60]
-                    "
-                    style={{
-                      padding: "7px 12px",marginBottom:"10px"
-                    }}
-                  >
-                    {selectedService.items.length}{" "}
-                    Services
-                  </span>
-                </div>
-
-                {/* SERVICE LIST */}
-
-                <div
-                  className="
-                    grid
-                    grid-cols-1
-                    gap-2.5
-                    sm:grid-cols-2
-                  "
-                >
-                  {selectedService.items.map(
-                    (service, index) => (
-                      <div
-                        key={service}
-                        className="
-                          group/service-item
-                          flex
-                          items-center
-                          gap-3
-                          rounded-[12px]
-                          border
-                          border-[#E4DAE9]
-                          bg-white
-                          text-[12px]
-                          font-medium
-                          text-[#514557]
-                          shadow-[0_4px_14px_rgba(91,46,145,0.04)]
-                          transition-all
-                          duration-200
-                          hover:border-[#D6C4DF]
-                          hover:bg-[#FBF8FD]
-                          hover:text-[#5B2E91]
-                        "
-                        style={{
-                          padding:
-                            "11px 12px",
-                        }}
-                      >
-                        <span
-                          className="
-                            flex
-                            h-7
-                            w-7
-                            shrink-0
-                            items-center
-                            justify-center
-                            rounded-full
-                            bg-[#642E60]/[0.08]
-                            text-[9px]
-                            font-bold
-                            text-[#642E60]
-                            transition-colors
-                            duration-200
-                            group-hover/service-item:bg-[#642E60]
-                            group-hover/service-item:text-white
-                          "
-                        >
-                          {String(index + 1).padStart(
-                            2,
-                            "0"
-                          )}
-                        </span>
-
-                        <span className="leading-5">
-                          {service}
-                        </span>
-                      </div>
-                    )
-                  )}
-                </div>
-              </div>
-
-              {/* =================================================
-                  MODAL FOOTER
-              ================================================= */}
-
-              <div
-                className="
-                  flex
-                  flex-col
-                  gap-3
-                  border-t
-                  border-[#EAE3EE]
-                  bg-[#FBF9FD]
-                  sm:flex-row
-                  sm:items-center
-                  sm:justify-between
-                "
-                style={{
-                  padding:
-                    "15px 24px 17px 24px",
-                }}
-              >
-                <p
-                  className="
-                    text-[11px]
-                    leading-5
-                    text-[#786D7D]
-                  "
-                >
-                  Ready to get started? Book your
-                  required service with our team.
-                </p>
-
-                <button
-                  type="button"
-                  onClick={handleBookNow}
-                  className="
-                    inline-flex
-                    shrink-0
-                    items-center
-                    justify-center
-                    gap-2
-                    rounded-full
-                    bg-[#642E60]
-                    text-[11px]
-                    font-semibold
-                    text-white
-                    shadow-[0_8px_20px_rgba(100,46,96,0.18)]
-                    transition-all
-                    duration-300
-                    hover:-translate-y-0.5
-                    hover:bg-[#5B2E91]
-                    active:scale-95
-                  "
-                  style={{
-                    padding:
-                      "10px 17px",
-                  }}
-                >
-                  Book Now
-
-                  <HiArrowUpRight className="text-[14px]" />
-                </button>
-              </div>
-            </motion.div>
-          </motion.div>
+          <ServiceModal
+            service={selectedService}
+            onClose={closeServiceModal}
+            onBook={handleBookNow}
+            reduceMotion={reduceMotion}
+          />
         )}
       </AnimatePresence>
     </>
@@ -1418,42 +1035,66 @@ export default function Services() {
    SERVICE CARD
 ============================================================ */
 
-function StairServiceCard({
+const StairServiceCard = memo(function StairServiceCard({
   service,
   index,
   onOpen,
+  reduceMotion,
 }) {
   const Icon = service.icon;
 
+  const handleOpen = useCallback(() => {
+    onOpen(service);
+  }, [onOpen, service]);
+
+  const handleKeyDown = useCallback(
+    (event) => {
+      if (
+        event.key === "Enter" ||
+        event.key === " "
+      ) {
+        event.preventDefault();
+        onOpen(service);
+      }
+    },
+    [onOpen, service]
+  );
+
+  const handleExplore = useCallback(
+    (event) => {
+      event.stopPropagation();
+      onOpen(service);
+    },
+    [onOpen, service]
+  );
+
   return (
     <motion.div
-      initial={{
-        opacity: 0,
-        y: 24,
-      }}
+      initial={
+        reduceMotion
+          ? false
+          : {
+              opacity: 0,
+              y: 18,
+            }
+      }
       whileInView={{
         opacity: 1,
         y: 0,
       }}
       viewport={{
         once: true,
-        amount: 0.15,
+        amount: 0.05,
       }}
       transition={{
-        duration: 0.55,
-        delay: index * 0.07,
-        ease: [0.22, 1, 0.36, 1],
+        duration: reduceMotion ? 0 : 0.3,
+        delay: reduceMotion
+          ? 0
+          : Math.min(index * 0.04, 0.12),
+        ease: EASE,
       }}
-      onClick={onOpen}
-      onKeyDown={(event) => {
-        if (
-          event.key === "Enter" ||
-          event.key === " "
-        ) {
-          event.preventDefault();
-          onOpen();
-        }
-      }}
+      onClick={handleOpen}
+      onKeyDown={handleKeyDown}
       role="button"
       tabIndex={0}
       className="
@@ -1470,8 +1111,8 @@ function StairServiceCard({
         bg-white
         text-left
         shadow-[0_12px_35px_rgba(100,46,96,0.10)]
-        transition-all
-        duration-500
+        transition-[transform,border-color,box-shadow]
+        duration-200
         hover:-translate-y-2
         hover:border-[#642E60]/30
         hover:shadow-[0_22px_50px_rgba(100,46,96,0.16)]
@@ -1512,13 +1153,14 @@ function StairServiceCard({
             className="
               object-cover
               transition-transform
-              duration-700
+              duration-500
               ease-out
               group-hover:scale-105
             "
           />
 
           <div
+            aria-hidden="true"
             className="
               absolute
               inset-0
@@ -1530,6 +1172,7 @@ function StairServiceCard({
           />
 
           <div
+            aria-hidden="true"
             className="
               absolute
               bottom-0
@@ -1590,8 +1233,8 @@ function StairServiceCard({
             bg-white
             text-[#642E60]
             shadow-[0_8px_24px_rgba(100,46,96,0.15)]
-            transition-all
-            duration-300
+            transition-transform
+            duration-200
             group-hover:scale-110
             group-hover:rotate-2
           "
@@ -1621,11 +1264,11 @@ function StairServiceCard({
           to-[#F6EFFC]
         "
         style={{
-          padding:
-            "34px 24px 22px",
+          padding: "34px 24px 22px",
         }}
       >
         <div
+          aria-hidden="true"
           className="
             pointer-events-none
             absolute
@@ -1657,8 +1300,8 @@ function StairServiceCard({
               h-[3px]
               rounded-full
               bg-[#642E60]
-              transition-all
-              duration-500
+              transition-[width]
+              duration-200
               group-hover:w-14
             "
             style={{
@@ -1692,7 +1335,7 @@ function StairServiceCard({
             tracking-[-0.01em]
             text-[#642E60]
             transition-colors
-            duration-300
+            duration-200
             group-hover:text-[#5B2E91]
           "
         >
@@ -1704,8 +1347,7 @@ function StairServiceCard({
         <div
           style={{
             marginTop: "12px",
-            padding:
-              "4px 6px",
+            padding: "4px 6px",
             minHeight: "78px",
           }}
         >
@@ -1745,12 +1387,7 @@ function StairServiceCard({
             paddingTop: "12px",
           }}
         >
-          <div
-            className="
-              flex
-              items-center
-            "
-          >
+          <div className="flex items-center">
             <span
               className="
                 flex
@@ -1786,10 +1423,7 @@ function StairServiceCard({
 
           <button
             type="button"
-            onClick={(event) => {
-              event.stopPropagation();
-              onOpen();
-            }}
+            onClick={handleExplore}
             className="
               group/explore
               flex
@@ -1804,26 +1438,26 @@ function StairServiceCard({
               tracking-[0.12em]
               text-[#642E60]
               shadow-[0_4px_12px_rgba(100,46,96,0.05)]
-              transition-all
-              duration-300
+              transition-[background-color,border-color,color]
+              duration-200
               hover:border-[#642E60]
               hover:bg-[#642E60]
               hover:text-white
             "
             style={{
               gap: "7px",
-              padding:
-                "6px 11px",
+              padding: "6px 11px",
             }}
           >
             View Services
 
             <HiArrowUpRight
+              aria-hidden="true"
               className="
                 text-[13px]
                 text-[#642E60]
-                transition-all
-                duration-300
+                transition-[transform,color]
+                duration-200
                 group-hover/explore:translate-x-1
                 group-hover/explore:text-white
               "
@@ -1834,6 +1468,7 @@ function StairServiceCard({
         {/* ACCENT */}
 
         <div
+          aria-hidden="true"
           className="
             pointer-events-none
             absolute
@@ -1847,13 +1482,507 @@ function StairServiceCard({
       </div>
     </motion.div>
   );
-}
+});
+
+/* ============================================================
+   SERVICE MODAL
+============================================================ */
+
+const ServiceModal = memo(function ServiceModal({
+  service,
+  onClose,
+  onBook,
+  reduceMotion,
+}) {
+  const ServiceIcon = service.icon;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{
+        duration: reduceMotion ? 0 : 0.18,
+        ease: "easeOut",
+      }}
+      className="
+        fixed
+        inset-0
+        z-[9999999999]
+        flex
+        items-center
+        justify-center
+        p-3
+        sm:p-5
+      "
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="service-modal-title"
+      onClick={onClose}
+    >
+      {/* =====================================================
+          BACKDROP
+          This is deliberately a separate layer.
+          It cannot darken the modal content.
+      ===================================================== */}
+
+      <div
+        aria-hidden="true"
+        className="
+          absolute
+          inset-0
+          z-0
+          bg-[#241B27]/65
+        "
+      />
+
+      {/* =====================================================
+          MODAL
+      ===================================================== */}
+
+      <motion.div
+        initial={
+          reduceMotion
+            ? false
+            : {
+                opacity: 0,
+                y: 14,
+                scale: 0.985,
+              }
+        }
+        animate={{
+          opacity: 1,
+          y: 0,
+          scale: 1,
+        }}
+        exit={
+          reduceMotion
+            ? undefined
+            : {
+                opacity: 0,
+                y: 8,
+                scale: 0.99,
+              }
+        }
+        transition={{
+          duration: reduceMotion ? 0 : 0.22,
+          ease: EASE,
+        }}
+        className="
+          relative
+          z-10
+          flex
+          w-full
+          max-w-[760px]
+          max-h-[calc(100dvh-24px)]
+          flex-col
+          overflow-hidden
+          rounded-[24px]
+          border
+          border-[#D8CCDF]
+          bg-white
+          shadow-[0_30px_90px_rgba(52,28,65,0.28)]
+          sm:max-h-[calc(100dvh-40px)]
+          sm:rounded-[28px]
+        "
+        onClick={(event) => event.stopPropagation()}
+      >
+        {/* =================================================
+            MODAL HEADER
+        ================================================= */}
+
+        <div
+          className="
+            relative
+            shrink-0
+            overflow-hidden
+            bg-gradient-to-br
+            from-[#40213C]
+            via-[#642E60]
+            to-[#5B2E91]
+          "
+          style={{
+            padding: "28px 24px 26px",
+          }}
+        >
+          {/* LIGHT GLOW */}
+
+          <div
+            aria-hidden="true"
+            className="
+              pointer-events-none
+              absolute
+              -right-20
+              -top-20
+              h-48
+              w-48
+              rounded-full
+              bg-white/10
+            "
+          />
+
+          <div
+            aria-hidden="true"
+            className="
+              pointer-events-none
+              absolute
+              -bottom-16
+              left-[35%]
+              h-40
+              w-40
+              rounded-full
+              bg-white/10
+            "
+          />
+
+          {/* CLOSE */}
+
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close service details"
+            className="
+              absolute
+              right-4
+              top-4
+              z-30
+              flex
+              h-11
+              w-11
+              shrink-0
+              items-center
+              justify-center
+              rounded-full
+              border
+              border-white/30
+              bg-white/10
+              text-white
+              transition-[background-color,border-color,transform]
+              duration-150
+              hover:border-white/50
+              hover:bg-white/20
+              active:scale-95
+            "
+          >
+            <HiXMark
+              aria-hidden="true"
+              className="text-[21px]"
+            />
+          </button>
+
+          {/* HEADER CONTENT */}
+
+          <div
+            className="
+              relative
+              z-10
+              flex
+              items-start
+              gap-4
+              pr-14
+              sm:gap-5
+              sm:pr-16
+            "
+          >
+            {/* ICON */}
+
+            <div
+              className="
+                flex
+                h-[58px]
+                w-[58px]
+                shrink-0
+                items-center
+                justify-center
+                rounded-[17px]
+                border-[2px]
+                border-[#C6A15B]
+                bg-white
+                text-[#642E60]
+                shadow-[0_8px_24px_rgba(0,0,0,0.14)]
+                sm:h-[64px]
+                sm:w-[64px]
+                sm:rounded-[19px]
+              "
+            >
+              <ServiceIcon className="h-7 w-7 sm:h-8 sm:w-8" />
+            </div>
+
+            {/* TEXT */}
+
+            <div className="min-w-0 flex-1">
+              <p
+                className="
+                  text-[9px]
+                  font-bold
+                  uppercase
+                  tracking-[0.24em]
+                  text-[#F1DFAF]
+                "
+                style={{color:"#e7e3fe"}}
+              >
+                Professional Service
+              </p>
+
+              <h3
+                id="service-modal-title"
+                className="
+                  mt-1.5
+                  text-[24px]
+                  font-bold
+                  leading-[1.15]
+                  tracking-[-0.5px]
+                  
+                  sm:text-[29px]
+                "
+                style={{color:"#e2ccff"}}
+              >
+                {service.title}
+              </h3>
+
+              <p
+                className="
+                  mt-2.5
+                  max-w-[610px]
+                  text-[12px]
+                  leading-6
+                  text-white
+                  sm:text-[13px]
+                "
+                style={{color:"#dddcea"}}
+              >
+                {service.description}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* =================================================
+            MODAL BODY
+        ================================================= */}
+
+        <div
+          className="
+            min-h-0
+            flex-1
+            overflow-y-auto
+            overscroll-contain
+            bg-gradient-to-b
+            from-white
+            via-[#FBF8FD]
+            to-[#F5EFF8]
+          "
+          style={{
+            padding: "22px 24px",
+            WebkitOverflowScrolling: "touch",
+          }}
+        >
+          {/* BODY HEADER */}
+
+          <div
+            className="
+              mb-5
+              flex
+              items-end
+              justify-between
+              gap-4
+            "
+          >
+            <div className="min-w-0">
+              <p
+                className="
+                  text-[9px]
+                  font-bold
+                  uppercase
+                  tracking-[0.22em]
+                  text-[#642E60]
+                "
+              >
+                Available Services
+              </p>
+
+              <h4
+                className="
+                  mt-1
+                  text-[18px]
+                  font-semibold
+                  leading-tight
+                  text-[#3D3040]
+                  sm:text-[20px]
+                "
+                style={{
+                  marginTop: "4px",
+                  marginBottom: "10px",
+                }}
+              >
+                Choose the service you need
+              </h4>
+            </div>
+
+            <span
+              className="
+                shrink-0
+                whitespace-nowrap
+                rounded-full
+                border
+                border-[#DCCBE4]
+                bg-[#F4EBF8]
+                text-[10px]
+                font-bold
+                tracking-[0.01em]
+                text-[#642E60]
+              "
+              style={{
+                padding: "7px 12px",
+                marginBottom: "10px",
+              }}
+            >
+              {service.items.length} Services
+            </span>
+          </div>
+
+          {/* SERVICE LIST */}
+
+          <div
+            className="
+              grid
+              grid-cols-1
+              gap-2.5
+              sm:grid-cols-2
+            "
+          >
+            {service.items.map((serviceName, index) => (
+              <div
+                key={`${service.number}-${serviceName}`}
+                className="
+                  group/service-item
+                  flex
+                  items-center
+                  gap-3
+                  rounded-[12px]
+                  border
+                  border-[#E4DAE9]
+                  bg-white
+                  text-[12px]
+                  font-medium
+                  text-[#514557]
+                  shadow-[0_4px_14px_rgba(91,46,145,0.04)]
+                  transition-[background-color,border-color,color]
+                  duration-150
+                  hover:border-[#D6C4DF]
+                  hover:bg-[#FBF8FD]
+                  hover:text-[#5B2E91]
+                "
+                style={{
+                  padding: "11px 12px",
+                }}
+              >
+                <span
+                  className="
+                    flex
+                    h-7
+                    w-7
+                    shrink-0
+                    items-center
+                    justify-center
+                    rounded-full
+                    bg-[#642E60]/[0.08]
+                    text-[9px]
+                    font-bold
+                    text-[#642E60]
+                    transition-[background-color,color]
+                    duration-150
+                    group-hover/service-item:bg-[#642E60]
+                    group-hover/service-item:text-white
+                  "
+                >
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+
+                <span className="leading-5">
+                  {serviceName}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* =================================================
+            FOOTER
+        ================================================= */}
+
+        <div
+          className="
+            flex
+            shrink-0
+            flex-col
+            gap-3
+            border-t
+            border-[#EAE3EE]
+            bg-[#FBF9FD]
+            sm:flex-row
+            sm:items-center
+            sm:justify-between
+          "
+          style={{
+            padding: "15px 24px 17px",
+          }}
+        >
+          <p
+            className="
+              text-[11px]
+              leading-5
+              text-[#786D7D]
+            "
+          >
+            Ready to get started? Book your
+            required service with our team.
+          </p>
+
+          <button
+            type="button"
+            onClick={onBook}
+            className="
+              inline-flex
+              min-h-[40px]
+              shrink-0
+              items-center
+              justify-center
+              gap-2
+              rounded-full
+              bg-[#642E60]
+              text-[11px]
+              font-semibold
+              text-white
+              shadow-[0_8px_20px_rgba(100,46,96,0.18)]
+              transition-[background-color,transform]
+              duration-150
+              hover:-translate-y-0.5
+              hover:bg-[#5B2E91]
+              active:scale-95
+            "
+            style={{
+              padding: "10px 17px",
+            }}
+          >
+            Book Now
+
+            <HiArrowUpRight
+              aria-hidden="true"
+              className="text-[14px]"
+            />
+          </button>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+});
 
 /* ============================================================
    TRUST POINT
 ============================================================ */
 
-function TrustPoint({
+const TrustPoint = memo(function TrustPoint({
   icon: Icon,
   text,
 }) {
@@ -1866,6 +1995,7 @@ function TrustPoint({
       "
     >
       <Icon
+        aria-hidden="true"
         className="
           text-[20px]
           text-[#642E60]
@@ -1883,4 +2013,4 @@ function TrustPoint({
       </span>
     </div>
   );
-}
+});
