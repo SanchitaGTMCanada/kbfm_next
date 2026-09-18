@@ -1,3 +1,4 @@
+
 import "./globals.css";
 import Header from "@/components/layout/Header/Header";
 import ScamAlertPopup from "@/components/ScamAlertPopup";
@@ -5,33 +6,17 @@ import ScamAlertPopup from "@/components/ScamAlertPopup";
 export const metadata = {
   metadataBase: new URL("https://kbfmgroup.ca/"),
 
-  title: {
-    default: "K.B.F.M. Group of Companies Professional Services Ltd. | Serving the North",
-    template: "%s | K.B.F.M. Global Services",
-  },
+  title: "Security & Facility Services | K.B.F.M. Global",
 
   description:
-    "K.B.F.M. Group of Companies Professional Services Ltd. provides dependable security, caregiving, cleaning, janitorial, and facility support services throughout the Northwest Territories.",
+    "K.B.F.M. Global Services provides dependable security, caregiving, cleaning, janitorial, and facility maintenance services throughout the Northwest Territories.",
 
   keywords: [
-    "K.B.F.M. Global Services",
-    "KBFM Global Services",
     "Security Services",
-    "Private Security Services",
     "Caregiving Services",
-    "Personal Support",
     "Cleaning Services",
     "Janitorial Services",
     "Facility Maintenance",
-    "Facility Support",
-    "Staffing Solutions",
-    "Northern Services",
-    "Northwest Territories",
-    "Yellowknife Services",
-    "Security Services Yellowknife",
-    "Cleaning Services Yellowknife",
-    "Caregiving Services Yellowknife",
-    "Facility Maintenance Yellowknife",
   ],
 
   authors: [
@@ -62,14 +47,14 @@ export const metadata = {
   },
 
   openGraph: {
-    title: "K.B.F.M. Group of Companies Professional Services Ltd.",
+    title: "Security & Facility Services | K.B.F.M. Global",
 
     description:
-      "Reliable security, caregiving, cleaning, janitorial, and facility support services delivered throughout the Northwest Territories.",
+      "Reliable security, caregiving, cleaning, janitorial, and facility maintenance services throughout the Northwest Territories.",
 
     url: "https://kbfmgroup.ca/",
 
-    siteName: "K.B.F.M. Group of Companies Professional Services Ltd.",
+    siteName: "K.B.F.M. Global Services",
 
     locale: "en_CA",
 
@@ -80,7 +65,7 @@ export const metadata = {
         url: "/seo/kbfm-og-image-v2.png",
         width: 1200,
         height: 630,
-        alt: "K.B.F.M. Group of Companies Professional Services Ltd.",
+        alt: "K.B.F.M. Global Services",
       },
     ],
   },
@@ -88,10 +73,10 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
 
-    title: "K.B.F.M. Group of Companies Professional Services Ltd.",
+    title: "Security & Facility Services | K.B.F.M. Global",
 
     description:
-      "Reliable security, caregiving, cleaning, janitorial, and facility support services throughout the Northwest Territories.",
+      "Reliable security, caregiving, cleaning, janitorial, and facility maintenance services throughout the Northwest Territories.",
 
     images: ["/seo/kbfm-og-image-v2.png"],
   },
@@ -124,3 +109,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
