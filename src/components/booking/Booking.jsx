@@ -611,7 +611,7 @@ export default function Booking() {
               <p
                 className="
                   mx-auto
-                  max-w-[700px]
+                 
                   text-[13px]
                   leading-6
                   sm:text-[15px]

@@ -108,7 +108,7 @@ export async function POST(request) {
     // Send booking email
     // -----------------------------------
     await transporter.sendMail({
-      from: `"AC Plumbing Website" <${EMAIL_USER}>`,
+      from: `"K. B. F. M. Group of Companies" <${EMAIL_USER}>`,
 
       to: EMAIL_TO,
 
@@ -180,7 +180,7 @@ export async function POST(request) {
                       color: #e5e7eb;
                     "
                   >
-                    AC Plumbing Website
+                    K. B. F. M. Group of Companies
                   </p>
 
                 </div>
@@ -373,7 +373,7 @@ export async function POST(request) {
                     font-size: 12px;
                   "
                 >
-                  This booking request was submitted through the AC Plumbing website.
+                  This booking request was submitted through the K. B. F. M. Group of Companies.
                 </div>
 
               </div>

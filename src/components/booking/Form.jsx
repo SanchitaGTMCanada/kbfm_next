@@ -14,7 +14,7 @@ import {
 
 import Swal from "sweetalert2";
 
-import services from "./services";
+
 import Field from "./Field";
 import SubmitButton from "./SubmitButton";
 
@@ -30,54 +30,20 @@ const initialForm = {
 };
 
 const subServices = [
-  // Private Security Services
-  "Mobile Patrol",
-  "Event Security Guards",
-  "Executive Protection",
-  "Gatehouse Concierge",
-  "Surveillance Operations",
-  "Retail Security",
-  "Construction Security",
+  "Private Security Services",
 
-  // Cleaning & Janitorial Services
-  "Offices & Residential",
-  "Carpet & Window Cleaning",
-  "Auto Detailing",
-  "Deep Cleaning",
-  "Move In & Move Out",
-  "Restaurant & Kitchen",
-  "Garage & Basement",
-  "Outdoor & Exterior",
-  "Schools, Churches & Day Care",
-  "Snow Removal",
-  "Floor Waxing & Polishing",
-  "Facility Maintenance",
-  "Junk Removal",
-  "Duct & Vent Cleaning",
 
-  // Private Healthcare Services
-  "Caregiver",
-  "Personal Support Worker",
-  "Companionship",
-  "Special Child & Adult Care",
-  "Nanny & Child Care",
-  "Errand Helper",
+  "Cleaning & Janitorial Services",
 
-  // Remote Camp Services
-  "Camp Housekeeping",
-  "Kitchen Helper",
-  "Dishwasher",
-  "Dining Attendant",
-  "Sandwich Maker",
-  "Camp Janitorial",
 
-  // General Labour Services
-  "General Labourer",
-  "Construction Worker",
-  "Retail Space",
-  "Store Restocking",
-  "Housekeeping",
-  "Warehouse Support",
+  "Private Healthcare Services",
+ 
+
+  "Remote Camp Services ",
+
+
+  "General Labour Services"
+
 ];
 
 const timeSlots = [
@@ -226,10 +192,10 @@ async function handleSubmit(e) {
     // Success SweetAlert
     await Swal.fire({
       icon: "success",
-      title: "Booking Submitted",
+      title: "Thank You for Booking with Us!",
       text:
         result.message ||
-        "Booking request submitted successfully!",
+        "Our team will contact you shortly",
       confirmButtonColor: "#5B2E91",
       iconColor: "#5B2E91",
       confirmButtonText: "OK",
@@ -338,22 +304,14 @@ async function handleSubmit(e) {
   className={selectClass}
   style={{
     paddingLeft: "72px",
+    color: form.service === "" ? "grey" : "#000",
   }}
 >
-  <option value="">
+  <option value="" disabled>
     Choose a Service
   </option>
 
-  {/* EXISTING SERVICES */}
 
-  {services.map((item) => (
-    <option
-      key={`existing-${item.id}`}
-      value={item.name}
-    >
-      {item.name}
-    </option>
-  ))}
 
   {/* ALL SUB SERVICES */}
 
@@ -370,52 +328,62 @@ async function handleSubmit(e) {
 
         {/* Preferred Date */}
 
-        <Field
-          label="Preferred Date *"
-          icon={HiCalendarDays}
-          error={errors.date}
-        >
-          <input
-            type="date"
-            name="date"
-            min={new Date().toISOString().split("T")[0]}
-            value={form.date}
-            onChange={handleChange}
-            className={inputClass}
-             style={{
-    paddingLeft: "72px",paddingRight: "12px"
-  }}
-          />
-        </Field>
+      {/* Preferred Date */}
 
-        {/* Preferred Time */}
+<Field
+  label="Preferred Date *"
+  icon={HiCalendarDays}
+  error={errors.date}
+>
+  <input
+    type="date"
+    name="date"
+    min={new Date().toISOString().split("T")[0]}
+    value={form.date}
+    onChange={handleChange}
+    className={inputClass}
+    style={{
+      paddingLeft: "72px",
+      paddingRight: "12px",
+      color: form.date ? "#000" : "grey",
+    }}
+  />
+</Field>
 
-        <Field
-          label="Preferred Time *"
-          icon={HiClock}
-          error={errors.time}
-        >
-          <select
-            name="time"
-            value={form.time}
-            onChange={handleChange}
-            className={selectClass}
-             style={{
-    paddingLeft: "72px",
-  }}
-          >
-            <option value="">Select Time</option>
+{/* Preferred Time */}
 
-            {timeSlots.map((slot) => (
-              <option
-                key={slot}
-                value={slot}
-              >
-                {slot}
-              </option>
-            ))}
-          </select>
-        </Field>
+<Field
+  label="Preferred Time *"
+  icon={HiClock}
+  error={errors.time}
+>
+  <select
+    name="time"
+    value={form.time}
+    onChange={handleChange}
+    className={selectClass}
+    style={{
+      paddingLeft: "72px",
+      color: form.time ? "#000" : "grey",
+    }}
+  >
+    <option value="" disabled>
+      Select Time
+    </option>
+
+    {timeSlots.map((slot) => (
+      <option
+        key={slot}
+        value={slot}
+        style={{
+          color: "#000",
+        }}
+      >
+        {slot}
+      </option>
+    ))}
+  </select>
+</Field>
 
         {/* Address */}
 

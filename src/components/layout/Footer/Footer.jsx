@@ -967,7 +967,7 @@ export default function Footer() {
                       >
                         K.B.F.M. Group of Companies Professional Services Ltd.
                         <br />
-                        Unit 9, 5010 49th Street
+                        Unit 9, 5010 49th Street , Ground floor,center square Mall
                         <br />
                         Yellowknife, Northwest Territories
                         <br />

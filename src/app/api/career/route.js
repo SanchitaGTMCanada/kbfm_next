@@ -95,7 +95,7 @@ export async function POST(request) {
     // Send career application email
     // -----------------------------
     await transporter.sendMail({
-      from: `"AC Plumbing Website" <${process.env.EMAIL_USER}>`,
+      from: `"K. B. F. M. Group of Companies" <${process.env.EMAIL_USER}>`,
 
       // All career applications go here
       to: process.env.EMAIL_TO,
