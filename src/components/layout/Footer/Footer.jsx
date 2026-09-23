@@ -62,6 +62,11 @@ const services = [
     title: "Janitorial & Facility Maintenance",
     href: "#services",
   },
+
+  {
+    title : "Remote Camp Services",
+    href: "#services",
+  }
 ];
 
 /* =========================================================
