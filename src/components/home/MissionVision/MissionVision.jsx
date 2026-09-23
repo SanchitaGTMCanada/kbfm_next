@@ -304,7 +304,7 @@ export default function MissionVision() {
               color: "#40205F",
               fontSize: "clamp(38px, 5vw, 64px)",
               lineHeight: "1.05",
-              fontWeight: 800,
+              fontWeight: 600,
               letterSpacing: "-0.045em",
             }}
           >
@@ -320,7 +320,7 @@ export default function MissionVision() {
               WebkitTextFillColor: "transparent",
               fontSize: "clamp(38px, 5vw, 64px)",
               lineHeight: "1.05",
-              fontWeight: 800,
+              fontWeight: 600,
               letterSpacing: "-0.045em",
             }}
           >
