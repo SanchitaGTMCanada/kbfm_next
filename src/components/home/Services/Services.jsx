@@ -463,155 +463,153 @@ export default function Services() {
                 SECTION HEADER
             ================================================= */}
 
-            <motion.div
-              initial={
-                reduceMotion
-                  ? false
-                  : {
-                      opacity: 0,
-                      y: 20,
-                    }
-              }
-              whileInView={
-                reduceMotion
-                  ? undefined
-                  : {
-                      opacity: 1,
-                      y: 0,
-                    }
-              }
-              viewport={{
-                once: true,
-                amount: 0.15,
-              }}
-              transition={{
-                duration: 0.55,
-                ease: EASE,
-              }}
-              className="
-                mx-auto
-                flex
-                w-full
-                flex-col
-                items-center
-                text-center
-              "
-              style={{
-                padding: "20px",
-                 opacity: 1
-              }}
-            >
-              {/* EYEBROW */}
+          <motion.div
+  initial={
+    reduceMotion
+      ? false
+      : {
+          y: 20,
+        }
+  }
+  whileInView={
+    reduceMotion
+      ? undefined
+      : {
+          y: 0,
+        }
+  }
+  viewport={{
+    once: true,
+    amount: 0.15,
+  }}
+  transition={{
+    duration: 0.55,
+    ease: EASE,
+  }}
+  className="
+    mx-auto
+    flex
+    w-full
+    flex-col
+    items-center
+    text-center
+  "
+  style={{
+    padding: "20px",
+    opacity: 1,
+  }}
+>
+  {/* EYEBROW */}
 
-              <div
-                className="
-                  flex
-                  items-center
-                  justify-center
-                  gap-3
-                "
-                style={{
-                  margin: "20px 0",
-                }}
-              >
-                <span
-                  aria-hidden="true"
-                  className="
-                    h-px
-                    w-[30px]
-                    rounded-full
-                    bg-[#642E60]
-                    opacity-35
-                  "
-                />
+  <div
+    className="
+      flex
+      items-center
+      justify-center
+      gap-3
+    "
+    style={{
+      margin: "20px 0",
+    }}
+  >
+    <span
+      aria-hidden="true"
+      className="
+        h-px
+        w-[30px]
+        rounded-full
+        bg-[#642E60]
+        opacity-35
+      "
+    />
 
-                <span
-                  className="
-                    text-[11px]
-                    font-bold
-                    uppercase
-                    tracking-[0.28em]
-                    text-[#642E60]
-                  "
-                >
-                  Our Services
-                </span>
+    <span
+      className="
+        text-[11px]
+        font-bold
+        uppercase
+        tracking-[0.28em]
+        text-[#642E60]
+      "
+    >
+      Our Services
+    </span>
 
-                <span
-                  aria-hidden="true"
-                  className="
-                    h-px
-                    w-[30px]
-                    rounded-full
-                    bg-[#642E60]
-                    opacity-35
-                  "
-                />
-              </div>
+    <span
+      aria-hidden="true"
+      className="
+        h-px
+        w-[30px]
+        rounded-full
+        bg-[#642E60]
+        opacity-35
+      "
+    />
+  </div>
 
-              {/* TITLE */}
+  {/* TITLE */}
 
-              <h2
-                className="
-                  text-[40px]
-                  font-semibold
-                  leading-[1.05]
-                  tracking-[-1.5px]
-                  text-[#642E60]
-                  sm:text-[50px]
-                  md:text-[58px]
-                  lg:text-[64px]
-                "
-                style={{
-                  margin: "20px 0",
-                }}
-              >
-                Professional Services,
-                <span className="block">
-                  Delivered with{" "}
-                  <span className="text-[#5B2E91]">
-                    Care
-                  </span>
-                </span>
-              </h2>
+  <h2
+    className="
+      text-[40px]
+      font-semibold
+      leading-[1.05]
+      tracking-[-1.5px]
+      text-[#642E60]
+      sm:text-[50px]
+      md:text-[58px]
+      lg:text-[64px]
+    "
+    style={{
+      margin: "20px 0",
+    }}
+  >
+    Professional Services,
+    <span className="block">
+      Delivered with{" "}
+      <span className="text-[#5B2E91]">
+        Care
+      </span>
+    </span>
+  </h2>
 
-              {/* DESCRIPTION */}
+  {/* DESCRIPTION */}
 
-              <p
-                className="
-                  mx-auto
-                  max-w-2xl
-                  text-[15px]
-                  leading-7
-                  text-[#6F6873]
-                  sm:text-[16px]
-                "
-                style={{
-                  margin: "20px 0",
-                }}
-              >
-                Reliable, compassionate, and
-                high-quality services designed to
-                meet the needs of Northern
-                communities.
-              </p>
+  <p
+    className="
+      mx-auto
+      max-w-2xl
+      text-[15px]
+      leading-7
+      text-[#6F6873]
+      sm:text-[16px]
+    "
+    style={{
+      margin: "20px 0",
+    }}
+  >
+    Reliable, compassionate, and
+    high-quality services designed to
+    meet the needs of Northern
+    communities.
+  </p>
 
-              {/* DIVIDER */}
+  {/* DIVIDER */}
 
-              <div
-                aria-hidden="true"
-                className="
-                  h-[2px]
-                  w-[45px]
-                  rounded-full
-                  bg-[#642E60]
-                  opacity-70
-                "
-                style={{
-                  margin: "28px auto 0",
-                }}
-              />
-            </motion.div>
+  <div
+    aria-hidden="true"
+    className="
+      h-[2px]
+      w-[45px]
+      rounded-full
+      bg-[#642E60]
+      opacity-70
+    "
+    style={{
+      margin: "28px auto 0",
+    }}
+  />
+</motion.div>
 
             {/* =================================================
                 SERVICES CAROUSEL
