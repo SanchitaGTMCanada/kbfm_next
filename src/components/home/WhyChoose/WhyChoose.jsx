@@ -472,6 +472,7 @@ export default function WhyChoose() {
           w-[90%]
           mx-auto
           justify-center
+          max-w-[1500px]
         "
         style={{
           margin: "40px 0px 40px 0px",

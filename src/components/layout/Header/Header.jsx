@@ -589,6 +589,7 @@ const serviceCategories = [
             w-[90%]
             mx-auto
             justify-center
+            max-w-[1500px]
           "
         >
           {/* =====================================================

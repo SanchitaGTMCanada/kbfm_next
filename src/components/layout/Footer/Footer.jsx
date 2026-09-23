@@ -12,7 +12,11 @@ import {
   HiOutlineSparkles,
 } from "react-icons/hi2";
 
-import { FaLinkedinIn } from "react-icons/fa";
+import {
+ 
+  FaInstagram,
+  FaFacebookF,
+} from "react-icons/fa";
 
 /* =========================================================
    NAVIGATION
@@ -317,6 +321,7 @@ export default function Footer() {
           w-[90%]
           mx-auto
           justify-center
+          max-w-[1500px]
         "
         style={{
           margin: "40px 0px 40px 0px",
@@ -728,63 +733,117 @@ export default function Footer() {
 
                 {/* Heading */}
 
-                <div
-                  className="
-                    relative
-                    z-10
-                    mb-7
-                    flex
-                    items-center
-                    gap-3
-                  "
-                  style={{
-                    marginBottom: "15px",
-                  }}
-                >
-                  <div
-                    className="
-                      flex
-                      h-10
-                      w-10
-                      items-center
-                      justify-center
-                      rounded-xl
-                      bg-[#642E60]
-                      text-white
-                    "
-                  >
-                    <HiOutlineHeart className="text-[20px]" />
-                  </div>
+                <div className="flex flex-row items-center justify-between gap-4">
+  {/* Contact Header */}
+  <div
+    className="
+      relative
+      z-10
+      flex
+      flex-row
+      items-center
+      gap-3
+    "
+    style={{
+      marginBottom: "15px",
+    }}
+  >
+    <div
+      className="
+        flex
+        h-10
+        w-10
+        shrink-0
+        items-center
+        justify-center
+        rounded-xl
+        bg-[#642E60]
+        text-white
+      "
+    >
+      <HiOutlineHeart className="text-[20px]" />
+    </div>
 
-                  <div>
-                    <span
-                      className="
-                        block
-                        text-[10px]
-                        font-bold
-                        uppercase
-                        tracking-[0.2em]
-                        text-[#E3D7EF]
-                      "
-                    >
-                      Get In Touch
-                    </span>
+    <div>
+      <span
+        className="
+          block
+          text-[10px]
+          font-bold
+          uppercase
+          tracking-[0.2em]
+          text-[#E3D7EF]
+        "
+      >
+        Get In Touch
+      </span>
 
-                    <h3
-                      className="
-                        mt-1
-                        text-[20px]
-                        font-semibold
-                        text-white
-                      "
-                      style={{
-                        color: "white",
-                      }}
-                    >
-                      Contact Us
-                    </h3>
-                  </div>
-                </div>
+      <h3
+        className="
+          mt-1
+          text-[20px]
+          font-semibold
+          text-white
+        "
+        style={{color:"white", letterSpacing:"2px"}}
+      >
+        Contact Us
+      </h3>
+    </div>
+  </div>
+
+<div className="flex flex-row items-center gap-3">
+  {/* Instagram */}
+  <a
+    href="https://www.instagram.com/kbfmgroup/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Instagram"
+    className="
+      group
+      flex h-11 w-11
+      items-center justify-center
+      rounded-full
+      border border-[#642E60]
+      bg-[#642E60]
+      text-white
+      shadow-[0_8px_25px_rgba(100,46,96,0.35)]
+      transition-all duration-300
+      hover:-translate-y-1
+      hover:scale-110
+      hover:bg-[#5B2E91]
+      hover:shadow-[0_10px_30px_rgba(100,46,96,0.5)]
+    "
+  >
+    <FaInstagram className="text-[18px]" />
+  </a>
+
+  {/* Facebook */}
+  <a
+    href="https://www.facebook.com/profile.php?id=61594533931368"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Facebook"
+    className="
+      group
+      flex h-11 w-11
+      items-center justify-center
+      rounded-full
+      border border-[#642E60]
+      bg-[#642E60]
+      text-white
+      shadow-[0_8px_25px_rgba(100,46,96,0.35)]
+      transition-all duration-300
+      hover:-translate-y-1
+      hover:scale-110
+      hover:bg-[#5B2E91]
+      hover:shadow-[0_10px_30px_rgba(100,46,96,0.5)]
+    "
+  >
+    <FaFacebookF className="text-[17px]" />
+  </a>
+</div>
+</div>
 
                 <div className="relative z-10">
                   {/* PHONE */}
@@ -974,9 +1033,12 @@ export default function Footer() {
                         X1A 2N4
                       </p>
                     </div>
+
+                    
                   </div>
                 </div>
               </div>
+              
             </div>
           </div>
 
@@ -1018,34 +1080,7 @@ export default function Footer() {
                 Professional Services Ltd. All rights reserved.
               </p>
 
-              {/* Social */}
-
-              {/* <div className="flex items-center gap-3">
-                <a
-                  href="#"
-                  aria-label="LinkedIn"
-                  className="
-                    flex
-                    h-10
-                    w-10
-                    items-center
-                    justify-center
-                    rounded-full
-                    border
-                    border-white/10
-                    bg-white/[0.06]
-                    text-white/60
-                    transition-all
-                    duration-300
-                    hover:-translate-y-1
-                    hover:border-white/25
-                    hover:bg-[#642E60]
-                    hover:text-white
-                  "
-                >
-                  <FaLinkedinIn className="text-[14px]" />
-                </a>
-              </div> */}
+  
             </div>
           </div>
 

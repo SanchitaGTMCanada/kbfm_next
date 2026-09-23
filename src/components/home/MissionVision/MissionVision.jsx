@@ -239,7 +239,7 @@ export default function MissionVision() {
       ========================================================= */}
 
       <div
-        className="relative mx-auto w-[90%]"
+        className="relative mx-auto w-[90%] max-w-[1500px]"
         style={{
           paddingLeft: "24px",
           paddingRight: "24px",

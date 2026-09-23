@@ -455,6 +455,7 @@ export default function Services() {
             justify-center
             px-5
             sm:px-8
+            max-w-[1500px]
           "
         >
           <Container className="w-full max-w-none">
@@ -497,6 +498,7 @@ export default function Services() {
               "
               style={{
                 padding: "20px",
+                 opacity: 1
               }}
             >
               {/* EYEBROW */}

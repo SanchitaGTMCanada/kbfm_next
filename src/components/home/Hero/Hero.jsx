@@ -242,7 +242,12 @@ export default function Hero() {
           justify-center
         "
       >
-        <Container className="relative z-20 h-full">
+        <div className="relative z-20 h-full  flex
+            w-[90%]
+            justify-start
+            px-5
+            sm:px-8
+            max-w-[1500px]" >
 
           <div
             className="
@@ -251,6 +256,7 @@ export default function Hero() {
               items-center
               py-8
               lg:py-0
+              max-w-[1500px]
             "
             style={{
               paddingTop: isMobile
@@ -782,7 +788,7 @@ export default function Hero() {
               </motion.div>
             </div>
           </div>
-        </Container>
+        </div>
       </div>
 
       {/* =====================================================
